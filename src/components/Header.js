@@ -10,6 +10,8 @@ const HeaderContainer = styled.header`
     align-items: center;
     height: 70px;
     background-color: transparent;
+    margin-bottom: -96px;
+    
   
 
     @media (max-width: 768px) {
@@ -23,12 +25,10 @@ const Logo = styled.h1`
     margin-left: 100px;
     margin-top: 20px;
     display: flex;
-
-    
-    justify-content: center; /* Added */
+    justify-content: center; 
     &:first-child {
-        width: 100px;
-        height: 200px;
+        width: 50px;
+        height: 50px;
         justify-content: center;
         align-items: center;
     }

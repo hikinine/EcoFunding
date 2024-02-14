@@ -52,7 +52,7 @@ export default function CarouselHome() {
   return (
     <>
    
-    <Folhas  style={{ alignSelf: 'end', height: '100vh'}}><FolhasImagem src={FolhaEsquerda} style={{ alignSelf: 'end'}} /></Folhas> 
+    <Folhas  style={{ alignSelf: 'end', height: 'h'}}><FolhasImagem src={FolhaEsquerda} style={{ alignSelf: 'end'}} /></Folhas> 
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         <SwiperSlide style={{ height: '80vh' }}>
                 <InnerCarousel>
