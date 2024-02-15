@@ -7,10 +7,12 @@ const HeaderContainer = styled.header`
     padding: 20px;
     display: flex;
     justify-content: space-evenly;
+    width: 100vw;
     align-items: center;
     height: 70px;
     background-color: transparent;
-    margin-bottom: -96px;
+    overflow-x: hidden;
+    
     
   
 
@@ -22,7 +24,7 @@ const HeaderContainer = styled.header`
 
 const Logo = styled.h1`
     font-size: 24px;
-    margin-left: 100px;
+    margin-left: 50px;
     margin-top: 20px;
     display: flex;
     justify-content: center; 

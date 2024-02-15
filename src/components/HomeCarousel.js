@@ -1,38 +1,38 @@
-import React from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import './styles.css';
-import { Navigation } from 'swiper/modules';
-import Home from './Home'; // Add the missing import statement for the Home component
-const slideStyles = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  resize: 'none',
-};
-const HomeCarousel = () => {
-    return (
-        <Swiper 
-        modules={[Navigation]}
-        navigation
-        spaceBetween={500}
-        slidesPerView={1}
-        >
-        <SwiperSlide style={slideStyles}>
-            <div style={{ position: "sticky" }}>
-            <Home />
-            </div>
-        </SwiperSlide>
-        <SwiperSlide style={slideStyles}>
-            <Home />
-        </SwiperSlide>
-        <SwiperSlide style={slideStyles}>
-            <Home />
-        </SwiperSlide>
-        </Swiper>
-    );
-};
-HomeCarousel.displayName = 'SwiperSlide';
+    import React from "react";
+    import Slider from "react-slick";
+    import "slick-carousel/slick/slick.css";
+    import "slick-carousel/slick/slick-theme.css";
+    import Home from './Home';
 
-export default HomeCarousel;    
+    const slideStyles = {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        resize: 'none',
+    };
+
+    const HomeCarousel = () => {
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        };
+
+        return (
+            <Slider {...settings}>
+                <div style={slideStyles}>
+                    <Home />
+                </div>
+                <div style={slideStyles}>
+                    <Home />
+                </div>
+                <div style={slideStyles}>
+                    <Home />
+                </div>
+            </Slider>
+        );
+    };
+    export default HomeCarousel;
+
