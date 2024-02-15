@@ -7,9 +7,13 @@ const HeaderContainer = styled.header`
     padding: 20px;
     display: flex;
     justify-content: space-evenly;
+    width: 100vw;
     align-items: center;
     height: 70px;
     background-color: transparent;
+    overflow-x: hidden;
+    
+    
   
 
     @media (max-width: 768px) {
@@ -20,15 +24,13 @@ const HeaderContainer = styled.header`
 
 const Logo = styled.h1`
     font-size: 24px;
-    margin-left: 100px;
+    margin-left: 50px;
     margin-top: 20px;
     display: flex;
-
-    
-    justify-content: center; /* Added */
+    justify-content: center; 
     &:first-child {
-        width: 100px;
-        height: 200px;
+        width: 50px;
+        height: 50px;
         justify-content: center;
         align-items: center;
     }

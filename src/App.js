@@ -9,12 +9,14 @@ import Parceiros from 'components/Parceiros';
 import FAQ from 'components/FAQ';
 import Blog from 'components/Blog';
 import Rodape from 'components/Rodape';
+import Home from 'components/Home';
+import HomeCarousel from 'components/HomeCarousel';
 
 function App() {
   return (
     <div>
-
-      <CarouselHome />
+      
+      <HomeCarousel />
       <OqueFazemos/>
       <SelosSection />
       <ESG />

@@ -7,6 +7,7 @@ import Image from '../assets/HomeSection.png';
 import { Navigation } from 'swiper/modules';
 import styled from 'styled-components';
 import FolhasImg from '../assets/folhas1.png';
+import FolhaEsquerda from '../assets/FolhaEsquerda.png';
 const InnerCarousel = styled.div`
     display: flex; // Use flexbox to center the image
     justify-content: center; // Center horizontally
@@ -44,13 +45,14 @@ const Folhas = styled.div`
     overflow-x: hidden;
 `;
 const FolhasImagem = styled.img`
-    width: 100vw;
+    
     pointer-events: none;
 `;
 export default function CarouselHome() {
   return (
     <>
-    <Folhas><FolhasImagem src={FolhasImg} /></Folhas> 
+   
+    <Folhas  style={{ alignSelf: 'end', height: 'h'}}><FolhasImagem src={FolhaEsquerda} style={{ alignSelf: 'end'}} /></Folhas> 
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         <SwiperSlide style={{ height: '80vh' }}>
                 <InnerCarousel>
@@ -107,6 +109,7 @@ export default function CarouselHome() {
             </InnerCarousel>
         </SwiperSlide>
       </Swiper>
+        
     </>
   );
 }

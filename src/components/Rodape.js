@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import styled, { css } from "styled-components";
 
 const media = {
@@ -35,7 +34,7 @@ const GetTheApp = styled.div`
   font-size: 18px;
   font-weight: 900;
   line-height: 1.11;
-  color: #fff
+  color: #fff;
   margin: 0 -15px;
   display: flex;
   flex-flow: row;
@@ -50,11 +49,12 @@ const GetTheApp = styled.div`
 const GetTheAppTitle = styled.div`
   margin-bottom: 4px;
   width: 100%;
+  color: #fff;
   ${media.desktop`
     width: unset;
     margin: 0 15px;
   `}
-  color: #fff;
+  
 `;
 
 const AppStoreApp = styled.img`
@@ -221,7 +221,7 @@ const Rodape = () =>{
     <Footer>
       <TopBar>
         <GetTheApp>
-          <GetTheAppTitle> Get The App</GetTheAppTitle>
+          <GetTheAppTitle> Eco Funding</GetTheAppTitle>
           <AppStoreApp />
           <GoogleApp />
         </GetTheApp>
