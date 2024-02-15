@@ -9,10 +9,13 @@ const StyledSlide = styled.div`
     align-items: center;
     background-color: #ffffff;
     display: flex;
+    flex-direction: row
     gap: 20px;
+    padding: 50px;
     justify-content: center;
-    height: 1080px;
-    min-width: 1920px;
+    align-items: center;
+    height: 100vh;
+    
     padding: 10px 10px;
     position: relative;
     width: 100%;
@@ -42,7 +45,7 @@ const Frame = styled.div`
         display: inline-flex;
         flex: 1 0 auto;
         flex-direction: column;
-        gap: 10px;
+        gap: 30px;
         height: 713px;
         width: 426px;
         text-align: center;
