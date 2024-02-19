@@ -5,11 +5,12 @@ import FolhaEsquerda from "../assets/FolhaEsquerda.png";
 import HomeSection from "../assets/HomeSection.png";
 import FolhaMeio from "../assets/FolhaMeio.png";
 import FolhaDireitaBaixo from "../assets/FolhaDireitaBaixo.png";
+import { ThemeProvider } from "styled-components";
 const StyledSlide = styled.div`
     align-items: center;
     background-color: #ffffff;
     display: flex;
-    flex-direction: row
+    flex-direction: row;
     gap: 20px;
     padding: 50px;
     justify-content: center;
@@ -36,46 +37,56 @@ const StyledSlide = styled.div`
             
         }
     }
-
-
 `;
 const Frame = styled.div`
-        width: 426px;
-        align-items: center;
-        display: inline-flex;
-        flex: 1 0 auto;
-        flex-direction: column;
-        gap: 30px;
-        height: 713px;
-        width: 426px;
-        text-align: center;
-        position: relative;
+    
+    align-items: center;
+    display: inline-flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    gap: 30px;
+    height: 713px;
+    text-align: center;
+    position: relative;
+    @media (max-width: 1448px) {
+         height: auto;
+         object-fit: cover;
+         position: relative;
+         width: 550px;
+    }
+    @media (max-width: 1100px) {
+        height: auto;
+         object-fit: cover;
+         position: relative;
+         width: 350px;
+    }
 `;
+
 const TextWrapper = styled.div`
-        color: #000000;
-        font-family: "Montserrat-ExtraBold", Helvetica;
-        font-size: 96px;
-        font-weight: 800;
-        height: 93px;
-        letter-spacing: 0;
-        line-height: normal;
-        position: relative;
-        white-space: nowrap;
-        width: 526px;
-      
+    color: #000000;
+    font-family: "Montserrat-ExtraBold", Helvetica;
+    font-size: 96px;
+    font-weight: 800;
+    height: 93px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 526px;
 `;
 const TextDiv = styled.div`
-         color: #000000;
-        font-family: "Montserrat-Medium", Helvetica;
-        font-size: 40px;
-        font-weight: 500;
-        height: 481px;
-        letter-spacing: 0;
-        line-height: normal;
-        position: relative;
-        width: 574px;
-        word-break: break-word;   
+     color: #000000;
+    font-family: "Montserrat-Medium", Helvetica;
+    font-size: 40px;
+    font-weight: 500;
+    height: 481px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    width: 574px;
+    word-break: break-word;   
 `;
+
 const FolhaEsquerdaCimaImg = styled.img`
         height: 104px;
         left: 67px;
@@ -108,6 +119,19 @@ const HomeSectionImg = styled.img`
                 position: relative;
                 width: 761px;
                 right: 100px;
+                @media (max-width: 1810px) {
+                 height: auto;
+                 object-fit: cover;
+                 position: relative;
+                 width: 550px;
+                 right: 0;
+                }
+                @media (max-width: 1400px) {
+                 height: auto;
+                 object-fit: cover;
+                 position: relative;
+                 width: 300px;
+                }
 `;
 const FolhaMeioImg = styled.img`
                 height: 167px;
@@ -125,14 +149,16 @@ const FolhaDireitaBaixoImg = styled.img`
                 top: 504px;
                 width: 300px;
 `;
+
 const Home = () => {
     return (
+       
         <StyledSlide>
         
             <Frame >
                 <TextWrapper >Texto CTA</TextWrapper>
                 <TextDiv >
-                    CopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopy
+                    CopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyfff
                 </TextDiv>
             </Frame>
             <FolhaEsquerdaCimaImg className="folhaesquerdacima" alt="Folhaesquerdacima" src={FolhaEsquerdaCima} />
@@ -144,6 +170,7 @@ const Home = () => {
             </Frame2>
             
         </StyledSlide>
+       
     );
 };
 export default Home;

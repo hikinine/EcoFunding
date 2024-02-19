@@ -52,9 +52,9 @@ const OqueFazemos = () => {
                 <Header>O que Fazemos</Header>
                 <Paragraph>This is the paragraphThis is the paragraphThis is the paragraphThis is the paragraphThis is the paragraphThis is the paragraphThis is the paragraph</Paragraph>
             </Content>
-            {/* <Mapa /> */}
+             
             <Content>
-            <ImageMap src={ImagemMapa} alt="mapa" />
+            <Mapa style={{height: '90vh'}}/>
             </Content>
         </Container>
     );
