@@ -64,27 +64,29 @@ const Frame = styled.div`
 
 const TextWrapper = styled.div`
     color: #000000;
-    font-family: "Montserrat-ExtraBold", Helvetica;
-    font-size: 96px;
-    font-weight: 800;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-size: 36px;
+    font-weight: 700;
     height: 93px;
     letter-spacing: 0;
     line-height: normal;
     position: relative;
     white-space: nowrap;
     width: 526px;
+    text-align: left;
 `;
 const TextDiv = styled.div`
      color: #000000;
     font-family: "Montserrat-Medium", Helvetica;
-    font-size: 40px;
+    font-size: 20px;
     font-weight: 500;
     height: 481px;
     letter-spacing: 0;
     line-height: normal;
     position: relative;
     width: 574px;
-    word-break: break-word;   
+    word-break: break-word;
+    text-align: left;
 `;
 
 const FolhaEsquerdaCimaImg = styled.img`
@@ -156,9 +158,11 @@ const Home = () => {
         <StyledSlide>
         
             <Frame >
-                <TextWrapper >Texto CTA</TextWrapper>
+                <TextWrapper >Transforme Seu Carbono em Impacto
+</TextWrapper>
                 <TextDiv >
-                    CopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyfff
+                A primeira plataforma do Brasil que converte dívidas de carbono em oportunidades de investimento verde, credenciada pela CVM
+
                 </TextDiv>
             </Frame>
             <FolhaEsquerdaCimaImg className="folhaesquerdacima" alt="Folhaesquerdacima" src={FolhaEsquerdaCima} />

@@ -1,81 +1,92 @@
 import React, { useState } from 'react';
+import { Html, OrbitControls } from '@react-three/drei';
+import { Vector3, TextureLoader } from 'three';
 import { useLoader } from '@react-three/fiber';
-import { TextureLoader, Vector3, SphereGeometry, MeshBasicMaterial } from 'three';
-import { OrbitControls, Html } from '@react-three/drei';
-import './earth.css'; // Make sure this path is correct for your project
+import { FaMapMarkerAlt } from 'react-icons/fa';
+import Overlay from '../Overlay'; // Assuming this is a custom component you've created
 
-// Assets
-import EarthDayMap from "../../assets/textures/8k_earth_daymap.jpg";
-import EarthNormalMap from "../../assets/textures/8k_earth_normal_map.jpg";
-import EarthSpecularMap from "../../assets/textures/8k_earth_specular_map.jpg";
+// Import your images
 import Img from '../../assets/ESG2.png';
+import colorMap from '../../assets/textures/8k_earth_daymap.jpg';
 
-// Function to convert lat/lon to 3D coordinates
-const latLongToVector3 = (lat, lon, radius, height) => {
-    const phi = (lat) * Math.PI / 180;
-    const theta = (lon - 180) * Math.PI / 180;
+// Define the Marker component
+function Marker({ position, onClick }) {
+    return (
+      <group position={position}>
+        <Html>
+          <div style={{ color: 'orange', cursor: 'pointer' }} onClick={onClick}>
+            <FaMapMarkerAlt />
+          </div>
+        </Html>
+      </group>
+    );
+  }
+  
 
-    const x = -(radius + height) * Math.cos(phi) * Math.cos(theta);
-    const y = (radius + height) * Math.sin(phi);
-    const z = (radius + height) * Math.cos(phi) * Math.sin(theta);
+// Earth component
+export function Earth() {
+  // Convert lat/lon to 3D coordinates
+  const latLongToVector3 = (lat, lon, radius) => {
+    const phi = (90 - lat) * (Math.PI / 180);
+    const theta = (lon + 180) * (Math.PI / 180);
+
+    const x = -radius * Math.sin(phi) * Math.cos(theta);
+    const y = radius * Math.cos(phi);
+    const z = radius * Math.sin(phi) * Math.sin(theta);
 
     return new Vector3(x, y, z);
-};
+  };
 
-// Define pinpoints data
-const pinpoints = [
-    { lat: 40.7128, lon: -74.0060, name: 'New York', image: Img}, // Example: New York coordinates
-    // Add more pinpoints here
-];
+  // Marker data including image URLs
+  const markers = [
+    { lat: 40.7128, lon: -74.0060, name: 'New York', imageUrl: Img },
+    // Add more markers as needed
+  ];
 
-export function Earth(props) {
-    const [colorMap, normalMap, specularMap] = useLoader(TextureLoader, [EarthDayMap, EarthNormalMap, EarthSpecularMap]);
-    const radius = 2; // Radius of the globe (changed to 2)
-    const pinpointGeometry = new SphereGeometry(0.02, 32, 32); // Small sphere geometry for pinpoints
-    const pinpointMaterial = new MeshBasicMaterial({ color: 0xff0000 }); // Red color for pinpoints
-    const [selectedPinpoint, setSelectedPinpoint] = useState(null);
+  const [selectedMarker, setSelectedMarker] = useState(null);
 
-    const handlePinpointClick = (pinpoint) => {
-        setSelectedPinpoint(pinpoint);
-    };
+  // Handle marker click
+  const handleMarkerClick = (marker) => {
+    alert(`Marker clicked: ${marker.name}`);
+    setSelectedMarker(marker);
+  };
 
-    // Function to close the overlay
-    const closeOverlay = () => {
-        setSelectedPinpoint(null);
-    };
+  // Close the overlay
+  const closeOverlay = () => {
+    setSelectedMarker(null);
+  };
 
-    return (
-        <>
-            <ambientLight intensity={2} />
-            <pointLight color="#f6f3ea" position={[2, 0, 2]} intensity={5.2} />
-            <mesh>
-                <sphereGeometry args={[radius, 32, 32]} /> // Changed the sphereGeometry args to [radius, 32, 32]
-                <meshPhongMaterial specularMap={specularMap} />
-                <meshStandardMaterial map={colorMap} normalMap={normalMap} />
-                {pinpoints.map((point, index) => {
-                    const position = latLongToVector3(point.lat, point.lon, radius, 0.02);
-                    return (
-                        <mesh
-                            key={index}
-                            position={position}
-                            geometry={pinpointGeometry}
-                            material={pinpointMaterial}
-                            onClick={() => handlePinpointClick(point)}
-                        />
-                    );
-                })}
-            </mesh>
-            {selectedPinpoint && (
-                <Html>
-                <div className="overlay" onClick={closeOverlay}>
-                    <div className="content" onClick={e => e.stopPropagation()}>
-                        <img src={selectedPinpoint.image} alt={selectedPinpoint.name} />
-                        <button onClick={closeOverlay}>Close</button>
-                    </div>
-                </div>
-                </Html>
-            )}
-            <OrbitControls enableZoom={false} enablePan={true} enableRotate={true} zoomSpeed={0.6} panSpeed={0.5} rotateSpeed={0.4} />
-        </>
-    );
+  const [colorMapTexture] = useLoader(TextureLoader, [colorMap]);
+  const radius = 2; // Radius of the globe
+
+  return (
+    <>
+      <ambientLight intensity={0.5} />
+      <directionalLight color="#ffffff" intensity={2} position={[1, -5, 5]} castShadow />
+      <mesh receiveShadow>
+        <sphereGeometry args={[radius, 32, 32]} />
+        <meshStandardMaterial map={colorMapTexture} />
+        {markers.map((marker, index) => {
+          const position = latLongToVector3(marker.lat, marker.lon, radius);
+          return (
+            <Marker
+              key={index}
+              position={position}
+              onClick={() => handleMarkerClick(marker)}
+            />
+          );
+        })}
+      </mesh>
+      {selectedMarker && (
+        <Html>
+            <div>
+        <Overlay onClose={closeOverlay} marker={selectedMarker}>
+          {/* Assuming Overlay is adapted to use the marker prop */}
+        </Overlay>
+        </div>
+        </Html>
+      )}
+      <OrbitControls enableZoom={false} enablePan={true} enableRotate={true} />
+    </>
+  );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Mapa from './Mapa';
 import ImagemMapa from '../assets/mapa.png';
-import EcoGiant from '../assets/ecofundinggiant.png';
+import EcoGiant from '../assets/ecofundinggiant.svg';
 
 const Container = styled.div`
     display: flex;
@@ -11,6 +11,8 @@ const Container = styled.div`
     align-items: center;
     background-image: url(${EcoGiant});
     background-position: center;
+    background-size: auto 320%;
+    
     height: 80vh;
     
 `;
@@ -38,6 +40,12 @@ const Paragraph = styled.p`
     word-break: break-word;
     color: white;
 `;
+const Ul = styled.ul`
+    font-size: 16px;
+    margin-left: 4rem;
+    word-break: break-word;
+    color: white;
+`;
 
 const ImageMap = styled.img`
     width: 40vw;
@@ -50,7 +58,14 @@ const OqueFazemos = () => {
         <Container>
             <Content>
                 <Header>O que Fazemos</Header>
-                <Paragraph>This is the paragraphThis is the paragraphThis is the paragraphThis is the paragraphThis is the paragraphThis is the paragraphThis is the paragraph</Paragraph>
+                <Paragraph>Na Ecofunding, nosso compromisso é com o futuro do planeta. Unimos tecnologia, sustentabilidade e finanças para criar um impacto ambiental positivo.</Paragraph>
+                <Ul>
+                    <li>Captação de Projetos Sustentáveis: Identificamos e selecionamos os projetos mais promissores em sustentabilidade espalhados pelo Brasil.</li>
+                    <li>Análise dos Projetos Sustentáveis: Analisamos e legalizamos os projetos selecionados, deixando eles aptos para o investimento. </li>
+                    <li>Plataforma de Investimento Verde: Facilitamos o encontro entre empresas com altas dívidas de carbono e projetos ambientais inovadores.</li>
+                    <li>Redução e Compensação de Carbono: Empresas investidoras recebem a oportunidade de abater até 60% de suas dívidas de carbono, além de ganhar créditos de carbono.</li>
+                </Ul>
+                <Paragraph>Juntos, estamos construindo um legado de sustentabilidade e transformação, oferecendo às empresas uma rota clara para a compensação de carbono e um futuro mais verde.</Paragraph>
             </Content>
              
             <Content>

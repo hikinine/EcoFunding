@@ -12,8 +12,10 @@ const Container = styled.div`
   height: 70vh;
   display: flex;
   position: relative;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
+  
 `;
 
 const Container1 = styled.div`
@@ -40,6 +42,10 @@ const Container2 = styled.div`
   padding-left: 0px;
   flex-direction: row;
   justify-content: flex-start;
+  @media (max-width: 768px) {
+    display: none;
+    
+  }
 `;
 
 const StyledImage = styled.img`
@@ -56,7 +62,11 @@ const Image1 = styled(StyledImage)`
   width: 149px;
   height: 104px;
   align-self: flex-start;
-  margin-top: -96px;
+  margin-top: 0px;
+  @media (max-width: 768px) {
+    display: none;
+    
+  }
 `;
 
 const Container4 = styled.div`
@@ -138,6 +148,10 @@ const Container8 = styled.div`
 
 const Image4 = styled(StyledImage)`
   width: 200px;
+  @media (max-width: 768px) {
+    display: none;
+    
+  }
 `;
 
 // Add media queries as needed using styled-components' css helper
