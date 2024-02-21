@@ -4,11 +4,11 @@ import { Vector3, TextureLoader } from 'three';
 import { useLoader } from '@react-three/fiber';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import Overlay from '../Overlay'; // Assuming this is a custom component you've created
-
-// Import your images
-import Img from '../../assets/ESG2.png';
 import colorMap from '../../assets/textures/8k_earth_daymap.jpg';
 
+let imgProjects = [
+  'https://placehold.co/100'
+]
 // Define the Marker component
 function Marker({ position, onClick }) {
     return (
@@ -39,7 +39,7 @@ export function Earth() {
 
   // Marker data including image URLs
   const markers = [
-    { lat: 40.7128, lon: -74.0060, name: 'New York', imageUrl: Img },
+    { lat: 40.7128, lon: -74.0060, name: 'New York', imageUrl: imgProjects[0] },
     // Add more markers as needed
   ];
 
@@ -79,7 +79,7 @@ export function Earth() {
       </mesh>
       {selectedMarker && (
         <Html>
-            <div>
+            <div style={{ width: '20vw', height: '20vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Overlay onClose={closeOverlay} marker={selectedMarker}>
           {/* Assuming Overlay is adapted to use the marker prop */}
         </Overlay>
