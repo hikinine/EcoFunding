@@ -25,7 +25,7 @@ const ImageMap = styled.img`
     width: 40vw;
     height: auto;
     cursor: pointer;
-    ima
+    
 `;
 
 const Button = styled.button`

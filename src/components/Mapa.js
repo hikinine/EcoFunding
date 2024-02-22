@@ -4,7 +4,7 @@ import { Earth } from './earth';
 import ZoomButtons from './ZoomButtons';
 import Overlay from './Overlay';
 
-function Mapa({ name }) {
+function Mapa() {
     return (
         <div style={{ width: '100%', height: '100vh' }}>
             <Canvas>
