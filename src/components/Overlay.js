@@ -3,8 +3,12 @@ import { Earth } from './earth';
 import { Marker } from 'react-simple-maps';
 import { Html } from '@react-three/drei';
 
-function Overlay({ marker, onClose }) {
-    console.log(marker)
+function Overlay({ marker, onClose, markers }) {
+
+    if (!marker) {
+        // You can return null, a loading indicator, or any placeholder content
+        return null; // Or, for example, <div>Loading...</div>
+      }
     return (
         <Html>
       <div style={{ width: '20vw', borderRadius: '12px' , height: '30vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: 'white', position: 'relative' }}>
