@@ -24,7 +24,7 @@ const HeaderContainer = styled.header`
 
 const Logo = styled.h1`
     font-size: 24px;
-    margin-left: 50px;
+    margin-left: 90px;
     margin-top: 20px;
     display: flex;
     justify-content: center; 

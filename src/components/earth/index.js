@@ -47,7 +47,7 @@ export function Earth() {
 
   // Handle marker click
   const handleMarkerClick = (marker) => {
-    alert(`Marker clicked: ${marker.name}`);
+
     setSelectedMarker(marker);
   };
 
@@ -86,7 +86,13 @@ export function Earth() {
         </div>
         </Html>
       )}
-      <OrbitControls enableZoom={false} enablePan={true} enableRotate={true} />
+      <OrbitControls 
+  enableZoom={false} 
+  enablePan={true} 
+  enableRotate={true} 
+  minAzimuthAngle={-Math.PI / 6} // -30 degrees
+  maxAzimuthAngle={Math.PI / 6}  // 30 degrees
+/>
     </>
   );
 }

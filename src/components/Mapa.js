@@ -1,24 +1,20 @@
+import React, { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { Earth } from './earth';
+import ZoomButtons from './ZoomButtons';
+import Overlay from './Overlay';
 
-import styled from "styled-components";
-import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
-import { Earth } from "./earth"; // Add the missing import statement for the Earth component
-
-const CanvasContainer = styled.div`
-    width: 100%;
-    height: 100vh;
-`;
-
-function Mapa() {
+function Mapa({ name }) {
     return (
-        
-            <CanvasContainer>
+        <div style={{ width: '100%', height: '100vh' }}>
             <Canvas>
-                <Suspense fallback={null}>
+                <Suspense>
                     <Earth />
+                    <ZoomButtons />
+                    <Overlay />
                 </Suspense>
             </Canvas>
-        </CanvasContainer>
+        </div>
     );
 }
 

@@ -1,30 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Mapa from './Mapa';
 import ImagemMapa from '../assets/mapa.png';
 import EcoGiant from '../assets/ecofundinggiant.svg';
+import Overlay from './Overlay';
 
 const Container = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center; /* Center children */
     background-color: #7ac26a;
-    align-items: center;
     background-image: url(${EcoGiant});
     background-position: center;
     background-size: auto 320%;
-    
     height: 80vh;
-    
-`;
-
-const Image = styled.img`
-    width: 200px;
-    height: 200px;
-    margin-right: 20px;
+    position: relative; /* For absolute positioning of the button */
 `;
 
 const Content = styled.div`
-    flex: 1;
+    display: ${props => props.show ? 'block' : 'none'};
+`;
+
+const ImageMap = styled.img`
+    width: 40vw;
+    height: auto;
+    cursor: pointer;
+    ima
+`;
+
+const Button = styled.button`
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
 `;
 
 const Header = styled.h1`
@@ -40,37 +52,37 @@ const Paragraph = styled.p`
     word-break: break-word;
     color: white;
 `;
-const Ul = styled.ul`
-    font-size: 16px;
-    margin-left: 4rem;
-    word-break: break-word;
-    color: white;
-`;
-
-const ImageMap = styled.img`
-    width: 40vw;
-    height: 100%;
-    margin-right: 20px;
-`;
-
 const OqueFazemos = () => {
+    const [showMapa, setShowMapa] = useState(false);
+    const [showContent, setShowContent] = useState(true);
+
+    const toggleContent = () => {
+        setShowMapa(!showMapa);
+        setShowContent(!showContent);
+    };
+
     return (
         <Container>
-            <Content>
-                <Header>O que Fazemos</Header>
-                <Paragraph>Na Ecofunding, nosso compromisso é com o futuro do planeta. Unimos tecnologia, sustentabilidade e finanças para criar um impacto ambiental positivo.</Paragraph>
-                <Ul>
-                    <li>Captação de Projetos Sustentáveis: Identificamos e selecionamos os projetos mais promissores em sustentabilidade espalhados pelo Brasil.</li>
-                    <li>Análise dos Projetos Sustentáveis: Analisamos e legalizamos os projetos selecionados, deixando eles aptos para o investimento. </li>
-                    <li>Plataforma de Investimento Verde: Facilitamos o encontro entre empresas com altas dívidas de carbono e projetos ambientais inovadores.</li>
-                    <li>Redução e Compensação de Carbono: Empresas investidoras recebem a oportunidade de abater até 60% de suas dívidas de carbono, além de ganhar créditos de carbono.</li>
-                </Ul>
-                <Paragraph>Juntos, estamos construindo um legado de sustentabilidade e transformação, oferecendo às empresas uma rota clara para a compensação de carbono e um futuro mais verde.</Paragraph>
-            </Content>
-             
-            <Content>
-            <Mapa style={{height: '90vh'}}/>
-            </Content>
+            {showContent && (
+                <Content show={showContent}>
+                    <Header>O que Fazemos</Header>
+                    <Paragraph>Na Ecofunding, nosso compromisso é com o futuro do planeta. Unimos tecnologia, sustentabilidade e finanças para criar um impacto ambiental positivo.</Paragraph>
+                    <ul style={{ color: 'white', paddingLeft: '100px'}}>
+                        <li>Captação de Projetos Sustentáveis: Identificamos e selecionamos os projetos mais promissores em sustentabilidade espalhados pelo Brasil.</li>
+                        <li>Análise dos Projetos Sustentáveis: Analisamos e legalizamos os projetos selecionados, deixando eles aptos para o investimento.</li>
+                        <li>Plataforma de Investimento Verde: Facilitamos o encontro entre empresas com altas dívidas de carbono e projetos ambientais inovadores.</li>
+                        <li>Redução e Compensação de Carbono: Empresas investidoras recebem a oportunidade de abater até 60% de suas dívidas de carbono, além de ganhar créditos de carbono.</li>
+                    </ul>
+                    <Paragraph>Juntos, estamos construindo um legado de sustentabilidade e transformação, oferecendo às empresas uma rota clara para a compensação de carbono e um futuro mais verde</Paragraph>
+                </Content>
+            )}
+            {!showMapa ? (
+                <ImageMap src={ImagemMapa} onClick={toggleContent} />
+            ) : (
+                <Mapa />
+                
+            )}
+            <Button onClick={toggleContent}>{showMapa ? 'Return' : 'Change to Mapa'}</Button>
         </Container>
     );
 };

@@ -1,27 +1,21 @@
-import Styled from 'styled-components';
+import React from 'react';
+import { Earth } from './earth';
+import { Marker } from 'react-simple-maps';
+import { Html } from '@react-three/drei';
 
-const Container = Styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.9); // Add a background color for visibility
-    z-index: 9999; // Ensure it's above other content
-`;
-
-function Overlay({ onClose, marker }) {
+function Overlay({ marker, onClose }) {
+    console.log(marker)
     return (
-        <div className="overlay" style={{ position: 'absolute', zIndex: 10 /* Adjust styling as needed */ }}>
-            <button onClick={onClose}>Close</button>
-            <h2>{marker.name}</h2>
-            <img src={marker.imageUrl} alt={marker.name} />
-        </div>
+        <Html>
+      <div style={{ width: '20vw', borderRadius: '12px' , height: '30vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: 'white', position: 'relative' }}>
+        <button onClick={onClose} style={{ position: 'absolute', top: 0, right: 0, cursor: 'pointer' }}>Close</button>
+        <h2>{marker.name}</h2>
+        <img src={marker.imageUrl} alt={marker.name} style={{ maxWidth: '100%', maxHeight: '100%'}} />
+        
+      </div>
+      </Html>
     );
-}
+  }
 
 export default Overlay;
+

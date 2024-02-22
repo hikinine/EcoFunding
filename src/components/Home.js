@@ -42,10 +42,10 @@ const Frame = styled.div`
     
     align-items: center;
     display: inline-flex;
-    flex: 1 0 auto;
+    flex: auto;
     flex-direction: column;
     gap: 30px;
-    height: 713px;
+    height: 613px;
     text-align: center;
     position: relative;
     @media (max-width: 1448px) {
@@ -62,29 +62,26 @@ const Frame = styled.div`
     }
 `;
 
-const TextWrapper = styled.div`
+const TextWrapper = styled.h1`
     color: #000000;
     font-family: "Montserrat-Bold", Helvetica;
     font-size: 36px;
     font-weight: 700;
-    height: 93px;
     letter-spacing: 0;
     line-height: normal;
     position: relative;
     white-space: nowrap;
-    width: 526px;
+    
     text-align: left;
 `;
-const TextDiv = styled.div`
+const TextDiv = styled.p`
      color: #000000;
     font-family: "Montserrat-Medium", Helvetica;
     font-size: 20px;
     font-weight: 500;
-    height: 481px;
     letter-spacing: 0;
     line-height: normal;
     position: relative;
-    width: 574px;
     word-break: break-word;
     text-align: left;
 `;
@@ -119,8 +116,8 @@ const HomeSectionImg = styled.img`
                 height: auto;
                 object-fit: cover;
                 position: relative;
-                width: 761px;
-                right: 100px;
+                width: 961px;
+                right: 200px;
                 @media (max-width: 1810px) {
                  height: auto;
                  object-fit: cover;
@@ -158,12 +155,8 @@ const Home = () => {
         <StyledSlide>
         
             <Frame >
-                <TextWrapper >Transforme Seu Carbono em Impacto
-</TextWrapper>
-                <TextDiv >
-                A primeira plataforma do Brasil que converte dívidas de carbono em oportunidades de investimento verde, credenciada pela CVM
-
-                </TextDiv>
+                <TextWrapper >Transforme Seu Carbono em Impacto</TextWrapper>
+                <TextDiv >A primeira plataforma do Brasil que converte dívidas de carbono em oportunidades de investimento verde, credenciada pela CVM  </TextDiv>
             </Frame>
             <FolhaEsquerdaCimaImg className="folhaesquerdacima" alt="Folhaesquerdacima" src={FolhaEsquerdaCima} />
             <FolhaEsquerdaImg className="folhaesquerda" alt="Folhaesquerda" src={FolhaEsquerda} />
