@@ -22,7 +22,7 @@
         };
 
         return (
-            <Slider {...settings}>
+            <Slider {...settings} style={{ width: '100vw' }}>
                 <div style={slideStyles}>
                     <Home />
                 </div>

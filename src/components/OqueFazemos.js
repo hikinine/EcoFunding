@@ -4,6 +4,7 @@ import Mapa from './Mapa';
 import ImagemMapa from '../assets/mapa.png';
 import EcoGiant from '../assets/ecofundinggiant.svg';
 import Overlay from './Overlay';
+import { MarkerProvider } from './earth/MarkerContext';
 
 const Container = styled.div`
     display: flex;
@@ -79,7 +80,9 @@ const OqueFazemos = () => {
             {!showMapa ? (
                 <ImageMap src={ImagemMapa} onClick={toggleContent} />
             ) : (
+                <MarkerProvider>
                 <Mapa />
+                </MarkerProvider>
                 
             )}
             <Button onClick={toggleContent}>{showMapa ? 'Return' : 'Change to Mapa'}</Button>

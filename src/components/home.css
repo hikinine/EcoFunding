@@ -1,0 +1,70 @@
+/* Slide 16:9 - 1 */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap");
+
+p {
+  margin: 0;
+}
+
+.slide-1691 {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 80px;
+  width: 1920px;
+  height: 1080px;
+  padding: 10px 167px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 1);
+}
+.folhaesquerda-1 {
+  position: absolute;
+  top: 707px;
+  left: -19px;
+  width: 528px;
+  height: 341px;
+}
+
+.folhaesquerdacima-1 {
+  position: absolute;
+  top: 131px;
+  left: 67px;
+  width: 149px;
+  height: 104px;
+}
+
+.frame-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 600px;
+  height: fit-content;
+  box-sizing: border-box;
+}
+.texto-cta {
+  color: rgba(0, 0, 0, 1);
+  font-size: 96px;
+  line-height: 96px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+}
+
+.copycopycopycopycopy {
+  width: 600px;
+  color: rgba(0, 0, 0, 1);
+  font-size: 40px;
+  line-height: 40px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.frame-2 {
+  gap: 10px;
+  width: 961px;
+  height: 843px;
+}

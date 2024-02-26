@@ -1,6 +1,6 @@
 import React from 'react';
 import { Earth } from './earth';
-import { Marker } from 'react-simple-maps';
+import  markers  from './earth/markers';
 import { Html } from '@react-three/drei';
 
 function Overlay({ marker, onClose, markers }) {
@@ -11,7 +11,7 @@ function Overlay({ marker, onClose, markers }) {
       }
     return (
         <Html>
-      <div style={{ width: '20vw', borderRadius: '12px' , height: '30vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: 'white', position: 'relative' }}>
+      <div style={{ width: '20vw', borderRadius: '12px' , height: '30vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: 'white', position: 'relative', zIndex: '9999' }}>
         <button onClick={onClose} style={{ position: 'absolute', top: 0, right: 0, cursor: 'pointer' }}>Close</button>
         <h2>{marker.name}</h2>
         <img src={marker.imageUrl} alt={marker.name} style={{ maxWidth: '100%', maxHeight: '100%'}} />
