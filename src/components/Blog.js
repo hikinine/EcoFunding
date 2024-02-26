@@ -6,13 +6,16 @@ import 'swiper/css/navigation';
 import 'swiper/css';
 const Container = styled.div`
     height: 90vh;
+    width: 90vw;
+    justify-content: center;
+    align-items: center;
 `;
 
 const Blog = () => {
     return (
         <Container>
            <Swiper 
-            spaceBetween={50}
+            spaceBetween={10}
             slidesPerView={3}
             navigation={true} modules={[Navigation]} className="mySwiper"
             >

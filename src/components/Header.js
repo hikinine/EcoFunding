@@ -7,11 +7,12 @@ const HeaderContainer = styled.header`
     padding: 20px;
     display: flex;
     justify-content: space-evenly;
-    width: 100vw;
+   
     align-items: center;
     height: 70px;
     background-color: transparent;
     overflow-x: hidden;
+    overflow: hidden;
     
     
   
