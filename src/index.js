@@ -2,13 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import Header from './/components/Header';
+import { HashRouter as Router } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Router>
     <Header  />
     <App />
-  </React.StrictMode>
+  
+    </Router>
 );
 
 // If you want to start measuring performance in your app, pass a function
