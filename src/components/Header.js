@@ -13,10 +13,9 @@ const HeaderContainer = styled.header`
     background-color: transparent;
     overflow-x: hidden;
     overflow: hidden;
-    
-    
-  
-
+    * {
+        font-family: 'Montserrat', sans-serif;
+    }
     @media (max-width: 768px) {
         flex-direction: column;
         text-align: center;

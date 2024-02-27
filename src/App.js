@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import CarouselHome from './components/CarouselHome';
+import CarouselHome from './components/Home';
 import OqueFazemos from './components/OqueFazemos';
 import Mapa from 'components/Mapa';
 import SelosSection from './components/Selos';
@@ -10,7 +10,7 @@ import FAQ from './components/FAQ';
 import Blog from './components/Blog';
 import Rodape from './components/Rodape';
 import Home from './components/Home';
-import HomeCarousel from './components/HomeCarousel';
+import HomeCarousel from './components/Home';
 
 function App() {
   return (
