@@ -1,30 +1,26 @@
+
 import React from 'react';
-import './App.css';
-import CarouselHome from './components/Home';
+import { Route, Routes } from 'react-router-dom'; // Import Routes instead of Switch
+import HomeCarousel from './components/Home';
 import OqueFazemos from './components/OqueFazemos';
-import Mapa from 'components/Mapa';
 import SelosSection from './components/Selos';
 import ESG from './components/ESG';
 import Parceiros from './components/Parceiros';
 import FAQ from './components/FAQ';
 import Blog from './components/Blog';
 import Rodape from './components/Rodape';
-import Home from './components/Home';
-import HomeCarousel from './components/Home';
+
+import HomePage from 'assets/pages/HomePage';
 
 function App() {
   return (
     <div>
-      
-      <HomeCarousel />
-      <OqueFazemos/>
-      <SelosSection />
-      <ESG />
-      <Parceiros />
-      <FAQ />
-      <Blog />
-      <Rodape />
+      <Routes> {/* Use Routes instead of Switch */}
+        <Route path="/" element={<HomePage />} /> {/* Adjust Route usage to new syntax */}
+        {/* Add more routes as needed */}
+      </Routes>
     </div>
-  )
+  );
 }
+
 export default App;

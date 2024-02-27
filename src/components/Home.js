@@ -47,20 +47,16 @@ const FrameImage = styled.div`
 `;
 
 const ResponsiveImage = styled.img`
-  width: 480px;
-  height: 421px;
-  
+  max-width: 100%; // Ensures the image is never larger than its container
+  height: auto; // Maintains the aspect ratio of the image
   @media (max-width: 768px) {
-    width: 360px;
-    height: 315px;
+    width: 80%; // Scales the image to 80% of its container's width on small devices
   }
   @media (min-width: 769px) and (max-width: 1024px) {
-    width: 408px;
-    height: 357px;
+    width: 90%; // Scales the image to 90% of its container's width on medium devices
   }
   @media (min-width: 1025px) {
-    width: 456px;
-    height: 400px;
+    width: 95%; // Scales the image to 95% of its container's width on large devices
   }
 `;
 
@@ -69,7 +65,15 @@ const ResponsiveFolhaMeio = styled.img`
   z-index: 1000;
   left: -100px;
   height: auto;
-  transition: transform 0.5s ease-out;
+  transition: transform 0.35s ease-out;
+  display: block;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    width: 50%;
+  }
 `;
 
 const ResponsiveFolhaDireita = styled.img`
@@ -78,7 +82,7 @@ const ResponsiveFolhaDireita = styled.img`
   z-index: 1000;
   left: 250px;
   top: 300px;
-  transition: transform 0.5s ease-out;
+  transition: transform 0.35s ease-out;
 `;
 
 const SliderContainer = styled.div`
@@ -95,11 +99,9 @@ const ParallaxFolha = styled.img`
   position: sticky;
   z-index: 1000;
   bottom: 200px;
-  transition: transform 0.5s ease-out;
+  transition: transform 0.35s ease-out;
   
-  @media (max-width: 768px) {
-    display: none;
-  }
+
   @media (min-width: 769px) and (max-width: 1024px) {
     max-width: 5%;
   }
@@ -115,7 +117,7 @@ const ParallaxFolhaCima = styled.img`
   z-index: 1000;
   left: 400px;
   bottom: 200px;
-  transition: transform 0.5s ease-out;
+  transition: transform 0.35s ease-out;
 `;
 
 const HomeSection123 = styled.div`
@@ -124,17 +126,17 @@ const HomeSection123 = styled.div`
   height: 150vh;
 `;
 
-const Home = ({ transform }) => {
+const Home = ({ transform, title, paragraph, imgurl }) => {
   return (
     <Wrapper>
       <Container>
         <FrameText>
-          <h1> Transforme Seu Carbono em Impacto: Invista Sustentável com a Ecofunding</h1>
-          <p>A primeira plataforma do Brasil que converte dívidas de carbono em oportunidades de investimento verde, credenciada pela CVM</p>
+          <h1> {title} </h1>
+          <p>{paragraph}</p>
         </FrameText>
         <FrameImage>
           <ResponsiveFolhaMeio src={folhameio} style={{ transform: transform }}/>
-          <ResponsiveImage src={homeSection} alt="kitten" />
+          <ResponsiveImage src={imgurl} alt="kitten" />
           <ResponsiveFolhaDireita src={folhadireitabaixo} style={{ transform: transform }}/>
         </FrameImage>
       </Container>
@@ -177,20 +179,22 @@ const HomeCarousel = () => {
       }, 500);
     },
   };
-  
+  const title = "Title";
+  const paragraph = "paragraph"
+  const imgurl = homeSection;
 
   return (
     <SliderContainer>
       <ParallaxFolhaCima ref={folhaCimaRef} src={folhaesquerdacima} />
       <Slider {...settings}>
         <HomeSection123>
-          <Home transform={`translateX(${parallaxOffset}%)`} />
+          <Home transform={`translateX(${parallaxOffset}%)`} title={title} paragraph={paragraph} imgurl={imgurl}  />
         </HomeSection123>
         <HomeSection123>
-          <Home transform={`translateX(${parallaxOffset}%)`}/>
+          <Home transform={`translateX(${parallaxOffset}%)`} title={title} paragraph={paragraph} imgurl={imgurl} />
         </HomeSection123>
         <HomeSection123>
-          <Home transform={`translateX(${parallaxOffset}%)`} />
+          <Home transform={`translateX(${parallaxOffset}%)`} title={title} paragraph={paragraph} imgurl={imgurl}  />
         </HomeSection123>
       </Slider>
       <ParallaxFolha ref={folhaRef} src={folhaesquerda} alt="folha" />
