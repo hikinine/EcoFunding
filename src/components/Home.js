@@ -47,20 +47,20 @@ const FrameImage = styled.div`
 `;
 
 const ResponsiveImage = styled.img`
-  width: 100%;
-  height: 400px;
+  width: 480px;
+  height: 421px;
   
   @media (max-width: 768px) {
-    max-width: 75%;
-    max-height: 300px;
+    width: 360px;
+    height: 315px;
   }
   @media (min-width: 769px) and (max-width: 1024px) {
-    max-width: 85%;
-    max-height: 340px;
+    width: 408px;
+    height: 357px;
   }
   @media (min-width: 1025px) {
-    max-width: 95%;
-    max-height: 380px;
+    width: 456px;
+    height: 400px;
   }
 `;
 

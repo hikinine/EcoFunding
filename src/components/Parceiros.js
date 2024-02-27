@@ -6,6 +6,9 @@ import FolhaEsquerdaCima from '../assets/FolhaEsquerdaCima.png';
 import FolhaMeio from '../assets/FolhaMeio.png';
 import Image from '../assets/HomeSection.png';
 import FolhaDireitaBaixo from '../assets/FolhaDireitaBaixo.png';
+import Home from './Home';
+
+
 
 const Container = styled.div`
   width: 100%;
@@ -159,32 +162,7 @@ const Image4 = styled(StyledImage)`
 const Parceiros = (props) => {
   return (
     <Container>
-      <Container1>
-        <Container2>
-          <StyledImage src={FolhaEsquerda} alt={props.imageAlt2} />
-        </Container2>
-        <Container3>
-          <Image1 src={FolhaEsquerdaCima} alt={'image1'} />
-        </Container3>
-        <Container4>
-          <Text>{props.heading}</Text>
-          <TextParagraph>
-            Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste 
-          </TextParagraph>
-          <Container5>
-            <Container5>
-              <Button type="button">{props.button}</Button>
-            </Container5>
-          </Container5>
-        </Container4>
-        <Container7>
-          <Image2 src={Image} alt={'image2'} />
-          <Image3 src={FolhaDireitaBaixo} alt={props.imageAlt6} />
-        </Container7>
-        <Container8>
-          <Image4 src={FolhaMeio} alt={props.imageAlt5} />
-        </Container8>
-      </Container1>
+      <Home></Home>
     </Container>
   );
 };
