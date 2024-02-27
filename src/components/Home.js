@@ -97,6 +97,17 @@ const ParallaxFolha = styled.img`
   bottom: 200px;
   transition: transform 0.5s ease-out;
   
+  @media (max-width: 768px) {
+    display: hidden;
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    max-width: 15%;
+  }
+  @media (min-width: 1025px) {
+    max-width: 20%;
+  
+  }
+`;
   // ... media queries ...
 `;
 const ParallaxFolhaCima = styled.img`
