@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/EcoFunding/static/css/main.9e2a5be9.css",
-    "main.js": "/EcoFunding/static/js/main.e5cd73b2.js",
+    "main.js": "/EcoFunding/static/js/main.335d044c.js",
     "static/media/8k_earth_daymap.jpg": "/EcoFunding/static/media/8k_earth_daymap.54672c1f3ba121d80470.jpg",
     "static/media/ESG2.png": "/EcoFunding/static/media/ESG2.a5eec4003115ff38da25.png",
     "static/media/HomeSection.png": "/EcoFunding/static/media/HomeSection.25047df26831ad635b9c.png",
@@ -24,10 +24,10 @@
     "static/media/slick.woff": "/EcoFunding/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/EcoFunding/index.html",
     "main.9e2a5be9.css.map": "/EcoFunding/static/css/main.9e2a5be9.css.map",
-    "main.e5cd73b2.js.map": "/EcoFunding/static/js/main.e5cd73b2.js.map"
+    "main.335d044c.js.map": "/EcoFunding/static/js/main.335d044c.js.map"
   },
   "entrypoints": [
     "static/css/main.9e2a5be9.css",
-    "static/js/main.e5cd73b2.js"
+    "static/js/main.335d044c.js"
   ]
 }
