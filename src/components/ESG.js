@@ -4,14 +4,24 @@ import ESGBG from '../assets/ESG1.png'
 import ESG2 from '../assets/ESG2.png'
 import { Slide } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
-
+const breakpoints = {
+  mobile: '320px',
+  tablet: '768px',
+  desktop: '1024px',
+};
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 110vh;
   background-image: url(${ESGBG});
-`
+
+  @media (max-width: ${breakpoints.tablet}) {
+    height: auto;
+    padding: 20px;
+  }
+`;
+
 
 const Button = styled.button`
   padding: 10px;
@@ -25,22 +35,39 @@ const Button = styled.button`
 `
 
 const ImageDisplay = styled.img`
-  max-width: 800px;
-  max-height: 400px;
+  max-width: 800px; // Maximum width for large screens
+  width: 100%; // Make the image width responsive
+  height: auto; // Maintain aspect ratio
   border-radius: 4px;
   padding: 5px;
   z-index: 1;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 400px; // Adjust max-width for tablet devices
+  }
+  @media (max-width: ${breakpoints.mobile}) {
+    max-width: 200px; // Adjust max-width for mobile devices
+  }
 `;
 
 const TextDisplay = styled.p`
   text-align: center;
   color: white;
-  width: 500px;
+  width: 100%px;
   background-color: rgba(51, 100, 40, 0.7);
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   word-break: break-word;
   height: auto;
+  @media (min-width: ${breakpoints.desktop}) {
+    max-width: 500px; // Adjust max-width for tablet devices
+  }
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 400px; // Adjust max-width for tablet devices
+  }
+  @media (max-width: ${breakpoints.mobile}) {
+    max-width: 200px; // Adjust max-width for mobile devices
+  }
 `;
 
 const TextImage = styled.div`
