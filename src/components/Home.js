@@ -92,35 +92,32 @@ const SliderContainer = styled.div`
 const ParallaxFolha = styled.img`
   width: 25%;
   height: auto;
-  position: sticky; // Changed from fixed to absolute
+  position: sticky;
   z-index: 1000;
   bottom: 200px;
   transition: transform 0.5s ease-out;
   
   @media (max-width: 768px) {
-    display: hidden;
+    display: none;
   }
   @media (min-width: 769px) and (max-width: 1024px) {
-    max-width: 15%;
+    max-width: 5%;
   }
   @media (min-width: 1025px) {
     max-width: 20%;
-  
   }
 `;
-  // ... media queries ...
-`;
+
 const ParallaxFolhaCima = styled.img`
   width: 5%;
   height: auto;
-  position: sticky; // Changed from fixed to absolute
+  position: sticky;
   z-index: 1000;
   left: 400px;
   bottom: 200px;
   transition: transform 0.5s ease-out;
-  
-  // ... media queries ...
 `;
+
 const HomeSection123 = styled.div`
   justify-content: center;
   align-items: center;
@@ -128,15 +125,12 @@ const HomeSection123 = styled.div`
 `;
 
 const Home = ({ transform }) => {
-  // This component stays the same as your initial Home component
   return (
     <Wrapper>
       <Container>
         <FrameText>
-          <h1> Transforme Seu Carbono em Impacto: Invista Sustentável com a Ecofunding
-</h1>
-          <p>A primeira plataforma do Brasil que converte dívidas de carbono em oportunidades de investimento verde, credenciada pela CVM
-</p>
+          <h1> Transforme Seu Carbono em Impacto: Invista Sustentável com a Ecofunding</h1>
+          <p>A primeira plataforma do Brasil que converte dívidas de carbono em oportunidades de investimento verde, credenciada pela CVM</p>
         </FrameText>
         <FrameImage>
           <ResponsiveFolhaMeio src={folhameio} style={{ transform: transform }}/>
@@ -148,13 +142,12 @@ const Home = ({ transform }) => {
   );
 };
 
-// HomeCarousel component with added useRef and parallax effect
 const HomeCarousel = () => {
   const folhaCimaRef = useRef(null);
   const folhaRef = useRef(null);
 
-  const initialTransform = 'translateY(0%)'; // Initial position
-  const [parallaxOffset, setParallaxOffset] = useState(0); // State to hold parallax offset
+  const initialTransform = 'translateY(0%)';
+  const [parallaxOffset, setParallaxOffset] = useState(0);
 
   const calculateParallaxOffset = (next) => {
     const baseOffset = 10;
@@ -162,7 +155,7 @@ const HomeCarousel = () => {
     return baseOffset + (next * parallaxStrength);
   };
   
-  const [currentSlide, setCurrentSlide] = useState(0); // Initialize currentSlide state
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const settings = {
     dots: true,
@@ -170,20 +163,18 @@ const HomeCarousel = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    beforeChange: (current, next) => setCurrentSlide(next), // Update currentSlide state
+    beforeChange: (current, next) => setCurrentSlide(next),
     afterChange: (current) => {
       const offset = calculateParallaxOffset(current);
-      setParallaxOffset(offset); // Update state with the new offset
-      // Apply parallax effect to folhas
+      setParallaxOffset(offset);
       if (folhaCimaRef.current) folhaCimaRef.current.style.transform = `translateY(${offset}%)`;
       if (folhaRef.current) folhaRef.current.style.transform = `translateY(${offset}%)`;
 
-      // Reset to initial position after a delay (optional)
       setTimeout(() => {
-        setParallaxOffset(0); // Reset parallax offset
+        setParallaxOffset(0);
         if (folhaCimaRef.current) folhaCimaRef.current.style.transform = initialTransform;
         if (folhaRef.current) folhaRef.current.style.transform = initialTransform;
-      }, 500); // Adjust delay as needed
+      }, 500);
     },
   };
   
@@ -193,13 +184,13 @@ const HomeCarousel = () => {
       <ParallaxFolhaCima ref={folhaCimaRef} src={folhaesquerdacima} />
       <Slider {...settings}>
         <HomeSection123>
-          <Home transform={`translateY(${parallaxOffset}%)`} />
+          <Home transform={`translateX(${parallaxOffset}%)`} />
         </HomeSection123>
         <HomeSection123>
-          <Home transform={`translateY(${parallaxOffset}%)`}/>
+          <Home transform={`translateX(${parallaxOffset}%)`}/>
         </HomeSection123>
         <HomeSection123>
-          <Home transform={`translateY(${parallaxOffset}%)`} />
+          <Home transform={`translateX(${parallaxOffset}%)`} />
         </HomeSection123>
       </Slider>
       <ParallaxFolha ref={folhaRef} src={folhaesquerda} alt="folha" />
