@@ -11,6 +11,7 @@ import folhameio from '../assets/FolhaMeio.png';
 import folhadireitabaixo from '../assets/FolhaDireitaBaixo.png';
 import homeSection from '../assets/HomeSection.png';
 import '../components/home.css';
+import { buttonBaseClasses } from '@mui/material';
 
 const Wrapper = styled.section`
   background: white;
@@ -131,30 +132,34 @@ const slidesData = [
   {
     src: homeSection,
     alt: 'Image Description 1',
-    title: 'Slide Title 1',
-    paragraph: 'This is the description for Slide 1.',
+    title: 'Transforme Seu Carbono em Impacto: Invista Sustentável com a Ecofunding',
+    paragraph: ' A primeira plataforma do Brasil que converte dívidas de carbono em oportunidades de investimento verde, credenciada pela CVM.',
+    button: 'Saiba Mais',
   },
   {
     src: homeSection,
     alt: 'Image Description 2',
     title: 'Slide Title 2',
     paragraph: 'This is the description for Slide 2.',
+    button: 'Invista Sustentavel',
   },
   {
     src: homeSection,
     alt: 'Image Description 2',
     title: 'Slide Title 2',
     paragraph: 'This is the description for Slide 2.',
+    button: 'Seja um parceiro EcoSustentavel',
   },
   // Add more objects for additional slides
 ];
-const Home = ({ imgurl, altText, title, paragraph, transform }) => {
+const Home = ({ imgurl, altText, title, paragraph, transform, button }) => {
   return (
     <Wrapper>
       <Container>
         <FrameText>
           <h1>{title}</h1>
           <p>{paragraph}</p>
+          <button>{button}</button>
         </FrameText>
         <FrameImage>
         <ResponsiveFolhaMeio src={folhameio} style={{ transform: transform }}/>
