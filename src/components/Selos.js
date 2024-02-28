@@ -11,8 +11,9 @@ const SelosContainer = styled.div`
     align-items: center;
     background-color: #f8f8f8;
     padding: 0;
-    overflow: hidden;
-`
+    width: 100%
+`;    
+
 const Selos = styled.img`
     
 `;

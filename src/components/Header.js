@@ -1,86 +1,109 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import logo from '../assets/logo.png';
+import LogoPic from '../assets/logo.png';
 
 const HeaderContainer = styled.header`
-    color: black;
-    padding: 20px;
-    display: flex;
-    justify-content: space-evenly;
-   
-    align-items: center;
-    height: 70px;
-    background-color: transparent;
-    overflow-x: hidden;
-    overflow: hidden;
-    * {
-        font-family: 'Montserrat', sans-serif;
-    }
-    @media (max-width: 768px) {
-        flex-direction: column;
-        text-align: center;
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa; // Example background color
+  * { 
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
-const Logo = styled.h1`
-    font-size: 24px;
-    margin-left: 90px;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center; 
-    &:first-child {
-        width: 50px;
-        height: 50px;
-        justify-content: center;
-        align-items: center;
-    }
+const Logo = styled.img`
+    width: 30%;
 
     @media (max-width: 768px) {
-        margin-bottom: 10px;
+        width: 100%;
     }
 `;
 
 const Nav = styled.nav`
+  @media (min-width: 769px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    margin-left: 180px;
-    ul {
-        list-style: none;
-        display: flex;
-        margin: 0;
-        padding: 0;
+  @media (max-width: 768px) {
+    display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+    width: 100%;
+  }
+  @media (min-width: 768px) { /* Adjust breakpoint as needed */
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  li {
+    margin-right: 20px; /* Adjusts space between items */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+`;
 
-        li {
-            font-size: 24px;
-            margin-left: 80px;
+const NavLink = styled.a`
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
 
-            &:first-child {
-                margin-left: 0;
-            }
-        }
-    }
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
-    @media (max-width: 768px) {
-        ul {
-            flex-direction: column;
-        }
-    }
+const Hamburger = styled.div`
+  display: none;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+
+  span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    background-color: #333;
+  }
 `;
 
 const Header = () => {
-    return (
-        <HeaderContainer>
-            <Logo><img src={logo} /></Logo>
-            <Nav>
-                <ul>
-                    <li>Inicio</li>
-                    <li>Sobre</li>
-                    <li>Investir</li>
-                    <li>Login</li>
-                    <li>Cadastro</li>
-                </ul>
-            </Nav>
-        </HeaderContainer>
-    );
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <HeaderContainer>
+      <Logo src={LogoPic}/>
+      <Hamburger onClick={() => setIsOpen(!isOpen)}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </Hamburger>
+      <Nav isOpen={isOpen}>
+        <ul style={{ listStyleType: 'none', padding: 0 }}>
+          <li><NavLink href="#">Home</NavLink></li>
+          <li><NavLink href="#">About</NavLink></li>
+          <li><NavLink href="#">Services</NavLink></li>
+          <li><NavLink href="#">Contact</NavLink></li>
+        </ul>
+      </Nav>
+    </HeaderContainer>
+  );
 };
 
 export default Header;

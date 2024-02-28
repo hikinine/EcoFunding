@@ -12,7 +12,7 @@ import Home from './Home';
 
 const Container = styled.div`
   width: 100%;
-  height: 70vh;
+  height: 90vh;
   display: flex;
   position: relative;
   align-items: center;

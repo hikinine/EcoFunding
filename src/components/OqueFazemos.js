@@ -37,14 +37,14 @@ const ImageMap = styled.img`
     height: auto;
     cursor: pointer;
   @media (max-width: 768px) {
-   width: 20vw;
+   width: 25vw;
   }
   @media (min-width: 769px) and (max-width: 1024px) {
-    width: 25vw;
+    width: 35vw;
   }
   @media (min-width: 1025px) {
     font-size: 16px;
-    width: 30vw
+    width: 40vw
   }
     
 `;
@@ -70,6 +70,7 @@ const Header = styled.h1`
     margin-bottom: 10px;
     margin-left: 4rem;
     color: white;
+    font-weight: bolder;
     
     ${MediumAndDown} {
         font-size: 20px;
@@ -83,6 +84,7 @@ const Paragraph = styled.p`
     margin-left: 4rem;
     word-break: break-word;
     color: white;
+    font-weight:bold;
   @media (max-width: 768px) {
    font-size: 8px;
   }
@@ -99,6 +101,7 @@ const Topicos = styled.ul`
 font-size: 18px;
 margin-left: 4rem;
 color: white;
+font-weight: bold;
 
 @media (max-width: 768px) {
    font-size: 8px;
@@ -132,7 +135,7 @@ const OqueFazemos = () => {
                         <li>Plataforma de Investimento Verde: Facilitamos o encontro entre empresas com altas dívidas de carbono e projetos ambientais inovadores.</li>
                         <li>Redução e Compensação de Carbono: Empresas investidoras recebem a oportunidade de abater até 60% de suas dívidas de carbono, além de ganhar créditos de carbono.</li>
                     </Topicos>
-                    <Paragraph>Juntos, estamos construindo um legado de sustentabilidade e transformação, oferecendo às empresas uma rota clara para a compensação de carbono e um futuro mais verde</Paragraph>
+                    <Paragraph>Juntos, estamos construindo um legado de sustentabilidade e transformação, oferecendo às empresas uma rota clara para a compensação de carbono e um futuro mais verde, clique no mapa para saber mais sobre os projetos.</Paragraph>
                 </Content>
             )}
             {!showMapa ? (
@@ -143,7 +146,8 @@ const OqueFazemos = () => {
                 </MarkerProvider>
                 
             )}
-            <Button onClick={toggleContent}>{showMapa ? 'Return' : 'Change to Mapa'}</Button>
+            {showMapa && <Button onClick={toggleContent}>Retornar</Button>}
+            
         </Container>
     );
 };
