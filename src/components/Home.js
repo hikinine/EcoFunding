@@ -143,54 +143,44 @@ const Home = ({ transform }) => {
 };
 
 const HomeCarousel = () => {
+  const [mousePosition, setMousePosition] = useState({ mouseX: 0, mouseY: 0 });
   const folhaCimaRef = useRef(null);
   const folhaRef = useRef(null);
 
-  const initialTransform = 'translateY(0%)';
-  const [parallaxOffset, setParallaxOffset] = useState(0);
+  const handleMouseMove = (event) => {
+    const { clientX, clientY } = event;
+    const { innerWidth, innerHeight } = window;
 
-  const calculateParallaxOffset = (next) => {
-    const baseOffset = 10;
-    const parallaxStrength = 10;
-    return baseOffset + (next * parallaxStrength);
+    const mouseX = (clientX - innerWidth / 2) / innerWidth * 100; // Percentage from the center
+    const mouseY = (clientY - innerHeight / 2) / innerHeight * 100;
+
+    setMousePosition({ mouseX, mouseY });
+
+    if (folhaCimaRef.current) folhaCimaRef.current.style.transform = `translate(${mouseX * 0.3}%, ${mouseY * 0.3}%)`;
+    if (folhaRef.current) folhaRef.current.style.transform = `translate(${mouseX * 0.3}%, ${mouseY * 0.3}%)`;
   };
-  
-  const [currentSlide, setCurrentSlide] = useState(0);
 
+  // Slider settings
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    beforeChange: (current, next) => setCurrentSlide(next),
-    afterChange: (current) => {
-      const offset = calculateParallaxOffset(current);
-      setParallaxOffset(offset);
-      if (folhaCimaRef.current) folhaCimaRef.current.style.transform = `translateY(${offset}%)`;
-      if (folhaRef.current) folhaRef.current.style.transform = `translateY(${offset}%)`;
-
-      setTimeout(() => {
-        setParallaxOffset(0);
-        if (folhaCimaRef.current) folhaCimaRef.current.style.transform = initialTransform;
-        if (folhaRef.current) folhaRef.current.style.transform = initialTransform;
-      }, 500);
-    },
   };
-  
 
   return (
-    <SliderContainer>
+    <SliderContainer onMouseMove={handleMouseMove}>
       <ParallaxFolhaCima ref={folhaCimaRef} src={folhaesquerdacima} />
       <Slider {...settings}>
         <HomeSection123>
-          <Home transform={`translateX(${parallaxOffset}%)`} />
+          <Home transform={`translate(${mousePosition.mouseX * 0.3}%, ${mousePosition.mouseY * 0.3}%))`} />
         </HomeSection123>
         <HomeSection123>
-          <Home transform={`translateX(${parallaxOffset}%)`}/>
+          <Home transform={`translate(${mousePosition.mouseX * 0.3}%, ${mousePosition.mouseY * 0.3}%))`} />
         </HomeSection123>
         <HomeSection123>
-          <Home transform={`translateX(${parallaxOffset}%)`} />
+          <Home transform={`translate(${mousePosition.mouseX * 0.3}%, ${mousePosition.mouseY * 0.3}%))`} />
         </HomeSection123>
       </Slider>
       <ParallaxFolha ref={folhaRef} src={folhaesquerda} alt="folha" />

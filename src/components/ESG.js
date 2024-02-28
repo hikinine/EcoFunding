@@ -90,7 +90,7 @@ const properties = {
 const ESG = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [
-    { src: ESG2, alt: 'Image 1', text: '\nThis is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.' },
+    { src: ESG2, alt: 'Image 1', text: '\nThis is image 1 description. This is image 1 description.This is image 1 description. This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.This is image 1 description.' },
     { src: ESG2, alt: 'Image 2', text: 'This is image 2 description.' },
     { src: ESG2, alt: 'Image 3', text: 'This is image 3 description.' },
     { src: ESG2, alt: 'Image 3', text: 'This is image 3 description.' },
