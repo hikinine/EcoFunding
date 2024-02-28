@@ -8,7 +8,7 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #f8f9fa; // Example background color
+ background-color: white;
   * { 
     font-family: 'Montserrat', sans-serif;
   }

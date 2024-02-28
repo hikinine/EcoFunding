@@ -10,6 +10,7 @@ import folhaesquerdacima from '../assets/FolhaEsquerdaCima.png';
 import folhameio from '../assets/FolhaMeio.png';
 import folhadireitabaixo from '../assets/FolhaDireitaBaixo.png';
 import homeSection from '../assets/HomeSection.png';
+import '../components/home.css';
 
 const Wrapper = styled.section`
   background: white;
@@ -99,6 +100,7 @@ const ParallaxFolha = styled.img`
   position: sticky;
   z-index: 1000;
   bottom: 200px;
+  margin-left: -100px;
   transition: transform 0.35s ease-out;
   
 
@@ -125,25 +127,44 @@ const HomeSection123 = styled.div`
   align-items: center;
   height: 150vh;
 `;
-
-const Home = ({ transform, title, paragraph, imgurl }) => {
+const slidesData = [
+  {
+    src: homeSection,
+    alt: 'Image Description 1',
+    title: 'Slide Title 1',
+    paragraph: 'This is the description for Slide 1.',
+  },
+  {
+    src: homeSection,
+    alt: 'Image Description 2',
+    title: 'Slide Title 2',
+    paragraph: 'This is the description for Slide 2.',
+  },
+  {
+    src: homeSection,
+    alt: 'Image Description 2',
+    title: 'Slide Title 2',
+    paragraph: 'This is the description for Slide 2.',
+  },
+  // Add more objects for additional slides
+];
+const Home = ({ imgurl, altText, title, paragraph, transform }) => {
   return (
     <Wrapper>
       <Container>
         <FrameText>
-          <h1> {title} </h1>
+          <h1>{title}</h1>
           <p>{paragraph}</p>
         </FrameText>
         <FrameImage>
-          <ResponsiveFolhaMeio src={folhameio} style={{ transform: transform }}/>
-          <ResponsiveImage src={imgurl} alt="kitten" />
-          <ResponsiveFolhaDireita src={folhadireitabaixo} style={{ transform: transform }}/>
+        <ResponsiveFolhaMeio src={folhameio} style={{ transform: transform }}/>
+          <ResponsiveImage src={imgurl} alt={altText} />
+        <ResponsiveFolhaDireita src={folhadireitabaixo} style={{ transform: transform }}/>
         </FrameImage>
       </Container>
     </Wrapper>
   );
 };
-
 const HomeCarousel = () => {
   const [mousePosition, setMousePosition] = useState({ mouseX: 0, mouseY: 0 });
   const folhaCimaRef = useRef(null);
@@ -169,25 +190,30 @@ const HomeCarousel = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    useTransform: true,
+    cssEase: 'ease-in',
   };
 
   return (
     <SliderContainer onMouseMove={handleMouseMove}>
       <ParallaxFolhaCima ref={folhaCimaRef} src={folhaesquerdacima} />
       <Slider {...settings}>
-        <HomeSection123>
-          <Home transform={`translateX(${parallaxOffset}%)`} />
-        </HomeSection123>
-        <HomeSection123>
-          <Home transform={`translateX(${parallaxOffset}%)`}/>
-        </HomeSection123>
-        <HomeSection123>
-          <Home transform={`translateX(${parallaxOffset}%)`} />
-        </HomeSection123>
+        {slidesData.map((slide, index) => (
+          <HomeSection123 key={index}>
+            <Home 
+              imgurl={slide.src} 
+              altText={slide.alt} 
+              title={slide.title}
+              paragraph={slide.paragraph}
+              transform={`translate(${mousePosition.mouseX * 0.3}%, ${mousePosition.mouseY * 0.3}%)`}
+            />
+          </HomeSection123>
+        ))}
       </Slider>
       <ParallaxFolha ref={folhaRef} src={folhaesquerda} alt="folha" />
     </SliderContainer>
   );
 };
 export default HomeCarousel;
-

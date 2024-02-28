@@ -101,7 +101,7 @@ const Topicos = styled.ul`
 font-size: 18px;
 margin-left: 4rem;
 color: white;
-font-weight: bold;
+font-weight: 600;
 
 @media (max-width: 768px) {
    font-size: 8px;

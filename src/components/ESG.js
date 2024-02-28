@@ -96,23 +96,7 @@ const TextRectangle = styled.div`
   margin-top: -1em;
 `;
 
-const buttonStylePrev = {
-  width: "30px",
-  background: 'none',
-  border: '0px',
-  marginRight: '1000px',
-};
-const buttonStyleNext = {
-  width: "30px",
-  background: 'none',
-  border: '0px',
-  marginLeft: '100px',
-};
 
-const properties = {
-  prevArrow: <button style={{ ...buttonStylePrev }}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff"><path d="M242 180.6v-138L0 256l242 213.4V331.2h270V180.6z"/></svg></button>,
-  nextArrow: <button style={{ ...buttonStyleNext }}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff"><path d="M512 256L270 42.6v138.2H0v150.6h270v138z"/></svg></button>,
-};
 
 const ESG = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -129,7 +113,23 @@ const ESG = () => {
     { src: ESG2, alt: 'Image 3', text: 'This is image 3 description.' },
     // Add more image objects as needed
   ];
-
+  const buttonStylePrev = {
+    width: "30px",
+    background: 'none',
+    border: '0px',
+    marginRight: '10em',
+  };
+  const buttonStyleNext = {
+    width: "30px",
+    background: 'none',
+    border: '0px',
+    marginLeft: '10em',
+  };
+  
+  const properties = {
+    prevArrow: <button style={{ ...buttonStylePrev }}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff"><path d="M242 180.6v-138L0 256l242 213.4V331.2h270V180.6z"/></svg></button>,
+    nextArrow: <button style={{ ...buttonStyleNext }}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff"><path d="M512 256L270 42.6v138.2H0v150.6h270v138z"/></svg></button>,
+  };
   return (
     <Container>
       <H1>Saiba Mais Sobre ESG</H1>
