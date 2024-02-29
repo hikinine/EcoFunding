@@ -86,7 +86,7 @@ const Paragraph = styled.p`
     color: white;
     font-weight:bold;
   @media (max-width: 768px) {
-   font-size: 8px;
+   font-size: 10px;
   }
   @media (min-width: 769px) and (max-width: 1024px) {
     font-size: 12px;

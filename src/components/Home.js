@@ -139,8 +139,8 @@ const slidesData = [
   {
     src: homeSection,
     alt: 'Image Description 2',
-    title: 'Slide Title 2',
-    paragraph: 'This is the description for Slide 2.',
+    title: 'Transforme Seu Investimento em Impacto com a ecoFunding',
+    paragraph: 'Invista em um futuro sustentável e aproveite incentivos fiscais inéditos. Com a ecoFunding, seu capital promove mudanças reais e gera retorno financeiro com propósito.',
     button: 'Invista Sustentavel',
   },
   {
