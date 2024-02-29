@@ -51,7 +51,7 @@ function ResponsiveAppBar() {
     <AppBar position="static" sx={{ backgroundColor: 'white'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <StyledLogo src={logo} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <StyledLogo  onClick={handleOpenNavMenu} src={logo} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -99,7 +99,25 @@ function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
-            <Dropdown />
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+            >
+          <Dropdown />
+            </Menu>
+            
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
