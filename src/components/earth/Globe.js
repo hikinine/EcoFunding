@@ -8,11 +8,11 @@ import { FaMapPin } from 'react-icons/fa';
 import { Html } from '@react-three/drei';
 
 const latLonToSphereCoords = (lat, lon, radius = 2) => {
-  // Convert lat and lon to radians
+
   let phi = (90 - lat) * (Math.PI / 180);
   let theta = (lon + 180) * (Math.PI / 180);
 
-  // Convert spherical coordinates to Cartesian for 3D positioning
+
   let x = -(radius * Math.sin(phi) * Math.cos(theta));
   let y = radius * Math.cos(phi);
   let z = radius * Math.sin(phi) * Math.sin(theta);
@@ -20,7 +20,7 @@ const latLonToSphereCoords = (lat, lon, radius = 2) => {
   return [x, y, z];
 };
 
-// In Globe.js, when rendering markers
+
 
 function Globe() {
   // Load the texture using the custom hook

@@ -6,6 +6,7 @@ import ZoomButtons from './ZoomButtons';
 import Overlay from './Overlay';
 import markers from './earth/markers';
 
+
 function Mapa() {
     
     const { selectedMarker, closeOverlay } = useMarker(); // Use the custom hook

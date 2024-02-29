@@ -13,6 +13,7 @@ export const MarkerProvider = ({ children }) => {
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [markers, setMarkers] = useState(markersData); // Use markersData here
   const handleMarkerClick = (marker) => {
+    alert("Marker")
     setSelectedMarker(marker);
   };
 

@@ -243,7 +243,7 @@ const ESG = () => {
               </React.Fragment>
             ))}
           </TextDisplay>
-          <Link to={`/page${currentIndex + 1}`}>
+          <Link to={`/Page${currentIndex + 1}`}>
               <Button>Saiba Mais</Button>
             </Link>
         </TextRectangle>

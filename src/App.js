@@ -15,11 +15,11 @@ function App() {
     <div>
       <Routes> {/* Use Routes instead of Switch */}
         <Route path="/" element={<HomePage />} /> {/* Adjust Route usage to new syntax */}
-        <Route path="/page1" component={Page1} />
-        <Route path="/page2" component={Page2} />
-        <Route path="/page3" component={Page3} />
-        <Route path="/page4" component={Page4} />
-        <Route path="/page5" component={Page5} />
+        <Route path="/page1" element={<Page1 />} />
+        <Route path="/page2" element={<Page2/>} />
+        <Route path="/page3" element={<Page2 />} />
+        <Route path="/page4" element={<Page2 />} />
+        <Route path="/page5" element={<Page2 />} />
 
       </Routes>
     </div>

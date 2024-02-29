@@ -12,7 +12,7 @@ import { MarkerProvider } from 'components/earth/MarkerContext';
 const HomePage = () => {
     return (
         <div>
-            <MarkerProvider>
+        <MarkerProvider>
         <HomeCarousel />
         <OqueFazemos />
         <SelosSection />
