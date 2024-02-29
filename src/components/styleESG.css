@@ -1,39 +1,8 @@
-#app {
-    height: 100%;
-  }
-  html,
-  body {
-    position: relative;
-    height: 100%;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  body {
-   
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .swiper {
-    height: fit-content;
-  
-  }
-  
-  .swiper-slide {
-    text-align: initial;
-    font-size: 18px;
-    
-  
-    /* Center slide text vertically */
-    display: flex;
-    justify-content: justify;
-    align-items: center;
-  }
-  
-  
- 
-  .swiper-button-next { color: black; z-index: 1000;}
-    .swiper-button-prev { color: black; z-index: 1000;}
+/* Increasing specificity */
+.swiper-container .swiper-button-next, .swiper-container .swiper-button-prev {
+  color: white;
+}
+
+.swiper-container .swiper-button-prev {
+
+}

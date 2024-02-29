@@ -1,109 +1,161 @@
-
-import React, { useState } from 'react';
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
+import logo from '../assets/logo1.png';
 import styled from 'styled-components';
-import LogoPic from '../assets/logo.png';
+import Dropdown from './dropdownsheader';
 
-const HeaderContainer = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
- background-color: white;
-  * { 
-    font-family: 'Montserrat', sans-serif;
-  }
+const pages = ['Products', 'Pricing', 'Blog'];
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const sobre = ['Sobre nós', 'Contato', 'FAQ'];
+const investir = [ 'Investimentos', 'Investimentos', 'Investimentos']
+const parceria = ['Parcerias', 'Parcerias', 'Parcerias']
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
+
+const StyledLogo = styled.img`
+ width: 50px;
+ margin-bottom: 7px;
 `;
 
-const Logo = styled.img`
-    width: 30%;
+function ResponsiveAppBar() {
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-    @media (max-width: 768px) {
-        width: 100%;
-    }
-`;
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
-const Nav = styled.nav`
-  @media (min-width: 769px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
-  @media (max-width: 768px) {
-    display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
-    width: 100%;
-  }
-  @media (min-width: 768px) { /* Adjust breakpoint as needed */
-  ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  li {
-    margin-right: 20px; /* Adjusts space between items */
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-}
-`;
-
-const NavLink = styled.a`
-  margin: 0 10px;
-  text-decoration: none;
-  color: #333;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const Hamburger = styled.div`
-  display: none;
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    display: block;
-  }
-
-  span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px;
-    background-color: #333;
-  }
-`;
-
-const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   return (
-    <HeaderContainer>
-      <Logo src={LogoPic}/>
-      <Hamburger onClick={() => setIsOpen(!isOpen)}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </Hamburger>
-      <Nav isOpen={isOpen}>
-        <ul style={{ listStyleType: 'none', padding: 0 }}>
-          <li><NavLink href="#">Home</NavLink></li>
-          <li><NavLink href="#">About</NavLink></li>
-          <li><NavLink href="#">Services</NavLink></li>
-          <li><NavLink href="#">Contact</NavLink></li>
-        </ul>
-      </Nav>
-    </HeaderContainer>
-  );
-};
+    <AppBar position="static" sx={{ backgroundColor: 'white'}}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <StyledLogo src={logo} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'Montserrat',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'black',
+              textTransform: 'none',
+              textDecoration: 'none',
+            }}
+          >
+            eCO
+          </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'Montserrat',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'green',
+              textTransform: 'none',
+              textDecoration: 'none',
+              marginLeft: '-15px',
+            }}
+          >funding</Typography>
 
-export default Header;
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Dropdown />
+          </Box>
+          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+          
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+           <Dropdown></Dropdown>
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+}
+export default ResponsiveAppBar;

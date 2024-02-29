@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Mapa from './Mapa';
 import ImagemMapa from '../assets/mapa.png';
-import EcoGiant from '../assets/ecofundinggiant.png';
+import EcoGiant from '../assets/ecofundinggiant.svg';
 
 const Container = styled.div`
     display: flex;
@@ -11,6 +11,7 @@ const Container = styled.div`
     align-items: center;
     background-image: url(${EcoGiant});
     background-position: center;
+    background-size: cover;
     height: 80vh;
     
 `;

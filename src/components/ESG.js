@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
 import ESGBG from '../assets/ESG1.png'; // Ensure this path is correct
-import ESG2 from '../assets/ESG2.png'; // Ensure this path is correct
-import { Slide } from 'react-slideshow-image';
-import 'react-slideshow-image/dist/styles.css';
-import { FaArrowLeft } from "react-icons/fa";
-import { FaArrowRight } from "react-icons/fa";
+import ESG2 from '../assets/ESG2.png'; 
 import { Link } from 'react-router-dom';
+import './styleESG.css'
 
 const breakpoints = {
   mobile: '320px',
@@ -40,6 +41,12 @@ const Button = styled.button`
   color: ${({ active }) => (active ? 'white' : 'black')};
   background: ${({ active }) =>
     active ? 'linear-gradient(180deg, rgba(102,102,102,1) 0%, rgba(154,154,154,1) 100%);' : 'linear-gradient(180deg, rgba(197, 197, 197, 1) 0%, rgba(255, 255, 255, 1) 100%)'};
+    @media (max-width: ${breakpoints.tablet}) {
+    width: 200px;
+    height: 100px;
+    padding-left: 20px;
+    margin-left: 20px;
+  }
 `;
 
 const ImageDisplay = styled.img`
@@ -94,6 +101,9 @@ const ButtonDiv = styled.div`
   text-align: center;
   margin-top: 3em;
   margin-bottom: -1em;
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 300px;
+  }
 `;
 
 const TextRectangle = styled.div`
@@ -127,24 +137,7 @@ const ArrowButton = styled.button`
   z-index: 2;
 `;
 
-const PrevArrowButton = styled(ArrowButton)`
-  left: -50px; // Adjust as needed
-`;
 
-const NextArrowButton = styled(ArrowButton)`
-  right: -50px; // Adjust as needed
-`;
-const TestArrowButton = styled.button`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  & svg {
-    color: white;
-    background: none; // Explicitly state transparency here too
-    border: none;
-  }
-`;
 
 
 const ESG = () => {
@@ -176,8 +169,7 @@ const ESG = () => {
     { 
       src: ESG2, 
       alt: 'Image 4',  
-      text: `
-      A pegada de carbono mede o impacto ambiental das atividades humanas, quantificando a emissão total de gases de efeito estufa (GEEs), como CO2, CH4, N2O, entre outros. Essencial no âmbito corporativo, essa métrica é crucial para entender e mitigar o contributo das empresas ao aquecimento global e mudanças climáticas. Os GEEs intensificam o efeito estufa, elevando a temperatura global, o que resulta em derretimento de gelo polar, alterações climáticas significativas e eventos meteorológicos extremos.`,
+      text: `A pegada de carbono mede o impacto ambiental das atividades humanas, quantificando a emissão total de gases de efeito estufa (GEEs), como CO2, CH4, N2O, entre outros. Essencial no âmbito corporativo, essa métrica é crucial para entender e mitigar o contributo das empresas ao aquecimento global e mudanças climáticas. Os GEEs intensificam o efeito estufa, elevando a temperatura global, o que resulta em derretimento de gelo polar, alterações climáticas significativas e eventos meteorológicos extremos.`,
       button: 'Saiba Mais',
       topico: 'Entendendo a Pegada de Carbono: Impacto e Gestão'
     },
@@ -195,44 +187,62 @@ const ESG = () => {
     },
     // Add more image objects as needed
   ];
-  const properties = {
-    prevArrow: (
-      <TestArrowButton style={{ left: '-50px', background: 'none', border: 'none', }}> <FaArrowLeft /></TestArrowButton>
-    ),
-    nextArrow: (
-      <TestArrowButton style={{ right: '-50px', background: 'none', border: 'none', }}> <FaArrowRight /></TestArrowButton>
-    ),
-    // Other properties
-  };
   
   return (
     <Container>
       <H1>Saiba Mais Sobre ESG</H1>
-      <SliderWrapper>
-        <ButtonDiv className='slide-container'>
-          <Slide {...properties} slidesToScroll={2} slidesToShow={3}>
-            {images.map((image, index) => (
-              <Button
-                key={index}
-                active={index === currentIndex}
-                onClick={() => setCurrentIndex(index)}
-              >
-                {image.topico}
-              </Button>
-            ))}
-          </Slide>
-        </ButtonDiv>
-      </SliderWrapper>
+      <Swiper
+  spaceBetween={90}
+  slidesPerView={3} // Default to 3 slides per view
+  autoplay={{ delay: 3000 }}
+  modules={[Navigation]}
+  onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
+  style={{width: '70vw'}}
+  className='mySwiper'
+  breakpoints={{
+    // When window width is >= 320px (mobile)
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 20
+    },
+    // When window width is >= 768px (tablet)
+    768: {
+      slidesPerView: 1,
+      spaceBetween: 30
+    },
+    // When window width is >= 1024px (desktop)
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 50
+    }
+  }}
+>
+  {images.map((image, index) => (
+    <SwiperSlide key={index}>
+      <ButtonDiv>
+        <Button
+          active={index === currentIndex}
+          onClick={() => setCurrentIndex(index)}
+        >
+          {image.topico}
+        </Button>
+      </ButtonDiv>
+    </SwiperSlide>
+  ))}
+</Swiper>
+      <TextRectangle style={{ borderTopLeftRadius: '12px', borderTopRightRadius: '12px', marginTop: '2em'}}>
+      <TextDisplay>Deslize para saber mais.</TextDisplay>
+      </TextRectangle>
       <TextImage>
         <ImageDisplay src={images[currentIndex]?.src} alt={images[currentIndex]?.alt} />
         <TextRectangle>
-        <TextDisplay>
-          {images[currentIndex].text.split('\n').map((line, index) => (
-            <React.Fragment key={index}>
-              {line}<br />
-            </React.Fragment>
-          ))}
-        </TextDisplay>
+          <TextDisplay>
+            {images[currentIndex].text.split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                {line}<br />
+              </React.Fragment>
+            ))}
+          </TextDisplay>
           <Link to={`/page${currentIndex + 1}`}>
               <Button>Saiba Mais</Button>
             </Link>

@@ -74,7 +74,7 @@ const ResponsiveFolhaMeio = styled.img`
     display: none;
   }
   @media (min-width: 769px) and (max-width: 1024px) {
-    width: 50%;
+    display: none;
   }
 `;
 
