@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/EcoFunding/static/css/main.c4598af3.css",
-    "main.js": "/EcoFunding/static/js/main.302603aa.js",
+    "main.css": "/EcoFunding/static/css/main.e45d44d5.css",
+    "main.js": "/EcoFunding/static/js/main.580874f5.js",
     "static/media/8k_earth_daymap.jpg": "/EcoFunding/static/media/8k_earth_daymap.54672c1f3ba121d80470.jpg",
     "static/media/ESG2.png": "/EcoFunding/static/media/ESG2.a5eec4003115ff38da25.png",
     "static/media/HomeSection.png": "/EcoFunding/static/media/HomeSection.25047df26831ad635b9c.png",
     "static/media/ESG1.png": "/EcoFunding/static/media/ESG1.b9cf7b6ad920819e7e16.png",
     "static/media/mapa.png": "/EcoFunding/static/media/mapa.400f4b87b0a3b891bb15.png",
-    "static/media/ecofundinggiant.png": "/EcoFunding/static/media/ecofundinggiant.20afc8f349aa2502ff61.png",
+    "static/media/logo1.png": "/EcoFunding/static/media/logo1.eb0aa75ee675b525cdc8.png",
     "static/media/FolhaEsquerda.png": "/EcoFunding/static/media/FolhaEsquerda.10b9bdd298fa90250f00.png",
     "static/media/FolhaDireitaBaixo.png": "/EcoFunding/static/media/FolhaDireitaBaixo.cbc7c41b694055129656.png",
     "static/media/FolhaMeio.png": "/EcoFunding/static/media/FolhaMeio.d6db56374190e9aed409.png",
@@ -16,18 +16,17 @@
     "static/media/FolhaEsquerdaCima.png": "/EcoFunding/static/media/FolhaEsquerdaCima.629fd68e89ce13d6cf1d.png",
     "static/media/selo2.png": "/EcoFunding/static/media/selo2.a29da27b476566acdf5f.png",
     "static/media/selo3.png": "/EcoFunding/static/media/selo3.6179b3b3269d7c499665.png",
-    "static/media/logo.png": "/EcoFunding/static/media/logo.bcaaac2ed271c092313d.png",
     "static/media/ecofundinggiant.svg": "/EcoFunding/static/media/ecofundinggiant.b2fe277c7bd1a2b7ec24a5d9a5de0f9c.svg",
     "static/media/slick.svg": "/EcoFunding/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/EcoFunding/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/EcoFunding/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/EcoFunding/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/EcoFunding/index.html",
-    "main.c4598af3.css.map": "/EcoFunding/static/css/main.c4598af3.css.map",
-    "main.302603aa.js.map": "/EcoFunding/static/js/main.302603aa.js.map"
+    "main.e45d44d5.css.map": "/EcoFunding/static/css/main.e45d44d5.css.map",
+    "main.580874f5.js.map": "/EcoFunding/static/js/main.580874f5.js.map"
   },
   "entrypoints": [
-    "static/css/main.c4598af3.css",
-    "static/js/main.302603aa.js"
+    "static/css/main.e45d44d5.css",
+    "static/js/main.580874f5.js"
   ]
 }
