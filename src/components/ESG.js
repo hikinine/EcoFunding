@@ -45,7 +45,7 @@ const Button = styled.button`
     width: 200px;
     height: 100px;
     padding-left: 20px;
-    margin-left: 20px;
+    margin: 10px auto;
   }
 `;
 
@@ -95,14 +95,14 @@ const H1 = styled.h1`
 `;
 
 const ButtonDiv = styled.div`
-  width: 600px;
-  height: 100px;
+  width: 100%; /* Ensure it spans the full width of its parent */
+  display: flex;
+  justify-content: center; /* This will center the button */
   align-items: center;
-  text-align: center;
   margin-top: 3em;
   margin-bottom: -1em;
   @media (max-width: ${breakpoints.tablet}) {
-    width: 300px;
+    width: 100%; /* Adjust if necessary */
   }
 `;
 
@@ -192,15 +192,15 @@ const ESG = () => {
     <Container>
       <H1>Saiba Mais Sobre ESG</H1>
       <Swiper
-  spaceBetween={90}
-  slidesPerView={3} // Default to 3 slides per view
-  autoplay={{ delay: 3000 }}
-  modules={[Navigation]}
-  onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
-  style={{width: '70vw'}}
-  className='mySwiper'
-  breakpoints={{
-    // When window width is >= 320px (mobile)
+          spaceBetween={90}
+          slidesPerView={3} // Default to 3 slides per view
+          autoplay={{ delay: 3000 }}
+          modules={[Navigation]}
+          onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
+          style={{width: '70vw'}}
+          className='mySwiper'
+          breakpoints={{
+           
     320: {
       slidesPerView: 1,
       spaceBetween: 20
