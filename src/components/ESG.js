@@ -118,25 +118,7 @@ const TextRectangle = styled.div`
   flex-direction: column;
 `;
 
-// New styles for positioning the arrows
-const SliderWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ArrowButton = styled.button`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 2;
-`;
-
+// New styles for positioning
 
 
 
