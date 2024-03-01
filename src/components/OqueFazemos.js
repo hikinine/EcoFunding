@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { motion, useAnimation } from 'framer-motion'; // Import motion
+import { useInView } from 'react-intersection-observer';
 import Mapa from './Mapa';
 import ImagemMapa from '../assets/mapa.png';
 import EcoGiant from '../assets/ecofundinggiant.svg';
@@ -7,6 +9,8 @@ import Overlay from './Overlay';
 import { MarkerProvider } from './earth/MarkerContext';
 import { LargeAndUp, MediumAndDown } from './breakpoints';
 import responsiveFonts from './responsive-fonts';
+import { animations } from 'react-animation';
+import 'react-animation/dist/keyframes.css';
 
 const Container = styled.div`
     display: flex;
@@ -25,6 +29,7 @@ const Container = styled.div`
     }
  * {
     font-family: 'Montserrat', sans-serif;
+    
   }
 `;
 
@@ -79,7 +84,7 @@ const Header = styled.h1`
 
 `;
 
-const Paragraph = styled.p`
+const Paragraph = styled(motion.p)`
     font-size: 18px;
     margin-left: 4rem;
     word-break: break-word;
@@ -97,7 +102,7 @@ const Paragraph = styled.p`
 
 
 `;
-const Topicos = styled.ul`
+const Topicos = styled(motion.ul)`
 font-size: 18px;
 margin-left: 4rem;
 color: white;
@@ -113,10 +118,32 @@ font-weight: 600;
     font-size: 16px;
   }
 `;
-
+const slideInFromLeft = {
+  hidden: { x: -100, opacity: 0.5 },
+  visible: { x: 0, opacity: 1, transition: { duration: 1 } },
+};
+const slideInFromLeftDelayed = {
+  hidden: { x: -100, opacity: 0.5 },
+  visible: { x: 0, opacity: 1, transition: { duration: 1.75 } },
+};
+const slideInFromRight = {
+  hidden: { x: 100, opacity: 0.5 },
+  visible: { x: 0, opacity: 1, transition: { duration: 1 } },
+};
 const OqueFazemos = () => {
     const [showMapa, setShowMapa] = useState(false);
     const [showContent, setShowContent] = useState(true);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const controls = useAnimation();
+    const { ref, inView } = useInView({ threshold: 0.1 });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [inView, controls]);
 
     const toggleContent = () => {
         setShowMapa(!showMapa);
@@ -126,20 +153,31 @@ const OqueFazemos = () => {
     return (
         <Container>
             {showContent && (
-                <Content show={showContent}>
+                <Content show={showContent} style={{animation: animations.popIn}} >
                     <Header>O que Fazemos</Header>
-                    <Paragraph>Na Ecofunding, nosso compromisso é com o futuro do planeta. Unimos tecnologia, sustentabilidade e finanças para criar um impacto ambiental positivo.</Paragraph>
-                    <Topicos >
+                    <Paragraph 
+                               ref={ref}
+                               variants={slideInFromLeft}
+                               initial="hidden"
+                               animate={controls}>Na Ecofunding, nosso compromisso é com o futuro do planeta. Unimos tecnologia, sustentabilidade e finanças para criar um impacto ambiental positivo.</Paragraph>
+                      <Topicos 
+                                variants={slideInFromLeftDelayed}
+                                initial="hidden"
+                                animate={controls}
+                                ref={ref}>
                         <li>Captação de Projetos Sustentáveis: Identificamos e selecionamos os projetos mais promissores em sustentabilidade espalhados pelo Brasil.</li>
                         <li>Análise dos Projetos Sustentáveis: Analisamos e legalizamos os projetos selecionados, deixando eles aptos para o investimento.</li>
                         <li>Plataforma de Investimento Verde: Facilitamos o encontro entre empresas com altas dívidas de carbono e projetos ambientais inovadores.</li>
                         <li>Redução e Compensação de Carbono: Empresas investidoras recebem a oportunidade de abater até 60% de suas dívidas de carbono, além de ganhar créditos de carbono.</li>
                     </Topicos>
-                    <Paragraph>Juntos, estamos construindo um legado de sustentabilidade e transformação, oferecendo às empresas uma rota clara para a compensação de carbono e um futuro mais verde, clique no mapa para saber mais sobre os projetos.</Paragraph>
+                    <Paragraph variants={slideInFromLeft}
+                        initial="hidden"
+                       animate={controls}
+                       ref={ref}>Juntos, estamos construindo um legado de sustentabilidade e transformação, oferecendo às empresas uma rota clara para a compensação de carbono e um futuro mais verde, clique no mapa para saber mais sobre os projetos.</Paragraph>
                 </Content>
             )}
             {!showMapa ? (
-                <ImageMap src={ImagemMapa} onClick={toggleContent} />
+                <ImageMap src={ImagemMapa} onClick={toggleContent} initial="hidden" animate={controls} ref={ref} variants={slideInFromRight}/>
             ) : (
                 <MarkerProvider>
                 <Mapa />

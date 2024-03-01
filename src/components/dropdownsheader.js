@@ -57,7 +57,7 @@ margin-bottom: 22px;
 `;
 const items = [
     {
-      label: <Link to="/">Home</Link>,
+      label: <Link to="/" style={{ textTransform: 'none' }}>Home</Link>,
       key: 'home',
     },
     {
@@ -103,7 +103,7 @@ const items = [
       ],
     },
     {
-      label: <Link to="/about">About</Link>,
+      label: <Link to="/contato" style={{ textTransform: 'none' }}>Contato</Link>,
       key: 'about',
     },
   ];

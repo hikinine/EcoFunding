@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { motion, useAnimation } from "framer-motion";
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { useInView } from 'react-intersection-observer';
 import { Navigation } from 'swiper/modules';
 import ESGBG from '../assets/ESG1.png'; // Ensure this path is correct
 import ESG2 from '../assets/ESG2.png'; 
 import { Link } from 'react-router-dom';
+
 import './styleESG.css'
+import 'react-animation/dist/keyframes.css'
+
+
+
 
 const breakpoints = {
   mobile: '320px',
@@ -52,7 +59,6 @@ const Button = styled.button`
 const ImageDisplay = styled.img`
   max-width: 800px;
   width: 100%;
-  height: ;
   border-radius: 4px;
   padding: 5px;
   z-index: 1;
@@ -83,16 +89,23 @@ const TextDisplay = styled.p`
   }
 `;
 
-const TextImage = styled.div`
+const TextImage = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const H1 = styled.h1`
+const H1 = styled(motion.h1)`
   color: white;
   margin-top: 1em;
 `;
+const animationOpacity = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 1 }
+  },
+};
 
 const ButtonDiv = styled.div`
   width: 100%; /* Ensure it spans the full width of its parent */
@@ -123,7 +136,6 @@ const TextRectangle = styled.div`
 
 
 const ESG = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const images = [
     { 
       src: ESG2, 
@@ -169,10 +181,26 @@ const ESG = () => {
     },
     // Add more image objects as needed
   ];
-  
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const controls = useAnimation();
+  const { ref, inView } = useInView({ threshold: 0.1 });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [inView, controls]);
   return (
-    <Container>
-      <H1>Saiba Mais Sobre ESG</H1>
+   
+    <Container as={motion.div} inView={{ opacity: 0.4 }}>
+      <H1 ref={ref}
+          variants={animationOpacity}
+          initial="hidden"
+          animate={controls}>Saiba Mais Sobre ESG</H1>
+ 
       <Swiper
           spaceBetween={90}
           slidesPerView={3} // Default to 3 slides per view
@@ -181,6 +209,7 @@ const ESG = () => {
           onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
           style={{width: '70vw'}}
           className='mySwiper'
+          
           breakpoints={{
            
     320: {
@@ -215,7 +244,10 @@ const ESG = () => {
       <TextRectangle style={{ borderTopLeftRadius: '12px', borderTopRightRadius: '12px', marginTop: '2em'}}>
       <TextDisplay>Deslize para saber mais.</TextDisplay>
       </TextRectangle>
-      <TextImage>
+      <TextImage ref={ref}
+          variants={animationOpacity}
+          initial="hidden"
+          animate={controls}>
         <ImageDisplay src={images[currentIndex]?.src} alt={images[currentIndex]?.alt} />
         <TextRectangle>
           <TextDisplay>
@@ -231,7 +263,9 @@ const ESG = () => {
         </TextRectangle>
       </TextImage>
     </Container>
+
   );
 };
+
 
 export default ESG;
