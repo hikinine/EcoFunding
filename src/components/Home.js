@@ -13,6 +13,7 @@ import homeSection from '../assets/HomeSection.png';
 import '../components/home.css';
 import { buttonBaseClasses } from '@mui/material';
 
+
 const Wrapper = styled.section`
   background: white;
   text-align: center;
@@ -201,9 +202,31 @@ const HomeCarousel = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 3000,
     useTransform: true,
     cssEase: 'ease-in',
+    appendDots: dots => (
+      <div
+        style={{
+          backgroundColor: "#ddd",
+          borderRadius: "10px",
+          padding: "10px"
+        }}
+      >
+        <ul style={{ margin: "0px" }}> {dots} </ul>
+      </div>
+    ),
+    customPaging: i => (
+      <div
+        style={{
+          width: "30px",
+          color: "blue",
+          border: "1px blue solid"
+        }}
+      >
+        {i + 1}
+      </div>
+    )
   };
 
   return (

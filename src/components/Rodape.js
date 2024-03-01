@@ -135,7 +135,9 @@ const BottomBar = styled.div`
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
+  
   ${media.desktop`
     flex-wrap: nowrap;
     padding: 40px 80px 60px;
@@ -158,7 +160,7 @@ const MenuHead = styled.div`
   font-size: 18px;
   font-weight: 900;
   line-height: 1.11;
-  color: #2b2738;
+  color: white;
 `;
 
 const MenuLink = styled.a`
@@ -167,7 +169,7 @@ const MenuLink = styled.a`
   font-size: 16px;
   font-weight: 600;
   line-height: 2;
-  color: #2f6cb3;
+  color: white;
   ${media.desktop`
     white-space: nowrap;
   `}
@@ -180,6 +182,7 @@ const Policy = styled.div`
   line-height: 1.33;
   color: #2b2738;
   margin: 0 20px;
+  text-align: center;
 `;
 
 const PolicyRow = styled.p`
@@ -187,24 +190,70 @@ const PolicyRow = styled.p`
   padding: 0;
   padding-bottom: 20px;
 `;
+const NewsletterForm = styled.form`
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  ${media.desktop`
+    flex-direction: row;
+    justify-content: center;
+  `}
+  margin-left: -60px;
+  margin-right: 20px;
+`;
 
+const EmailInput = styled.input`
+  padding: 10px;
+  margin-bottom: 10px; // Remove margin on desktop if you prefer the button next to the input
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  ${media.desktop`
+    margin-bottom: 0;
+    margin-right: 10px;
+  `}
+`;
+
+const SubmitButton = styled.button`
+  padding: 10px 20px;
+  background-color: #4CAF50; // Example color
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: #45a049; // Darker shade for hover effect
+  }
+`;
+const NewsletterText = styled.p`
+  color: #fff; // Adjust the color based on your footer's background
+  font-size: 18px;
+  text-align: center;
+  overflow: hidden; // Keeps the text in a single line, hiding overflow
+  left: 20px;
+  position: absolute;
+  ${media.desktop`
+    text-align: left;
+  `}
+`;
 const menu = [
   {
-    name: "Program Guides",
+    name: "Empresa",
     links: [
-      { title: "Rough Around The Edges", url: "www.openfit.com" },
-      { title: "Xtend Barre", url: "www.openfit.com" },
-      { title: "600 Seconds", url: "www.openfit.com" },
-      { title: "Yoga52", url: "www.openfit.com" }
+      { title: "Inicio", url: "www.openfit.com" },
+      { title: "Investir", url: "www.openfit.com" },
+      { title: "Seja um parceiro Eco", url: "www.openfit.com" },
+      { title: "Contato", url: "www.openfit.com" }
     ]
   },
   {
-    name: "About Us",
+    name: "Documentos",
     links: [
-      { title: "About Openfit", url: "www.openfit.com" },
-      { title: "Help and Feedback", url: "www.openfit.com" },
-      { title: "Terms and Condition", url: "www.openfit.com" },
-      { title: "Privacy Policy", url: "www.openfit.com" },
+      { title: "CVM", url: "www.openfit.com" },
+      { title: "Politica de Privacidade", url: "www.openfit.com" },
+      { title: "ESG", url: "www.openfit.com" },
+      { title: "Créditos de carbono", url: "www.openfit.com" },
+      { title: "Mercado de Carbono", url: "www.openfit.com" },
       { title: "FAQ", url: "www.openfit.com" }
     ]
   }
@@ -223,9 +272,8 @@ const Rodape = () =>{
     <Footer>
       <TopBar>
         <GetTheApp>
-          <GetTheAppTitle> Eco Funding</GetTheAppTitle>
           <AppStoreApp />
-          <GoogleApp />
+          <GetTheAppTitle> Eco Funding</GetTheAppTitle>
         </GetTheApp>
         <DesktopSocialList>
           <SocialList />
@@ -233,6 +281,11 @@ const Rodape = () =>{
       </TopBar>
       <HR />
       <BottomBar>
+      <NewsletterText> Inscreva em nossa Newsletter </NewsletterText>
+        <NewsletterForm>
+          <EmailInput type="email" placeholder="Your email for our newsletter" />
+          <SubmitButton type="submit">Subscribe</SubmitButton>
+        </NewsletterForm>
         {menu.map(({ name, links }) => (
           <Menu>
             <MenuHead>{name}</MenuHead>
@@ -245,23 +298,19 @@ const Rodape = () =>{
           <SocialList />
         </MobileSocialList>
         <Policy>
-          <PolicyRow>© 2019 Openfit, LLC. All rights reserved.</PolicyRow>
+          <PolicyRow>© 2024 eCOfunding. Todos os direitos reservados.</PolicyRow>
+         
           <PolicyRow>
-            +Results vary depending on starting point and effort. Exercise and
-            proper diet are necessary to achieve and maintain weight loss and
-            muscle definition. The testimonials featured may have used more than
-            one product or extended the program to achieve their maximum
-            results.
+            As an Amazon Associate, we may earn from qualifying purchases.
           </PolicyRow>
-          <PolicyRow>
-            Consult your physician and follow all safety instructions before
-            beginning any exercise program or using any supplement or meal
-            replacement product, especially if you have any unique medical
-            conditions or needs. The contents on our website are for
-            informational purposes only, and are not intended to diagnose any
-            medical condition, replace the advice of a healthcare professional,
-            or provide any medical advice, diagnosis, or treatment.
-          </PolicyRow>
+        </Policy>
+        
+        
+      </BottomBar>
+      <BottomBar>
+      <Policy>
+          <PolicyRow>© 2024 eCOfunding. Todos os direitos reservados.</PolicyRow>
+         
           <PolicyRow>
             As an Amazon Associate, we may earn from qualifying purchases.
           </PolicyRow>
