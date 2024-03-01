@@ -16,6 +16,7 @@ import logo from '../assets/logo1.png';
 import styled from 'styled-components';
 import Dropdown from './dropdownsheader';
 
+
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const sobre = ['Sobre nós', 'Contato', 'FAQ'];

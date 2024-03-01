@@ -46,7 +46,9 @@ const FrameImage = styled.div`
   position: relative;
   margin-left: 2em;
   width: 450px;
+  height: 200px;
 `;
+
 
 const ResponsiveImage = styled.img`
   max-width: 100%; // Ensures the image is never larger than its container
@@ -81,6 +83,7 @@ const ResponsiveFolhaMeio = styled.img`
 const ResponsiveFolhaDireita = styled.img`
   position: absolute;
   width: 50%;
+  height: 100%;
   z-index: 1000;
   left: 250px;
   top: 300px;
@@ -162,7 +165,9 @@ const Home = ({ imgurl, altText, title, paragraph, transform, button }) => {
           <button>{button}</button>
         </FrameText>
         <FrameImage>
-        <ResponsiveFolhaMeio src={folhameio} style={{ transform: transform }}/>
+        
+        
+        
           <ResponsiveImage src={imgurl} alt={altText} />
         <ResponsiveFolhaDireita src={folhadireitabaixo} style={{ transform: transform }}/>
         </FrameImage>
