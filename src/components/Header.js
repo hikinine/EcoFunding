@@ -15,10 +15,11 @@ import AdbIcon from '@mui/icons-material/Adb';
 import logo from '../assets/logo1.png';
 import styled from 'styled-components';
 import Dropdown from './dropdownsheader';
+import { useNavigate } from 'react-router-dom';
 
 
 const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = [ 'Account', 'Dashboard', 'Logout'];
 const sobre = ['Sobre nós', 'Contato', 'FAQ'];
 const investir = [ 'Investimentos', 'Investimentos', 'Investimentos']
 const parceria = ['Parcerias', 'Parcerias', 'Parcerias']
@@ -32,6 +33,7 @@ const StyledLogo = styled.img`
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -165,8 +167,24 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  {settings.map((setting) => (
+                    <MenuItem key={setting} onClick={() => {
+                      if (setting === 'Account') {
+                        navigate('/account'); // Navigate to /account for the Account setting
+                      } else {
+                        handleCloseUserMenu();
+                      }
+                      if (setting === 'Dashboard') {
+                        navigate('/dashboard'); // Navigate to /account for the Account setting
+                      } else {
+                        handleCloseUserMenu();
+                      }
+                      if (setting === 'Logout') {
+                        navigate('/login'); // Navigate to /account for the Account setting
+                      } else {
+                        handleCloseUserMenu();
+                      }
+                    }}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

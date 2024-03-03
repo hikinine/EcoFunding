@@ -191,7 +191,7 @@ const PolicyRow = styled.p`
   padding-bottom: 20px;
 `;
 const NewsletterForm = styled.form`
-  margin-top: 60px;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -228,13 +228,16 @@ const SubmitButton = styled.button`
 const NewsletterText = styled.p`
   color: #fff; // Adjust the color based on your footer's background
   font-size: 18px;
-  text-align: center;
   overflow: hidden; // Keeps the text in a single line, hiding overflow
-  left: 20px;
-  position: absolute;
-  ${media.desktop`
-    text-align: left;
-  `}
+  left: -60px;
+  position: relative;
+
+`;
+const Container = styled.div`
+ display: flex;
+ flex-direction: column;
+
+ 
 `;
 const menu = [
   {
@@ -281,11 +284,13 @@ const Rodape = () =>{
       </TopBar>
       <HR />
       <BottomBar>
+      <Container>
       <NewsletterText> Inscreva em nossa Newsletter </NewsletterText>
         <NewsletterForm>
           <EmailInput type="email" placeholder="Your email for our newsletter" />
           <SubmitButton type="submit">Subscribe</SubmitButton>
         </NewsletterForm>
+      </Container>
         {menu.map(({ name, links }) => (
           <Menu>
             <MenuHead>{name}</MenuHead>
