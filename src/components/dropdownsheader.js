@@ -57,7 +57,7 @@ margin-bottom: 22px;
 `;
 const items = [
     {
-      label: <Link to="/" style={{ textTransform: 'none' }}>Home</Link>,
+      label: <Link to="/" style={{ textTransform: 'none' }}>Inicio</Link>,
       key: 'home',
     },
     {

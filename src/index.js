@@ -4,14 +4,26 @@ import App from './App';
 import Header from './/components/Header';
 import { HashRouter as Router } from "react-router-dom";
 import './index.css';
+import { Auth0Provider } from '@auth0/auth0-react';
+// name: 
+// domain: dev-fo5w6egbquu50h0p.us.auth0.com
+// clientID: 2rgsfqcqwDUVTEEDHJkOZPNL7jlQ4syi
+// client secret: 9blReTF9IgISIKPRz6aYdmQ4ZeiXmfwtTdbU4RsPVJHqErkaUGBm-7cgOwRWkcVr
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <Auth0Provider
+    domain="dev-fo5w6egbquu50h0p.us.auth0.com"
+    clientId="2rgsfqcqwDUVTEEDHJkOZPNL7jlQ4syi"
+    authorizationParams={{
+    redirect_uri: window.location.origin
+    }}>
   <Router>
     <Header  />
     <App />
   
     </Router>
+    </Auth0Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

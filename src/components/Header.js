@@ -16,7 +16,8 @@ import logo from '../assets/logo1.png';
 import styled from 'styled-components';
 import Dropdown from './dropdownsheader';
 import { useNavigate } from 'react-router-dom';
-
+import { useAuth0 } from '@auth0/auth0-react';
+import { CiUser } from "react-icons/ci";
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = [ 'Account', 'Dashboard', 'Logout'];
@@ -49,6 +50,7 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
 
   return (
     <AppBar position="static" sx={{ backgroundColor: 'white'}}>
@@ -146,49 +148,49 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
+          {isAuthenticated ? (
+              // If authenticated, show user menu with logout and other options
+              <>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt={user.name} src={user.picture} />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
                   {settings.map((setting) => (
                     <MenuItem key={setting} onClick={() => {
-                      if (setting === 'Account') {
-                        navigate('/account'); // Navigate to /account for the Account setting
-                      } else {
-                        handleCloseUserMenu();
-                      }
-                      if (setting === 'Dashboard') {
-                        navigate('/dashboard'); // Navigate to /account for the Account setting
-                      } else {
-                        handleCloseUserMenu();
-                      }
                       if (setting === 'Logout') {
-                        navigate('/login'); // Navigate to /account for the Account setting
+                        logout(); // Use the logout method from useAuth0
                       } else {
                         handleCloseUserMenu();
                       }
                     }}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </>
+            ) : (
+              // If not authenticated, show login button
+              <button style={{ border: 'none'}}color="inherit" onClick={() => loginWithRedirect()}>
+                <CiUser style={{height: '25px', width: '25px', background: 'none' }} />
+              </button>
+            )}
           </Box>
         </Toolbar>
       </Container>
