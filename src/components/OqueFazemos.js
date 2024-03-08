@@ -4,7 +4,7 @@ import { motion, useAnimation } from 'framer-motion'; // Import motion
 import { useInView } from 'react-intersection-observer';
 import Mapa from './Mapa';
 import ImagemMapa from '../assets/mapa.png';
-import EcoGiant from '../assets/ecofundinggiant.svg';
+import EcoGiant from '../assets/ecofundinggiant.png';
 import Overlay from './Overlay';
 import { MarkerProvider } from './earth/MarkerContext';
 import { LargeAndUp, MediumAndDown } from './breakpoints';

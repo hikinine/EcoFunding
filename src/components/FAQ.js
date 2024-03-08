@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Mapa from './Mapa';
 import ImagemMapa from '../assets/mapa.png';
-import EcoGiant from '../assets/ecofundinggiant.svg';
+import EcoGiant from '../assets/ecofundinggiant.png';
 
 const Container = styled.div`
     display: flex;
