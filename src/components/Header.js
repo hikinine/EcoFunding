@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import logo from '../assets/logo1.png';
+import logo from '../assets/LOGOTIPO.svg';
 import styled from 'styled-components';
 import Dropdown from './dropdownsheader';
 import { useNavigate } from 'react-router-dom';
@@ -25,7 +25,15 @@ const sobre = ['Sobre nós', 'Contato', 'FAQ'];
 const investir = [ 'Investimentos', 'Investimentos', 'Investimentos']
 const parceria = ['Parcerias', 'Parcerias', 'Parcerias']
 
-
+const Wrapper = styled.div`
+font-family: "Lexend Tera", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 250;
+  font-style: normal;
+  text-transform: uppercase;
+ @import url('https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap')
+  
+`
 const StyledLogo = styled.img`
  width: 50px;
  margin-bottom: 7px;
@@ -53,6 +61,7 @@ function ResponsiveAppBar() {
   const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
 
   return (
+    <Wrapper>
     <AppBar position="static" sx={{ backgroundColor: 'white'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -65,15 +74,16 @@ function ResponsiveAppBar() {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'Montserrat',
+              fontFamily: 'Lexend Tera',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'black',
               textTransform: 'none',
               textDecoration: 'none',
+              marginLeft: '20px'
             }}
           >
-            eCO
+            ECO
           </Typography>
           <Typography
             variant="h6"
@@ -83,15 +93,15 @@ function ResponsiveAppBar() {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'Montserrat',
-              fontWeight: 700,
+              fontFamily: 'Lexend Tera',
+              fontWeight: 300,
               letterSpacing: '.3rem',
-              color: 'green',
+              color: 'black',
               textTransform: 'none',
               textDecoration: 'none',
               marginLeft: '-15px',
             }}
-          >funding</Typography>
+          >FUNDING</Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -195,6 +205,7 @@ function ResponsiveAppBar() {
         </Toolbar>
       </Container>
     </AppBar>
+    </Wrapper>
   );
 }
 export default ResponsiveAppBar;

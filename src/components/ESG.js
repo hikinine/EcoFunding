@@ -1,11 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
+
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { motion, useAnimation } from "framer-motion";
-import 'swiper/css';
-import 'swiper/css/navigation';
 import { useInView } from 'react-intersection-observer';
-import { Navigation } from 'swiper/modules';
 import ESGBG from '../assets/ESG1.png'; // Ensure this path is correct
 import ESG2 from '../assets/ESG2.png'; 
 import { Link } from 'react-router-dom';
@@ -13,7 +12,10 @@ import { Link } from 'react-router-dom';
 import './styleESG.css'
 import 'react-animation/dist/keyframes.css'
 
-
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 
 const breakpoints = {
@@ -27,7 +29,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100%;
-  background-image: url(${ESGBG});
+  background-color: #242a32;
   @media (max-width: ${breakpoints.tablet}) {
     height: auto;
     padding: 20px;
@@ -40,14 +42,14 @@ const Container = styled.div`
 const Button = styled.button`
   padding: 10px;
   margin: 10px;
-  height: 70%;
+  margin-bottom: 30px;
+  height: 60px;
   width: auto;
   cursor: pointer;
-  border-radius: 12px;
-  border-color: transparent;
-  color: ${({ active }) => (active ? 'white' : 'black')};
+  border: 2px solid #2ebc15;
+  color: ${({ active }) => (active ? 'white' : 'gray')};
   background: ${({ active }) =>
-    active ? 'linear-gradient(180deg, rgba(102,102,102,1) 0%, rgba(154,154,154,1) 100%);' : 'linear-gradient(180deg, rgba(197, 197, 197, 1) 0%, rgba(255, 255, 255, 1) 100%)'};
+    active ? '#2ebc15' : 'transparent'};
     @media (max-width: ${breakpoints.tablet}) {
     width: 200px;
     height: 100px;
@@ -202,10 +204,14 @@ const ESG = () => {
           animate={controls}>Saiba Mais Sobre ESG</H1>
  
       <Swiper
-          spaceBetween={90}
-          slidesPerView={3} // Default to 3 slides per view
-          autoplay={{ delay: 3000 }}
-          modules={[Navigation]}
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={50}
+          slidesPerView={3}
+          navigation
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          
           onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
           style={{width: '70vw'}}
           className='mySwiper'

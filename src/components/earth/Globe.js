@@ -2,9 +2,9 @@
 import React from 'react';
 import useTextureLoader from './useTextureLoader';
 import { MarkerProvider, useMarker } from './MarkerContext'; // Assuming Marker is its own component
-import colorMap from '../../assets/textures/8k_earth_daymap.jpg';
+import colorMap from '../../assets/textures/8k_earth_daymap.png';
 import markers from './markers'; // Assuming markers is its own component
-import { FaMapPin } from 'react-icons/fa';
+import { FaLocationDot } from "react-icons/fa6";
 import { Html } from '@react-three/drei';
 
 const latLonToSphereCoords = (lat, lon, radius = 2) => {
@@ -35,7 +35,7 @@ function Globe() {
   return (
     <Html position={position} key={marker.name} center>
       <MarkerProvider>
-      <FaMapPin style={{ color: 'red', fontSize: '24px', cursor: 'pointer' }} onClick={() => handleMarkerClick(marker)} />
+      <FaLocationDot style={{ color: '#2ebc15', fontSize: '24px', cursor: 'pointer' }} onClick={() => handleMarkerClick(marker)} />
       </MarkerProvider>
     </Html>
   );

@@ -7,7 +7,16 @@ import { Link } from 'react-router-dom';
 const Wrapper = styled.header`
 background-color: transparent;
 margin-bottom: 22px;
+* {
+  font-family: "Lexend Tera", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 250;
+  font-style: normal;
+  text-transform: uppercase;
 
+  @import url('https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap')
+  
+}
 .ant-menu-item-selected {
     border-bottom: 3px solid green !important;
     color: green !important;
@@ -49,7 +58,7 @@ margin-bottom: 22px;
     border-bottom: none !important;
   }
   .ant-menu-item, .ant-submenu-item {
-    text-transform: none; /* or uppercase, capitalize, etc., as needed */
+     /* or uppercase, capitalize, etc., as needed */
 }
 * {
     

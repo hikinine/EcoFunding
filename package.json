@@ -2,7 +2,7 @@
   "name": "eco-funding",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://eco-funding-di1biap1a-luigihard.vercel.app/",
+  "homepage": "https://eco-funding-git-master-luigihard.vercel.app/",
   "dependencies": {
     "@ant-design/icons": "^5.3.0",
     "@auth0/auth0-react": "^2.2.4",

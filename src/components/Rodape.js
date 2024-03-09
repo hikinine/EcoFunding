@@ -1,327 +1,183 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-import { Link } from "react-router-dom";
-
-const media = {
-  desktop: (...args) => css`
-    @media (min-width: 870px) {
-      ${css(...args)};
-    }
-  `
-};
-
-const Footer = styled.footer`
-  font-family: nunito-sans, sans-serif;
-  text-align: center;
-  ${media.desktop`
-    text-align: left;
-    background-color: #7ac26a;
-  `}
+const StyledHeader = styled.header`
+  background-color: #242a32;
+  padding: 74px 80px;
+  @media (max-width: 991px) {
+    padding: 0 20px;
+  }
 `;
 
-const TopBar = styled.div`
-  margin: auto;
-  max-width: 1280px;
-  padding: 40px 0;
-  ${media.desktop`
-    padding: 45px 80px;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-  `}
-`;
-
-const GetTheApp = styled.div`
-  font-size: 18px;
-  font-weight: 900;
-  line-height: 1.11;
-  color: #fff;
-  margin: 0 -15px;
+const MainContent = styled.main`
   display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  ${media.desktop`
-    flex-wrap: nowrap;
-    align-items: center;
-    white-space: nowrap;
-  `}
+  gap: 20px;
+  @media (max-width: 991px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0px;
+  }
 `;
 
-const GetTheAppTitle = styled.div`
-  margin-bottom: 4px;
-  width: 100%;
-  color: #fff;
-  ${media.desktop`
-    width: unset;
-    margin: 0 15px;
-  `}
-  
-`;
-
-const AppStoreApp = styled.img`
-  width: 189px;
-  height: 63px;
-  margin: 16px auto;
-  padding: 0 20px;
-  ${media.desktop`
-    padding: 0;
-    margin: 0 8px;
-  `}
-`;
-
-const GoogleApp = styled.img`
-  width: 189px;
-  height: 63px;
-  margin: 16px auto;
-  padding: 0 20px;
-  ${media.desktop`
-    padding: 0;
-    margin: 0 8px;
-  `}
-`;
-
-const DesktopSocialList = styled.div`
-  display: none;
-  ${media.desktop`
-    display: flex;
-    align-items: center;
-  `};
-`;
-
-const MobileSocialList = styled.div`
-  padding-bottom: 40px;
-  width: 100%;
-  ${media.desktop`
-    display: none;
-  `};
-`;
-
-const Twitter = styled.svg`
-  border: 1px lightgray solid;
-  width: 33px;
-  height: 33px;
-  margin-left: 5px;
-`;
-
-const Facebook = styled.svg`
-  border: 1px lightgray solid;
-  width: 33px;
-  height: 33px;
-  margin-left: 5px;
-`;
-
-const Instagram = styled.svg`
-  border: 1px lightgray solid;
-  width: 33px;
-  height: 33px;
-  margin-left: 5px;
-`;
-
-const HR = styled.div`
-  display: none;
-  ${media.desktop`
-    height: 0;
-    padding: 0;
-    margin: 0;
-    display: block;
-    border-bottom: 1px #cacada solid;
-  `};
-`;
-
-const BottomBar = styled.div`
-  max-width: 1280px;
-  margin: auto;
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  
-  ${media.desktop`
-    flex-wrap: nowrap;
-    padding: 40px 80px 60px;
-    justify-content: space-between;
-  `};
-`;
-
-const Menu = styled.div`
-  margin-bottom: 30px;
-  min-width: 50%;
-  ${media.desktop`
-    min-width: unset;
-    margin-bottom: 0;
-    margin-right: 40px;
-  `}
-`;
-
-const MenuHead = styled.div`
-  margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: 900;
-  line-height: 1.11;
-  color: white;
-`;
-
-const MenuLink = styled.a`
-  display: block;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 2;
-  color: white;
-  ${media.desktop`
-    white-space: nowrap;
-  `}
-`;
-
-const Policy = styled.div`
-  width: 100%;
-  max-width: 764px;
-  font-size: 12px;
-  line-height: 1.33;
-  color: #2b2738;
-  margin: 0 20px;
-  text-align: center;
-`;
-
-const PolicyRow = styled.p`
-  margin: 0;
-  padding: 0;
-  padding-bottom: 20px;
-`;
-const NewsletterForm = styled.form`
-  
+const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  ${media.desktop`
-    flex-direction: row;
-    justify-content: center;
-  `}
-  margin-left: -60px;
-  margin-right: 20px;
+  width: 32%;
+  @media (max-width: 991px) {
+    width: 100%;
+  }
 `;
 
-const EmailInput = styled.input`
-  padding: 10px;
-  margin-bottom: 10px; // Remove margin on desktop if you prefer the button next to the input
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  ${media.desktop`
-    margin-bottom: 0;
-    margin-right: 10px;
-  `}
+const ContentWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 68%;
+  margin-left: 20px;
+  @media (max-width: 991px) {
+    width: 100%;
+  }
+`;
+
+const Logo = styled.img`
+  aspect-ratio: 7.14;
+  object-fit: cover;
+  width: 100%;
+  align-self: center;
+  @media (max-width: 991px) {
+    max-width: 100%;
+  }
+`;
+
+const SocialMediaIcons = styled.div`
+  display: flex;
+  margin-top: 85px;
+  justify-content: space-between;
+  gap: 20px;
+  @media (max-width: 991px) {
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+`;
+
+const IconImg = styled.img`
+  aspect-ratio: 1;
+  object-fit: cover;
+  width: 27px;
+`;
+
+const Navbar = styled.nav`
+  display: flex;
+  flex-direction: column;
+  color: #828282;
+  font-size: 13px;
+  & > div {
+    color: #fff;
+    margin-top: 49px;
+    font-family: DM Sans, sans-serif;
+    &:first-child {
+      margin-top: 0;
+      font-weight: 500;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 1);
+    }
+    @media (max-width: 991px) {
+      margin-top: 40px;
+    }
+  }
+`;
+
+const NewsletterSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  color: #2ebc15;
+  font-size: 16px;
+  margin-top: 55px;
+
+  & > div:first-child {
+    font-family: Lexend Zetta, sans-serif;
+    font-weight: 200;
+  }
+`;
+
+const NewsletterForm = styled.form`
+  border: 1px solid rgba(46, 188, 21, 1);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding: 8px 13px;
+  font-weight: 400;
+`;
+
+const NewsletterInput = styled.input`
+  flex-grow: 1;
+  border: none;
+  background: none;
+  color: #fff;
+  &::placeholder {
+    color: #828282;
+  }
 `;
 
 const SubmitButton = styled.button`
-  padding: 10px 20px;
-  background-color: #4CAF50; // Example color
-  color: white;
+  background-color: rgba(46, 188, 21, 1);
   border: none;
-  border-radius: 5px;
+  color: #fff;
+  padding: 5px 15px;
   cursor: pointer;
-  &:hover {
-    background-color: #45a049; // Darker shade for hover effect
-  }
 `;
-const NewsletterText = styled.p`
-  color: #fff; // Adjust the color based on your footer's background
-  font-size: 18px;
-  overflow: hidden; // Keeps the text in a single line, hiding overflow
-  left: -60px;
-  position: relative;
 
+const ContentText = styled.p`
+  color: #465363;
+  font-size: 13px;
+  line-height: 1.6;
 `;
-const Container = styled.div`
- display: flex;
- flex-direction: column;
 
- 
-`;
-const menu = [
-  {
-    name: "Empresa",
-    links: [
-      { title: "Inicio", url: "www.openfit.com" },
-      { title: "Investir", url: "www.openfit.com" },
-      { title: "Seja um parceiro Eco", url: "www.openfit.com" },
-      { title: "Contato", url: "www.openfit.com" }
-    ]
-  },
-  {
-    name: "Documentos",
-    links: [
-      { title: "CVM", url: "www.openfit.com" },
-      { title: "Politica de Privacidade", url: "www.openfit.com" },
-      { title: "ESG", url: "www.openfit.com" },
-      { title: "Créditos de carbono", url: "www.openfit.com" },
-      { title: "Mercado de Carbono", url: "www.openfit.com" },
-      { title: "FAQ", url: "www.openfit.com" }
-    ]
-  }
-];
-
-const SocialList = () => (
-  <>
-    <Twitter />
-    <Facebook />
-    <Instagram />
-  </>
-);
-
-const Rodape = () =>{
+function Rodape() {
   return (
-    <Footer>
-      <TopBar>
-        <GetTheApp>
-          <AppStoreApp />
-          <GetTheAppTitle> Eco Funding</GetTheAppTitle>
-        </GetTheApp>
-        <DesktopSocialList>
-          <SocialList />
-        </DesktopSocialList>
-      </TopBar>
-      <HR />
-      <BottomBar>
-      <Container>
-      <NewsletterText> Inscreva em nossa Newsletter </NewsletterText>
-        <NewsletterForm>
-          <EmailInput type="email" placeholder="Your email for our newsletter" />
-          <SubmitButton type="submit">Subscribe</SubmitButton>
-        </NewsletterForm>
-      </Container>
-        {menu.map(({ name, links }) => (
-          <Menu>
-            <MenuHead>{name}</MenuHead>
-            {links.map(({ title, url }) => (
-              <MenuLink href={url}>{title}</MenuLink>
-            ))}
-          </Menu>
-        ))}
-        <MobileSocialList>
-          <SocialList />
-        </MobileSocialList>
-        <Policy>
-          <PolicyRow>© 2024 eCOfunding. Todos os direitos reservados.</PolicyRow>
-         
-          <PolicyRow>
-            As an Amazon Associate, we may earn from qualifying purchases.
-          </PolicyRow>
-        </Policy>
-        
-        
-      </BottomBar>
-      <BottomBar>
-      <Policy>
-          <PolicyRow>© 2024 eCOfunding. Todos os direitos reservados.</PolicyRow>
-         
-          <PolicyRow>
-            As an Amazon Associate, we may earn from qualifying purchases.
-          </PolicyRow>
-        </Policy>
-      </BottomBar>
-    </Footer>
+    <StyledHeader>
+      <MainContent>
+        <Sidebar>
+          <Logo src="logo.png" alt="Logo" />
+          <SocialMediaIcons>
+            <IconImg src="icon1.png" alt="Icon 1" />
+            <IconImg src="icon2.png" alt="Icon 2" />
+            <IconImg src="icon3.png" alt="Icon 3" />
+            <IconImg src="icon4.png" alt="Icon 4" />
+          </SocialMediaIcons>
+        </Sidebar>
+        <ContentWrapper>
+          <Navbar>
+            <div>EMPRESA</div>
+            <div>Início</div>
+            <div>Investir</div>
+            <div>Seja um parceiro Eco</div>
+            <div>Contato</div>
+          </Navbar>
+          <NewsletterSection>
+            <div>
+              SE INSCREVA NA NOSSA{" "}
+              <span style={{ fontWeight: 600, color: "rgba(46,188,21,1)" }}>
+                NEWSLETTER
+              </span>
+            </div>
+            <NewsletterForm>
+              <NewsletterInput
+                type="email"
+                placeholder="Digite seu e-mail"
+                aria-label="Digite seu e-mail"
+              />
+              <SubmitButton>Enviar</SubmitButton>
+            </NewsletterForm>
+          </NewsletterSection>
+          <ContentText>
+            Lorem ipsum dolor sit amet consectetur. In urna senectus eget ut dui
+            consectetur. At at sed amet pellentesque eget amet sed lectus. Urna
+            mauris vitae egestas purus ac...
+          </ContentText>
+        </ContentWrapper>
+      </MainContent>
+    </StyledHeader>
   );
 }
+
 export default Rodape;

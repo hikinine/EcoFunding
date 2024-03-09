@@ -4,7 +4,7 @@ import { motion, useAnimation } from 'framer-motion'; // Import motion
 import { useInView } from 'react-intersection-observer';
 import Mapa from './Mapa';
 import ImagemMapa from '../assets/mapa.png';
-import EcoGiant from '../assets/ecofundinggiant.png';
+import EcoGiant from '../assets/FUNDO_GLOBO.jpg';
 import Overlay from './Overlay';
 import { MarkerProvider } from './earth/MarkerContext';
 import { LargeAndUp, MediumAndDown } from './breakpoints';
@@ -13,15 +13,14 @@ import { animations } from 'react-animation';
 import 'react-animation/dist/keyframes.css';
 
 const Container = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center children */
-    background-color: #7ac26a;
-    background-image: url(${EcoGiant});
-    background-position: center;
-    background-size: auto 320%;
-    height: 80vh;
-    position: relative; /* For absolute positioning of the button */
+        display: flex;
+        align-items: center;
+        align-items: center;
+        background-image: url(${EcoGiant});
+        background-position: center;
+        background-size: cover;
+        height: 80vh;
+        
     
     ${MediumAndDown} {
         flex-direction: column;
@@ -177,7 +176,9 @@ const OqueFazemos = () => {
                 </Content>
             )}
             {!showMapa ? (
-                <ImageMap src={ImagemMapa} onClick={toggleContent} initial="hidden" animate={controls} ref={ref} variants={slideInFromRight}/>
+                <MarkerProvider>
+                <Mapa />
+                </MarkerProvider>
             ) : (
                 <MarkerProvider>
                 <Mapa />
