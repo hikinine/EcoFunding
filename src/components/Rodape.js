@@ -121,10 +121,14 @@ const NewsletterSection = styled.section`
   color: #2ebc15;
   font-size: 16px;
   margin-top: 55px;
+  
 
   & > div:first-child {
     font-family: Lexend Zetta, sans-serif;
     font-weight: 200;
+  }
+  @media (max-width: 991px) {
+    display: hidden;
   }
 `;
 
@@ -191,7 +195,7 @@ function Rodape() {
             <div>Contato</div>
           </Navbar>
           <Collumn>
-          { width > 768 && <NewsletterSection>
+        <NewsletterSection>
             <div>
               SE INSCREVA NA NOSSA{" "}
               <span style={{ fontWeight: 600, color: "rgba(46,188,21,1)" }}>
@@ -207,7 +211,7 @@ function Rodape() {
               <SubmitButton>Enviar</SubmitButton>
             </NewsletterForm>
           </NewsletterSection>
-}
+
           <ContentText>
             Lorem ipsum dolor sit amet consectetur. In urna senectus eget ut dui
             consectetur. At at sed amet pellentesque eget amet sed lectus. Urna
