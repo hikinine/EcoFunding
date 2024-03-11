@@ -97,7 +97,7 @@ const FAQ = () => {
                                 <li><strong>Comitê de especialistas:</strong> Seleção criteriosa dos projetos com maior potencial de impacto positivo.</li>
                             </ul>
                         </StyledAccordionBody>
-                    </StyledAccordionItem>
+                    </StyledAccordionItem
                     <StyledAccordionItem itemKey={1}>
                         <StyledAccordionHeader>Qual a garantia de que meu investimento me retornará créditos ambientais?</StyledAccordionHeader>
                         <StyledAccordionBody>

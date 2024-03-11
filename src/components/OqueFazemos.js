@@ -9,7 +9,7 @@ import Mapa from './Mapa';
 import { MarkerProvider, useMarker } from './earth/MarkerContext';
 import { MediumAndDown } from './breakpoints';
 import EcoGiant from '../assets/FUNDO_GLOBO.jpg';
-
+import { Link } from 'react-router-dom';
 
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
@@ -41,6 +41,9 @@ const Container = styled.div`
   background-image: url(${EcoGiant});
   background-position: center;
   background-size: cover;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
   height: 80vh;
   ${MediumAndDown} {
     flex-direction: column;
@@ -163,8 +166,7 @@ const OqueFazemos = () => {
             >
               Na Ecofunding, nosso compromisso é com o futuro do planeta. Unimos tecnologia, sustentabilidade e finanças para criar um impacto ambiental positivo.
             </Paragraph>
-            <Button>Saiba Mais</Button>
-            
+            <Link to="/SaibaMais" > <Button>Saiba Mais</Button> </Link>
           </ColumnFlex>
         </Content>
       )}
