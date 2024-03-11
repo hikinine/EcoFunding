@@ -128,7 +128,7 @@ const NewsletterSection = styled.section`
     font-weight: 200;
   }
   @media (max-width: 991px) {
-    display: hidden;
+    display: none;
   }
 `;
 
