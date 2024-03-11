@@ -1,6 +1,6 @@
 
 
-import React, { useState, useRef, useContext, Component } from 'react';
+import React, { useState, useRef, useContext, Component, useEffect } from 'react';
 import styled from 'styled-components';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext,DotGroup } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
@@ -228,14 +228,31 @@ const slidesData = [
   // Add more slide objects as needed
 ];
 
-class HomeCarousel extends Component {
-  render() {
-    return (
-      <CarouselProvider
-        naturalSlideWidth={100}
-        naturalSlideHeight={40}
-        totalSlides={slidesData.length}
-      >
+const HomeCarousel = () => {
+  const [slideHeight, setSlideHeight] = useState(40); // Default slide height
+
+  const updateDimensions = () => {
+    const windowWidth = window.innerWidth;
+    if (windowWidth < 768) {
+      setSlideHeight(150); // Example: Increase height for smaller screens
+    } else {
+      setSlideHeight(40); // Reset to default for larger screens
+    }
+  };
+
+  useEffect(() => {
+    updateDimensions(); // Set initial value
+    window.addEventListener('resize', updateDimensions);
+
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
+  return (
+    <CarouselProvider
+      naturalSlideWidth={100}
+      naturalSlideHeight={slideHeight}
+      totalSlides={slidesData.length}
+    >
         <Wrapper2>
           <Slider>
             {slidesData.map((slide, index) => (
@@ -256,7 +273,5 @@ class HomeCarousel extends Component {
         </Wrapper2>
       </CarouselProvider>
     );
-  }
-}
-
+  };
 export default HomeCarousel;
