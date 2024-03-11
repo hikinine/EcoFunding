@@ -1,17 +1,18 @@
 
 
-import React, { useState, useRef } from 'react';
-import Slider from 'react-slick';
+import React, { useState, useRef, useContext, Component } from 'react';
 import styled from 'styled-components';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext,DotGroup } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 import folhaesquerda from '../assets/FolhaEsquerda.png';
+import HomeSection1 from '../assets/HomeSection1.jpg';	
+import HomeSection2 from '../assets/HomeSection2.jpg';	
+import HomeSection3 from '../assets/HomeSection3.jpg';	
 import folhaesquerdacima from '../assets/FolhaEsquerdaCima.png';
-import folhameio from '../assets/FolhaMeio.png';
 import folhadireitabaixo from '../assets/FolhaDireitaBaixo.png';
 import homeSection from '../assets/HomeSection.png';
 import '../components/home.css';
-import { buttonBaseClasses } from '@mui/material';
+
 
 
 
@@ -19,10 +20,10 @@ const Wrapper = styled.section`
   background: white;
   text-align: center;
   width: 100%;
-  height: 90vh;
+  height: 70vh;
   overflow: hidden;
   margin-top: 8em;
-  gap: 4em;
+  gap: 8em;
   * {
     font-family: 'Montserrat', sans-serif;
   }
@@ -31,6 +32,7 @@ const Wrapper = styled.section`
 const Container = styled.div`
   display: flex;
   align-items: center;
+  flex-direction: row;
   justify-content: center;
   background-color: white;
 `;
@@ -40,21 +42,21 @@ const FrameText = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 2em;
+  margin-right: 12em;
   width: 500px;
 `;
 
 const FrameImage = styled.div`
   position: relative;
   margin-left: 2em;
-  width: 450px;
-  height: 200px;
-`;
+  width: 700px;
+  height: 500px;`;
 
 
 const ResponsiveImage = styled.img`
   max-width: 100%; // Ensures the image is never larger than its container
   height: auto; // Maintains the aspect ratio of the image
+  border-top-left-radius: 90px;
   @media (max-width: 768px) {
     width: 80%; // Scales the image to 80% of its container's width on small devices
   }
@@ -95,9 +97,12 @@ const ResponsiveFolhaDireita = styled.img`
 const SliderContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   overflow: hidden;
   background-color: white;
+  
+
+
 `;
 
 const ParallaxFolha = styled.img`
@@ -105,7 +110,7 @@ const ParallaxFolha = styled.img`
   height: auto;
   position: sticky;
   z-index: 1000;
-  bottom: 200px;
+  bottom: 50px;
   margin-left: -100px;
   transition: transform 0.35s ease-out;
   
@@ -131,123 +136,125 @@ const ParallaxFolhaCima = styled.img`
 const HomeSection123 = styled.div`
   justify-content: center;
   align-items: center;
-  height: 150vh;
+  
 `;
-const slidesData = [
-  {
-    src: homeSection,
-    alt: 'Image Description 1',
-    title: 'Transforme Seu Carbono em Impacto: Invista Sustentável com a Ecofunding',
-    paragraph: ' A primeira plataforma do Brasil que converte dívidas de carbono em oportunidades de investimento verde, credenciada pela CVM.',
-    button: 'Saiba Mais',
-  },
-  {
-    src: homeSection,
-    alt: 'Image Description 2',
-    title: 'Transforme Seu Investimento em Impacto com a ecoFunding',
-    paragraph: 'Invista em um futuro sustentável e aproveite incentivos fiscais inéditos. Com a ecoFunding, seu capital promove mudanças reais e gera retorno financeiro com propósito.',
-    button: 'Invista Sustentavel',
-  },
-  {
-    src: homeSection,
-    alt: 'Image Description 2',
-    title: 'Slide Title 2',
-    paragraph: 'This is the description for Slide 2.',
-    button: 'Seja um parceiro EcoSustentavel',
-  },
-  // Add more objects for additional slides
-];
-const Home = ({ imgurl, altText, title, paragraph, transform, button }) => {
+const Wrapper2 = styled.div`
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      .btn-arrow {
+        border: none;
+        background: none;
+        padding: 11px 20px;
+      }
+  
+      .reverse-arrow {
+        transform: rotateY(180deg);
+      }
+  
+      .dot-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+        .carousel__dot {
+          width: 8px;
+          height: 8px;
+          border: none;
+          border-radius: 50%;
+          margin: 0 4px;
+          padding: 0;
+          background-color: #c3c4ca;
+        }
+  
+        /* This class is found in DotGroup from pure-react-carousel */
+        /* We need to override it to add our styles */
+        .carousel__dot--selected {
+          width: 16px;
+          height: 8px;
+          border-radius: 10px;
+          background-color: #6267a1;
+          transition: background 0.4s ease;
+        }
+      }
+    }
+  `;
+
+const Home = ({ imgurl, altText, title, paragraph, button }) => {
   return (
     <Wrapper>
       <Container>
-        <FrameText>
-          <h1>{title}</h1>
-          <p>{paragraph}</p>
-          <button>{button}</button>
-        </FrameText>
-        <FrameImage>
-        
-        
-        
-          <ResponsiveImage src={imgurl} alt={altText} />
-        <ResponsiveFolhaDireita src={folhadireitabaixo} style={{ transform: transform }}/>
-        </FrameImage>
+      <FrameText>
+        <h1>{title}</h1>
+        <p>{paragraph}</p>
+        <button style={{ padding: '10px 10px' }}>{button}</button>
+      </FrameText>
+      <FrameImage>
+        <ResponsiveImage src={imgurl} alt={altText} />
+      </FrameImage>
       </Container>
     </Wrapper>
   );
 };
-const HomeCarousel = () => {
-  const [mousePosition, setMousePosition] = useState({ mouseX: 0, mouseY: 0 });
-  const folhaCimaRef = useRef(null);
-  const folhaRef = useRef(null);
+const slidesData = [
+  {
+    key: 'slide1',
+    src: HomeSection1,
+    alt: 'An image description',
+    title: 'Transforme Seu Carbono em Impacto',
+    paragraph: ' A primeira plataforma do Brasil que converte dívidas de carbono em oportunidades de investimento verde, credenciada pela CVM',
+    button: 'Learn More'
+  },
+  {
+    key: 'slide2',
+    src: HomeSection2,
+    alt: 'Another image description',
+    title: 'Faça a Diferença com Seu Projeto',
+    paragraph: '  Junte-se à vanguarda do movimento verde no Brasil com a EcoFunding, a primeira e única plataforma dedicada a transformar projetos sustentáveis em realidade, sob o aval da CVM. Aqui, sua iniciativa não apenas ganha visibilidade, mas também atrai investimentos comprometidos com um futuro sustentável.',
+    button: 'Saiba Mais'
+  },
+  {
+    key: 'slide2',
+    src: HomeSection3,
+    alt: 'Another image description',
+    title: 'O Poder Verde do Seu Investimento',
+    paragraph: 'Descubra como seu investimento pode gerar retorno financeiro e ao mesmo tempo combater a dívida de carbono do Brasil. A EcoFunding, certificada pela CVM, oferece um caminho seguro e inovador para investir em projetos que lideram a transição para a sustentabilidade.',
+    button: 'Investir Agora'
+  },
+  // Add more slide objects as needed
+];
 
-  const handleMouseMove = (event) => {
-    const { clientX, clientY } = event;
-    const { innerWidth, innerHeight } = window;
-
-    const mouseX = (clientX - innerWidth / 2) / innerWidth * 100; // Percentage from the center
-    const mouseY = (clientY - innerHeight / 2) / innerHeight * 100;
-
-    setMousePosition({ mouseX, mouseY });
-
-    if (folhaCimaRef.current) folhaCimaRef.current.style.transform = `translate(${mouseX * 0.3}%, ${mouseY * 0.3}%)`;
-    if (folhaRef.current) folhaRef.current.style.transform = `translate(${mouseX * 0.3}%, ${mouseY * 0.3}%)`;
-  };
-
-  // Slider settings
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    useTransform: true,
-    cssEase: 'ease-in',
-    appendDots: dots => (
-      <div
-        style={{
-          backgroundColor: "#ddd",
-          borderRadius: "10px",
-          padding: "10px"
-        }}
+class HomeCarousel extends Component {
+  render() {
+    return (
+      <CarouselProvider
+        naturalSlideWidth={100}
+        naturalSlideHeight={40}
+        totalSlides={slidesData.length}
       >
-        <ul style={{ margin: "0px" }}> {dots} </ul>
-      </div>
-    ),
-    customPaging: i => (
-      <div
-        style={{
-          width: "30px",
-          color: "blue",
-          border: "1px blue solid"
-        }}
-      >
-        {i + 1}
-      </div>
-    )
-  };
+        <Wrapper2>
+          <Slider>
+            {slidesData.map((slide, index) => (
+              <Slide index={index} key={slide.key}>
+                <Home
+                  imgurl={slide.src}
+                  altText={slide.alt}
+                  title={slide.title}
+                  paragraph={slide.paragraph}
+                  button={slide.button}
+                />
+              </Slide>
+            ))}
+          </Slider>
+          <div className="controls">
+            <DotGroup style={{ marginBottom: '50px' }} className="dot-group" />
+          </div>
+        </Wrapper2>
+      </CarouselProvider>
+    );
+  }
+}
 
-  return (
-    <SliderContainer onMouseMove={handleMouseMove}>
-      <ParallaxFolhaCima ref={folhaCimaRef} src={folhaesquerdacima} />
-      <Slider {...settings}>
-        {slidesData.map((slide, index) => (
-          <HomeSection123 key={index}>
-            <Home 
-              imgurl={slide.src} 
-              altText={slide.alt} 
-              title={slide.title}
-              paragraph={slide.paragraph}
-              transform={`translate(${mousePosition.mouseX * 0.3}%, ${mousePosition.mouseY * 0.3}%)`}
-            />
-          </HomeSection123>
-        ))}
-      </Slider>
-      <ParallaxFolha ref={folhaRef} src={folhaesquerda} alt="folha" />
-    </SliderContainer>
-  );
-};
 export default HomeCarousel;

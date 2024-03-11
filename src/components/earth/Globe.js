@@ -34,9 +34,7 @@ function Globe() {
   const position = latLonToSphereCoords(marker.lat, marker.lon);
   return (
     <Html position={position} key={marker.name} center>
-      <MarkerProvider>
       <FaLocationDot style={{ color: '#2ebc15', fontSize: '24px', cursor: 'pointer' }} onClick={() => handleMarkerClick(marker)} />
-      </MarkerProvider>
     </Html>
   );
 })}

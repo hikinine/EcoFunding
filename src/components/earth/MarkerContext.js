@@ -9,11 +9,12 @@ const MarkerContext = createContext();
 
 export const useMarker = () => useContext(MarkerContext);
 
+// MarkerContext.js
 export const MarkerProvider = ({ children }) => {
   const [selectedMarker, setSelectedMarker] = useState(null);
-  const [markers, setMarkers] = useState(markersData); // Use markersData here
+  const [markers, setMarkers] = useState(markersData);
+
   const handleMarkerClick = (marker) => {
-    alert("Marker")
     setSelectedMarker(marker);
   };
 

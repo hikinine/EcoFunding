@@ -14,8 +14,8 @@ export function Earth() {
  
 
   return (
-    <MarkerProvider markers={markers}>
-      
+    
+    <>
         <ambientLight intensity={1} />
         <directionalLight color="#ffffff" intensity={3} position={[1, -5, 5]} castShadow />
         <Globe markers={markers} onMarkerClick={(marker) => handleMarkerClick(marker)}/>
@@ -29,6 +29,6 @@ export function Earth() {
         minPolarAngle={50 * (Math.PI / 180)}
       />
       
-    </MarkerProvider>
+      </>
   );
 }

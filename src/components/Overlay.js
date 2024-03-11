@@ -1,13 +1,13 @@
 import React from 'react';
-import { Earth } from './earth';
-import  markers  from './earth/markers';
+import { MarkerProvider, useMarker } from './earth/MarkerContext';
+
 import { Html } from '@react-three/drei';
 
 function Overlay({ marker, onClose, markers }) {
 
     if (!marker) {
         // You can return null, a loading indicator, or any placeholder content
-        return null; // Or, for example, <div>Loading...</div>
+        return <div> Loading... </div>; // Or, for example, <div>Loading...</div>
       }
     return (
         <Html>

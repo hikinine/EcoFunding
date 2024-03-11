@@ -1,211 +1,104 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import logo from '../assets/LOGOTIPO.svg';
+
+import React, { useState } from 'react';
+import { CNavbar, CContainer, CNavbarBrand, CNavbarToggler, CCollapse, CNavbarNav, CNavItem, CNavLink, CDropdown, CDropdownToggle, CDropdownMenu, CDropdownItem, CDropdownDivider, CForm, CFormInput, CButton } from '@coreui/react';
+import '@coreui/coreui/dist/css/coreui.min.css';
+import { useAuth } from '../contexts/user_context'; // Import useUser hook
+import LOGO from '../assets/LOGOTIPO.svg';
+import User1 from '../assets/user.svg';
 import styled from 'styled-components';
-import Dropdown from './dropdownsheader';
-import { useNavigate } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
-import { CiUser } from "react-icons/ci";
-
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = [ 'Account', 'Dashboard', 'Logout'];
-const sobre = ['Sobre nós', 'Contato', 'FAQ'];
-const investir = [ 'Investimentos', 'Investimentos', 'Investimentos']
-const parceria = ['Parcerias', 'Parcerias', 'Parcerias']
-
+import { useAuth0 } from "@auth0/auth0-react";
+import { hexToRgb } from '@mui/material';
 const Wrapper = styled.div`
-font-family: "Lexend Tera", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 250;
-  font-style: normal;
-  text-transform: uppercase;
- @import url('https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap')
   
-`
-const StyledLogo = styled.img`
- width: 50px;
- margin-bottom: 7px;
+  font-family: 'Lexend Tera', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  margin-top: 4em;
+  
+`;
+const SpacedCNavItem = styled(CNavItem)`
+  margin-right: 4rem; /* Updated spacing */
+
+  &:last-child {
+    margin-right: 0; /* Ensure the last item does not have additional margin */
+  }
 `;
 
+const SpacedCDropdownToggle = styled(CDropdownToggle)`
+  margin-right: 4rem; /* Updated spacing */
+
+  &:last-child {
+    margin-right: 0; /* Ensure the last item does not have additional margin */
+  }
+`;
+
+const StyledCDropdown = styled(CDropdown)`
+   margin-right: 4rem; /* Updated spacing */
+
+  &:last-child {
+    margin-right: 0; /* Ensure the last item does not have additional margin */
+  }
+`;
+
+
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const navigate = useNavigate();
+  const [visible, setVisible] = useState(false);
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0(); // Use the useUser hook
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
-
-  return (
-    <Wrapper>
-    <AppBar position="static" sx={{ backgroundColor: 'white'}}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <StyledLogo  onClick={handleOpenNavMenu} src={logo} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'Lexend Tera',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'black',
-              textTransform: 'none',
-              textDecoration: 'none',
-              marginLeft: '20px'
-            }}
-          >
-            ECO
-          </Typography>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="./"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'Lexend Tera',
-              fontWeight: 300,
-              letterSpacing: '.3rem',
-              color: 'black',
-              textTransform: 'none',
-              textDecoration: 'none',
-              marginLeft: '-15px',
-            }}
-          >FUNDING</Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-            >
-          <Dropdown />
-            </Menu>
-            
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
+  
+return (
+  <Wrapper>
+    <CNavbar expand="lg" colorScheme="light" >
+      <CContainer fluid>
+        <CNavbarBrand href="#"><img src={LOGO} alt='a'style={{ height: '45px', marginRight: '12rem',marginLeft: '12rem' }}/></CNavbarBrand>
+        <CNavbarToggler onClick={() => setVisible(!visible)} />
+        <CCollapse className="navbar-collapse" visible={visible}>
+          <CNavbarNav>
+            <SpacedCNavItem>
+              <CNavLink href="#" active>
+                INICIO
+              </CNavLink>
+            </SpacedCNavItem>
           
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-           <Dropdown></Dropdown>
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
+            <StyledCDropdown variant="nav-item" popper={false}>
+              <CDropdownToggle color="secondary">SOBRE</CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem href="#">Action</CDropdownItem>
+                <CDropdownItem href="#">Another action</CDropdownItem>
+                <CDropdownDivider />
+                <CDropdownItem href="#">Something else here</CDropdownItem>
+              </CDropdownMenu>
+            </StyledCDropdown>
+            <SpacedCNavItem>
+              <CNavLink href="#" disabled>
+                INVESTIR
+              </CNavLink>
+            </SpacedCNavItem>
+            <SpacedCNavItem>
+              <CNavLink href="#">CONTATO</CNavLink>
+            </SpacedCNavItem>
+          </CNavbarNav>
+          <CNavbarNav className="ms-auto" style={{ marginRight: '4rem'}}>
           {isAuthenticated ? (
-              // If authenticated, show user menu with logout and other options
-              <>
-                <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt={user.name} src={user.picture} />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: '45px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={() => {
-                      if (setting === 'Logout') {
-                        logout(); // Use the logout method from useAuth0
-                      } else {
-                        handleCloseUserMenu();
-                      }
-                    }}>
-                      <Typography textAlign="center">{setting}</Typography>
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </>
+              <CDropdown variant="nav-item" popper={false}>
+                <SpacedCDropdownToggle color="secondary">
+                  {/* Display user's picture if authenticated */}
+                  <img src={user.picture} alt={user.name} style={{ height: '25px'}} />
+                </SpacedCDropdownToggle>
+                <CDropdownMenu>
+                  <CDropdownItem href="#" onClick={() => logout({ returnTo: window.location.origin })}>Logout</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
             ) : (
-              // If not authenticated, show login button
-              <button style={{ border: 'none'}}color="inherit" onClick={() => loginWithRedirect()}>
-                <CiUser style={{height: '25px', width: '25px', background: 'none' }} />
-              </button>
+              <CButton style={{ backgroundColor: 'transparent', border: 'none'}} onClick={() => loginWithRedirect()}><img src={User1} alt='ega' style={{ height: '25px' }}/></CButton>
             )}
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+          </CNavbarNav>
+          
+        </CCollapse>
+      </CContainer>
+    </CNavbar>
     </Wrapper>
-  );
-}
+  
+)
+};
 export default ResponsiveAppBar;

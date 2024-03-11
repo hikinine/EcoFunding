@@ -1,6 +1,12 @@
 import React from 'react';
 import { useThree } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
+import styled from 'styled-components';
+
+const Button = styled.button`
+        position: relative;
+        left: -50%
+    `;
 function ZoomButtons() {
     const { camera } = useThree();
     
@@ -18,8 +24,8 @@ function ZoomButtons() {
         
         <Html style={{ position: 'absolute', marginTop: '-35vh', zIndex: 100, display: 'flex', flexDirection: 'collumn'}}>
             
-            <button onClick={zoomIn}>ZoomIn</button>
-            <button onClick={zoomOut}>ZoomOut</button>
+            <Button onClick={zoomIn}>ZoomIn</Button>
+            <Button onClick={zoomOut}>ZoomOut</Button>
            
         </Html>
 

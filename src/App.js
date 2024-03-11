@@ -9,15 +9,26 @@ import Page2 from 'assets/pages/Page2';
 import Page3 from 'assets/pages/Page3';
 import Page4 from 'assets/pages/Page4';
 import Page5 from 'assets/pages/Page5';
+import { MarkerProvider } from './components/earth/MarkerContext';
 
-// name: 
-// domain: dev-fo5w6egbquu50h0p.us.auth0.com
-// clientID: 2rgsfqcqwDUVTEEDHJkOZPNL7jlQ4syi
-// client secret: 9blReTF9IgISIKPRz6aYdmQ4ZeiXmfwtTdbU4RsPVJHqErkaUGBm-7cgOwRWkcVr
+import { createGlobalStyle } from 'styled-components';
+
+   export const GlobalStyle = createGlobalStyle`
+     @import url('https://fonts.googleapis.com/css2?family=Lexend+Tera:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+     body {
+       margin: 0;
+       padding: 0;
+       font-family: 'Lexend Tera', sans-serif;
+     }
+   `;
+
 
 function App() {
   return (
+    <MarkerProvider>
     <div>
+      <GlobalStyle />
       <Routes> 
         <Route path="/" element={<HomePage />} /> 
         <Route path="/login" element={<Login />} />
@@ -29,6 +40,8 @@ function App() {
 
       </Routes>
     </div>
+    </MarkerProvider>
+    
   );
 }
 

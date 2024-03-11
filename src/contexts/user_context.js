@@ -1,15 +1,27 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+import React, { createContext, useContext, useState } from 'react';
 
-const UserContext = React.createContext();
-export const UserProvider = ({ children }) => {
-    const {isAutenticated, loginWithRedirect, logout, user, isLoading} = useAuth0();
-    
-    const [myUser,setMyUser]= useState(null)
-    
-    useEffect(()=>{
-        console.log(`isAutenticated: ${isAutenticated}`);
-        console.log(`user: ${user}`);
-        console.log(`isLoading: ${isLoading}`);
-    }, [isAutenticated] )
-}
+// Create a context
+const AuthContext = createContext();
+
+// Provider component
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null); // null when not logged in
+
+  // Simulate login
+  const login = () => {
+    setUser({ name: 'John Doe', picture: '/path/to/john-doe.jpg' });
+  };
+
+  // Simulate logout
+  const logout = () => {
+    setUser(null);
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export const useAuth = () => useContext(AuthContext);

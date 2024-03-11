@@ -9,8 +9,8 @@ const Container = styled.div`
     background-position: center;
     background-size: cover;
     height: 100vh;
-    margin-top: 8em;
-    margin-bottom: 8em;
+    margin-top: 400px;
+    
     
 `;
 const TextContainer = styled.div`
