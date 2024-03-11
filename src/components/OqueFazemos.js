@@ -10,6 +10,30 @@ import { MarkerProvider, useMarker } from './earth/MarkerContext';
 import { MediumAndDown } from './breakpoints';
 import EcoGiant from '../assets/FUNDO_GLOBO.jpg';
 
+
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== "undefined" ? window.innerWidth : 0,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+      });
+    }
+
+    window.addEventListener('resize', handleResize);
+    // Call at mount to ensure we have the initial size
+    handleResize();
+
+    // Cleanup on unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowSize;
+}
+
 // Styled Components
 const Container = styled.div`
   display: flex;
@@ -104,6 +128,7 @@ const OqueFazemos = () => {
   const controls = useAnimation();
   const { ref, inView } = useInView({ threshold: 0.1 });
   const { selectedMarker } = useMarker();
+  const { width } = useWindowSize(); // Use the custom hook
   useEffect(() => {
     console.log('Selected Marker changed:', selectedMarker);
   }, [selectedMarker]);
@@ -120,7 +145,7 @@ const OqueFazemos = () => {
   return (
     <Container>
       
-        <Mapa />
+      {width > 768 && <Mapa />}
       
       {showContent && (
         <Content show={showContent}>

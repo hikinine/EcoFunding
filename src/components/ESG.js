@@ -37,17 +37,13 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  min-height: 100vh; /* Ensures at least full viewport height */
   background-color: #242a32;
-  @media (max-width: ${breakpoints.tablet}) {
-    height: auto;
-    padding: 20px;
-    flex-direction: column;
-  }
-  * {
-    font-family: 'Montserrat', sans-serif;
-  }
+  width: 100%; /* Full width */
+  padding: 40px; /* Increase padding as needed */
 `;
+
+
 
 const Button = styled.button`
   padding: 10px;
@@ -71,33 +67,42 @@ const Button = styled.button`
 const ImageDisplay = styled.img`
   max-width: 800px;
   width: 100%;
+  height: auto; // Maintain aspect ratio
+  max-height: 600px; // Set a maximum height for larger screens
+  margin-left: -6em;
   border-top-right-radius: 128px;
   padding: 5px;
   z-index: 1;
+
   @media (max-width: ${breakpoints.tablet}) {
     max-width: 400px;
+    margin-left: -4em;
+    max-height: 250px; // Adjust height for tablet
   }
   @media (max-width: ${breakpoints.mobile}) {
     max-width: 200px;
+    margin-left: 0em;
+    max-height: 150px; // Adjust height for mobile
   }
 `;
+
 
 const TextDisplay = styled.p`
   text-align: start;
   color: white;
-
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   word-break: break-word;
   height: auto;
+  width: 100%; 
   @media (min-width: ${breakpoints.desktop}) {
-    max-width: 500px;
+    max-width: 800px; /* Optional: Consider if you need a max-width or want it to be fully flexible */
   }
   @media (max-width: ${breakpoints.tablet}) {
-    max-width: 400px;
+    max-width: 600px; /* Adjust according to your responsive design needs */
   }
   @media (max-width: ${breakpoints.mobile}) {
-    max-width: 200px;
+    max-width: 200px; /* Adjust according to your responsive design needs */
   }
 `;
  
@@ -109,6 +114,8 @@ const TextImage = styled(motion.div)`
   width: 100%;
   @media (max-width: ${breakpoints.tablet}) {
     flex-direction: column;
+    align-items: stretch;
+    margin-left: 300px;
   }
 `;
 
@@ -140,23 +147,39 @@ const CollumnModel = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 2em;
+  width: 100%; /* Ensure it takes full width of its parent */
 `;
+
 const TextRectangle = styled.div`
-  
+  flex-grow: 1;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   margin-top: -0.5em;
-  display: flex; /* Use Flexbox */
-  /* Center horizontally */
-  align-items: center; /* Center vertically */
-  padding: 20px; /* Add some padding */
+  display: flex;
+  align-items: center;
+  padding: 20px; /* Adjust padding as necessary */
   flex-direction: column;
+  width: 100%;
+  min-height: 200px; /* Example minimum height */
 `;
+const TextRectangle2 = styled.div`
+  flex-grow: 1;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  margin-top: -0.5em;
+  display: flex;
+  color: white;
+  align-items: center;
+  padding: 20px; /* Adjust padding as necessary */
+  flex-direction: column;
+  width: 100%;
+  min-height: 200px; /* Example minimum height */
+`;
+
 const RowModel = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%;
+  justify-content: space-between; /* This keeps existing spacing behavior */
 `;
 // New styles for positioning
 
@@ -314,8 +337,8 @@ const ESG = () => {
           
           >
         <ImageDisplay src={images[currentIndex]?.src} alt={images[currentIndex]?.alt} />
-        <TextRectangle>
-        <TextDisplay>
+        <TextRectangle2>
+       
             {/* Display the styled topico */}
             <div dangerouslySetInnerHTML={stylePhrasesGreen(images[currentIndex].topico, phrasesToStyleGreen)}></div>
             {/* Split and map the text content as before */}
@@ -324,11 +347,11 @@ const ESG = () => {
                 {line}<br />
               </React.Fragment>
             ))}
-          </TextDisplay>
+         
           <Link to={`/Page${currentIndex + 1}`}>
               <Button>Saiba Mais</Button>
             </Link>
-        </TextRectangle>
+        </TextRectangle2>
       </TextImage>
       </RowModel>
       
