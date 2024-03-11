@@ -44,6 +44,7 @@ const Container = styled.div`
   height: 80vh;
   ${MediumAndDown} {
     flex-direction: column;
+    height: auto;
   }
   * {
     font-family: 'Lexend Tera', sans-serif;
@@ -61,7 +62,7 @@ const Button = styled.button`
   border-radius: 12px;
   border: none;
   width: 20vw;
-  align-self: end;
+  align-self: flex-end;
   cursor: pointer;
 `;
 
