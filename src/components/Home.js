@@ -13,6 +13,28 @@ import folhadireitabaixo from '../assets/FolhaDireitaBaixo.png';
 import homeSection from '../assets/HomeSection.png';
 import '../components/home.css';
 
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== "undefined" ? window.innerWidth : 0,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+      });
+    }
+
+    window.addEventListener('resize', handleResize);
+    // Call at mount to ensure we have the initial size
+    handleResize();
+
+    // Cleanup on unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowSize;
+}
 
 
 
@@ -22,7 +44,7 @@ const Wrapper = styled.section`
   width: 100%;
   height: auto;
   min-height: calc(100% + 10vh);
-  overflow: hidden;
+  
   margin-top: 4em;
   gap: 8em;
   * {
@@ -99,16 +121,7 @@ const ResponsiveFolhaDireita = styled.img`
   transition: transform 0.35s ease-out;
 `;
 
-const SliderContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 80vh;
-  overflow: hidden;
-  background-color: white;
-  
 
-
-`;
 
 const ParallaxFolha = styled.img`
   width: 25%;
@@ -188,17 +201,18 @@ const Wrapper2 = styled.div`
   `;
 
 const Home = ({ imgurl, altText, title, paragraph, button, transform }) => {
+  const { width } = useWindowSize(); // Use the custom hook
   return (
     <Wrapper>
       <Container>
       <FrameText>
         <h1>{title}</h1>
         <p>{paragraph}</p>
-        <button style={{ padding: '10px 10px' }}>{button}</button>
+        <button style={{ padding: '10px 10px', color: "black", borderColor: '#2ebc15' }}>{button}</button>
       </FrameText>
       <FrameImage>
         <ResponsiveImage src={imgurl} alt={altText} />
-        <ResponsiveFolhaDireita src={folhadireitabaixo} style={{ transform: transform }}/>
+        {width > 768 &&<ResponsiveFolhaDireita src={folhadireitabaixo} style={{ transform: transform }}/>}
       </FrameImage>
       </Container>
     </Wrapper>

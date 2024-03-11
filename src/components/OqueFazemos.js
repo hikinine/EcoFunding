@@ -52,6 +52,7 @@ const Container = styled.div`
 
 const Content = styled.div`
   display: ${(props) => (props.show ? 'block' : 'none')};
+  margin-right: 1rem;
 `;
 
 const Button = styled.button`
@@ -60,19 +61,20 @@ const Button = styled.button`
   border-radius: 12px;
   border: none;
   width: 20vw;
- 
+  align-self: end;
   cursor: pointer;
 `;
 
 const Header = styled.h1`
-  font-size: 24px;
+  font-size: 64px;
   margin-bottom: 10px;
-  
+  margin-left: 3rem;
   color: white;
+  text-align: center;
   font-weight: 500;
   font-family: 'Lexend Tera', sans-serif !important;
   ${MediumAndDown} {
-    font-size: 20px;
+    font-size: 32px;
     margin-left: 2rem;
   }
 `;
@@ -84,6 +86,7 @@ const Paragraph = styled(motion.p)`
   color: white;
   font-weight: lighter;
   font-family: 'Lexend Tera', sans-serif !important;
+  text-align: end;
   ${MediumAndDown} {
     font-size: 20px;
     margin-left: 2rem;

@@ -1,4 +1,3 @@
-
 import { useCallback } from 'react';
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
@@ -46,8 +45,7 @@ const Container = styled.div`
 
 
 const Button = styled.button`
-  padding: 10px;
-  margin: 10px;
+  padding: auto;
   margin-bottom: 30px;
   height: 60px;
   width: auto;
@@ -73,6 +71,7 @@ const ImageDisplay = styled.img`
   border-top-right-radius: 128px;
   padding: 5px;
   z-index: 1;
+  margin-bottom: -45px;
 
   @media (max-width: ${breakpoints.tablet}) {
     max-width: 400px;
@@ -115,7 +114,7 @@ const TextImage = styled(motion.div)`
   @media (max-width: ${breakpoints.tablet}) {
     flex-direction: column;
     align-items: stretch;
-    margin-left: 300px;
+    margin-left: 100px;
   }
 `;
 
@@ -138,6 +137,7 @@ const ButtonDiv = styled.div`
   align-items: center;
   margin-top: 3em;
   margin-bottom: -1em;
+  
   @media (max-width: ${breakpoints.tablet}) {
     width: 100%; /* Adjust if necessary */
   }
@@ -151,7 +151,7 @@ const CollumnModel = styled.div`
 `;
 
 const TextRectangle = styled.div`
-  flex-grow: 1;
+  flex-grow: 0;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   margin-top: -0.5em;
@@ -163,7 +163,7 @@ const TextRectangle = styled.div`
   min-height: 200px; /* Example minimum height */
 `;
 const TextRectangle2 = styled.div`
-  flex-grow: 1;
+  
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   margin-top: -0.5em;
@@ -173,7 +173,15 @@ const TextRectangle2 = styled.div`
   padding: 20px; /* Adjust padding as necessary */
   flex-direction: column;
   width: 100%;
+  text-align: end;
+  min-width: 550px;
   min-height: 200px; /* Example minimum height */
+  @media (max-width: ${breakpoints.tablet}) {
+    min-width: 400px; /* Adjust if necessary */
+  }
+  @media (max-width: ${breakpoints.mobile}) {
+    min-width: 200px; /* Adjust if necessary */
+  }
 `;
 
 const RowModel = styled.div`
@@ -190,42 +198,35 @@ const ESG = () => {
     { 
       src: image1, 
       alt: 'Image 1',  
-      text: `Os créditos de carbono são parte essencial do esforço global para combater as mudanças climáticas. Eles funcionam como instrumentos financeiros que representam a redução de emissões de gases de efeito estufa (GEE). Abaixo, detalhamos uma visão geral sobre os créditos de carbono, seu funcionamento e importância.
-      • Unidade de Medida: Um crédito de carbono equivale à redução de uma tonelada métrica de dióxido de carbono ou de um gás de efeito estufa equivalente. 
-      • Moeda Ambiental: Podem ser vistos como uma "moeda" que quantifica o esforço de redução ou remoção  de emissões de gases de efeito estufa.`,
+      text: `A chave para um planeta mais verde! Representam uma tonelada métrica de CO2 reduzida, atuando como moeda ambiental vital na luta contra as mudanças climáticas. Entenda melhor sua função e impacto. Clique no "Saiba Mais" e leia sobre o tópico`,
       button: 'Saiba Mais',
       topico: 'O que são Créditos de Carbono?' 
     },
     { 
       src: image2, 
       alt: 'Image 2',  
-      text: `Sustentabilidade é um conceito fundamental na era atual, refletindo a necessidade de desenvolvermos práticas e políticas que garantam a saúde e a viabilidade do nosso planeta para as gerações futuras. Trata-se de um equilíbrio entre crescimento econômico, cuidado com o meio ambiente e bem-estar social, formando os pilares essenciais para uma sociedade mais justa e um mundo mais habitável.`,
+      text: `O futuro começa agora! É o equilíbrio perfeito entre progresso econômico, proteção ambiental e bem-estar social, garantindo um mundo melhor para as próximas gerações.Clique no "Saiba Mais" e leia sobre o tópico`,
       button: 'Saiba Mais',
       topico: 'Sustentabilidade: Um Compromisso com o Futuro' 
     },
     { 
       src: image3, 
       alt: 'Image 3',  
-      text: `A responsabilidade ambiental é um princípio essencial para a preservação do nosso planeta, exigindo a conscientização e ação de indivíduos, empresas e governos na promoção de um futuro mais sustentável. Este conceito abrange a obrigação de minimizar o impacto negativo das atividades humanas no meio ambiente, assegurando a conservação dos recursos naturais para as presentes e futuras gerações.`,
+      text: `Este princípio vital nos convoca a minimizar nosso impacto no planeta, unindo indivíduos, empresas e governos na construção de um futuro sustentável.Clique no "Saiba Mais" e leia sobre o tópico`,
       button: 'Saiba Mais',
       topico: 'Responsabilidade Ambiental'
     },
     { 
       src: image4, 
       alt: 'Image 4',  
-      text: `A pegada de carbono mede o impacto ambiental das atividades humanas, quantificando a emissão total de gases de efeito estufa (GEEs), como CO2, CH4, N2O, entre outros. Essencial no âmbito corporativo, essa métrica é crucial para entender e mitigar o contributo das empresas ao aquecimento global e mudanças climáticas. Os GEEs intensificam o efeito estufa, elevando a temperatura global, o que resulta em derretimento de gelo polar, alterações climáticas significativas e eventos meteorológicos extremos.`,
+      text: ` Entenda e Atue! Medindo o total de GEEs emitidos por atividades humanas, esta métrica é chave para combater o aquecimento global. Empresas têm papel crucial na redução dessas emissões, impactando diretamente no futuro do nosso planeta.Clique no "Saiba Mais" e leia sobre o tópico`,
       button: 'Saiba Mais',
-      topico: 'Entendendo a Pegada de Carbono: Impacto e Gestão'
+      topico: 'Entendendo a Pegada de Carbono'
     },
     { 
       src: image5, 
       alt: 'Image 5',  
-      text: `A energia renovável é o pilar central para uma transição energética sustentável e para o combate às mudanças 
-      climáticas. Diferente dos combustíveis fósseis, as fontes renováveis, como solar, eólica, hidráulica e geotérmica, 
-      fornecem energia limpa, reduzindo as emissões de gases de efeito estufa. A mudança para energias renováveis não 
-      só beneficia o meio ambiente, mas também impulsiona a economia, diminuindo custos de energia a longo prazo e 
-      criando novas oportunidades de emprego.
-      `,
+      text: `As fontes renováveis como solar, eólica, e hidráulica, são a chave para uma transição energética sustentável, reduzindo emissões e impulsionando a economia.Clique no "Saiba Mais" e leia sobre o tópico`,
       button: 'Saiba Mais',
       topico: 'Energia Renovável: Sustentabilidade e Inovação'
     },
@@ -242,7 +243,7 @@ const ESG = () => {
   const stylePhrasesGreen = (text, phrasesToStyle) => {
     let styledText = text;
     phrasesToStyle.forEach((phrase) => {
-      styledText = styledText.replace(new RegExp(`(${phrase})`, 'gi'), `<span style="color: green; font-weight: bold; font-size: 21px;">$1</span>`);
+      styledText = styledText.replace(new RegExp(`(${phrase})`, 'gi'), `<span style="color: #2ebc15; font-weight: bold; font-size: 21px;">$1</span>`);
     });
     return { __html: styledText }; // Return as an object suitable for dangerouslySetInnerHTML
   };
