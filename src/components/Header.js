@@ -2,58 +2,58 @@
 import React, { useState } from 'react';
 import { CNavbar, CContainer, CNavbarBrand, CNavbarToggler, CCollapse, CNavbarNav, CNavItem, CNavLink, CDropdown, CDropdownToggle, CDropdownMenu, CDropdownItem, CDropdownDivider, CForm, CFormInput, CButton } from '@coreui/react';
 import '@coreui/coreui/dist/css/coreui.min.css';
-import { useAuth } from '../contexts/user_context'; // Import useUser hook
+// Import other necessary hooks and assets
 import LOGO from '../assets/LOGOTIPO.svg';
 import User1 from '../assets/user.svg';
 import styled from 'styled-components';
 import { useAuth0 } from "@auth0/auth0-react";
-import { hexToRgb } from '@mui/material';
+
+// Styled components definitions
 const Wrapper = styled.div`
-  
   font-family: 'Lexend Tera', sans-serif;
   font-weight: 500;
   font-size: 12px;
   margin-top: 4em;
-  
 `;
+
 const SpacedCNavItem = styled(CNavItem)`
-  margin-right: 4rem; /* Updated spacing */
+  margin-right: 4rem;
 
   &:last-child {
-    margin-right: 0; /* Ensure the last item does not have additional margin */
-  }
-`;
-
-const SpacedCDropdownToggle = styled(CDropdownToggle)`
-  margin-right: 4rem; /* Updated spacing */
-
-  &:last-child {
-    margin-right: 0; /* Ensure the last item does not have additional margin */
+    margin-right: 0;
   }
 `;
 
 const StyledCDropdown = styled(CDropdown)`
-   margin-right: 4rem; /* Updated spacing */
+  margin-right: 4rem;
 
   &:last-child {
-    margin-right: 0; /* Ensure the last item does not have additional margin */
+    margin-right: 0;
   }
 `;
 
+const SpacedCDropdownToggle = styled(CDropdownToggle)`
+  margin-right: 4rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+`;
 
 function ResponsiveAppBar() {
   const [visible, setVisible] = useState(false);
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0(); // Use the useUser hook
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
 
-  
-return (
-  <Wrapper>
-    <CNavbar expand="lg" colorScheme="light" >
-      <CContainer fluid>
-        <CNavbarBrand href="#"><img src={LOGO} alt='a'style={{ height: '45px', marginRight: '8rem', marginLeft: '8rem' }}/></CNavbarBrand>
-        <CNavbarToggler onClick={() => setVisible(!visible)} />
-        <CCollapse className="navbar-collapse" visible={visible}>
-          <CNavbarNav>
+  return (
+    <Wrapper>
+      <CNavbar expand="lg" colorScheme="light">
+        <CContainer fluid>
+          <CNavbarBrand href="#">
+            <img src={LOGO} alt='Logo' style={{ height: '45px' }}/>
+          </CNavbarBrand>
+          <CNavbarToggler onClick={() => setVisible(!visible)} />
+          <CCollapse className="navbar-collapse" visible={visible}>
+            <CNavbarNav>
             <SpacedCNavItem>
               <CNavLink href="#" active>
                 INICIO

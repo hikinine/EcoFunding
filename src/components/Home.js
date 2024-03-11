@@ -52,7 +52,9 @@ const FrameImage = styled.div`
   position: relative;
   margin-left: 2em;
   width: 700px;
-  height: 500px;`;
+  height: 500px;
+  overflow: visible;
+`;
 
 
 const ResponsiveImage = styled.img`
@@ -88,11 +90,12 @@ const ResponsiveFolhaMeio = styled.img`
 
 const ResponsiveFolhaDireita = styled.img`
   position: absolute;
-  width: 50%;
-  height: 100%;
+  width: 30%;
+  height: 30%;
   z-index: 1000;
-  left: 250px;
-  top: 300px;
+  right: 0;
+  bottom: 0;
+  
   transition: transform 0.35s ease-out;
 `;
 
@@ -184,7 +187,7 @@ const Wrapper2 = styled.div`
     }
   `;
 
-const Home = ({ imgurl, altText, title, paragraph, button }) => {
+const Home = ({ imgurl, altText, title, paragraph, button, transform }) => {
   return (
     <Wrapper>
       <Container>
@@ -195,6 +198,7 @@ const Home = ({ imgurl, altText, title, paragraph, button }) => {
       </FrameText>
       <FrameImage>
         <ResponsiveImage src={imgurl} alt={altText} />
+        <ResponsiveFolhaDireita src={folhadireitabaixo} style={{ transform: transform }}/>
       </FrameImage>
       </Container>
     </Wrapper>
@@ -230,7 +234,22 @@ const slidesData = [
 
 const HomeCarousel = () => {
   const [slideHeight, setSlideHeight] = useState(40); // Default slide height
+  const [mousePosition, setMousePosition] = useState({ mouseX: 0, mouseY: 0 });
+  const folhaCimaRef = useRef(null);
+  const folhaRef = useRef(null);
 
+  const handleMouseMove = (event) => {
+    const { clientX, clientY } = event;
+    const { innerWidth, innerHeight } = window;
+
+    const mouseX = (clientX - innerWidth / 2) / innerWidth * 100; // Percentage from the center
+    const mouseY = (clientY - innerHeight / 2) / innerHeight * 100;
+
+    setMousePosition({ mouseX, mouseY });
+
+    if (folhaCimaRef.current) folhaCimaRef.current.style.transform = `translate(${mouseX * 0.3}%, ${mouseY * 0.3}%)`;
+    if (folhaRef.current) folhaRef.current.style.transform = `translate(${mouseX * 0.3}%, ${mouseY * 0.3}%)`;
+  };
   const updateDimensions = () => {
     const windowWidth = window.innerWidth;
     if (windowWidth < 768) {
@@ -253,7 +272,8 @@ const HomeCarousel = () => {
       naturalSlideHeight={slideHeight}
       totalSlides={slidesData.length}
     >
-        <Wrapper2>
+        <Wrapper2 onMouseMove={handleMouseMove}>
+        <ParallaxFolhaCima ref={folhaCimaRef} src={folhaesquerdacima} />
           <Slider>
             {slidesData.map((slide, index) => (
               <Slide index={index} key={slide.key}>
@@ -263,6 +283,7 @@ const HomeCarousel = () => {
                   title={slide.title}
                   paragraph={slide.paragraph}
                   button={slide.button}
+                  transform={`translate(${mousePosition.mouseX * 0.3}%, ${mousePosition.mouseY * 0.3}%)`}
                 />
               </Slide>
             ))}
@@ -270,6 +291,7 @@ const HomeCarousel = () => {
           <div className="controls">
             <DotGroup style={{ marginBottom: '50px' }} className="dot-group" />
           </div>
+          <ParallaxFolha ref={folhaRef} src={folhaesquerda} alt="folha" />
         </Wrapper2>
       </CarouselProvider>
     );
