@@ -20,9 +20,10 @@ const Wrapper = styled.section`
   background: white;
   text-align: center;
   width: 100%;
-  height: 70vh;
+  height: auto;
+  min-height: calc(100% + 10vh);
   overflow: hidden;
-  margin-top: 8em;
+  margin-top: 4em;
   gap: 8em;
   * {
     font-family: 'Montserrat', sans-serif;
@@ -42,7 +43,8 @@ const FrameText = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 12em;
+  margin-right: 2em;
+  margin-left: 2em;
   width: 500px;
 `;
 

@@ -50,7 +50,7 @@ return (
   <Wrapper>
     <CNavbar expand="lg" colorScheme="light" >
       <CContainer fluid>
-        <CNavbarBrand href="#"><img src={LOGO} alt='a'style={{ height: '45px', marginRight: '12rem',marginLeft: '12rem' }}/></CNavbarBrand>
+        <CNavbarBrand href="#"><img src={LOGO} alt='a'style={{ height: '45px', marginRight: '8rem', marginLeft: '8rem' }}/></CNavbarBrand>
         <CNavbarToggler onClick={() => setVisible(!visible)} />
         <CCollapse className="navbar-collapse" visible={visible}>
           <CNavbarNav>

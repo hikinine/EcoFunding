@@ -1,30 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CAccordion, CAccordionItem, CAccordionHeader, CAccordionBody } from '@coreui/react';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-// Add this global style for vertical dots
-import { createGlobalStyle } from 'styled-components';
-
-const GlobalStyles = createGlobalStyle`
-  .slick-vertical .slick-dots {
-    display: block !important;
-    height: auto;
-    position: absolute;
-    top: 0;
-    right: -25px; // Adjust as needed to place dots on the right side of the slider
-    bottom: 0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .slick-vertical .slick-dots li {
-    margin: 3px 0; // Adjust spacing between dots
-  }
-`;
 
 const Container = styled.div`
   display: flex;
@@ -42,9 +18,15 @@ const Content = styled.div`
   margin: 20px 80px;
 `;
 
-const SwiperContainer = styled.div`
+const ScrollContainer = styled.div`
   width: 60%;
+  height: 80%; // Adjust based on your needs
+  overflow-y: auto; // Enables vertical scrolling
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
+  padding: 20px; // Adds some padding inside the scroll container
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); // Optional: adds a shadow for better depth perception
 `;
 
 const Header = styled.h1`
@@ -80,71 +62,63 @@ const StyledAccordionBody = styled(CAccordionBody)`
 `;
 
 const FAQ = () => {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        vertical: true,
-        verticalSwiping: true,
-        adaptiveHeight: true,
-        arrows: false, // Consider removing arrows for a cleaner vertical navigation
-    };
-
     return (
         <>
-          <GlobalStyles />
         <Container>
             <Content>
-            <Header>FAQ</Header>
-            <Paragraph>Bem-vindo à seção de Perguntas Frequentes (FAQ) da EcoFunding! Aqui, reunimos respostas para as dúvidas mais comuns sobre nossa plataforma, processos e como você pode se envolver. Se você tiver alguma questão que não esteja coberta aqui, não hesite em nos contatar.</Paragraph>
+                <Header>FAQ</Header>
+                <Paragraph>Bem-vindo à seção de Perguntas Frequentes (FAQ) da EcoFunding! Aqui, reunimos respostas para as dúvidas mais comuns sobre nossa plataforma, processos e como você pode se envolver. Se você tiver alguma questão que não esteja coberta aqui, não hesite em nos contatar.</Paragraph>
             </Content>
-            <SwiperContainer>
-                <Slider {...settings}>
-                    {/* Each accordion item wrapped in a div for the slider */}
-                    <div>
-                        <StyledAccordion flush>
-                            <StyledAccordionItem itemKey={1}>
-                                <StyledAccordionHeader>Como posso ter certeza de que meu investimento está ajudando o meio ambiente?</StyledAccordionHeader>
-                                <StyledAccordionBody>
-                                    <ul>
-                                        <li><strong>Relatórios de Impacto:</strong> Acompanhe o impacto positivo do seu investimento com relatórios detalhados.</li>
-                                        <li><strong>Certificações:</strong> Projetos certificados por órgãos renomados garantem sua confiabilidade.</li>
-                                    </ul>
-                                </StyledAccordionBody>
-                            </StyledAccordionItem>
-                        </StyledAccordion>
-                    </div>
-                    <div>
-                        <StyledAccordion flush>
-                            <StyledAccordionItem itemKey={1}>
-                                <StyledAccordionHeader>Como posso ter certeza de que meu investimento está ajudando o meio ambiente?</StyledAccordionHeader>
-                                <StyledAccordionBody>
-                                    <ul>
-                                        <li><strong>Relatórios de Impacto:</strong> Acompanhe o impacto positivo do seu investimento com relatórios detalhados.</li>
-                                        <li><strong>Certificações:</strong> Projetos certificados por órgãos renomados garantem sua confiabilidade.</li>
-                                    </ul>
-                                </StyledAccordionBody>
-                            </StyledAccordionItem>
-                        </StyledAccordion>
-                    </div>
-                    <div>
-                        <StyledAccordion flush>
-                            <StyledAccordionItem itemKey={1}>
-                                <StyledAccordionHeader>Como posso ter certeza de que meu investimento está ajudando o meio ambiente?</StyledAccordionHeader>
-                                <StyledAccordionBody>
-                                    <ul>
-                                        <li><strong>Relatórios de Impacto:</strong> Acompanhe o impacto positivo do seu investimento com relatórios detalhados.</li>
-                                        <li><strong>Certificações:</strong> Projetos certificados por órgãos renomados garantem sua confiabilidade.</li>
-                                    </ul>
-                                </StyledAccordionBody>
-                            </StyledAccordionItem>
-                        </StyledAccordion>
-                    </div>
-                    {/* Repeat for other accordion items */}
-                </Slider>
-            </SwiperContainer>
+            <ScrollContainer>
+                <StyledAccordion flush>
+                    <StyledAccordionItem itemKey={1}>
+                        <StyledAccordionHeader>Como posso ter certeza de que meu investimento está ajudando o meio ambiente?</StyledAccordionHeader>
+                        <StyledAccordionBody>
+                            <ul>
+                                <li><strong>Relatórios de Impacto:</strong> Acompanhe o impacto positivo do seu investimento com relatórios detalhados.</li>
+                                <li><strong>Certificações:</strong> Projetos certificados por órgãos renomados garantem sua confiabilidade.</li>
+                            </ul>
+                        </StyledAccordionBody>
+                    </StyledAccordionItem>
+                    <StyledAccordionItem itemKey={1}>
+                        <StyledAccordionHeader>Como posso saber o retorno do meu investimento ao meio ambiente?</StyledAccordionHeader>
+                        <StyledAccordionBody>
+                            <ul>
+                                <li><strong>Créditos Ambientais:</strong> Receba créditos que representam a quantia de CO2 que você ajudou a reduzir.</li>
+                                <li><strong>Relatórios de Impacto:</strong> Acompanhe os resultados tangíveis do projeto em termos de sustentabilidade.</li>
+                            </ul>
+                        </StyledAccordionBody>
+                    </StyledAccordionItem>
+                    <StyledAccordionItem itemKey={1}>
+                        <StyledAccordionHeader>Como a Ecofunding avalia e seleciona projetos para investimento?</StyledAccordionHeader>
+                        <StyledAccordionBody>
+                            <ul>
+                                <li><strong>Critérios rigorosos:</strong> Análise de viabilidade, impacto ambiental e social, equipe qualificada e histórico do proponente.</li>
+                                <li><strong>Comitê de especialistas:</strong> Seleção criteriosa dos projetos com maior potencial de impacto positivo.</li>
+                            </ul>
+                        </StyledAccordionBody>
+                    </StyledAccordionItem>
+                    <StyledAccordionItem itemKey={1}>
+                        <StyledAccordionHeader>Qual a garantia de que meu investimento me retornará créditos ambientais?</StyledAccordionHeader>
+                        <StyledAccordionBody>
+                            <ul>
+                                <li><strong>Projetos certificados:</strong> Apenas projetos com certificações de órgãos renomados garantem a geração de créditos.</li>
+                                <li><strong>Processo rigoroso:</strong> Rigorosa avaliação e acompanhamento garantem a entrega dos créditos.</li>
+                            </ul>
+                        </StyledAccordionBody>
+                    </StyledAccordionItem>
+                    <StyledAccordionItem itemKey={1}>
+                        <StyledAccordionHeader>Como posso monitorar o progresso e o impacto do meu investimento? </StyledAccordionHeader>
+                        <StyledAccordionBody>
+                            <ul>
+                                <li><strong>Plataforma online:</strong> Acompanhe o andamento do projeto, resultados e impacto ambiental em tempo real.</li>
+                                <li><strong>Relatórios periódicos:</strong> Receba relatórios detalhados com fotos, vídeos e indicadores de performance.</li>
+                            </ul>
+                        </StyledAccordionBody>
+                    </StyledAccordionItem>
+                    
+                </StyledAccordion>
+            </ScrollContainer>
         </Container>
         </>
     );

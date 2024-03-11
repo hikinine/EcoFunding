@@ -18,7 +18,11 @@ const MainContent = styled.main`
     gap: 0px;
   }
 `;
-
+const Collumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
 const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
@@ -30,7 +34,7 @@ const Sidebar = styled.aside`
 
 const ContentWrapper = styled.section`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 68%;
   margin-left: 20px;
   @media (max-width: 991px) {
@@ -65,11 +69,12 @@ const IconImg = styled.img`
   width: 27px;
 `;
 
-const Navbar = styled.nav`
+const Navbar = styled.div`
   display: flex;
   flex-direction: column;
   color: #828282;
   font-size: 13px;
+  margin-right: 6rem;
   & > div {
     color: #fff;
     margin-top: 49px;
@@ -153,6 +158,14 @@ function Rodape() {
             <div>Seja um parceiro Eco</div>
             <div>Contato</div>
           </Navbar>
+          <Navbar>
+            <div>EMPRESA</div>
+            <div>Início</div>
+            <div>Investir</div>
+            <div>Seja um parceiro Eco</div>
+            <div>Contato</div>
+          </Navbar>
+          <Collumn>
           <NewsletterSection>
             <div>
               SE INSCREVA NA NOSSA{" "}
@@ -174,6 +187,7 @@ function Rodape() {
             consectetur. At at sed amet pellentesque eget amet sed lectus. Urna
             mauris vitae egestas purus ac...
           </ContentText>
+          </Collumn>
         </ContentWrapper>
       </MainContent>
     </StyledHeader>
