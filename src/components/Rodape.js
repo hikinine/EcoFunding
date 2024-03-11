@@ -128,7 +128,7 @@ const NewsletterSection = styled.section`
     font-weight: 200;
   }
   @media (max-width: 991px) {
-    display: none;
+    display: none ;
   }
 `;
 
@@ -163,6 +163,9 @@ const ContentText = styled.p`
   color: #465363;
   font-size: 13px;
   line-height: 1.6;
+  @media (max-width: 991px) {
+    display: none ;
+  }
 `;
 
 function Rodape() {
