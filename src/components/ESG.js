@@ -228,7 +228,7 @@ const ESG = () => {
       alt: 'Image 5',  
       text: `As fontes renováveis como solar, eólica, e hidráulica, são a chave para uma transição energética sustentável, reduzindo emissões e impulsionando a economia.Clique no "Saiba Mais" e leia sobre o tópico`,
       button: 'Saiba Mais',
-      topico: 'Energia Renovável: Sustentabilidade e Inovação'
+      topico: 'Energias Renováveis: Sustentável e Inovador'
     },
     // Add more image objects as needed
   ];
@@ -237,7 +237,7 @@ const ESG = () => {
     "Sustentabilidade",
     "Responsabilidade Ambiental",
     "Pegada de Carbono",
-    "Energia Renovável"
+    "Energias Renováveis"
   ];
   
   const stylePhrasesGreen = (text, phrasesToStyle) => {

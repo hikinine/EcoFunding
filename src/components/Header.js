@@ -39,6 +39,12 @@ const SpacedCDropdownToggle = styled(CDropdownToggle)`
     margin-right: 0;
   }
 `;
+const CenteredCContainer = styled(CContainer)`
+  display: flex; // Ensures the content can be flexibly laid out
+  justify-content: center; // Centers the children (navbar brand)
+  padding-left: 4rem; // Applies desired margin on the left
+  
+`;
 
 function ResponsiveAppBar() {
   const [visible, setVisible] = useState(false);
@@ -47,7 +53,7 @@ function ResponsiveAppBar() {
   return (
     <Wrapper>
       <CNavbar expand="lg" colorScheme="light">
-        <CContainer fluid>
+        <CenteredCContainer fluid>
           <CNavbarBrand href="#">
             <img src={LOGO} alt='Logo' style={{ height: '45px' }}/>
           </CNavbarBrand>
@@ -95,7 +101,7 @@ function ResponsiveAppBar() {
           </CNavbarNav>
           
         </CCollapse>
-      </CContainer>
+      </CenteredCContainer>
     </CNavbar>
     </Wrapper>
   

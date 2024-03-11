@@ -4,11 +4,10 @@ import styled from 'styled-components';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import 'react-animation/dist/keyframes.css';
-
 import Mapa from './Mapa';
-import { MarkerProvider, useMarker } from './earth/MarkerContext';
+import { useMarker } from './earth/MarkerContext';
 import { MediumAndDown } from './breakpoints';
-import EcoGiant from '../assets/FUNDO_GLOBO.jpg';
+import Fundo from '../assets/FUNDO_GLOBO.jpg';
 import { Link } from 'react-router-dom';
 
 function useWindowSize() {
@@ -38,12 +37,11 @@ function useWindowSize() {
 const Container = styled.div`
   display: flex;
   align-items: center;
-  background-image: url(${EcoGiant});
+  background-image: url(${Fundo});
   background-position: center;
   background-size: cover;
   width: 100%;
   max-width: 100%;
-  overflow: auto;
   height: 80vh;
   ${MediumAndDown} {
     flex-direction: column;
@@ -96,18 +94,7 @@ const Paragraph = styled(motion.p)`
     margin-left: 2rem;
   }
 `;
-const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
-`;
+
 
 const OverlayContent = styled.div`
   background: white;
@@ -122,7 +109,10 @@ const ColumnFlex = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
+const ButtonContainer = styled.div`
+  width: 100%; // Ensures the container spans the full width
+  text-align: right; // Aligns the button to the right
+`;
 // Animation Variants
 const slideInFromLeft = {
   hidden: { x: -100, opacity: 0.5 },
@@ -166,7 +156,9 @@ const OqueFazemos = () => {
             >
               Na Ecofunding, nosso compromisso é com o futuro do planeta. Unimos tecnologia, sustentabilidade e finanças para criar um impacto ambiental positivo.
             </Paragraph>
+            <ButtonContainer>
             <Link to="/SaibaMais" > <Button>Saiba Mais</Button> </Link>
+            </ButtonContainer>
           </ColumnFlex>
         </Content>
       )}
