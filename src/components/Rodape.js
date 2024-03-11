@@ -1,5 +1,29 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
+
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== "undefined" ? window.innerWidth : 0,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+      });
+    }
+
+    window.addEventListener('resize', handleResize);
+    // Call at mount to ensure we have the initial size
+    handleResize();
+
+    // Cleanup on unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowSize;
+}
 
 const StyledHeader = styled.header`
   background-color: #242a32;
@@ -138,6 +162,7 @@ const ContentText = styled.p`
 `;
 
 function Rodape() {
+  const width = useWindowSize();
   return (
     <StyledHeader>
       <MainContent>
@@ -166,7 +191,7 @@ function Rodape() {
             <div>Contato</div>
           </Navbar>
           <Collumn>
-          <NewsletterSection>
+          { width > 768 && <NewsletterSection>
             <div>
               SE INSCREVA NA NOSSA{" "}
               <span style={{ fontWeight: 600, color: "rgba(46,188,21,1)" }}>
@@ -182,6 +207,7 @@ function Rodape() {
               <SubmitButton>Enviar</SubmitButton>
             </NewsletterForm>
           </NewsletterSection>
+}
           <ContentText>
             Lorem ipsum dolor sit amet consectetur. In urna senectus eget ut dui
             consectetur. At at sed amet pellentesque eget amet sed lectus. Urna
