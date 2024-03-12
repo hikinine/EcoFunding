@@ -67,6 +67,11 @@ const Button = styled.button`
   width: 20vw;
   align-self: flex-end;
   cursor: pointer;
+  @media (max-width: 768px){
+    padding: auto;
+    width: 100%;
+    align-self: center;
+  }
 `;
 
 const Header = styled.h1`
@@ -103,6 +108,12 @@ const Image = styled.img`
   
   margin-left: 1rem;
   margin-top: 1rem;
+  @media (max-width: 768px) {
+    max-width: 200px;
+  }
+  @media (max-width: 1308px) {
+    max-width: 400px;
+  }
 `
 
 const OverlayContent = styled.div`
@@ -151,7 +162,7 @@ const OqueFazemos = () => {
   return (
     <Container>
       
-      {width > 968 && <Image src={EcoAlgo} />}
+      <Image src={EcoAlgo} />
       
       {showContent && (
         <Content show={showContent}>

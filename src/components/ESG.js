@@ -40,6 +40,9 @@ const Container = styled.div`
   background-color: #242a32;
   width: 100%; /* Full width */
   padding: 40px; /* Increase padding as needed */
+  @media (max-width: ${breakpoints.mobile}) {
+      height: auto;
+  }
 `;
 
 
@@ -47,7 +50,8 @@ const Container = styled.div`
 const Button = styled.button`
   padding: auto;
   margin-bottom: 30px;
-  height: 60px;
+  height: auto;
+  min-height: 60px;
   width: auto;
   cursor: pointer;
   border: 2px solid #2ebc15;
@@ -60,28 +64,26 @@ const Button = styled.button`
     padding-left: 20px;
     margin: 10px auto;
   }
+  @media (max-width: ${breakpoints.tablet}) {
+    width: auto;
+  }
 `;
 
 const ImageDisplay = styled.img`
   max-width: 800px;
   width: 100%;
-  height: auto; // Maintain aspect ratio
-  max-height: 600px; // Set a maximum height for larger screens
-  margin-left: -6em;
+  height: auto;
+  margin: auto; // Center the image
   border-top-right-radius: 128px;
   padding: 5px;
   z-index: 1;
-  margin-bottom: -45px;
 
   @media (max-width: ${breakpoints.tablet}) {
     max-width: 400px;
-    margin-left: -4em;
-    max-height: 250px; // Adjust height for tablet
   }
   @media (max-width: ${breakpoints.mobile}) {
     max-width: 200px;
-    margin-left: 0em;
-    max-height: 150px; // Adjust height for mobile
+    margin-left: 0; // Adjust or remove to ensure it's centered
   }
 `;
 
@@ -114,7 +116,7 @@ const TextImage = styled(motion.div)`
   @media (max-width: ${breakpoints.tablet}) {
     flex-direction: column;
     align-items: stretch;
-    margin-left: 100px;
+    
   }
 `;
 
@@ -163,24 +165,26 @@ const TextRectangle = styled.div`
   min-height: 200px; /* Example minimum height */
 `;
 const TextRectangle2 = styled.div`
-  
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
-  margin-top: -0.5em;
-  display: flex;
   color: white;
-  align-items: center;
-  padding: 20px; /* Adjust padding as necessary */
+  padding: 20px;
   flex-direction: column;
   width: 100%;
   text-align: end;
-  min-width: 550px;
-  min-height: 200px; /* Example minimum height */
+  min-height: 200px;
+  margin-top: -0.5em;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+
   @media (max-width: ${breakpoints.tablet}) {
-    min-width: 400px; /* Adjust if necessary */
+    min-width: 400px;
+    text-align: center;
   }
   @media (max-width: ${breakpoints.mobile}) {
-    min-width: 200px; /* Adjust if necessary */
+    min-width: 100%; // Ensure it takes the full width
+    text-align: center; // Center text for mobile
+    padding: 10px; // Adjust padding for smaller screens
+    
   }
 `;
 
@@ -330,7 +334,7 @@ const ESG = () => {
       
       </TextRectangle>
       </CollumnModel>
-      <RowModel style={{padding: '0 400px 0 0px'}}>
+      <RowModel >
       <TextImage ref={ref}
           variants={animationOpacity}
           initial="hidden"

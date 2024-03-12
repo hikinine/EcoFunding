@@ -1,18 +1,40 @@
 
 
-import React, { useState, useRef, useContext, Component } from 'react';
+import React, { useState, useRef, useContext, Component, useEffect } from 'react';
 import styled from 'styled-components';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext,DotGroup } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import folhaesquerda from '../assets/FolhaEsquerda.png';
 import HomeSection1 from '../assets/HomeSection1.jpg';	
-import HomeSection2 from '../assets/solarpanel.jpg';	
+import HomeSection2 from '../assets/HomeSection2.jpg';	
 import HomeSection3 from '../assets/HomeSection3.jpg';	
 import folhaesquerdacima from '../assets/FolhaEsquerdaCima.png';
 import folhadireitabaixo from '../assets/FolhaDireitaBaixo.png';
 import homeSection from '../assets/HomeSection.png';
 import '../components/home.css';
 
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== "undefined" ? window.innerWidth : 0,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+      });
+    }
+
+    window.addEventListener('resize', handleResize);
+    // Call at mount to ensure we have the initial size
+    handleResize();
+
+    // Cleanup on unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowSize;
+}
 
 
 
@@ -20,9 +42,10 @@ const Wrapper = styled.section`
   background: white;
   text-align: center;
   width: 100%;
-  height: 70vh;
-  overflow: hidden;
-  margin-top: 8em;
+  height: auto;
+  min-height: calc(100% + 10vh);
+  
+  margin-top: 4em;
   gap: 8em;
   * {
     font-family: 'Montserrat', sans-serif;
@@ -42,15 +65,19 @@ const FrameText = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 12em;
-  width: 500px;
+  margin-right: 2em;
+  margin-left: 2em;
+  width: 700px;
 `;
 
 const FrameImage = styled.div`
   position: relative;
   margin-left: 2em;
   width: 700px;
-  height: 500px;`;
+  height: 500px;
+  overflow: visible;
+  align-items: center;
+`;
 
 
 const ResponsiveImage = styled.img`
@@ -86,24 +113,16 @@ const ResponsiveFolhaMeio = styled.img`
 
 const ResponsiveFolhaDireita = styled.img`
   position: absolute;
-  width: 50%;
-  height: 100%;
+  width: 30%;
+  height: 30%;
   z-index: 1000;
-  left: 250px;
-  top: 300px;
+  right: 0;
+  bottom: 0;
+  
   transition: transform 0.35s ease-out;
 `;
 
-const SliderContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 80vh;
-  overflow: hidden;
-  background-color: white;
-  
 
-
-`;
 
 const ParallaxFolha = styled.img`
   width: 25%;
@@ -133,11 +152,7 @@ const ParallaxFolhaCima = styled.img`
   transition: transform 0.35s ease-out;
 `;
 
-const HomeSection123 = styled.div`
-  justify-content: center;
-  align-items: center;
-  
-`;
+
 const Wrapper2 = styled.div`
     .controls {
       display: flex;
@@ -181,18 +196,28 @@ const Wrapper2 = styled.div`
       }
     }
   `;
+const Paragraph1 = styled.p`
+  margin-bottom: 2em;
+  font-size: 22px;
 
-const Home = ({ imgurl, altText, title, paragraph, button }) => {
+`;
+const H11 = styled.h1`
+  
+
+`;
+const Home = ({ imgurl, altText, title, paragraph, button, transform }) => {
+  const { width } = useWindowSize(); // Use the custom hook
   return (
     <Wrapper>
       <Container>
       <FrameText>
-        <h1>{title}</h1>
-        <p>{paragraph}</p>
-        <button style={{ padding: '10px 10px' }}>{button}</button>
+        <H11>{title}</H11>
+        <Paragraph1>{paragraph}</Paragraph1>
+        <button style={{ padding: '10px 10px', color: "black", borderColor: '#2ebc15' }}>{button}</button>
       </FrameText>
       <FrameImage>
         <ResponsiveImage src={imgurl} alt={altText} />
+        {width > 768 &&<ResponsiveFolhaDireita src={folhadireitabaixo} style={{ transform: transform }}/>}
       </FrameImage>
       </Container>
     </Wrapper>
@@ -203,31 +228,71 @@ const slidesData = [
     key: 'slide1',
     src: HomeSection1,
     alt: 'An image description',
-    title: 'Parceria EcoSustentável: Torne-se um Parceiro',
-    paragraph: ' A EcoFunding tem o prazer de convidar projetistas e empreendedores visionários para se juntarem à nossa rede de parceria ecoSustentável. Nossa missão é promover iniciativas que não só visam o progresso econômico mas que também se comprometem com a preservação ambiental e o bem-estar social. Acreditamos que, juntos, podemos construir um futuro mais verde e sustentável.',
-    button: 'Learn More'
+    title: 'A primeira plataforma Corporate Crowdfunding de investimentos sustentáveis do Brasil ',
+    paragraph: 'Regulada pela CVM',
+    button: 'Invista no futuro'
   },
   {
     key: 'slide2',
     src: HomeSection2,
     alt: 'Another image description',
-    title: 'Parceiros em Energia Solar: Iluminando o Caminho para um Futuro Sustentável',
-    paragraph: 'A EcoFunding convida você a se juntar a nós em nossa jornada rumo à sustentabilidade, tornando-se um parceiro no setor de energia solar. Estamos comprometidos em apoiar projetos que promovam o uso de energias renováveis, reduzindo a dependência de combustíveis fósseis e diminuindo as emissões de carbono. Ao preencher nosso formulário de parceria, você dá o primeiro passo para transformar a energia do sol em soluções sustentáveis para o futuro.',
+    title: 'Converta suas multas ambientais em ativos sustentáveis.',
+    paragraph: 'xxx',
     button: 'Saiba Mais'
   },
-
+  {
+    key: 'slide2',
+    src: HomeSection3,
+    alt: 'Another image description',
+    title: 'O Poder Verde do Seu Projeto',
+    paragraph: 'xxx',
+    button: 'Investir Agora'
+  },
   // Add more slide objects as needed
 ];
 
-class HomeCarousel extends Component {
-  render() {
-    return (
-      <CarouselProvider
-        naturalSlideWidth={100}
-        naturalSlideHeight={40}
-        totalSlides={slidesData.length}
-      >
-        <Wrapper2>
+const Parceiros = () => {
+  const [slideHeight, setSlideHeight] = useState(40); // Default slide height
+  const [mousePosition, setMousePosition] = useState({ mouseX: 0, mouseY: 0 });
+  const folhaCimaRef = useRef(null);
+  const folhaRef = useRef(null);
+
+  const handleMouseMove = (event) => {
+    const { clientX, clientY } = event;
+    const { innerWidth, innerHeight } = window;
+
+    const mouseX = (clientX - innerWidth / 2) / innerWidth * 100; // Percentage from the center
+    const mouseY = (clientY - innerHeight / 2) / innerHeight * 100;
+
+    setMousePosition({ mouseX, mouseY });
+
+    if (folhaCimaRef.current) folhaCimaRef.current.style.transform = `translate(${mouseX * 0.3}%, ${mouseY * 0.3}%)`;
+    if (folhaRef.current) folhaRef.current.style.transform = `translate(${mouseX * 0.3}%, ${mouseY * 0.3}%)`;
+  };
+  const updateDimensions = () => {
+    const windowWidth = window.innerWidth;
+    if (windowWidth < 768) {
+      setSlideHeight(150); // Example: Increase height for smaller screens
+    } else {
+      setSlideHeight(40); // Reset to default for larger screens
+    }
+  };
+
+  useEffect(() => {
+    updateDimensions(); // Set initial value
+    window.addEventListener('resize', updateDimensions);
+
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
+  return (
+    <CarouselProvider
+      naturalSlideWidth={100}
+      naturalSlideHeight={slideHeight}
+      totalSlides={slidesData.length}
+    >
+        <Wrapper2 onMouseMove={handleMouseMove}>
+        <ParallaxFolhaCima ref={folhaCimaRef} src={folhaesquerdacima} />
           <Slider>
             {slidesData.map((slide, index) => (
               <Slide index={index} key={slide.key}>
@@ -237,6 +302,7 @@ class HomeCarousel extends Component {
                   title={slide.title}
                   paragraph={slide.paragraph}
                   button={slide.button}
+                  transform={`translate(${mousePosition.mouseX * 0.3}%, ${mousePosition.mouseY * 0.3}%)`}
                 />
               </Slide>
             ))}
@@ -244,10 +310,9 @@ class HomeCarousel extends Component {
           <div className="controls">
             <DotGroup style={{ marginBottom: '50px' }} className="dot-group" />
           </div>
+          <ParallaxFolha ref={folhaRef} src={folhaesquerda} alt="folha" />
         </Wrapper2>
       </CarouselProvider>
     );
-  }
-}
-
-export default HomeCarousel;
+  };
+export default Parceiros;
