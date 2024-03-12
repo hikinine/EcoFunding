@@ -11,13 +11,13 @@ const SelosContainer = styled.div`
   flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
   justify-content: space-around;
   align-items: center;
-  background-color: #f8f8f8;
+  background-color: #3f4c5c;
   padding: 20px 0; /* Add some padding */
   width: 100%;
 `;
 
 const Selos = styled.img`
-  max-width: 100%; /* Ensures image is responsive and scales with its container */
+  max-width: 7%; /* Ensures image is responsive and scales with its container */
   height: auto; /* Maintains aspect ratio */
   flex: 1 1 200px; /* Flex item to allow it to grow and shrink, with a base width of 200px */
 

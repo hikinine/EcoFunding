@@ -151,11 +151,7 @@ const ParallaxFolhaCima = styled.img`
   transition: transform 0.35s ease-out;
 `;
 
-const HomeSection123 = styled.div`
-  justify-content: center;
-  align-items: center;
-  
-`;
+
 const Wrapper2 = styled.div`
     .controls {
       display: flex;
@@ -225,13 +221,13 @@ const slidesData = [
     alt: 'An image description',
     title: 'Transforme Seu Carbono em Impacto',
     paragraph: ' A primeira plataforma do Brasil que converte dívidas de carbono em oportunidades de investimento verde, credenciada pela CVM',
-    button: 'Learn More'
+    button: 'Saiba Mais'
   },
   {
     key: 'slide2',
     src: HomeSection2,
     alt: 'Another image description',
-    title: 'Faça a Diferença com Seu Projeto',
+    title: 'Conheça o ECOALGORITHM',
     paragraph: '  Junte-se à vanguarda do movimento verde no Brasil com a EcoFunding, a primeira e única plataforma dedicada a transformar projetos sustentáveis em realidade, sob o aval da CVM. Aqui, sua iniciativa não apenas ganha visibilidade, mas também atrai investimentos comprometidos com um futuro sustentável.',
     button: 'Saiba Mais'
   },
