@@ -1,7 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-
+import Eco from "../assets/LOGOTIPOcopy.svg";
+import Image1 from "../assets/Image1.png";
+import Image2 from "../assets/Image2.png";
+import Image3 from "../assets/Image3.png";
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
     width: typeof window !== "undefined" ? window.innerWidth : 0,
@@ -71,6 +74,8 @@ const Logo = styled.img`
   object-fit: cover;
   width: 100%;
   align-self: center;
+  color: white;
+  fill: white;
   @media (max-width: 991px) {
     max-width: 100%;
   }
@@ -174,12 +179,12 @@ function Rodape() {
     <StyledHeader>
       <MainContent>
         <Sidebar>
-          <Logo src="logo.png" alt="Logo" />
+          <Logo src={Eco} alt="Logo" />
           <SocialMediaIcons>
-            <IconImg src="icon1.png" alt="Icon 1" />
-            <IconImg src="icon2.png" alt="Icon 2" />
-            <IconImg src="icon3.png" alt="Icon 3" />
-            <IconImg src="icon4.png" alt="Icon 4" />
+            <IconImg src={Image1} alt="Icon 1" />
+            <IconImg src={Image2} alt="Icon 2" />
+            <IconImg src={Image3} alt="Icon 3" />
+            
           </SocialMediaIcons>
         </Sidebar>
         <ContentWrapper>

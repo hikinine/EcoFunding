@@ -38,15 +38,17 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   background-image: url(${Fundo});
-  background-position: center;
+  
   background-size: cover;
   width: 100%;
   max-width: 100%;
   height: 80vh;
-  ${MediumAndDown} {
+  @media (max-width: 768px) {
     flex-direction: column;
-    height: auto;
+    
   }
+
+  
   * {
     font-family: 'Lexend Tera', sans-serif;
   }
@@ -75,9 +77,10 @@ const Header = styled.h1`
   text-align: center;
   font-weight: 500;
   font-family: 'Lexend Tera', sans-serif !important;
-  ${MediumAndDown} {
-    font-size: 32px;
-    margin-left: 2rem;
+  @media (max-width: 768px) {
+    font-size: 32px; // Adjust font size for mobile
+    margin-left: 2rem; // Adjust margin for mobile
+    text-align: center; // Center text on mobile
   }
 `;
 
@@ -89,9 +92,10 @@ const Paragraph = styled(motion.p)`
   font-weight: lighter;
   font-family: 'Lexend Tera', sans-serif !important;
   text-align: end;
-  ${MediumAndDown} {
-    font-size: 20px;
-    margin-left: 2rem;
+  @media (max-width: 768px) {
+    font-size: 16px; // Adjust font size for mobile
+    margin-left: 2rem; // Adjust margin for mobile
+    text-align: center; // Center text on mobile
   }
 `;
 
@@ -142,7 +146,7 @@ const OqueFazemos = () => {
   return (
     <Container>
       
-      {width > 768 && <Mapa />}
+      {width > 968 && <Mapa />}
       
       {showContent && (
         <Content show={showContent}>
