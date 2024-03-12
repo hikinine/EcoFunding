@@ -109,10 +109,10 @@ const Image = styled.img`
   margin-left: 1rem;
   margin-top: 1rem;
   @media (max-width: 768px) {
-    max-width: 200px;
+    max-width: 150px;
   }
   @media (max-width: 1308px) {
-    max-width: 400px;
+    max-width: 300px;
   }
 `
 
