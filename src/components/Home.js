@@ -67,7 +67,7 @@ const FrameText = styled.div`
   align-items: center;
   margin-right: 2em;
   margin-left: 2em;
-  width: 500px;
+  width: 700px;
 `;
 
 const FrameImage = styled.div`
@@ -76,6 +76,7 @@ const FrameImage = styled.div`
   width: 700px;
   height: 500px;
   overflow: visible;
+  align-items: center;
 `;
 
 
@@ -195,15 +196,23 @@ const Wrapper2 = styled.div`
       }
     }
   `;
+const Paragraph1 = styled.p`
+  margin-bottom: 2em;
+  font-size: 22px;
 
+`;
+const H11 = styled.h1`
+  
+
+`;
 const Home = ({ imgurl, altText, title, paragraph, button, transform }) => {
   const { width } = useWindowSize(); // Use the custom hook
   return (
     <Wrapper>
       <Container>
       <FrameText>
-        <h1>{title}</h1>
-        <p>{paragraph}</p>
+        <H11>{title}</H11>
+        <Paragraph1>{paragraph}</Paragraph1>
         <button style={{ padding: '10px 10px', color: "black", borderColor: '#2ebc15' }}>{button}</button>
       </FrameText>
       <FrameImage>
@@ -219,24 +228,24 @@ const slidesData = [
     key: 'slide1',
     src: HomeSection1,
     alt: 'An image description',
-    title: 'Transforme Seu Carbono em Impacto',
-    paragraph: ' A primeira plataforma do Brasil que converte dívidas de carbono em oportunidades de investimento verde, credenciada pela CVM',
-    button: 'Saiba Mais'
+    title: 'A primeira plataforma Corporate Crowdfunding de investimentos sustentáveis do Brasil ',
+    paragraph: 'Regulada pela CVM',
+    button: 'Invista no futuro'
   },
   {
     key: 'slide2',
     src: HomeSection2,
     alt: 'Another image description',
-    title: 'Conheça o ECOALGORITHM',
-    paragraph: '  Junte-se à vanguarda do movimento verde no Brasil com a EcoFunding, a primeira e única plataforma dedicada a transformar projetos sustentáveis em realidade, sob o aval da CVM. Aqui, sua iniciativa não apenas ganha visibilidade, mas também atrai investimentos comprometidos com um futuro sustentável.',
+    title: 'Converta suas multas ambientais em ativos sustentáveis.',
+    paragraph: 'xxx',
     button: 'Saiba Mais'
   },
   {
     key: 'slide2',
     src: HomeSection3,
     alt: 'Another image description',
-    title: 'O Poder Verde do Seu Investimento',
-    paragraph: 'Descubra como seu investimento pode gerar retorno financeiro e ao mesmo tempo combater a dívida de carbono do Brasil. A EcoFunding, certificada pela CVM, oferece um caminho seguro e inovador para investir em projetos que lideram a transição para a sustentabilidade.',
+    title: 'O Poder Verde do Seu Projeto',
+    paragraph: 'xxx',
     button: 'Investir Agora'
   },
   // Add more slide objects as needed

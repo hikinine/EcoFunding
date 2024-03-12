@@ -9,7 +9,7 @@ import { useMarker } from './earth/MarkerContext';
 import { MediumAndDown } from './breakpoints';
 import Fundo from '../assets/FUNDO_GLOBO.jpg';
 import { Link } from 'react-router-dom';
-
+import EcoAlgo from '../assets/EcoAlgo.png'
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
     width: typeof window !== "undefined" ? window.innerWidth : 0,
@@ -98,7 +98,12 @@ const Paragraph = styled(motion.p)`
     text-align: center; // Center text on mobile
   }
 `;
-
+const Image = styled.img`
+  max-width: 800px;
+  
+  margin-left: 1rem;
+  margin-top: 1rem;
+`
 
 const OverlayContent = styled.div`
   background: white;
@@ -146,7 +151,7 @@ const OqueFazemos = () => {
   return (
     <Container>
       
-      {width > 968 && <Mapa />}
+      {width > 968 && <Image src={EcoAlgo} />}
       
       {showContent && (
         <Content show={showContent}>
