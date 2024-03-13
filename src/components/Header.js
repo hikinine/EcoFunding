@@ -1,115 +1,161 @@
-
-import React, { useState } from 'react';
-import { CNavbar, CContainer, CNavbarBrand, CNavbarToggler, CCollapse, CNavbarNav, CNavItem, CNavLink, CDropdown, CDropdownToggle, CDropdownMenu, CDropdownItem, CDropdownDivider, CForm, CFormInput, CButton } from '@coreui/react';
-import '@coreui/coreui/dist/css/coreui.min.css';
-// Import other necessary hooks and assets
-import LOGO from '../assets/LOGOTIPO.svg';
-import User1 from '../assets/user.svg';
+import React from 'react';
 import styled from 'styled-components';
-import { useAuth0 } from "@auth0/auth0-react";
-
-// Styled components definitions
-const Wrapper = styled.div`
-  font-family: 'Lexend Tera', sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  margin-top: 4em;
-`;
-
-const SpacedCNavItem = styled(CNavItem)`
-  margin-right: 4rem;
-
-  &:last-child {
-    margin-right: 0;
-  }
-`;
-
-const StyledCDropdown = styled(CDropdown)`
-  margin-right: 4rem;
-
-  &:last-child {
-    margin-right: 0;
-  }
-`;
-
-const SpacedCDropdownToggle = styled(CDropdownToggle)`
-  margin-right: 4rem;
-
-  &:last-child {
-    margin-right: 0;
-  }
-`;
-const CenteredCContainer = styled(CContainer)`
-  display: flex; // Ensures the content can be flexibly laid out
-  justify-content: center; // Centers the children (navbar brand)
-  padding-left: 4rem; // Applies desired margin on the left
-  
-`;
-const AlignedCNavbarBrand = styled(CNavbarBrand)`
-  margin-left: 8em;
-`;
- 
-
-function ResponsiveAppBar() {
-  const [visible, setVisible] = useState(false);
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
-
+import logo from '../assets/LOGOTIPO.svg';
+import { FaBars } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react'; // Import useAuth0 hook
+import { useState } from 'react';
+const Header = () => {
+  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0(); // Destructure needed functions and state
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
   return (
-    <Wrapper>
-      <CNavbar expand="lg" colorScheme="light">
-      <AlignedCNavbarBrand href="#">
-            <img src={LOGO} alt='Logo' style={{ height: '45px' }}/>
-          </AlignedCNavbarBrand>
-        <CenteredCContainer >
-         
-          <CNavbarToggler onClick={() => setVisible(!visible)} />
-          <CCollapse className="navbar-collapse" visible={visible}>
-            <CNavbarNav>
-            <StyledCDropdown variant="nav-item" popper={false}>
-              <CDropdownToggle color="secondary">SOBRE</CDropdownToggle>
-              <CDropdownMenu>
-                <CDropdownItem href="#">Action</CDropdownItem>
-                <CDropdownItem href="#">Another action</CDropdownItem>
-                <CDropdownDivider />
-                <CDropdownItem href="#">Something else here</CDropdownItem>
-              </CDropdownMenu>
-            </StyledCDropdown>
-            
-            <SpacedCNavItem>
-              <CNavLink href="#" >
-                PARCERIA
-              </CNavLink>
-            </SpacedCNavItem>
-            <SpacedCNavItem>
-              <CNavLink href="#" >
-                FAQ
-              </CNavLink>
-            </SpacedCNavItem>
-            <SpacedCNavItem>
-              <CNavLink href="#">CONTATO</CNavLink>
-            </SpacedCNavItem>
-          </CNavbarNav>
-          <CNavbarNav className="ms-auto" style={{ marginRight: '4rem'}}>
-          {isAuthenticated ? (
-              <CDropdown variant="nav-item" popper={false}>
-                <SpacedCDropdownToggle color="secondary">
-                  {/* Display user's picture if authenticated */}
-                  <img src={user.picture} alt={user.name} style={{ height: '25px'}} />
-                </SpacedCDropdownToggle>
-                <CDropdownMenu>
-                  <CDropdownItem href="#" onClick={() => logout({ returnTo: window.location.origin })}>Logout</CDropdownItem>
-                </CDropdownMenu>
-              </CDropdown>
-            ) : (
-              <CButton style={{ backgroundColor: 'transparent', border: 'none'}} onClick={() => loginWithRedirect()}><img src={User1} alt='ega' style={{ height: '25px' }}/></CButton>
-            )}
-          </CNavbarNav>
-          
-        </CCollapse>
-      </CenteredCContainer>
-    </CNavbar>
-    </Wrapper>
-  
-)
+    <NavContainer>
+      <div className='nav-center'>
+        <div className='nav-header'>
+          <Link to='/'>
+            <img src={logo} alt='comfy sloth' />
+          </Link>
+          <button type='button' className='nav-toggle'>
+            <FaBars />
+          </button>
+        </div>
+        <Ul className='nav-links'>
+          <li>Sobre</li>
+          <li>PARCERIA</li>
+          <li>FAQ</li>
+          {/* Conditional rendering based on authentication state */}
+          {
+  isAuthenticated ? (
+    <li style={{ position: 'relative' }}>
+      <img
+        src={user.picture}
+        alt={user.name}
+        style={{ width: '30px', borderRadius: '50%', cursor: 'pointer' }}
+        onClick={toggleDropdown} // Toggle dropdown on image click
+      />
+      {isDropdownOpen && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '100%',
+            right: 0,
+            backgroundColor: 'white',
+            boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
+            padding: '12px',
+            zIndex: 1,
+          }}
+        >
+          <ul style={{ listStyle: 'none', padding: 0 }}>
+            <li><Button onClick={() => logout({ returnTo: window.location.origin })}>Conta</Button></li>
+            <li><Button onClick={() => logout({ returnTo: window.location.origin })}>Dashboard</Button></li>
+            <li><Button onClick={() => logout({ returnTo: window.location.origin })}>Logout</Button></li>
+
+          </ul>
+        </div>
+      )}
+    </li>
+  ) : (
+    <li>
+      <Button onClick={() => loginWithRedirect()}>Login</Button>
+    </li>
+  )
+}
+        </Ul>
+      </div>
+    </NavContainer>
+  );
 };
-export default ResponsiveAppBar;
+
+const Button = styled.button`
+  background: transparent;
+  border-color: transparent;
+  color: var(--clr-grey-5);
+  cursor: pointer;
+  font-size: 1.2rem;
+  letter-spacing: var(--spacing);
+  &:hover {
+    color: var(--clr-primary-5);
+  }
+  `;
+const Ul = styled.ul`
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    a {
+      text-decoration: none;
+    }
+    li {
+      margin-bottom: 100px;
+      margin-right: 100px;
+      cursor: pointer;
+    }
+`
+const NavContainer = styled.nav`
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .nav-center {
+    width: 90vw;
+    margin: 0 auto;
+    max-width: var(--max-width);
+  }
+  .nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    img {
+      width: 175px;
+      margin-left: -15px;
+    }
+  }
+  .nav-toggle {
+    background: transparent;
+    border: transparent;
+    color: var(--clr-primary-5);
+    cursor: pointer;
+    svg {
+      font-size: 2rem;
+    }
+  }
+  .nav-links {
+    display: none;
+  }
+  .cart-btn-wrapper {
+    display: none;
+  }
+  @media (min-width: 992px) {
+    .nav-toggle {
+      display: none;
+    }
+    .nav-center {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      li {
+        margin: 0 0.5rem;
+      }
+      a {
+        color: var(--clr-grey-3);
+        font-size: 1rem;
+        text-transform: capitalize;
+        letter-spacing: var(--spacing);
+        padding: 0.5rem;
+        &:hover {
+          border-bottom: 2px solid var(--clr-primary-7);
+        }
+      }
+    }
+    .cart-btn-wrapper {
+      display: grid;
+    }
+  }
+`
+
+export default Header;
