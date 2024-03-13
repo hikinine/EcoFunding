@@ -202,14 +202,34 @@ const Paragraph1 = styled.p`
 
 `;
 const H11 = styled.h1`
+text-transform: uppercase;
+font-family: 'Lexend Tera';
+font-weight: 600;
+width: 100%;
+
+min-width: 30vw;
+margin-left: 150px;
+text-align: start;
+font-size: 24px;
+margin-right: 50px;
+
   
 
 `;
 const Button1 = styled.button`
-padding: 10px 50px;
-color: #2ebc15;
-background-color: transparent;
-border-color: #2ebc15;
+  padding: 10px 50px;
+  color: #242a32; // Initial color
+  background-color: transparent; // Initial background-color
+  border: 1px solid #242a32; // Set border-color and assume a default border style of solid
+  font-family: 'Lexend Tera';
+  font-weight:550;
+  font-size: 18px;
+  text-transform: uppercase;
+  
+  &:hover {
+    color: #FFFFFF; // New text color on hover
+    background-color: #242a32; // New background color on hover
+  }
 `;
 const Home = ({ imgurl, altText, title, paragraph, button, transform }) => {
   const { width } = useWindowSize(); // Use the custom hook
@@ -234,25 +254,25 @@ const slidesData = [
     key: 'slide1',
     src: HomeSection1,
     alt: 'An image description',
-    title: 'A primeira plataforma Corporate Crowdfunding de investimentos sustentáveis do Brasil ',
-    paragraph: 'Regulada pela CVM',
-    button: 'Invista no futuro'
+    title: 'Nascemos para conectar propósitos sustentáveis a realidades transformadoras',
+    paragraph: 'Somos a primeira plataforma corporate crowdfunding de investimentos sustentaveis do Brasil',
+    button: 'Regulada pela CVM'
   },
   {
     key: 'slide2',
     src: HomeSection2,
     alt: 'Another image description',
-    title: 'Converta suas multas ambientais em ativos sustentáveis.',
-    paragraph: 'xxx',
-    button: 'Saiba Mais'
+    title: 'Seja um parceiro eCO-sustentável',
+    paragraph: 'Analisamos a viabilidade de seu projeto.',
+    button: 'SAIBA MAIS'
   },
   {
     key: 'slide2',
     src: HomeSection3,
-    alt: 'Another image description',
-    title: 'O Poder Verde do Seu Projeto',
-    paragraph: 'xxx',
-    button: 'Investir Agora'
+    alt: 'Seja um investidor eco-sustentável',
+    title: 'Torne-se um investidor eco-sustentável',
+    paragraph: 'Transforme seu débito em crédito ambiental.',
+    button: 'CADASTRE-SE'
   },
   // Add more slide objects as needed
 ];

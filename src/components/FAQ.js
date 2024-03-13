@@ -4,7 +4,7 @@ import { CAccordion, CAccordionItem, CAccordionHeader, CAccordionBody } from '@c
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   background-color: #3f4c5c;
   background-position: center;
@@ -16,11 +16,13 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   margin: 20px 80px;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ScrollContainer = styled.div`
   width: 60%;
-  height: 80%; // Adjust based on your needs
+  
   overflow-y: auto; // Enables vertical scrolling
   align-items: center;
   justify-content: center;
@@ -67,7 +69,7 @@ const FAQ = () => {
         <Container>
             <Content>
                 <Header>FAQ</Header>
-                <Paragraph>Bem-vindo à seção de Perguntas Frequentes (FAQ) da EcoFunding! Aqui, reunimos respostas para as dúvidas mais comuns sobre nossa plataforma, processos e como você pode se envolver. Se você tiver alguma questão que não esteja coberta aqui, não hesite em nos contatar.</Paragraph>
+                
             </Content>
             <ScrollContainer>
                 <StyledAccordion flush>

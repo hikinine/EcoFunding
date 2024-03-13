@@ -65,12 +65,6 @@ function ResponsiveAppBar() {
           <CNavbarToggler onClick={() => setVisible(!visible)} />
           <CCollapse className="navbar-collapse" visible={visible}>
             <CNavbarNav>
-            <SpacedCNavItem>
-              <CNavLink href="#" active>
-                INICIO
-              </CNavLink>
-            </SpacedCNavItem>
-          
             <StyledCDropdown variant="nav-item" popper={false}>
               <CDropdownToggle color="secondary">SOBRE</CDropdownToggle>
               <CDropdownMenu>
@@ -80,9 +74,15 @@ function ResponsiveAppBar() {
                 <CDropdownItem href="#">Something else here</CDropdownItem>
               </CDropdownMenu>
             </StyledCDropdown>
+            
             <SpacedCNavItem>
-              <CNavLink href="#" disabled>
-                INVESTIR
+              <CNavLink href="#" >
+                PARCERIA
+              </CNavLink>
+            </SpacedCNavItem>
+            <SpacedCNavItem>
+              <CNavLink href="#" >
+                FAQ
               </CNavLink>
             </SpacedCNavItem>
             <SpacedCNavItem>

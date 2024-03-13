@@ -62,7 +62,7 @@ const Content = styled.div`
 const Button = styled.button`
   padding: 10px 20px;
   font-size: 16px;
-  border-radius: 12px;
+  
   border: none;
   width: 20vw;
   align-self: flex-end;
@@ -75,10 +75,11 @@ const Button = styled.button`
 `;
 
 const Header = styled.h1`
-  font-size: 64px;
+  font-size: 48px;
   margin-bottom: 10px;
   margin-left: 3rem;
   color: white;
+  text-transform: uppercase;
   text-align: center;
   font-weight: 500;
   font-family: 'Lexend Tera', sans-serif !important;
@@ -168,14 +169,14 @@ const OqueFazemos = () => {
       {showContent && (
         <Content show={showContent}>
           <ColumnFlex>
-            <Header>O que Fazemos</Header>
+            <Header>ECO-ALGORITMO</Header>
             <Paragraph
               ref={ref}
               variants={slideInFromLeft}
               initial="hidden"
               animate={controls}
             >
-              Na Ecofunding, nosso compromisso é com o futuro do planeta. Unimos tecnologia, sustentabilidade e finanças para criar um impacto ambiental positivo.
+               Nossa I.A. de classificação de projetos ESG, através do smart contract.
             </Paragraph>
             <ButtonContainer>
             <Link to="/SaibaMais" > <Button>Saiba Mais</Button> </Link>
