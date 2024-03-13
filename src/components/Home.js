@@ -42,10 +42,10 @@ const Wrapper = styled.section`
   background: white;
   text-align: center;
   width: 100%;
-  height: auto;
+  height: 70vh;
   
   
-  margin-top: 4em;
+  
   gap: 8em;
   * {
     font-family: 'Montserrat', sans-serif;
@@ -129,7 +129,7 @@ const ParallaxFolha = styled.img`
   height: auto;
   position: sticky;
   z-index: 1000;
-  bottom: 50px;
+  top: 700px;
   margin-left: -100px;
   transition: transform 0.35s ease-out;
   
@@ -292,6 +292,7 @@ const HomeCarousel = () => {
       totalSlides={slidesData.length}
     >
         <Wrapper2 onMouseMove={handleMouseMove}>
+        <ParallaxFolha ref={folhaRef} src={folhaesquerda} alt="folha"/>
         <ParallaxFolhaCima ref={folhaCimaRef} src={folhaesquerdacima} />
           <Slider>
             {slidesData.map((slide, index) => (
@@ -310,7 +311,7 @@ const HomeCarousel = () => {
           <div className="controls">
             <DotGroup style={{ marginBottom: '50px' }} className="dot-group" />
           </div>
-          <ParallaxFolha ref={folhaRef} src={folhaesquerda} alt="folha" />
+          
         </Wrapper2>
       </CarouselProvider>
     );
