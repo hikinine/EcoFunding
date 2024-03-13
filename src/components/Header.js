@@ -5,68 +5,6 @@ import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react'; // Import useAuth0 hook
 import { useState } from 'react';
-const Header = () => {
-  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0(); // Destructure needed functions and state
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-  return (
-    <NavContainer>
-      <div className='nav-center'>
-        <div className='nav-header'>
-          <Link to='/'>
-            <img src={logo} alt='comfy sloth' />
-          </Link>
-          <button type='button' className='nav-toggle'>
-            <FaBars />
-          </button>
-        </div>
-        <Ul className='nav-links'>
-          <li>Sobre</li>
-          <li>PARCERIA</li>
-          <li>FAQ</li>
-          {/* Conditional rendering based on authentication state */}
-          {
-  isAuthenticated ? (
-    <li style={{ position: 'relative' }}>
-      <img
-        src={user.picture}
-        alt={user.name}
-        style={{ width: '30px', borderRadius: '50%', cursor: 'pointer' }}
-        onClick={toggleDropdown} // Toggle dropdown on image click
-      />
-      {isDropdownOpen && (
-        <div
-          style={{
-            position: 'absolute',
-            top: '100%',
-            right: 0,
-            backgroundColor: 'white',
-            boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
-            padding: '12px',
-            zIndex: 1,
-          }}
-        >
-          <ul style={{ listStyle: 'none', padding: 0 }}>
-            <li><Button onClick={() => logout({ returnTo: window.location.origin })}>Conta</Button></li>
-            <li><Button onClick={() => logout({ returnTo: window.location.origin })}>Dashboard</Button></li>
-            <li><Button onClick={() => logout({ returnTo: window.location.origin })}>Logout</Button></li>
-
-          </ul>
-        </div>
-      )}
-    </li>
-  ) : (
-    <li>
-      <Button onClick={() => loginWithRedirect()}>Login</Button>
-    </li>
-  )
-}
-        </Ul>
-      </div>
-    </NavContainer>
-  );
-};
-
 const Button = styled.button`
   background: transparent;
   border-color: transparent;
@@ -82,6 +20,9 @@ const Ul = styled.ul`
     list-style: none;
     margin: 0;
     padding: 0;
+    display: ${(props) => (props.isOpen ? 'flex' : 'none')};
+    gap: 200px;
+    
     a {
       text-decoration: none;
     }
@@ -89,6 +30,9 @@ const Ul = styled.ul`
       margin-bottom: 100px;
       margin-right: 100px;
       cursor: pointer;
+    }
+    @media (max-width: 1292px) {
+      gap: 100px;
     }
 `
 const NavContainer = styled.nav`
@@ -156,6 +100,73 @@ const NavContainer = styled.nav`
       display: grid;
     }
   }
-`
+`;
+
+const Header = () => {
+  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0(); // Destructure needed functions and state
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+  const [isNavOpen, setIsNavOpen] = useState(false); 
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+  return (
+    <NavContainer>
+      <div className='nav-center'>
+        <div className='nav-header'>
+          <Link to='/'>
+            <img src={logo} alt='comfy sloth' />
+          </Link>
+          <button type='button' className='nav-toggle' onClick={toggleNav} >
+            <FaBars />
+          </button>
+        </div>
+        <Ul className='nav-links' isOpen={isDropdownOpen}>
+          <li>Sobre</li>
+          <li>PARCERIA</li>
+          <li>FAQ</li>
+          {/* Conditional rendering based on authentication state */}
+          {
+  isAuthenticated ? (
+    <li style={{ position: 'relative' }}>
+      <img
+        src={user.picture}
+        alt={user.name}
+        style={{ width: '30px', borderRadius: '50%', cursor: 'pointer' }}
+        onClick={toggleDropdown} // Toggle dropdown on image click
+      />
+      {isDropdownOpen && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '100%',
+            right: 0,
+            backgroundColor: 'white',
+            boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
+            padding: '12px',
+            zIndex: 1,
+          }}
+        >
+          <ul style={{ listStyle: 'none', padding: 0 }}>
+            <li><Button onClick={() => logout({ returnTo: window.location.origin })}>Conta</Button></li>
+            <li><Button onClick={() => logout({ returnTo: window.location.origin })}>Dashboard</Button></li>
+            <li><Button onClick={() => logout({ returnTo: window.location.origin })}>Logout</Button></li>
+
+          </ul>
+        </div>
+      )}
+    </li>
+  ) : (
+    <li>
+      <Button onClick={() => loginWithRedirect()}>Login</Button>
+    </li>
+  )
+}
+        </Ul>
+      </div>
+    </NavContainer>
+  );
+};
+
 
 export default Header;
