@@ -45,6 +45,10 @@ const CenteredCContainer = styled(CContainer)`
   padding-left: 4rem; // Applies desired margin on the left
   
 `;
+const AlignedCNavbarBrand = styled(CNavbarBrand)`
+  margin-left: 8em;
+`;
+ 
 
 function ResponsiveAppBar() {
   const [visible, setVisible] = useState(false);
@@ -53,10 +57,11 @@ function ResponsiveAppBar() {
   return (
     <Wrapper>
       <CNavbar expand="lg" colorScheme="light">
-        <CenteredCContainer fluid>
-          <CNavbarBrand href="#">
+      <AlignedCNavbarBrand href="#">
             <img src={LOGO} alt='Logo' style={{ height: '45px' }}/>
-          </CNavbarBrand>
+          </AlignedCNavbarBrand>
+        <CenteredCContainer >
+         
           <CNavbarToggler onClick={() => setVisible(!visible)} />
           <CCollapse className="navbar-collapse" visible={visible}>
             <CNavbarNav>

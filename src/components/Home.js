@@ -43,7 +43,7 @@ const Wrapper = styled.section`
   text-align: center;
   width: 100%;
   height: auto;
-  min-height: calc(100% + 10vh);
+  
   
   margin-top: 4em;
   gap: 8em;
@@ -272,7 +272,7 @@ const HomeCarousel = () => {
   const updateDimensions = () => {
     const windowWidth = window.innerWidth;
     if (windowWidth < 768) {
-      setSlideHeight(150); // Example: Increase height for smaller screens
+      setSlideHeight(70); // Example: Increase height for smaller screens
     } else {
       setSlideHeight(40); // Reset to default for larger screens
     }
