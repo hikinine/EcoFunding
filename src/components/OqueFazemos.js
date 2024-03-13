@@ -128,6 +128,7 @@ const OverlayContent = styled.div`
 const ColumnFlex = styled.div`
   display: flex;
   flex-direction: column;
+  margin-right: 6em;
 `;
 const ButtonContainer = styled.div`
   width: 100%; // Ensures the container spans the full width

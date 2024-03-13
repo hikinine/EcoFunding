@@ -39,7 +39,7 @@ const Container = styled.div`
   min-height: 100vh; /* Ensures at least full viewport height */
   background-color: #242a32;
   width: 100%; /* Full width */
-  padding: 40px; /* Increase padding as needed */
+  
   @media (max-width: ${breakpoints.mobile}) {
       height: auto;
   }
@@ -75,7 +75,6 @@ const ImageDisplay = styled.img`
   height: auto;
   margin: auto; // Center the image
   border-top-right-radius: 128px;
-  padding: 5px;
   z-index: 1;
 
   @media (max-width: ${breakpoints.tablet}) {
