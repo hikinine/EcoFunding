@@ -50,12 +50,13 @@ const Container = styled.div`
 const Button = styled.button`
   padding: auto;
   margin-bottom: 30px;
+  margin-top: 30px;
   height: auto;
   min-height: 60px;
-  width: auto;
+  width: calc(50px + 100%);
   cursor: pointer;
   border: 2px solid #2ebc15;
-  color: ${({ active }) => (active ? 'white' : 'gray')};
+  color: ${({ active }) => (active ? 'white' : '#2ebc15')};
   background: ${({ active }) =>
     active ? '#2ebc15' : 'transparent'};
     @media (max-width: ${breakpoints.tablet}) {
@@ -174,12 +175,13 @@ const TextRectangle2 = styled.div`
   display: flex;
   align-items: center;
   border-radius: 12px;
+  white-space: pre-wrap;
 
   @media (max-width: ${breakpoints.tablet}) {
     min-width: 400px;
-    text-align: center;
+    
   }
-  @media (max-width: ${breakpoints.mobile}) {
+  @media (max-width: 500px) {
     min-width: 100%; // Ensure it takes the full width
     text-align: center; // Center text for mobile
     padding: 10px; // Adjust padding for smaller screens
@@ -201,35 +203,40 @@ const ESG = () => {
     { 
       src: image1, 
       alt: 'Image 1',  
-      text: `A chave para um planeta mais verde! Representam uma tonelada métrica de CO2 reduzida, atuando como moeda ambiental vital na luta contra as mudanças climáticas. Entenda melhor sua função e impacto. Clique no "Saiba Mais" e leia sobre o tópico`,
+      subtext: `Clique no "Saiba Mais" e leia sobre o tópico`,
+      text: `A chave para um planeta mais verde! Representam uma tonelada métrica de CO2 reduzida, atuando como moeda ambiental vital na luta contra as mudanças climáticas. Entenda melhor sua função e impacto.`,
       button: 'Saiba Mais',
       topico: 'O que são Créditos de Carbono?' 
     },
     { 
       src: image2, 
       alt: 'Image 2',  
-      text: `O futuro começa agora! É o equilíbrio perfeito entre progresso econômico, proteção ambiental e bem-estar social, garantindo um mundo melhor para as próximas gerações.Clique no "Saiba Mais" e leia sobre o tópico`,
+      subtext: `Clique no "Saiba Mais" e leia sobre o tópico`,
+      text: `O futuro começa agora! É o equilíbrio perfeito entre progresso econômico, proteção ambiental e bem-estar social, garantindo um mundo melhor para as próximas gerações.`,
       button: 'Saiba Mais',
       topico: 'Sustentabilidade: Um Compromisso com o Futuro' 
     },
     { 
       src: image3, 
       alt: 'Image 3',  
-      text: `Este princípio vital nos convoca a minimizar nosso impacto no planeta, unindo indivíduos, empresas e governos na construção de um futuro sustentável.Clique no "Saiba Mais" e leia sobre o tópico`,
+      subtext: `Clique no "Saiba Mais" e leia sobre o tópico`,
+      text: `Este princípio vital nos convoca a minimizar nosso impacto no planeta, unindo indivíduos, empresas e governos na construção de um futuro sustentável.`,
       button: 'Saiba Mais',
       topico: 'Responsabilidade Ambiental'
     },
     { 
       src: image4, 
-      alt: 'Image 4',  
-      text: ` Entenda e Atue! Medindo o total de GEEs emitidos por atividades humanas, esta métrica é chave para combater o aquecimento global. Empresas têm papel crucial na redução dessas emissões, impactando diretamente no futuro do nosso planeta.Clique no "Saiba Mais" e leia sobre o tópico`,
+      alt: 'Image 4',
+      subtext: `Clique no "Saiba Mais" e leia sobre o tópico`,
+      text: ` Entenda e Atue! Medindo o total de GEEs emitidos por atividades humanas, esta métrica é chave para combater o aquecimento global. Empresas têm papel crucial na redução dessas emissões, impactando diretamente no futuro do nosso planeta.`,
       button: 'Saiba Mais',
       topico: 'Entendendo a Pegada de Carbono'
     },
     { 
       src: image5, 
       alt: 'Image 5',  
-      text: `As fontes renováveis como solar, eólica, e hidráulica, são a chave para uma transição energética sustentável, reduzindo emissões e impulsionando a economia.Clique no "Saiba Mais" e leia sobre o tópico`,
+      subtext: `Clique no "Saiba Mais" e leia sobre o tópico`,
+      text: `As fontes renováveis como solar, eólica, e hidráulica, são a chave para uma transição energética sustentável, reduzindo emissões e impulsionando a economia.`,
       button: 'Saiba Mais',
       topico: 'Energias Renováveis: Sustentável e Inovador'
     },
@@ -342,15 +349,22 @@ const ESG = () => {
           >
         <ImageDisplay src={images[currentIndex]?.src} alt={images[currentIndex]?.alt} />
         <TextRectangle2>
-       
-            {/* Display the styled topico */}
-            <div dangerouslySetInnerHTML={stylePhrasesGreen(images[currentIndex].topico, phrasesToStyleGreen)}></div>
-            {/* Split and map the text content as before */}
-            {images[currentIndex].text.split('\n').map((line, index) => (
-              <React.Fragment key={index}>
-                {line}<br />
-              </React.Fragment>
+  {/* Display the styled topico */}
+  <div dangerouslySetInnerHTML={stylePhrasesGreen(images[currentIndex].topico, phrasesToStyleGreen)}></div>
+  {/* Split and map the text content as before */}
+  {images[currentIndex].text.split('\n').map((line, index) => (
+    <React.Fragment key={index}>
+      {line}<br />
+    
+    </React.Fragment>
             ))}
+            {images[currentIndex].subtext.split('\n').map((line, index) => (
+    <React.Fragment key={index}>
+      {line}<br />
+    
+    </React.Fragment>
+            ))}
+  
          
           <Link to={`/Page${currentIndex + 1}`}>
               <Button>Saiba Mais</Button>
