@@ -205,6 +205,12 @@ const H11 = styled.h1`
   
 
 `;
+const Button1 = styled.button`
+padding: 10px 50px;
+color: #2ebc15;
+background-color: transparent;
+border-color: #2ebc15;
+`;
 const Home = ({ imgurl, altText, title, paragraph, button, transform }) => {
   const { width } = useWindowSize(); // Use the custom hook
   return (
@@ -213,7 +219,7 @@ const Home = ({ imgurl, altText, title, paragraph, button, transform }) => {
       <FrameText>
         <H11>{title}</H11>
         <Paragraph1>{paragraph}</Paragraph1>
-        <button style={{ padding: '10px 10px', color: "black", borderColor: '#2ebc15' }}>{button}</button>
+        <Button1 >{button}</Button1>
       </FrameText>
       <FrameImage>
         <ResponsiveImage src={imgurl} alt={altText} />
