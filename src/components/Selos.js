@@ -1,7 +1,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import Selo1 from '../assets/selo1.png';
+import Selo11 from '../assets/Selo11.png';
 import Selo2 from '../assets/selo2.png';
 import Selo3 from '../assets/selo3.png';
 import Selo4 from '../assets/selo4.png';
@@ -11,7 +11,7 @@ const SelosContainer = styled.div`
   flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
   justify-content: space-around;
   align-items: center;
-  background-color: #3f4c5c;
+  background-color: white;
   padding: 20px 0; /* Add some padding */
   width: 100%;
 `;
@@ -33,7 +33,7 @@ const Selos = styled.img`
 const SelosSection = () => {
   return (
     <SelosContainer>
-      <Selos src={Selo1} alt="EcoFundingGiant" />
+      <Selos src={Selo11} alt="EcoFundingGiant" />
       <Selos src={Selo2} alt="EcoFundingGiant" />
       <Selos src={Selo3} alt="EcoFundingGiant" />
       <Selos src={Selo4} alt="EcoFundingGiant" />

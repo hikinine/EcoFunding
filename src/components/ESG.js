@@ -36,7 +36,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh; /* Ensures at least full viewport height */
+  /* Ensures at least full viewport height */
   background-color: #242a32;
   width: 100%; /* Full width */
   
@@ -124,6 +124,9 @@ const TextImage = styled(motion.div)`
 const H1 = styled(motion.h1)`
   color: white;
   margin-top: 1em;
+  font-family: "Lexend Tera", sans-serif;
+  font-size: 2em;
+  font-weight: 300;
 `;
 const animationOpacity = {
   hidden: { opacity: 0 },
@@ -172,9 +175,10 @@ const TextRectangle2 = styled.div`
   width: 100%;
   text-align: end;
   min-height: 200px;
+  margin-right: 200px;
   margin-top: -0.5em;
   display: flex;
-  align-items: center;
+  
   border-radius: 12px;
   white-space: pre-wrap;
 
@@ -196,7 +200,16 @@ const RowModel = styled.div`
   justify-content: space-between; /* This keeps existing spacing behavior */
 `;
 // New styles for positioning
-
+const Button2 = styled.button`
+  margin-top: 50px;
+  padding: 10px 20px;
+  justify-self: flex-end;
+  cursor: pointer;
+  border: 2px solid #2ebc15;
+  color: ${({ active }) => (active ? 'white' : '#2ebc15')};
+  background: ${({ active }) =>
+    active ? '#2ebc15' : 'transparent'};
+`;
 
 
 const ESG = () => {
@@ -290,7 +303,7 @@ const ESG = () => {
       <H1 ref={ref}
           variants={animationOpacity}
           initial="hidden"
-          animate={controls}>SAIBA MAIS SOBRE ESG</H1>
+          animate={controls}>SAIBA MAIS SOBRE<span style={{ color: '#2ebc15' }}> ESG</span></H1>
  
       <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -333,9 +346,9 @@ const ESG = () => {
     </SwiperSlide>
   ))}
 </Swiper>
-      <RowModel style={{ justifyContent: 'space-between' }}>
-      <div className="prev-arrow" onClick={handlePrev}><img src={PrevArrow} style={{ color: 'white', height: '50px' }} alt="fesgs"/></div>
-      <div className="next-arrow" onClick={handleNext}><img src={NextArrow} style={{ color: 'white', height: '50px' }} alt="fesgs" /></div>
+      <RowModel style={{ justifyContent: 'space-between', marginTop: '1em' }}>
+      <div className="prev-arrow" onClick={handlePrev}><img src={PrevArrow} style={{ color: 'white', height: '20px' }} alt="fesgs"/></div>
+      <div className="next-arrow" onClick={handleNext}><img src={NextArrow} style={{ color: 'white', height: '20px' }} alt="fesgs" /></div>
       </RowModel>
      
       </CollumnModel>
@@ -359,7 +372,7 @@ const ESG = () => {
   
          
           <Link to={`/Page${currentIndex + 1}`}>
-              <Button>Saiba Mais</Button>
+              <Button2>Saiba Mais</Button2>
             </Link>
         </TextRectangle2>
       </TextImage>

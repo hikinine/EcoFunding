@@ -40,7 +40,8 @@ const NavContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  font-weight: 300;
+  margin-top: 2em;
   .nav-center {
     width: 90vw;
     margin: 0 auto;
@@ -88,9 +89,11 @@ const NavContainer = styled.nav`
       a {
         color: var(--clr-grey-3);
         font-size: 1rem;
+        height: auto;
+        width: auto;
         text-transform: capitalize;
         letter-spacing: var(--spacing);
-        padding: 0.5rem;
+        padding: 4rem;
         &:hover {
           border-bottom: 2px solid var(--clr-primary-7);
         }
@@ -101,7 +104,12 @@ const NavContainer = styled.nav`
     }
   }
 `;
-
+const Img = styled.img`
+width: 100%;
+height: 100px;
+object-fit: contain;
+max-width: 800px;
+`;
 const Header = () => {
   const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0(); // Destructure needed functions and state
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -115,13 +123,13 @@ const Header = () => {
       <div className='nav-center'>
         <div className='nav-header'>
           <Link to='/'>
-            <img src={logo} alt='comfy sloth' />
+            <Img src={logo} alt='comfy sloth' />
           </Link>
           <button type='button' className='nav-toggle' onClick={toggleNav} >
             <FaBars />
           </button>
         </div>
-        <Ul className='nav-links' isOpen={isDropdownOpen}>
+        <Ul className='nav-links' isOpen={isNavOpen}>
           <li>Sobre</li>
           <li>PARCERIA</li>
           <li>FAQ</li>

@@ -4,6 +4,7 @@
   top: 50%; /* Aligns the button vertically */
   transform: translateY(-50%); /* Centers the button vertically */
   z-index: 10; /* Ensures the buttons are above the slides */
+  max-height: 10px;
 }
 
 .swiper-button-next {
