@@ -67,6 +67,26 @@ const DropdownMenu = styled.div`
   padding: 10px;
   display: flex;
   flex-direction: column;
+  button {
+    margin: 0 10px;
+    padding: 5px 10px;
+    font-family: 'Lexend Tera', sans-serif !important;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 1px solid #2ebc15;
+    border-radius: 5px;
+    cursor: pointer;
+
+    
+  }
+`;
+const Button = styled.button`
+  margin: 0 10px;
+  padding: 5px 10px;
+  font-family: 'Lexend Tera', sans-serif !important;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid #2ebc15;
 `;
 const Header = () => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
@@ -81,13 +101,13 @@ const Header = () => {
         <button>FAQ</button>
       </Nav>
       {!isAuthenticated ? (
-        <button onClick={() => loginWithRedirect()}>Login</button>
+        <Button onClick={() => loginWithRedirect()}>Login</Button>
       ) : (
         <UserProfile>
           <UserImage src={user.picture} alt={user.name} onClick={toggleDropdown}/>
           {showDropdown && (
             <DropdownMenu>
-              <button onClick={() => logout({ returnTo: window.location.origin })}>Logout</button>
+              <Button onClick={() => logout({ returnTo: window.location.origin })}>Logout</Button>
             </DropdownMenu>
           )}
         </UserProfile>

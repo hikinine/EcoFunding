@@ -56,6 +56,8 @@ const Button = styled.button`
   width: calc(50px + 100%);
   height: calc(50px + 100%);
   cursor: pointer;
+  font-family: "Lexend Tera", sans-serif;
+  text-transform: uppercase;
   border: 2px solid #2ebc15;
   color: ${({ active }) => (active ? 'white' : '#2ebc15')};
   background: ${({ active }) =>
@@ -209,6 +211,8 @@ const Button2 = styled.button`
   color: ${({ active }) => (active ? 'white' : '#2ebc15')};
   background: ${({ active }) =>
     active ? '#2ebc15' : 'transparent'};
+  font-family: "Lexend Tera", sans-serif;
+  text-transform: uppercase;
 `;
 
 
