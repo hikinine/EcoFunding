@@ -301,9 +301,9 @@ const HomeCarousel = () => {
   const updateDimensions = () => {
     const windowWidth = window.innerWidth;
     if (windowWidth < 768) {
-      setSlideHeight(70); // Example: Increase height for smaller screens
+      setSlideHeight(60); // Example: Increase height for smaller screens
     } else {
-      setSlideHeight(40); // Reset to default for larger screens
+      setSlideHeight(30); // Reset to default for larger screens
     }
   };
 
@@ -319,6 +319,7 @@ const HomeCarousel = () => {
       naturalSlideWidth={100}
       naturalSlideHeight={slideHeight}
       totalSlides={slidesData.length}
+      style={{ marginTop: '-8em'}}
     >
         <Wrapper2 onMouseMove={handleMouseMove}>
         <ParallaxFolha ref={folhaRef} src={FolhaEsquerda} alt="folha"/>

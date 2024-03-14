@@ -36,7 +36,7 @@ const Ul = styled.ul`
     }
 `
 const NavContainer = styled.nav`
-  
+  width: 90vw;
   display: flex;
   flex-direction: column; /* Stack children vertically */
   justify-content: center; /* Center content vertically */
@@ -77,6 +77,7 @@ const NavContainer = styled.nav`
       display: none;
     }
     .nav-center {
+      width: 90vw;
       display: flex; /* Use flexbox for alignment */
       justify-content: center; /* Center the content horizontally */
       align-items: center; /* Center the content vertically */
