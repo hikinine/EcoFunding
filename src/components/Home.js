@@ -199,8 +199,10 @@ const Wrapper2 = styled.div`
   `;
 const Paragraph1 = styled.p`
   margin-bottom: 2em;
+  margin-left: 2em;
   font-size: 22px;
   font-family: 'Lexend Tera';
+  text-align: start;
 `;
 const H11 = styled.h1`
 text-transform: uppercase;

@@ -31,6 +31,8 @@ function useWindowSize() {
 const StyledHeader = styled.header`
   background-color: #242a32;
   padding: 74px 80px;
+  
+  font-size: 16px;
   @media (max-width: 991px) {
     padding: 0 20px;
   }
@@ -129,7 +131,7 @@ const NewsletterSection = styled.section`
   
 
   & > div:first-child {
-    font-family: Lexend Zetta, sans-serif;
+    font-family: Lexend Tera, sans-serif;
     font-weight: 200;
   }
   @media (max-width: 991px) {
@@ -189,14 +191,14 @@ function Rodape() {
         </Sidebar>
         <ContentWrapper>
           <Navbar>
-            <div>EMPRESA</div>
+            <span style={{ fontFamily: 'Lexend Tera' }}>EMPRESA</span>
             <div>Início</div>
             <div>Investir</div>
             <div>Seja um parceiro Eco</div>
             <div>Contato</div>
           </Navbar>
           <Navbar>
-            <div>EMPRESA</div>
+          <span style={{ fontFamily: 'Lexend Tera' }}>EMPRESA</span>
             <div>Início</div>
             <div>Investir</div>
             <div>Seja um parceiro Eco</div>
