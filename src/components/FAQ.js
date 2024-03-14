@@ -4,7 +4,7 @@ import { CAccordion, CAccordionItem, CAccordionHeader, CAccordionBody } from '@c
 import Faq from 'react-faq-component';
 
 const data = {
-    title: "FAQ (Perguntas Frequentes)",
+    title: "FAQ",
     rows: [
       {
         title: "Lorem ipsum dolor sit amet,",

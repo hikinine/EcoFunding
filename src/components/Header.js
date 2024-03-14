@@ -36,24 +36,24 @@ const Ul = styled.ul`
     }
 `
 const NavContainer = styled.nav`
-  height: 5rem;
+  height: 100vh; /* Use the full viewport height */
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
   font-weight: 300;
-  margin-top: 2em;
   .nav-center {
-    width: 90vw;
-    margin: 0 auto;
-    max-width: var(--max-width);
+    width: 100vw;
+    
   }
   .nav-header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    
+    justify-content: center; /* Center the logo and toggle button horizontally */
+    width: 100%; /* Ensure it spans the full width of its container */
     img {
       width: 175px;
-      margin-left: -15px;
+      margin: 0; /* Remove any margin to center the logo */
     }
   }
   .nav-toggle {
@@ -76,9 +76,9 @@ const NavContainer = styled.nav`
       display: none;
     }
     .nav-center {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
+      display: flex; /* Use flexbox for alignment */
+      justify-content: center; /* Center the content horizontally */
+      align-items: center; /* Center the content vertically */
     }
     .nav-links {
       display: flex;
@@ -89,8 +89,6 @@ const NavContainer = styled.nav`
       a {
         color: var(--clr-grey-3);
         font-size: 1rem;
-        height: auto;
-        width: auto;
         text-transform: capitalize;
         letter-spacing: var(--spacing);
         padding: 4rem;

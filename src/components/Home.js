@@ -218,17 +218,17 @@ margin-right: 50px;
 `;
 const Button1 = styled.button`
   padding: 10px 50px;
-  color: #242a32; // Initial color
-  background-color: transparent; // Initial background-color
-  border: 1px solid #242a32; // Set border-color and assume a default border style of solid
+  color: ${props => props.buttonText === 'Regulada pela CVM' ? 'white' : '#242a32'}; // Initial color
+  background-color: ${props => props.buttonText === 'Regulada pela CVM' ? '#242a32' : 'transparent'}; // Conditional background color
+  border: ${props => props.buttonText === 'Regulada pela CVM' ? '1px solid #242a32' : '1px solid #242a32'} ; // Set border-color and assume a default border style of solid
   font-family: 'Lexend Tera';
   font-weight:550;
   font-size: 18px;
   text-transform: uppercase;
   
   &:hover {
-    color: #FFFFFF; // New text color on hover
-    background-color: #242a32; // New background color on hover
+    color: ${props => props.buttonText === 'Regulada pela CVM' ? '#242a32' : 'white'}; // New text color on hover
+    background-color: ${props => props.buttonText === 'Regulada pela CVM' ? 'transparent' : '#242a32'}; // New background color on hover
   }
 `;
 const Home = ({ imgurl, altText, title, paragraph, button, transform }) => {
@@ -239,7 +239,7 @@ const Home = ({ imgurl, altText, title, paragraph, button, transform }) => {
       <FrameText>
         <H11>{title}</H11>
         <Paragraph1>{paragraph}</Paragraph1>
-        <Button1 >{button}</Button1>
+        <Button1 buttonText={button}>{button}</Button1>
       </FrameText>
       <FrameImage>
         <ResponsiveImage src={imgurl} alt={altText} />

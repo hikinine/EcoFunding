@@ -48,7 +48,7 @@ const Parceiros= () => {
   const { isAuthenticated, loginWithRedirect, isLoading, user } = useAuth0();
   const [userRole, setUserRole] = useState('');
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Carregando...</div>;
   }
 
   if (!isAuthenticated) {
