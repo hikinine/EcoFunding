@@ -1,128 +1,185 @@
-import React from 'react';
 import styled from 'styled-components';
-import { useAuth0 } from '@auth0/auth0-react';
-import Logoo from '../assets/LOGOTIPO.svg';
+import logo from '../assets/LOGOTIPO.svg';
+import { FaBars } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react'; // Import useAuth0 hook
 import { useState } from 'react';
-// Styled components
-const StyledHeader = styled.header`
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  background-color: white;
-  margin: 2em 100px 0 100px;
-  font-family: 'Lexend Tera', sans-serif !important;
-  font-weight: 500;
-`;
-
-const Logo = styled.img`
-  height: 50px; // Adjust size as needed
-`;
-const Wrapper = styled.div`
-  
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-`;
-const Nav = styled.nav`
-  
-  button {
-    margin: 0 10px;
-    padding: 5px 10px;
-    font-family: 'Lexend Tera', sans-serif !important;
-    text-transform: uppercase;
-    background-color: transparent;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    
-    
-  }
-`;
-
-const UserProfile = styled.div`
-  display: flex;
-  align-items: center;
-  button {
-    margin: 0 10px;
-    padding: 5px 10px;
-    font-family: 'Lexend Tera', sans-serif !important;
-    text-transform: uppercase;
-    background-color: transparent;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-
-    
-  }
-`;
-
-const UserImage = styled.img`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
-`;
-const DropdownMenu = styled.div`
-  position: absolute;
-  right: 10px;
-  top: 60px;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  button {
-    margin: 0 10px;
-    padding: 5px 10px;
-    font-family: 'Lexend Tera', sans-serif !important;
-    text-transform: uppercase;
-    background-color: transparent;
-    border: 1px solid #2ebc15;
-    border-radius: 5px;
-    cursor: pointer;
-
-    
-  }
-`;
 const Button = styled.button`
-  margin: 0 10px;
-  padding: 5px 10px;
-  font-family: 'Lexend Tera', sans-serif !important;
-  text-transform: uppercase;
-  background-color: transparent;
-  border: 1px solid #2ebc15;
+  background: transparent;
+  border-color: transparent;
+  color: var(--clr-grey-5);
+  cursor: pointer;
+  font-size: 1.2rem;
+  letter-spacing: var(--spacing);
+  &:hover {
+    color: var(--clr-primary-5);
+  }
+  `;
+const Ul = styled.ul`
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: ${(props) => (props.isOpen ? 'flex' : 'none')};
+    gap: 200px;
+    margin-right: 200px;
+    
+    a {
+      text-decoration: none;
+    }
+    li {
+      margin-bottom: 100px;
+      margin-right: 100px;
+      cursor: pointer;
+    }
+    @media (max-width: 1292px) {
+      gap: 100px;
+    }
+`
+const NavContainer = styled.nav`
+  
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  font-weight: 300;
+  padding: 1rem 400px;
+  .nav-center {
+    width: 100vw;
+    
+  }
+  .nav-header {
+    display: flex;
+    
+    
+    width: 100%; /* Ensure it spans the full width of its container */
+    img {
+      width: 175px;
+      margin: 0; /* Remove any margin to center the logo */
+    }
+  }
+  .nav-toggle {
+    background: transparent;
+    border: transparent;
+    color: var(--clr-primary-5);
+    cursor: pointer;
+    svg {
+      font-size: 2rem;
+    }
+  }
+  .nav-links {
+    display: none;
+  }
+  .cart-btn-wrapper {
+    display: none;
+  }
+  @media (min-width: 992px) {
+    .nav-toggle {
+      display: none;
+    }
+    .nav-center {
+      display: flex; /* Use flexbox for alignment */
+      justify-content: center; /* Center the content horizontally */
+      align-items: center; /* Center the content vertically */
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      li {
+        margin: 0 0.5rem;
+      }
+      a {
+        color: var(--clr-grey-3);
+        font-size: 1rem;
+        text-transform: capitalize;
+        letter-spacing: var(--spacing);
+        padding: 4rem;
+        &:hover {
+          border-bottom: 2px solid var(--clr-primary-7);
+        }
+      }
+    }
+    .cart-btn-wrapper {
+      display: grid;
+    }
+  }
+`;
+const Img = styled.img`
+position: relative;
+
+
+top: 0;
+left: 200px;
+width: 100%;
+height: 100px;
+object-fit: contain;
+max-width: 800px;
+
 `;
 const Header = () => {
-  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
-  const [showDropdown, setShowDropdown] = useState(false);
-  const toggleDropdown = () => setShowDropdown(!showDropdown);
+  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0(); // Destructure needed functions and state
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+  const [isNavOpen, setIsNavOpen] = useState(false); 
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
   return (
-    <StyledHeader>
-      <Logo src={Logoo} alt="Logo" />
-      <Wrapper>
-      <Nav>
-        <button>Sobre</button>
-        <button>Parceria</button>
-        <button>FAQ</button>
-      </Nav>
-      {!isAuthenticated ? (
-        <Button onClick={() => loginWithRedirect()}>Login</Button>
-      ) : (
-        <UserProfile>
-          <UserImage src={user.picture} alt={user.name} onClick={toggleDropdown}/>
-          {showDropdown && (
-            <DropdownMenu>
-              <Button onClick={() => logout({ returnTo: window.location.origin })}>Logout</Button>
-            </DropdownMenu>
-          )}
-        </UserProfile>
+    <NavContainer>
+      <div className='nav-center'>
+        <div className='nav-header'>
+          <Link to='/'>
+            <Img src={logo} alt='comfy sloth' />
+          </Link>
+          <button type='button' className='nav-toggle' onClick={toggleNav} >
+            <FaBars />
+          </button>
+        </div>
+        <Ul className='nav-links' isOpen={isNavOpen}>
+          <li>Sobre</li>
+          <li>PARCERIA</li>
+          <li>FAQ</li>
+          {/* Conditional rendering based on authentication state */}
+          {
+  isAuthenticated ? (
+    <li style={{ position: 'relative' }}>
+      <img
+        src={user.picture}
+        alt={user.name}
+        style={{ width: '30px', borderRadius: '50%', cursor: 'pointer' }}
+        onClick={toggleDropdown} // Toggle dropdown on image click
+      />
+      {isDropdownOpen && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '100%',
+            right: 0,
+            backgroundColor: 'white',
+            boxShadow: '0px 8px 16px 0px rgba(0,0,0,0.2)',
+            padding: '12px',
+            zIndex: 1,
+          }}
+        >
+          <ul style={{ listStyle: 'none', padding: 0 }}>
+            <li><Button onClick={() => logout({ returnTo: window.location.origin })}>Conta</Button></li>
+            <li><Button onClick={() => logout({ returnTo: window.location.origin })}>Dashboard</Button></li>
+            <li><Button onClick={() => logout({ returnTo: window.location.origin })}>Logout</Button></li>
+
+          </ul>
+        </div>
       )}
-      </Wrapper>
-    </StyledHeader>
+    </li>
+  ) : (
+    <li>
+      <Button onClick={() => loginWithRedirect()}>Login</Button>
+    </li>
+  )
+}
+        </Ul>
+      </div>
+    </NavContainer>
   );
 };
+
 
 export default Header;

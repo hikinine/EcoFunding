@@ -6,7 +6,7 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext,DotGroup } from
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import FolhaEsquerda from '../assets/FolhaEsquerda.png';
 import HomeSection1 from '../assets/HomeSection1.jpg';	
-import HomeSection2 from '../assets/HomeSection2.jpg';	
+import HomeSection2 from '../assets/HomeSection2.png';	
 import HomeSection3 from '../assets/HomeSection3.jpg';	
 import folhaesquerdacima from '../assets/FolhaEsquerdaCima.png';
 import folhadireitabaixo from '../assets/FolhaDireitaBaixo.png';
