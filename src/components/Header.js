@@ -7,7 +7,6 @@ import { useState } from 'react';
 const StyledHeader = styled.header`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 10px;
   background-color: white;
   margin: 2em 100px 0 100px;
@@ -18,8 +17,16 @@ const StyledHeader = styled.header`
 const Logo = styled.img`
   height: 50px; // Adjust size as needed
 `;
+const Wrapper = styled.div`
+  
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 
+`;
 const Nav = styled.nav`
+  
   button {
     margin: 0 10px;
     padding: 5px 10px;
@@ -29,7 +36,7 @@ const Nav = styled.nav`
     border: none;
     border-radius: 5px;
     cursor: pointer;
-
+    
     
   }
 `;
@@ -95,6 +102,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <Logo src={Logoo} alt="Logo" />
+      <Wrapper>
       <Nav>
         <button>Sobre</button>
         <button>Parceria</button>
@@ -112,6 +120,7 @@ const Header = () => {
           )}
         </UserProfile>
       )}
+      </Wrapper>
     </StyledHeader>
   );
 };
