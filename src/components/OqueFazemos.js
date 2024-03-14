@@ -56,13 +56,13 @@ const Container = styled.div`
 
 const Content = styled.div`
   display: ${(props) => (props.show ? 'block' : 'none')};
-  margin-right: 1rem;
+  margin: 0 auto;
 `;
 
 const Button = styled.button`
   padding: 10px 20px;
   font-size: 16px;
-  
+  margin-top: 100px;
   border: none;
   width: 20vw;
   align-self: flex-end;
@@ -105,7 +105,7 @@ const Paragraph = styled(motion.p)`
   }
 `;
 const Image = styled.img`
-  max-width: 800px;
+  max-width: 500px;
   
   margin-left: 1rem;
   margin-top: 1rem;
@@ -129,7 +129,8 @@ const OverlayContent = styled.div`
 const ColumnFlex = styled.div`
   display: flex;
   flex-direction: column;
-  margin-right: 6em;
+  margin: 0 auto;
+  
 `;
 const ButtonContainer = styled.div`
   width: 100%; // Ensures the container spans the full width

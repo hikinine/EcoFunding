@@ -7,20 +7,28 @@ const data = {
     title: "FAQ",
     rows: [
       {
-        title: "Lorem ipsum dolor sit amet,",
-        content: "Lorem ipsum dolor sit amet, consectetur "
+        title: " Como sei que meu investimento ajuda o meio ambiente?",
+        content: `Relatórios de Impacto: Acompanhe o impacto positivo do seu investimento com relatórios detalhados.
+        <br>Certificações: Projetos certificados por órgãos renomados garantem sua confiabilidade.
+        `
       },
       {
-        title: "Nunc maximus, magna at ultricies elementum",
-        content: "Nunc maximus, magna at ultricies elementum, risus turpis vulputate quam."
+        title: ". Como a eCOfunding avalia e seleciona projetos para investimento?",
+        content: `Critérios rigorosos: Análise de viabilidade, impacto ambiental e social, equipe qualificada e histórico do proponente.
+        <br>Comitê de especialistas: Seleção criteriosa dos projetos com maior potencial de impacto positivo.
+        `
       },
       {
-        title: "Curabitur laoreet, mauris vel blandit fringilla",
-        content: "Curabitur laoreet, mauris vel blandit fringilla, leo elit rhoncus nunc"
+        title: " Qual a garantia de que meu investimento me retornará créditos ambientais?",
+        content: `Projetos certificados: Apenas projetos com certificações de órgãos renomados garantem a geração de créditos.
+        <br>Processo rigoroso: Rigorosa avaliação e acompanhamento garantem a entrega dos créditos.`
+        
       },
       {
-        title: "What is the package version",
-        content: "v1.0.5"
+        title: "Como posso monitorar o progresso e o impacto do meu investimento?",
+        content: `Plataforma online: Acompanhe o andamento do projeto, resultados e impacto ambiental em tempo real.
+        <br> Relatórios periódicos: Receba relatórios detalhados com fotos, vídeos e indicadores de performance.
+        `
       }]
   }
   const Container = styled.div`
@@ -29,6 +37,10 @@ const data = {
   align-items: center;
   height: 100vh;
   background-color: #3f4c5c;
+  .faq-row-content {
+  font-family: 'Montserrat', sans-serif;
+}
+
   `;
   const Header = styled.h1`
   font-size: 50px;
@@ -36,11 +48,15 @@ const data = {
   text-align: center;
   margin-bottom: 30px;
   `;
+
 const FAQ = () => {
     return (
         <>
         <Container>
-                <Faq data={data}/>
+                <Faq className="faq-row-content" data={data} styles={{
+                    rowContentFontFamily: "Montserrat" 
+                    }}
+                />
         </Container>
         
                
