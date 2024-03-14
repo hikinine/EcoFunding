@@ -4,7 +4,7 @@ import React, { useState, useRef, useContext, Component, useEffect } from 'react
 import styled from 'styled-components';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext,DotGroup } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import folhaesquerda from '../assets/FolhaEsquerda.png';
+import FolhaEsquerda from '../assets/FolhaEsquerda.png';
 import HomeSection1 from '../assets/HomeSection1.jpg';	
 import HomeSection2 from '../assets/HomeSection2.jpg';	
 import HomeSection3 from '../assets/HomeSection3.jpg';	
@@ -41,15 +41,15 @@ function useWindowSize() {
 const Wrapper = styled.section`
   background: white;
   text-align: center;
-  width: 100%;
-  height: 70vh;
+  justify-content: center;
+  align-items: center;
   
-  
-  
+  margin-top: 2em;
+  margin-bottom: 2em;
+  width: 100vw;
+  height: 40vh;
   gap: 8em;
-  * {
-    font-family: 'Montserrat', sans-serif;
-  }
+  
 `;
 
 const Container = styled.div`
@@ -129,7 +129,7 @@ const ParallaxFolha = styled.img`
   height: auto;
   position: sticky;
   z-index: 1000;
-  top: 700px;
+  top: 500px;
   margin-left: -100px;
   transition: transform 0.35s ease-out;
   
@@ -154,9 +154,10 @@ const ParallaxFolhaCima = styled.img`
 
 
 const Wrapper2 = styled.div`
+    height: fit-content;
     .controls {
       display: flex;
-      align-items: center;
+      
       justify-content: center;
   
       .btn-arrow {
@@ -187,7 +188,7 @@ const Wrapper2 = styled.div`
         /* This class is found in DotGroup from pure-react-carousel */
         /* We need to override it to add our styles */
         .carousel__dot--selected {
-          width: 16px;
+          width: 8px;
           height: 8px;
           border-radius: 10px;
           background-color: #6267a1;
@@ -318,7 +319,7 @@ const HomeCarousel = () => {
       totalSlides={slidesData.length}
     >
         <Wrapper2 onMouseMove={handleMouseMove}>
-        <ParallaxFolha ref={folhaRef} src={folhaesquerda} alt="folha"/>
+        <ParallaxFolha ref={folhaRef} src={FolhaEsquerda} alt="folha"/>
         <ParallaxFolhaCima ref={folhaCimaRef} src={folhaesquerdacima} />
           <Slider>
             {slidesData.map((slide, index) => (

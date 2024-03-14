@@ -105,7 +105,7 @@ const Paragraph = styled(motion.p)`
   }
 `;
 const Image = styled.img`
-  max-width: 800px;
+  max-width: 500px;
   
   margin-left: 1rem;
   margin-top: 1rem;
