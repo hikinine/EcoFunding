@@ -36,10 +36,11 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   /* Ensures at least full viewport height */
   background-color: #242a32;
   width: 100%; /* Full width */
-  
+  height: 60vw;
   @media (max-width: ${breakpoints.mobile}) {
       height: auto;
   }
@@ -199,7 +200,8 @@ const TextRectangle2 = styled.div`
 const RowModel = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between; /* This keeps existing spacing behavior */
+  
+  justify-content: flex-end; /* This keeps existing spacing behavior */
 `;
 // New styles for positioning
 const Button2 = styled.button`

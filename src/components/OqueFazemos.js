@@ -65,6 +65,7 @@ const Button = styled.button`
   margin-top: 100px;
   border: none;
   width: 20vw;
+  margin: 100px 100px 0px auto;
   align-self: flex-end;
   cursor: pointer;
   @media (max-width: 768px){
@@ -92,7 +93,7 @@ const Header = styled.h1`
 
 const Paragraph = styled(motion.p)`
   font-size: 18px;
-  
+  margin: 0 100px;
   word-break: break-word;
   color: white;
   font-weight: lighter;
@@ -135,6 +136,7 @@ const ColumnFlex = styled.div`
 const ButtonContainer = styled.div`
   width: 100%; // Ensures the container spans the full width
   text-align: right; // Aligns the button to the right
+  
 `;
 // Animation Variants
 const slideInFromLeft = {

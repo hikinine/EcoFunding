@@ -14,7 +14,9 @@ const StyledHeader = styled.header`
   .nav_logo {
     padding: 0 12px;
     width: 100%; // Ensure the container takes full width
-    text-align: center; // Center the content
+    @media (max-width: 768px){
+      text-align: center; // Center the content
+    }
   }
   
   .menuToggleBtn {
