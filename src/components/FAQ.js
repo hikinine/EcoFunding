@@ -4,7 +4,7 @@ import { CAccordion, CAccordionItem, CAccordionHeader, CAccordionBody } from '@c
 import Faq from 'react-faq-component';
 
 const data = {
-    title: "FAQ",
+    title: "",
     rows: [
       {
         title: " Como sei que meu investimento ajuda o meio ambiente?",
@@ -33,6 +33,7 @@ const data = {
   }
   const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -48,11 +49,17 @@ const data = {
   text-align: center;
   margin-bottom: 30px;
   `;
-
+  const H1 = styled.h1`
+  font-size: 50px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 30px;
+  `;
 const FAQ = () => {
     return (
         <>
         <Container>
+          <H1 > FAQ </H1>
                 <Faq className="faq-row-content" data={data} styles={{
                     rowContentFontFamily: "Montserrat" 
                     }}

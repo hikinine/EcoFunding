@@ -4,12 +4,12 @@ import React, { useState, useRef, useContext, Component, useEffect } from 'react
 import styled from 'styled-components';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext,DotGroup } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import FolhaEsquerda from '../assets/FolhaEsquerda.png';
-import HomeSection1 from '../assets/HomeSection1.jpg';	
-import HomeSection2 from '../assets/HomeSection2.png';	
-import HomeSection3 from '../assets/HomeSection3.jpg';	
-import folhaesquerdacima from '../assets/FolhaEsquerdaCima.png';
-import folhadireitabaixo from '../assets/FolhaDireitaBaixo.png';
+import FolhaEsquerda from '../assets/FolhaEsquerda.webp';
+import HomeSection1 from '../assets/HomeSection1.webp';	
+import HomeSection2 from '../assets/HomeSection2.webp';	
+import HomeSection3 from '../assets/HomeSection3.webp';	
+import folhaesquerdacima from '../assets/FolhaEsquerdaCima.webp';
+import folhadireitabaixo from '../assets/FolhaDireitaBaixo.webp';
 import homeSection from '../assets/HomeSection.png';
 import '../components/home.css';
 

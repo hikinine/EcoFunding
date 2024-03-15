@@ -6,8 +6,8 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from 'react-intersection-observer';
-import PrevArrow from '../assets/angle-left-solid.svg';
-import NextArrow from '../assets/angle-right-solid.svg';
+import PrevArrow from '../assets/angle-left-solid.webp';
+import NextArrow from '../assets/angle-right-solid.webp';
 import ESG2 from '../assets/ESG2.png'; 
 import { Link } from 'react-router-dom';
 import image1 from '../assets/CreditosDeCarbono.webp'

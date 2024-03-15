@@ -1,10 +1,10 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import Selo11 from '../assets/Selo11.png';
-import Selo2 from '../assets/selo2.png';
-import Selo3 from '../assets/selo3.png';
-import Selo4 from '../assets/selo4.png';
+import Selo11 from '../assets/Selo11.webp';
+import Selo2 from '../assets/selo2.webp';
+import Selo3 from '../assets/selo3.webp';
+import Selo4 from '../assets/selo4.webp';
 
 const SelosContainer = styled.div`
   display: flex;

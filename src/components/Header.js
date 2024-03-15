@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import logo from '../assets/LOGOTIPO.svg';
+import logo from '../assets/LOGOTIPO.webp';
 import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react'; // Import useAuth0 hook
@@ -44,7 +44,7 @@ const NavContainer = styled.nav`
   font-weight: 300;
   padding: 1rem 400px;
   .nav-center {
-    width: 100vw;
+    
     
   }
   .nav-header {
