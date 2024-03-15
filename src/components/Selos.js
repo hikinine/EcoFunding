@@ -12,7 +12,7 @@ const SelosContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   background-color: white;
-  padding: 50px 0; /* Add some padding */
+  padding: 60px 0; /* Add some padding */
   width: 100%;
 `;
 

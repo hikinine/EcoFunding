@@ -40,7 +40,7 @@ const Container = styled.div`
   /* Ensures at least full viewport height */
   background-color: #242a32;
   width: 100%; /* Full width */
-  height: 60vw;
+  height: auto;
   @media (max-width: ${breakpoints.mobile}) {
       height: auto;
   }

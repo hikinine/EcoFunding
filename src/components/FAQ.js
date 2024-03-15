@@ -23,14 +23,9 @@ const Container = styled.div`
   }
 `;
 
-// Styled paragraph for "How it works"
-const HowItWorks = styled.p`
-  padding: 0.5rem;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 0.875rem;
-  font-weight: medium;
-  letter-spacing: wider;
+// Styled paragraph
+const Paragraph = styled.p`
+  font-family: "Dm Sans", sans-serif;
 `;
 
 // Styled h2 for FAQ title
@@ -72,6 +67,8 @@ const FAQDetail = styled.details`
     padding: 0.5rem 0;
     outline: none;
     cursor: pointer;
+    text-transform: uppercase;
+    
     &:focus {
       text-decoration: underline;
     }
@@ -81,33 +78,71 @@ const FAQDetail = styled.details`
     padding: 0 1rem 1rem;
   }
 `;
-const Paragraph = styled.p`
-  font-family: "Dm Sans", sans-serif;
-`;
+
 const FAQ = () => {
   return (
     <Section>
       <Container className="container">
-       
-        <FAQTitle>FAQ</FAQTitle>
+        <FAQTitle>FAQ </FAQTitle>
         <FAQItems className="flex flex-col divide-y divide-gray-700">
           <FAQDetail>
-            <summary>Optio maiores eligendi molestiae totam dolores similique?</summary>
+            <summary>Como sei que meu investimento ajuda o meio ambiente?</summary>
             <div>
-              <Paragraph>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde neque in fugiat magni, quas animi enim veritatis deleniti ex. Impedit.</Paragraph>
+              <Paragraph>Relatórios de Impacto: Acompanhe o impacto positivo do seu investimento com relatórios detalhados.</Paragraph>
+              <Paragraph>Certificações: Projetos certificados por órgãos renomados garantem sua confiabilidade.</Paragraph>
             </div>
           </FAQDetail>
           <FAQDetail>
-            <summary>Modi dolorem veritatis culpa quos consequuntur beatae itaque excepturi perspiciatis?</summary>
+            <summary>Como posso saber o retorno do meu investimento ao meio ambiente?</summary>
             <div>
-              <Paragraph>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est aspernatur quae, eos explicabo odit minima libero veniam similique quibusdam doloribus facilis ipsa accusantium vel maiores corrupti! Libero voluptate a doloribus?</Paragraph>
+              <Paragraph>Créditos Ambientais: Receba créditos que representam a quantia de CO2 que você ajudou a reduzir.</Paragraph>
+              <Paragraph>Relatórios de Impacto: Acompanhe os resultados tangíveis do projeto em termos de sustentabilidade.</Paragraph>
             </div>
           </FAQDetail>
           <FAQDetail>
-            <summary>Magni reprehenderit possimus debitis?</summary>
+            <summary>Como a Ecofunding avalia e seleciona projetos para investimento?</summary>
             <div>
-              <Paragraph>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptates aspernatur dolores in consequatur doloremque inventore reprehenderit, consequuntur perspiciatis architecto.</Paragraph>
-              <Paragraph>Sed consectetur quod tenetur! Voluptatibus culpa incidunt veritatis velit quasi cupiditate unde eaque! Iure, voluptatibus autem eaque unde possimus quae.</Paragraph>
+              <Paragraph>Critérios rigorosos: Análise de viabilidade, impacto ambiental e social, equipe qualificada e histórico do proponente.</Paragraph>
+              <Paragraph>Comitê de especialistas: Seleção criteriosa dos projetos com maior potencial de impacto positivo.</Paragraph>
+            </div>
+          </FAQDetail>
+          <FAQDetail>
+            <summary>Qual a garantia de que meu investimento me retornará créditos ambientais?</summary>
+            <div>
+              <Paragraph>Projetos certificados: Apenas projetos com certificações de órgãos renomados garantem a geração de créditos.</Paragraph>
+              <Paragraph>Processo rigoroso: Rigorosa avaliação e acompanhamento garantem a entrega dos créditos.</Paragraph>
+            </div>
+          </FAQDetail>
+          <FAQDetail>
+            <summary>Como posso monitorar o progresso e o impacto do meu investimento?</summary>
+            <div>
+              <Paragraph>Plataforma online: Acompanhe o andamento do projeto, resultados e impacto ambiental em tempo real.</Paragraph>
+              <Paragraph>Relatórios periódicos: Receba relatórios detalhados com fotos, vídeos e indicadores de performance.</Paragraph>
+            </div>
+          </FAQDetail>
+          <FAQDetail>
+            <summary>Como submeter meu projeto à Ecofunding para financiamento?</summary>
+            <div>
+              <Paragraph>Plataforma online: Acesse o site da Ecofunding e preencha o formulário de inscrição.</Paragraph>
+              <Paragraph>Orientações: Siga as instruções e forneça todas as informações e documentações necessárias.</Paragraph>
+            </div>
+          </FAQDetail>
+          <FAQDetail>
+            <summary>Quais critérios a Ecofunding utiliza para avaliar projetos?</summary>
+            <div>
+              <Paragraph>Viabilidade: Potencial de sucesso do projeto e capacidade de gerar impacto positivo.</Paragraph>
+              <Paragraph>Impacto Ambiental: Redução de CO2, preservação da natureza, desenvolvimento sustentável.</Paragraph>
+              <Paragraph>Impacto Social: Benefícios para a comunidade e geração de renda.</Paragraph>
+              <Paragraph>Equipe qualificada: Experiência e capacidade para executar o projeto com sucesso.</Paragraph>
+              <Paragraph>Histórico do proponente: Confiança e credibilidade do proponente.</Paragraph>
+            </div>
+          </FAQDetail>
+          <FAQDetail>
+            <summary>Como a Ecofunding apoia os projetos além do financiamento?</summary>
+            <div>
+              <Paragraph>Mentoria: Assessoria especializada para aprimorar o projeto e aumentar suas chances de sucesso.</Paragraph>
+              <Paragraph>Divulgação: Ampla divulgação do projeto em diversos canais de comunicação.</Paragraph>
+              <Paragraph>Conexões: Networking com outros parceiros e investidores.</Paragraph>
             </div>
           </FAQDetail>
         </FAQItems>

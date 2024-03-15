@@ -315,10 +315,10 @@ const HomeCarousel = () => {
   };
   const updateDimensions = () => {
     const windowWidth = window.innerWidth;
-    if (windowWidth < 768) {
+    if (windowWidth < 668) {
       setSlideHeight(150); // Example: Increase height for smaller screens
     } else {
-      setSlideHeight(45); // Reset to default for larger screens
+      setSlideHeight(27); // Reset to default for larger screens
     }
   };
 
