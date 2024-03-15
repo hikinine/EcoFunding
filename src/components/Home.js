@@ -47,7 +47,7 @@ const Wrapper = styled.section`
   margin-top: 2em;
   margin-bottom: 2em;
   width: 100vw;
-  height: 40vh;
+  height: 60vh;
   gap: 8em;
   
 `;
@@ -154,7 +154,7 @@ const ParallaxFolhaCima = styled.img`
 
 
 const Wrapper2 = styled.div`
-    height: fit-content;
+   
     .controls {
       display: flex;
       
@@ -174,6 +174,7 @@ const Wrapper2 = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-top: 100px;
   
         .carousel__dot {
           width: 8px;
@@ -234,6 +235,10 @@ const Button1 = styled.button`
     background-color: ${props => props.buttonText === 'Regulada pela CVM' ? 'transparent' : '#242a32'}; // New background color on hover
   }
 `;
+const StyledCarouselProvider = styled(CarouselProvider)`
+  height: 100vh;
+`;
+
 const Home = ({ imgurl, altText, title, paragraph, button, transform }) => {
   const { width } = useWindowSize(); // Use the custom hook
   return (
@@ -315,11 +320,11 @@ const HomeCarousel = () => {
   }, []);
 
   return (
-    <CarouselProvider
+    <StyledCarouselProvider
       naturalSlideWidth={100}
       naturalSlideHeight={slideHeight}
       totalSlides={slidesData.length}
-      style={{ marginTop: '-8em'}}
+      style={{ marginTop: '-8em' }}
     >
         <Wrapper2 onMouseMove={handleMouseMove}>
         <ParallaxFolha ref={folhaRef} src={FolhaEsquerda} alt="folha"/>
@@ -343,7 +348,7 @@ const HomeCarousel = () => {
           </div>
           
         </Wrapper2>
-      </CarouselProvider>
+      </StyledCarouselProvider>
     );
   };
 export default HomeCarousel;
