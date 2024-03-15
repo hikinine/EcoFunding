@@ -81,6 +81,7 @@ const ImageDisplay = styled.img`
   align-self: end;
   border-top-right-radius: 128px;
   z-index: 1;
+  margin-left: -7em;
 
   @media (max-width: ${breakpoints.tablet}) {
     max-width: 400px;
@@ -181,10 +182,10 @@ const TextRectangle2 = styled.div`
   margin-right: 200px;
   margin-top: -0.5em;
   display: flex;
-  
+  font-family: "Dm sans", sans-serif !important;
   border-radius: 12px;
   white-space: pre-wrap;
-
+  color: #c8c8c8c8;
   @media (max-width: ${breakpoints.tablet}) {
     min-width: 400px;
     

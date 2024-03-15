@@ -79,7 +79,7 @@ const Header = styled.h1`
   font-size: 48px;
   margin-bottom: 10px;
   margin-left: 3rem;
-  color: white;
+  color: #2ebc15;
   text-transform: uppercase;
   text-align: center;
   font-weight: 500;
@@ -92,15 +92,15 @@ const Header = styled.h1`
 `;
 
 const Paragraph = styled(motion.p)`
-  font-size: 18px;
+  font-size: 22px;
   margin: 0 100px;
   word-break: break-word;
-  color: white;
-  font-weight: lighter;
-  font-family: 'Lexend Tera', sans-serif !important;
+  color: #c8c8c8c8;
+  font-weight: 300;
+  font-family: 'Dm sans', sans-serif !important;
   text-align: end;
   @media (max-width: 768px) {
-    font-size: 16px; // Adjust font size for mobile
+    font-size: 18px; // Adjust font size for mobile
     margin-left: 2rem; // Adjust margin for mobile
     text-align: center; // Center text on mobile
   }
