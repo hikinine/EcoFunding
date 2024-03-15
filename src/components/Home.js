@@ -49,7 +49,9 @@ const Wrapper = styled.section`
   width: 100vw;
   height: 60vh;
   gap: 8em;
-  
+  @media (max-width: 768px) {
+    height: auto;
+  }
 `;
 
 const Container = styled.div`
@@ -204,6 +206,10 @@ const Paragraph1 = styled.p`
   font-size: 22px;
   font-family: 'Lexend Tera';
   text-align: start;
+  @media (max-width: 768px) {
+    font-size: 10px;
+  
+  }
 `;
 const H11 = styled.h1`
 text-transform: uppercase;
@@ -216,6 +222,10 @@ margin-left: 150px;
 text-align: start;
 font-size: 24px;
 margin-right: 50px;
+@media (max-width: 768px) {
+    font-size: 16px;
+  
+  }
 
   
 
@@ -306,7 +316,7 @@ const HomeCarousel = () => {
   const updateDimensions = () => {
     const windowWidth = window.innerWidth;
     if (windowWidth < 768) {
-      setSlideHeight(60); // Example: Increase height for smaller screens
+      setSlideHeight(150); // Example: Increase height for smaller screens
     } else {
       setSlideHeight(30); // Reset to default for larger screens
     }

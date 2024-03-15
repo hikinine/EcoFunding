@@ -10,15 +10,13 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
   .nav_logo {
     padding: 0 12px;
-    .nav-logo-link {
-      text-decoration: none;
-      font-size: 24px;
-      color: black;
-      font-weight: bold;
-    }
+    width: 100%; // Ensure the container takes full width
+    text-align: center; // Center the content
   }
+  
   .menuToggleBtn {
     display: none;
     color: white;
@@ -30,8 +28,10 @@ const StyledHeader = styled.header`
   }
 
   @media screen and (max-width: 768px) {
+    padding: 20px 0; // Reduce padding on smaller screens
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    
     .menuToggleBtn {
       display: block;
     }
