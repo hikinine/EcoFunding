@@ -55,7 +55,7 @@ const Collumn = styled.div`
 const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
-  width: 32%;
+  width: 20%;
   @media (max-width: 991px) {
     width: 100%;
   }
@@ -64,7 +64,7 @@ const Sidebar = styled.aside`
 const ContentWrapper = styled.section`
   display: flex;
   flex-direction: row;
-  width: 68%;
+  width: 80%;
   margin-left: 20px;
   @media (max-width: 991px) {
     width: 100%;
@@ -86,8 +86,8 @@ const Logo = styled.img`
 const SocialMediaIcons = styled.div`
   display: flex;
   margin-top: 85px;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;
+  gap: 100px;
   @media (max-width: 991px) {
     flex-wrap: wrap;
     margin-top: 40px;
@@ -105,7 +105,8 @@ const Navbar = styled.div`
   flex-direction: column;
   color: #828282;
   font-size: 13px;
-  margin-right: 6rem;
+  margin-right: 10rem;
+  margin-left: 10rem;
   & > div {
     color: #fff;
     margin-top: 49px;

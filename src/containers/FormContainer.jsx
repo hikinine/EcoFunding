@@ -8,7 +8,79 @@ import Image2 from '../assets/2.svg';
 import Image3 from '../assets/3.svg';
 
 import * as Yup from 'yup';
+import axios from 'axios';
 
+
+const handleSubmit = async (values) => {
+  // Initialize payload with common fields
+  const payload = {
+    form: {
+      id: "eCOfunding LP",
+      name: "eCOfunding LP"
+    },
+    fields: {
+      // Common fields here
+      name_ecofunding: {
+        value: values.name || '',
+      },
+      email_ecofunding: {
+        value: values.email || '',
+      },
+      BITRIXWEBHOOK: {
+        value: "EcofundingInvestidor",
+      },
+    }
+  };
+
+  // Dynamically add fields based on the role
+  if (values.role === 'investor') {
+    payload.fields = {
+      ...payload.fields,
+      // Investor-specific fields
+      nome_representante_ecofunding: {
+        value: values.nomeRepresentante || '',
+      },
+      cargo_ecofunding: {
+        value: values.cargo || '',
+      },
+      nome_empresa_ecofunding: {
+        value: values.nomeEmpresa || '',
+      },
+      segmento_ecofunding: {
+        value: values.segmento || '',
+      },
+    };
+  } else if (values.role === 'partner') {
+    payload.fields = {
+      ...payload.fields,
+      // Partner-specific fields
+      cpf_cnpj_ecofunding: {
+        value: values.cpfCnpj || '',
+      },
+      empresa_ecofunding: {
+        value: values.empresa || '',
+      },
+      cidade_ecofunding: {
+        value: values.cidade || '',
+      },
+      estado_ecofunding: {
+        value: values.estado || '',
+      },
+      nome_projeto_ecofunding: {
+        value: values.nomeDoProjeto || '',
+      },
+    };
+  }
+
+  try {
+    const response = await axios.post("https://solarium-api.newsun.energy/v1/integracao-bitrix/webhook", payload);
+    console.log(response.data);
+    // Handle success response
+  } catch (error) {
+    console.error(error);
+    // Handle error response
+  }
+};
 const validationSchema = Yup.object({
   name: Yup.string().required('Name is required'),
   surname: Yup.string().required('Surname is required'),
@@ -57,9 +129,7 @@ function FormContainer() {
     phone: '',
   };
 
-  const handleSubmit = (values) => {
-    console.log(values);
-  };
+  
 
   const renderStep = (step, formikProps) => {
     switch (step) {
@@ -80,7 +150,7 @@ function FormContainer() {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit} 
     >
       {(formikProps) => (
         <Form>

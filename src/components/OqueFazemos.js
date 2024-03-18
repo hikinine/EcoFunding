@@ -9,7 +9,7 @@ import { useMarker } from './earth/MarkerContext';
 import { MediumAndDown } from './breakpoints';
 import Fundo from '../assets/FUNDO_GLOBO.webp';
 import { Link } from 'react-router-dom';
-import EcoAlgo from '../assets/EcoAlgo.webp'
+import EcoAlgo from '../assets/EcoAlgo.png'
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
     width: typeof window !== "undefined" ? window.innerWidth : 0,
@@ -65,6 +65,12 @@ const Button = styled.button`
   margin-top: 100px;
   border: none;
   width: 20vw;
+  background-color: transparent;
+  border: 1px solid #2ebc15;
+  color: #2ebc15;
+  font-weight: 500;
+  font-family: 'Lexend Tera', sans-serif !important;
+  text-transform: uppercase;
   margin: 100px 100px 0px auto;
   align-self: flex-end;
   cursor: pointer;
@@ -73,6 +79,11 @@ const Button = styled.button`
     width: 100%;
     align-self: center;
   }
+  &:hover {
+    background-color: #2ebc15;
+    color: white;
+  }
+  
 `;
 
 const Header = styled.h1`

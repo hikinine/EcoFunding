@@ -72,6 +72,7 @@ const Button = styled.button`
   @media (max-width: ${breakpoints.tablet}) {
     width: auto;
   }
+  
 `;
 
 const ImageDisplay = styled.img`
@@ -216,6 +217,14 @@ const Button2 = styled.button`
     active ? '#2ebc15' : 'transparent'};
   font-family: "Lexend Tera", sans-serif;
   text-transform: uppercase;
+  
+
+  &:hover {
+    background-color: #2ebc15;
+    color: white;
+  
+  }
+
 `;
 
 
