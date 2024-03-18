@@ -57,6 +57,7 @@ h2 {
 }
 }
 `;
+
 const StyledInput = styled(Field)`
   width: 200px;
   height: 30px;
