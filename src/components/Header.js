@@ -61,7 +61,7 @@ const NavManu = styled.ul`
     text-decoration: none;
     color: black;
     display: block;
-    padding: 10px 10px;
+    padding: 10px 30px;
     border: 1px solid #2ebc15;
     &:hover{
       background-color: #2ebc15;

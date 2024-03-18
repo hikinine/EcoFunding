@@ -103,12 +103,13 @@ const IconImg = styled.img`
 const Navbar = styled.div`
   display: flex;
   flex-direction: column;
-  color: #828282;
+  
+  color: #fff;
   font-size: 13px;
   margin-right: 10rem;
   margin-left: 10rem;
   & > div {
-    color: #fff;
+    color: #828282;
     margin-top: 49px;
     font-family: DM Sans, sans-serif;
     &:first-child {
@@ -145,7 +146,7 @@ const NewsletterForm = styled.form`
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
-  padding: 8px 13px;
+  padding-left: 13px;
   font-weight: 400;
 `;
 
@@ -163,7 +164,8 @@ const SubmitButton = styled.button`
   background-color: rgba(46, 188, 21, 1);
   border: none;
   color: #fff;
-  padding: 5px 15px;
+  height: 100%;
+  padding: 20px 15px;
   cursor: pointer;
 `;
 
@@ -171,6 +173,7 @@ const ContentText = styled.p`
   color: #465363;
   font-size: 13px;
   line-height: 1.6;
+  margin-top: 200px;
   @media (max-width: 991px) {
     display: none ;
   }
@@ -223,14 +226,17 @@ function Rodape() {
             </NewsletterForm>
           </NewsletterSection>
 
-          <ContentText>
-            Lorem ipsum dolor sit amet consectetur. In urna senectus eget ut dui
-            consectetur. At at sed amet pellentesque eget amet sed lectus. Urna
-            mauris vitae egestas purus ac...
-          </ContentText>
+          
           </Collumn>
         </ContentWrapper>
       </MainContent>
+      <ContentText>
+          "Acreditamos que o futuro do nosso planeta está diretamente ligado a uma economia mais sustentável, onde a tecnologia desempenha um papel crucial no processo como um todo. Buscamos simplificar e democratizar o acesso a soluções sustentáveis, capacitando tanto pessoas quanto empresas a contribuírem ativamente para a preservação do nosso futuro e do meio ambiente.
+
+Temos como compromisso principal, desenvolver soluções ambientais inovadoras que permitem diversos tipos de empresas a compensarem suas emissões de carbono de maneira descomplicada e segura. Estamos empenhados em facilitar e promover a adoção de práticas mais conscientes, promovendo assim um movimento efetivo em prol da sustentabilidade global.
+
+Somos a ECOFUNDING, uma eco/fintech que nasceu pela inconformidade dos sócios em acreditarem que o futuro não está tão distante como a maioria das pessoas acreditam e que nós não herdamos a Terra dos nossos antepassados, simplesmente pegamos emprestada de nossos filhos."
+          </ContentText>
     </StyledHeader>
   );
 }
