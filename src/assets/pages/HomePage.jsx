@@ -9,6 +9,7 @@ import Rodape from 'components/Rodape';
 import HomeCarousel from 'components/Home';
 
 import { MarkerProvider } from 'components/earth/MarkerContext';
+import FormContainer from '../../containers/FormContainer';
 
 
 const HomePage = () => {
@@ -19,7 +20,7 @@ const HomePage = () => {
         <OqueFazemos />
         <SelosSection />
         <ESG />
-        <Parceiros />
+        <FormContainer />
         <FAQ />
         <Rodape />
         
