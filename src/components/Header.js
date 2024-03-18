@@ -55,6 +55,19 @@ const NavManu = styled.ul`
     color: black;
     display: block;
     padding: 10px 10px;
+    margin-right: 100px;
+  }
+  .nav-menu-list1 {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 10px 10px;
+    border: 1px solid #2ebc15;
+    &:hover{
+      background-color: #2ebc15;
+      color: white;
+    
+    }
   }
   @media screen and (max-width: 768px) {
     display: ${(props) => (props.isToggleOpen ? "block" : "none")};
@@ -99,7 +112,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to={"/diary"} className="nav-menu-list">
+            <Link to={"/diary"} className="nav-menu-list1">
               CONTATO
             </Link>
           </li>

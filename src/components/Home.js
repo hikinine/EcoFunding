@@ -6,8 +6,8 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext,DotGroup } from
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import FolhaEsquerda from '../assets/FolhaEsquerda.webp';
 import HomeSection1 from '../assets/HomeSection1.webp';	
-import HomeSection2 from '../assets/HomeSection2.png';	
-import HomeSection3 from '../assets/HomeSection3.webp';	
+import HomeSection2 from '../assets/HomeSection3.webp';	
+import HomeSection3 from '../assets/HomeSection2.webp';	
 import folhaesquerdacima from '../assets/FolhaEsquerdaCima.webp';
 import folhadireitabaixo from '../assets/FolhaDireitaBaixo.webp';
 import homeSection from '../assets/HomeSection.png';
@@ -202,6 +202,7 @@ const Wrapper2 = styled.div`
   `;
 const Paragraph1 = styled.p`
   margin-bottom: 2em;
+  margin-top: 1em;
   margin-left: 2em;
   font-size: 22px;
   font-family: 'Lexend Tera';
@@ -218,7 +219,7 @@ font-weight: 600;
 width: 100%;
 
 min-width: 30vw;
-margin-left: 150px;
+margin-left: 6em;
 text-align: start;
 font-size: 24px;
 margin-right: 50px;
@@ -251,22 +252,42 @@ const StyledCarouselProvider = styled(CarouselProvider)`
 
 const Home = ({ imgurl, altText, title, paragraph, button, transform }) => {
   const { width } = useWindowSize(); // Use the custom hook
+
+  // Function to render title with conditional line breaks
+  const renderTitle = (title) => {
+    const breakAfter = "Parceiro "; // Define where the break should occur
+    const breakIndex = title.indexOf(breakAfter);
+    if (breakIndex !== -1) {
+      // If the title contains the substring where we want to break
+      return (
+        <>
+          {title.substring(0, breakIndex + breakAfter.length)}
+          <br />
+          {title.substring(breakIndex + breakAfter.length)}
+        </>
+      );
+    }
+    return title; // No specific break point found, return the title as is
+  };
+
   return (
     <Wrapper>
       <Container>
-      <FrameText>
-        <H11>{title}</H11>
-        <Paragraph1>{paragraph}</Paragraph1>
-        <Button1 buttonText={button}>{button}</Button1>
-      </FrameText>
-      <FrameImage>
-        <ResponsiveImage src={imgurl} alt={altText} />
-        {width > 768 &&<ResponsiveFolhaDireita src={folhadireitabaixo} style={{ transform: transform }}/>}
-      </FrameImage>
+        <FrameText>
+          <H11>{renderTitle(title)}</H11>
+          <Paragraph1>{paragraph}</Paragraph1>
+          <Button1 buttonText={button}>{button}</Button1>
+        </FrameText>
+        <FrameImage>
+          <ResponsiveImage src={imgurl} alt={altText} />
+          
+        </FrameImage>
       </Container>
     </Wrapper>
   );
 };
+
+
 const slidesData = [
   {
     key: 'slide1',
@@ -278,19 +299,20 @@ const slidesData = [
   },
   {
     key: 'slide2',
-    src: HomeSection2,
-    alt: 'Another image description',
-    title: 'Seja um parceiro eCO-sustentável',
-    paragraph: 'Analisamos a viabilidade de seu projeto.',
-    button: 'SAIBA MAIS'
-  },
-  {
-    key: 'slide2',
     src: HomeSection3,
     alt: 'Seja um investidor eco-sustentável',
     title: 'Torne-se um investidor eco-sustentável',
     paragraph: 'Transforme seu débito em crédito ambiental.',
     button: 'CADASTRE-SE'
+    
+  },
+  {
+    key: 'slide2',
+    src: HomeSection2,
+    alt: 'Another image description',
+    title: `Torne-se um parceiro eCO-sustentável`,
+    paragraph: 'Analisamos a viabilidade de seu projeto.',
+    button: 'SAIBA MAIS'
   },
   // Add more slide objects as needed
 ];
