@@ -41,6 +41,16 @@ const Container = styled.div`
   background-color: #242a32;
   width: 100%; /* Full width */
   height: auto;
+  .prev-arrow{
+    margin-top: 100px;
+    margin-right: 30px;
+    
+  }
+  .next-arrow{
+    margin-top: 100px;
+    margin-left: 30px;
+  }
+
   @media (max-width: ${breakpoints.mobile}) {
       height: auto;
   }
@@ -226,7 +236,27 @@ const Button2 = styled.button`
   }
 
 `;
+const Div = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+margin-top: -60px;
+z-index: 9999;
+width: 90vw;
 
+.next-arrow{
+  width: 20px;
+  height: 100px;
+  
+  cursor: pointer;
+}
+.prev-arrow{
+  width: 20px;
+  height: 100px;
+ 
+  cursor: pointer;
+}
+`;
 
 const ESG = () => {
   const images = [
@@ -320,11 +350,14 @@ const ESG = () => {
           variants={animationOpacity}
           initial="hidden"
           animate={controls}>SAIBA MAIS SOBRE<span style={{ color: '#2ebc15' }}> ESG</span></H1>
- 
+ <RowModel>
+ <div className="prev-arrow" onClick={handlePrev}><img src={PrevArrow} style={{ color: 'white', height: '20px' }} alt="fesgs"/></div>
       <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={50}
           slidesPerView={3}
+          slidesPerGroup={1}
+          loop={true}
           navigation={{ nextEl: '.next-arrow', prevEl: '.prev-arrow'}}
           onSwiper={(swiper) => console.log(swiper)}
           onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
@@ -349,6 +382,7 @@ const ESG = () => {
     }
   }}
 >
+
   {images.map((image, index) => (
     <SwiperSlide key={index}>
       <ButtonDiv>
@@ -359,13 +393,14 @@ const ESG = () => {
           {image.topico}
         </Button>
       </ButtonDiv>
+     
     </SwiperSlide>
   ))}
+   
 </Swiper>
-      <RowModel style={{ justifyContent: 'space-between', marginTop: '1em' }}>
-      <div className="prev-arrow" onClick={handlePrev}><img src={PrevArrow} style={{ color: 'white', height: '20px' }} alt="fesgs"/></div>
-      <div className="next-arrow" onClick={handleNext}><img src={NextArrow} style={{ color: 'white', height: '20px' }} alt="fesgs" /></div>
-      </RowModel>
+<div className="next-arrow" onClick={handleNext}><img src={NextArrow} style={{ color: 'white', height: '20px' }} alt="fesgs"/></div>
+</RowModel>
+      
      
       </CollumnModel>
       <RowModel >
