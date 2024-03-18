@@ -11,7 +11,10 @@ const validationSchema = Yup.object({
   role: Yup.string().required('Role is required'),
   email: Yup.string()
     .email('Invalid email address')
-    .matches(/^[A-Z0-9._%+-]+@corporate\.com$/i, 'Email must be a corporate email (@corporate.com)')
+    .notOneOf(
+      [/.*@gmail\.com$/, /.*@hotmail\.com$/, /.*@yahoo\.com$/, /.*@outlook\.com$/],
+      'Email must not be from Gmail, Hotmail, Yahoo, or Outlook'
+    )
     .required('Email is required'),
   phone: Yup.string().required('Phone is required'),
 });
@@ -34,16 +37,15 @@ function FormContainer() {
   const renderStep = (step, formikProps) => {
     switch (step) {
       case 0:
-        return <Etapa0 nextStep={() => setStep(step + 1)} />;
+        return <Etapa0 nextStep={() => setStep(step + 1)} formikProps={formikProps} />;
       case 1:
-        return <Etapa1 nextStep={() => setStep(step + 1)} prevStep={() => setStep(step - 1)} />;
+        return <Etapa1 nextStep={() => setStep(step + 1)} prevStep={() => setStep(step - 1)} formikProps={formikProps} />;
       case 2:
-        return <Etapa2 prevStep={() => setStep(step - 1)} />;
+        return <Etapa2 prevStep={() => setStep(step - 1)} formikProps={formikProps} />;
       default:
         return <div>Form Completed</div>;
     }
   };
-
   return (
     <Formik
       initialValues={initialValues}

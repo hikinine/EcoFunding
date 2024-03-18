@@ -17,6 +17,7 @@ const StyledContainer = styled.div`
   align-content: center;
   justify-content: center;
   height: 300px;
+  font-family: 'Dm Sans', sans-serif;
 
 form {
   display: flex;
@@ -29,7 +30,8 @@ form {
 input {
   width: 200px;
   height: 30px;
-  margin: 10px;
+  margin: 10px; 
+  font-family: 'Dm Sans', sans-serif;
 }
 
 select {
