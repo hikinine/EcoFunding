@@ -10,7 +10,20 @@ const StyledContainer = styled.div`
   justify-content: center;
   height: 300px;
 `;
-
+const Button = styled.button`
+  width: 200px;
+  height: 30px;
+  margin: 10px;
+  background-color: transparent;
+  border: 1px solid #2ebc15;
+  color: #2ebc15;
+  font-family: 'Dm Sans', sans-serif;
+  cursor: pointer;
+  &:hover {
+    background-color: #2ebc15;
+    color: white;
+  }
+`;
 function Etapa2({ prevStep }) {
   // Use Formik context
   const formikContext = useFormikContext();
@@ -26,8 +39,8 @@ function Etapa2({ prevStep }) {
           <p>Email: {formikContext.values.email}</p>
           <p>Phone: {formikContext.values.phone}</p>
 
-          <button type="button" onClick={prevStep}>Back</button>
-          <button type="submit">Submit</button> {/* Form submission button */}
+          <Button type="button" onClick={prevStep}>Back</Button>
+          <Button type="submit">Submit</Button> {/* Form submission Button */}
         </div>
       </Form>
     </StyledContainer>

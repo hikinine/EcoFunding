@@ -10,7 +10,7 @@ const CollumnModel = styled.div`
   height: 100%;
   h2 {
   font-size: 24px;
-  margin-top: 4em;
+  margin-top: 2em;
   margin-left: 3rem;
   color: #2ebc15;
   text-transform: uppercase;
@@ -53,7 +53,22 @@ div {
 
 }
 
+
 }
+`;
+const Button = styled.button`
+  width: 200px;
+  height: 30px;
+  margin: 10px;
+  background-color: transparent;
+  border: 1px solid #2ebc15;
+  color: #2ebc15;
+  font-family: 'Dm Sans', sans-serif;
+  cursor: pointer;
+  &:hover {
+    background-color: #2ebc15;
+    color: white;
+  }
 `;
 const StyledSelect = styled.select`
   width: 200px;
@@ -95,7 +110,7 @@ function Etapa0({ nextStep }) {
           <option value="projectist">Projectist</option>
           <option value="investor">Investor</option>
         </StyledSelect>
-        <button type="button" onClick={nextStep}>Next</button>
+        <Button type="button" onClick={nextStep}>Next</Button>
       </StyledContainer>
     </CollumnModel>
   );
