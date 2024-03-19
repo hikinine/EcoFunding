@@ -35,7 +35,8 @@ const StyledContainer = styled.div`
   height: 600px;
   font-family: 'Dm Sans', sans-serif;
   @media (max-width: 1268px) {
-  flex-direction: collumn;
+    flex-direction: column;
+    
   }
 form {
   display: flex;
