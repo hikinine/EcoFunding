@@ -9,6 +9,7 @@ import Image3 from '../assets/3.svg';
 
 import * as Yup from 'yup';
 import axios from 'axios';
+import { Center } from '@react-three/drei';
 
 
 const handleSubmit = async (values) => {
@@ -102,7 +103,10 @@ const StepNavigation = ({ currentStep, goToStep }) => {
   ];
 
   return (
+    <div style={{ marginTop: '4em', textAlign: 'center'}}>
+    <h1> Formulários</h1>
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  marginTop: '4em' }}>
+      
       {steps.map((step, index) => (
         <React.Fragment key={index}>
           {index > 0 && <div style={{ width: '50px', height: '2px', backgroundColor: 'black' }} />}
@@ -115,6 +119,8 @@ const StepNavigation = ({ currentStep, goToStep }) => {
         </React.Fragment>
       ))}
     </div>
+    </div>
+
   );
 };
   

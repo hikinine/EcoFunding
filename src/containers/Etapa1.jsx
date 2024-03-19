@@ -66,7 +66,8 @@ const Button = styled.button`
   background-color: transparent;
   border: 1px solid #2ebc15;
   color: #2ebc15;
-  font-family: 'Dm Sans', sans-serif;
+  font-family: 'Lexend Tera', sans-serif;
+  text-transform: uppercase;
   cursor: pointer;
   &:hover {
     background-color: #2ebc15;
@@ -98,7 +99,7 @@ function Etapa1({ nextStep, prevStep, formikProps }) {
       <FormContent>
       {isInvestor ? (
         <div>
-          <h2>FORMULÁRIO PARA INVESTIDORES</h2>
+          
           <p>Olá {formikContext.values.name} , preencha os dados do formulario de investidor para prosseguir</p>
           
           <StyledInput name="email" type="text" placeholder="Email-corporativo" />
@@ -111,7 +112,7 @@ function Etapa1({ nextStep, prevStep, formikProps }) {
         </div>
       ) : (
         <div>
-          <h2>FORMULÁRIO PARA PARCEIRO ECO-SUSTENTÁVEL</h2>
+          
           <p>Olá {formikContext.values.name} , preencha os dados do formulario de parceiros-ecossustentáveis para prosseguir</p>
           <StyledInput name="CPF/CNPJ" type="text" placeholder="CPF/CPNJ" />
           <StyledInput name="Empresa" type="text" placeholder="Empresa" />
