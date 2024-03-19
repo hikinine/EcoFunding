@@ -83,7 +83,6 @@ const Button = styled.button`
     background-color: #2ebc15;
     color: white;
   }
-  
 `;
 
 const Header = styled.h1`

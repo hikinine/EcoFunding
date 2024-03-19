@@ -8,20 +8,42 @@ const StyledContainer = styled.div`
   align-items: center;
   align-content: center;
   justify-content: center;
-  height: 300px;
+  height: 500px;
 `;
 const Button = styled.button`
-  width: 200px;
-  height: 30px;
-  margin: 10px;
+  
+  height: calc(5cap * 1.5); /* Increased height */
+  padding:  0 100px;
+  margin-left: 250px;
+  margin-right: 250px;
   background-color: transparent;
-  border: 1px solid #2ebc15;
+  border: 1.5px solid #2ebc15; /* Slightly thicker border */
   color: #2ebc15;
-  font-family: 'Dm Sans', sans-serif;
+  font-family: 'Lexend Tera', sans-serif;
+  font-size: 1.125em; /* Increased font size */
   cursor: pointer;
   &:hover {
     background-color: #2ebc15;
     color: white;
+  }
+`;
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: -200px;
+  align-content: center;
+  justify-content: center;
+  height: 100%;
+
+  h2 {
+    font-size: 24px;
+    margin-top: 4em;
+    margin-left: 3rem;
+    width: 350px;
+    text-transform: uppercase;
+    
+    font-weight: 500;
+    font-family: 'Lexend Tera', sans-serif !important;
   }
 `;
 function Etapa2({ prevStep }) {
@@ -30,19 +52,22 @@ function Etapa2({ prevStep }) {
 
   return (
     <StyledContainer>
+      <Button type="button" onClick={prevStep}>Voltar</Button>
       <Form>
-        <div>
-          <h2>Review Your Information</h2>
-          <p>Name: {formikContext.values.name}</p>
-          <p>Surname: {formikContext.values.surname}</p>
-          <p>Role: {formikContext.values.role}</p>
+        <Div>
+          <h2>Seu formulário será enviado</h2>
+          <p>Nome : {formikContext.values.name}</p>
+          <p>Sobrenome: {formikContext.values.surname}</p>
+          <p>Tipo de formulário: {formikContext.values.role}</p>
           <p>Email: {formikContext.values.email}</p>
-          <p>Phone: {formikContext.values.phone}</p>
+          <p>Telefone: {formikContext.values.phone}</p>
 
-          <Button type="button" onClick={prevStep}>Back</Button>
-          <Button type="submit">Submit</Button> {/* Form submission Button */}
-        </div>
+         
+        </Div>
+        
       </Form>
+        
+        <Button type="submit">Confirmar</Button> {/* Form submission Button */}
     </StyledContainer>
   );
 }

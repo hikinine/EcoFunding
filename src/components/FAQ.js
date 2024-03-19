@@ -4,65 +4,72 @@ import styled from "styled-components";
 // Styled section
 const Section = styled.section`
   width: 100%;
-  height: 100%;
-  padding: 10rem calc((100vw - 1300px) / 2);
+  min-height: 100%;
+  padding: 5rem 1rem; // Reduced and made responsive
   background-color: #3f4c5c;
   color: white;
+  box-sizing: border-box; // Ensures padding is included in the width calculation
 `;
 
-// Styled div container
+// Adjusted Container for better centering and responsiveness
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 4rem 2rem;
+  align-items: center; // Center children horizontally
+  max-width: 1300px; // Maximum width to match other elements
+  width: 100%; // Ensure it takes up available space
   margin: auto;
+  padding: 2rem 1rem; // Made padding responsive
 
   @media (min-width: 768px) {
-    padding: 8rem 2rem;
+    padding: 4rem 2rem; // Adjust padding for larger screens
   }
 `;
 
-// Styled paragraph
+// Paragraph without modifications, assuming it's responsive enough
 const Paragraph = styled.p`
   font-family: "Dm Sans", sans-serif;
 `;
 
-// Styled h2 for FAQ title
+// FAQTitle with responsive font size
 const FAQTitle = styled.h2`
-  margin-bottom: 3rem;
+  margin-bottom: 2rem; // Adjusted margin
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2rem; // Made font size responsive
   font-weight: bold;
-  line-height: none;
+  line-height: 1.2; // Adjusted line-height for better readability
 
   @media (min-width: 640px) {
-    font-size: 3.125rem;
+    font-size: 2.5rem; // Increase font size on larger screens
   }
 `;
 
-// Styled div for FAQ items
+// Styled FAQItems for better padding control and responsiveness
 const FAQItems = styled.div`
+  width: 100%; // Ensure it doesn't exceed the container width
   display: flex;
   flex-direction: column;
   border-top: 1px solid #2b2d42;
   border-bottom: 1px solid #2b2d42;
 
   @media (min-width: 640px) {
-    padding: 0 2rem;
+    padding: 0 1rem; // Adjust padding based on screen size
   }
 
   @media (min-width: 1024px) {
-    padding: 0 3rem;
+    padding: 0 2rem; // Increase padding for larger screens
   }
 
   @media (min-width: 1280px) {
-    padding: 0 8rem;
+    padding: 0 4rem; // Further increase padding for very large screens
   }
 `;
 
-// Individual FAQ item
+// FAQDetail with minor adjustments for responsiveness
 const FAQDetail = styled.details`
+  width: 100%; // Ensure it fits within its parent container
+
   summary {
     padding: 0.5rem 0;
     outline: none;
@@ -75,10 +82,9 @@ const FAQDetail = styled.details`
   }
 
   & > div {
-    padding: 0 1rem 1rem;
+    padding: 0 0.5rem 0.5rem; // Adjust padding for the content
   }
 `;
-
 const FAQ = () => {
   return (
     <Section>

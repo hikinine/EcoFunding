@@ -3,119 +3,113 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 import Logo from "../assets/LOGOTIPO.webp";
+
 const StyledHeader = styled.header`
   background-color: transparent;
   width: 100%;
-  padding: 50px 100px;
+  padding: 2vw; // Use viewport width for responsive padding
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative; // Ensure proper stacking
   
   .nav_logo {
-    padding: 0 12px;
-    width: 100%; // Ensure the container takes full width
+    text-align: left; // Default to left alignment
+    width: 25vw; // Adjust based on content
     @media (max-width: 768px){
-      text-align: center; // Center the content
+      text-align: center; // Center the content on smaller screens
+      width: 100%; // Full width to accommodate smaller screens
     }
   }
   
   .menuToggleBtn {
     display: none;
     color: white;
-    font-size: 24px;
+    font-size: 1.5em; // Use em for scalability
     position: absolute;
     right: 20px;
     top: 15px;
     cursor: pointer;
-  }
+    z-index: 2; // Ensure it's above other content
 
-  @media screen and (max-width: 768px) {
-    padding: 20px 0; // Reduce padding on smaller screens
-    flex-direction: column;
-    align-items: center;
-    
-    .menuToggleBtn {
+    @media screen and (max-width: 768px) {
       display: block;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 20px 5vw; // Adjust padding and use viewport width for responsiveness
+    flex-direction: column;
+    align-items: center;
+  }
 `;
+
 const NavManu = styled.ul`
   list-style: none;
   display: flex;
+  align-items: center;
   color: black;
+
   li {
-    color: black;
+    margin-right: 1em; // Use em for spacing between items
+
     &:hover {
       cursor: pointer;
       border-radius: 4px;
     }
   }
-  .nav-menu-list {
+
+  .nav-menu-list, .nav-menu-list1 {
     text-decoration: none;
     color: black;
     display: block;
-    padding: 10px 10px;
-    margin-right: 100px;
-  }
-  .nav-menu-list1 {
-    text-decoration: none;
-    color: black;
-    display: block;
-    padding: 10px 30px;
-    border: 1px solid #2ebc15;
+    padding: 0.5em; // Use em for padding
+    margin-right: 2em; // Adjust margin
+
     &:hover{
       background-color: #2ebc15;
       color: white;
-    
     }
   }
+
+  .nav-menu-list1 {
+    border: 1px solid #2ebc15;
+  }
+
   @media screen and (max-width: 768px) {
-    display: ${(props) => (props.isToggleOpen ? "block" : "none")};
     flex-direction: column;
-    align-items: center;
     width: 100%;
-    margin-top: 5px;
+    margin-top: 1em; // Adjust top margin
+    display: ${props => props.isToggleOpen ? "flex" : "none"}; // Use flex to align items vertically
   }
 `;
+
 const Img = styled.img`
-    max-width: 350px;
+    max-width: 100%; // Ensure logo is responsive
+    height: auto; // Maintain aspect ratio
 `;
+
 const Header = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
   const handleToggleOpen = () => {
     setIsToggleOpen(!isToggleOpen);
   };
+
   return (
     <>
       <StyledHeader>
         <div className="nav_logo">
-          <Link to={"/"} className="nav-logo-link">
+          <Link to={"/"}>
             <Img src={Logo} alt="ECOFUNDING" />
           </Link>
         </div>
 
         <NavManu isToggleOpen={isToggleOpen}>
-          <li>
-            <Link to={"/about"} className="nav-menu-list">
-              SOBRE
-            </Link>
-          </li>
-          <li>
-            <Link to={"/projects"} className="nav-menu-list">
-              PARCERIA
-            </Link>
-          </li>
-          <li>
-            <Link to={"/til"} className="nav-menu-list">
-              FAQ
-            </Link>
-          </li>
-          <li>
-            <Link to={"/diary"} className="nav-menu-list1">
-              CONTATO
-            </Link>
-          </li>
+          <li><Link to={"/about"} className="nav-menu-list">SOBRE</Link></li>
+          <li><Link to={"/projects"} className="nav-menu-list">PARCERIA</Link></li>
+          <li><Link to={"/til"} className="nav-menu-list">FAQ</Link></li>
+          <li><Link to={"/diary"} className="nav-menu-list1">CONTATO</Link></li>
         </NavManu>
         <FaBars className="menuToggleBtn" onClick={handleToggleOpen} />
       </StyledHeader>

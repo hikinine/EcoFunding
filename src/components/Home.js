@@ -65,7 +65,7 @@ const Container = styled.div`
 const FrameText = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-right: 2em;
   margin-left: 2em;
@@ -206,7 +206,8 @@ const Paragraph1 = styled.p`
   margin-left: 2em;
   font-size: 22px;
   font-family: 'Lexend Tera';
-  text-align: start;
+  text-align: left;
+  
   @media (max-width: 768px) {
     font-size: 10px;
   
@@ -255,21 +256,25 @@ const Home = ({ imgurl, altText, title, paragraph, button, transform }) => {
 
   // Function to render title with conditional line breaks
   const renderTitle = (title) => {
-    const breakAfter = "Parceiro "; // Define where the break should occur
-    const breakIndex = title.indexOf(breakAfter);
-    if (breakIndex !== -1) {
-      // If the title contains the substring where we want to break
+    // Define the substring to break the line before, case-insensitive
+    const breakBefore = "eco-sustentável";
+    const breakBeforeRegex = new RegExp(`(${breakBefore})`, 'i'); // 'i' flag for case-insensitive
+    const match = title.match(breakBeforeRegex);
+  
+    if (match) {
+      // If the title contains the substring where we want to insert a line break
+      const splitIndex = match.index;
       return (
         <>
-          {title.substring(0, breakIndex + breakAfter.length)}
+          {title.substring(0, splitIndex)}
           <br />
-          {title.substring(breakIndex + breakAfter.length)}
+          {title.substring(splitIndex)}
         </>
       );
     }
     return title; // No specific break point found, return the title as is
   };
-
+ 
   return (
     <Wrapper>
       <Container>
@@ -301,7 +306,7 @@ const slidesData = [
     key: 'slide2',
     src: HomeSection3,
     alt: 'Seja um investidor eco-sustentável',
-    title: 'Torne-se um investidor eco-sustentável',
+    title: `Torne-se um investidor eco-sustentável`,
     paragraph: 'Transforme seu débito em crédito ambiental.',
     button: 'CADASTRE-SE'
     
@@ -312,7 +317,7 @@ const slidesData = [
     alt: 'Another image description',
     title: `Torne-se um parceiro eCO-sustentável`,
     paragraph: 'Analisamos a viabilidade de seu projeto.',
-    button: 'SAIBA MAIS'
+    button: 'CADASTRE-SE'
   },
   // Add more slide objects as needed
 ];

@@ -27,28 +27,6 @@ const CollumnModel = styled.div`
 }
 
 `;
-const Paragraph = styled.p`
-  font-size: 22px;
-  margin-top: -50px;
-  margin-bottom: 100px;
-  font-family: 'Dm Sans', sans-serif !important;
-`;
-
-const RoleButton = styled.button`
-  margin: 10px;
-  padding: 10px 00px;
-  width: 200px;
-  background-color: ${(props) => (props.isSelected ? '#2ebc15' : 'transparent')};
-  color: ${(props) => (props.isSelected ? 'white' : '#2ebc15')};
-  border: 1px solid #2ebc15;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-family: 'Lexend Tera', sans-serif;
-  &:hover {
-    background-color: #2ebc15;
-    color: white;
-  }
-`;
 const StyledContainer = styled.div`
   display: flex;
   align-items: center;
@@ -78,45 +56,60 @@ div {
 
 }
 `;
+const Paragraph = styled.p`
+  font-size: 33px; /* Increased from 22px */
+  margin-top: 0px; /* Adjusted for visual consistency */
+  margin-bottom: 30px; /* Increased for better spacing */
+  font-family: 'Dm Sans', sans-serif !important;
+`;
+
+const RoleButton = styled.button`
+  margin: 15px;
+  padding: 15px 0; /* Increased padding */
+  width: 300px; /* Increased width */
+  background-color: ${(props) => (props.isSelected ? '#242a32' : 'transparent')};
+  color: ${(props) => (props.isSelected ? 'white' : '#242a32')};
+  border: 1.5px solid #242a32; /* Slightly thicker border */
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: 'Lexend Tera', sans-serif;
+  font-size: 1.125em; /* Increased font size */
+  &:hover {
+    background-color: #242a32;
+    color: white;
+  }
+`;
+
+const StyledInput = styled(Field)`
+  width: 300px; /* Increased width */
+  height: 45px; /* Increased height */
+  margin: 15px; /* Adjusted margin for spacing */
+  padding: 15px; /* Increased padding */
+  font-family: 'Dm Sans', sans-serif;
+  font-size: 1.125em; /* Increased font size */
+  &:focus {
+    outline: 1.5px solid #2ebc15; /* Slightly thicker outline */
+  }
+`;
+
 const Button = styled.button`
-  width: 150px;
-  height: 5cap;
-  margin: 10px;
+  width: 375px; /* Increased width */
+  height: calc(5cap * 1.5); /* Increased height */
+  margin-bottom: 0px; /* Adjusted margin for positioning */
+  margin-left: 300px; /* Adjusted margin for positioning */
+  position: relative;
   background-color: transparent;
-  border: 1px solid #2ebc15;
+  border: 1.5px solid #2ebc15; /* Slightly thicker border */
   color: #2ebc15;
   font-family: 'Lexend Tera', sans-serif;
+  font-size: 1.125em; /* Increased font size */
   cursor: pointer;
   &:hover {
     background-color: #2ebc15;
     color: white;
   }
 `;
-const StyledSelect = styled.select`
-  width: 200px;
-  height: 30px;
-  margin: 10px;
-  &:focus {
-    outline: 1px solid #2ebc15;
-  }
-  
-  option {
-    font-family: 'Dm Sans', sans-serif;
-    padding: 20px;
-    margin: 10px;
-  }
 
-`;
-const StyledInput = styled(Field)`
-  width: 200px;
-  height: 30px;
-  margin: 10px;
-  padding: 10px;
-  font-family: 'Dm Sans', sans-serif;
-  &:focus {
-    outline: 1px solid #2ebc15;
-  }
-`;
 function Etapa0({ nextStep }) {
   const { values, setFieldValue } = useFormikContext(); // Access Formik context
   const [selectedRole, setSelectedRole] = useState(values.role || 'none');
@@ -125,23 +118,30 @@ function Etapa0({ nextStep }) {
     setSelectedRole(role);
     setFieldValue('role', role);
   };
+  const goToNextStep = () => {
+    if (values.role === 'investor' || values.role === 'parceiros') {
+      nextStep();
+    } else {
+      alert('Please select either "Investidor" or "Parceiro" to proceed.');
+    }
+  };
   return (
     
       
       <StyledContainer>
         <CollumnModel>
-        <Paragraph> Preencha os dados do formulario de investidor para prosseguir</Paragraph>
-        <div>
+        <Paragraph> Preencha os dados abaixo</Paragraph>
+        
         <StyledInput name="name" type="text" placeholder="Nome" />
         <StyledInput name="surname" type="text" placeholder="Sobrenome" />
         <StyledInput name="phone" type="text" placeholder="Telefone" />
-        </div>
-        <div>
+        
+        
         <RoleButton
         onClick={() => handleRoleSelect('parceiros')} // Change 'projectist' to 'parceiros' if needed
         isSelected={selectedRole === 'parceiros'}
       >
-        Parceiro Eco
+        Parceiro
       </RoleButton>
         <RoleButton
           onClick={() => handleRoleSelect('investor')}
@@ -149,14 +149,11 @@ function Etapa0({ nextStep }) {
         >
           Investidor
         </RoleButton>
-        <RoleButton
-        onClick={() => handleRoleSelect('none')}
-            isSelected={selectedRole === 'none'}>
-          Nenhum dos dois
-        </RoleButton>
-      </div>
-        <Button type="button" onClick={nextStep}>PRÓXIMA ETAPA</Button>
+        
+      
+        
         </CollumnModel>
+        <Button type="button" onClick={goToNextStep}>PRÓXIMA ETAPA</Button>
       </StyledContainer>
     
   );

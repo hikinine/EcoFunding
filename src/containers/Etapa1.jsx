@@ -6,11 +6,11 @@ import * as Yup from 'yup';
 
 const StyledContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   align-content: center;
   justify-content: center;
-  height: 600px;
+  height: auto;
   margin-bottom: 6rem;
   font-family: 'Dm Sans', sans-serif;
   form {
@@ -49,32 +49,40 @@ const FormContent = styled.div`
 `;
 
 const StyledInput = styled(Field)`
-  width: 200px;
-  height: 30px;
-  margin: 10px;
-  padding: 10px;
+  width: 300px; /* Increased width */
+  height: 45px; /* Increased height */
+  margin: 15px; /* Adjusted margin for spacing */
+  padding: 15px; /* Increased padding */
   font-family: 'Dm Sans', sans-serif;
+  font-size: 1.125em; /* Increased font size */
   &:focus {
-    outline: 1px solid #2ebc15;
+    outline: 1.5px solid #2ebc15; /* Slightly thicker outline */
   }
 `;
 
 const Button = styled.button`
-  width: 200px;
-  height: 30px;
-  margin: 10px;
+  
+  height: calc(5cap * 1.5); /* Increased height */
+  padding:  0 150px;
+  margin-left: 250px;
+  margin-right: 250px;
   background-color: transparent;
-  border: 1px solid #2ebc15;
+  border: 1.5px solid #2ebc15; /* Slightly thicker border */
   color: #2ebc15;
   font-family: 'Lexend Tera', sans-serif;
-  text-transform: uppercase;
+  font-size: 1.125em; /* Increased font size */
   cursor: pointer;
   &:hover {
     background-color: #2ebc15;
     color: white;
   }
 `;
-
+const Paragraph = styled.p`
+  font-size: 30px; /* Increased from 22px */
+  margin: 0 50px;
+  margin-bottom: 30px; /* Increased for better spacing */
+  font-family: 'Dm Sans', sans-serif !important;
+`;
 const RowModel = styled.section`
   display: flex;
   flex-direction: row;
@@ -95,12 +103,13 @@ function Etapa1({ nextStep, prevStep, formikProps }) {
 
   return (
     <StyledContainer>
+      <Button type="button" onClick={prevStep}>Voltar</Button>
     <form>
       <FormContent>
       {isInvestor ? (
         <div>
           
-          <p>Olá {formikContext.values.name} , preencha os dados do formulario de investidor para prosseguir</p>
+          
           
           <StyledInput name="email" type="text" placeholder="Email-corporativo" />
           <StyledInput name="Nome do representante" type="text" placeholder="Nome do representante" />
@@ -113,7 +122,7 @@ function Etapa1({ nextStep, prevStep, formikProps }) {
       ) : (
         <div>
           
-          <p>Olá {formikContext.values.name} , preencha os dados do formulario de parceiros-ecossustentáveis para prosseguir</p>
+          
           <StyledInput name="CPF/CNPJ" type="text" placeholder="CPF/CPNJ" />
           <StyledInput name="Empresa" type="text" placeholder="Empresa" />
           <StyledInput name="Segmento" type="text" placeholder="Segmento" />
@@ -127,12 +136,13 @@ function Etapa1({ nextStep, prevStep, formikProps }) {
         </div>
       )}
       </FormContent>
-      <RowModel>
-      <Button type="button" onClick={prevStep}>Back</Button>
-      <Button type="button" onClick={nextStep} disabled={!(dirty)}>Next</Button>
-      </RowModel>
+      
+     
+      
     </form>
     
+      
+      <Button type="button" onClick={nextStep} disabled={!(dirty)}>Enviar</Button>
     </StyledContainer>
     
   );

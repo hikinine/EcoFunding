@@ -15,6 +15,8 @@ const H1 = styled.h1`
 text-align: center;
 font-size: 2em;
 margin-top: 2em;
+margin-bottom: 2em;
+text-transform: uppercase;
 `;
 const handleSubmit = async (values) => {
   // Initialize payload with common fields
@@ -106,10 +108,10 @@ const StepNavigation = ({ currentStep, goToStep, formikProps }) => {
     { name: 'Etapa 1', image: Image2 },
     { name: 'Etapa 2', image: Image3 },
   ];
-  const formName = formikProps.values.role === 'investor' ? 'Investor Role' : 'Projectist';
+
   return (
-    <div style={{ marginTop: '4em', textAlign: 'center'}}>
-    <h1>{formName}</h1>
+    <div style={{ marginTop: '4em', marginBottom: '4em', textAlign: 'center'}}>
+  
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  marginTop: '4em' }}>
       
       {steps.map((step, index) => (
@@ -128,10 +130,14 @@ const StepNavigation = ({ currentStep, goToStep, formikProps }) => {
 
   );
 };
-  
+
 function FormContainer() {
   const [step, setStep] = useState(0);
-
+  const nextStep = () => setStep((currentStep) => Math.min(currentStep + 1, 2)); // Assuming 3 steps (0, 1, 2)
+  const prevStep = () => setStep((currentStep) => Math.max(currentStep - 1, 0));
+  const goToStep = (stepIndex) => {
+    setStep(stepIndex);
+  };
   const initialValues = {
     name: '',
     surname: '',
@@ -143,11 +149,11 @@ function FormContainer() {
   const renderStep = (stepIndex, formikProps) => {
     switch (stepIndex) {
       case 0:
-        return <Etapa0 formikProps={formikProps} />;
+        return <Etapa0 nextStep={nextStep} formikProps={formikProps} />;
       case 1:
-        return <Etapa1 formikProps={formikProps} />;
+        return <Etapa1 nextStep={nextStep} prevStep={prevStep} formikProps={formikProps} />;
       case 2:
-        return <Etapa2 formikProps={formikProps} />;
+        return <Etapa2 nextStep={nextStep} prevStep={prevStep} formikProps={formikProps} />;
       default:
         return null;
     }
@@ -162,6 +168,7 @@ function FormContainer() {
       {formikProps => (
         <>
           <H1>
+          
             {formikProps.values.role === 'investor' 
               ? 'Investidor' // Assuming you want to display "Investidor" for investors
               : formikProps.values.role === 'parceiros' 
@@ -170,6 +177,8 @@ function FormContainer() {
               ? 'FORMULARIOS' // Display this when "Nenhum dos dois" is selected
               : 'FORMULARIOS'}
           </H1>
+          <StepNavigation style={{ marginBottom: '100px'}}currentStep={step} goToStep={goToStep} formikProps={formikProps} />
+          
           <Form>
             {renderStep(step, formikProps)}
           </Form>
