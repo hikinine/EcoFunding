@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
-import { Formik, Form } from 'formik';
+import { Formik, Form, FormikContext } from 'formik';
 import Etapa0 from './Etapa0';
 import Etapa1 from './Etapa1';
 import Etapa2 from './Etapa2';
 import Image1 from '../assets/1.svg';
 import Image2 from '../assets/2.svg';
 import Image3 from '../assets/3.svg';
-
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Center } from '@react-three/drei';
+import styled from 'styled-components';
 
-
+const H1 = styled.h1`
+text-align: center;
+font-size: 2em;
+margin-top: 2em;
+`;
 const handleSubmit = async (values) => {
   // Initialize payload with common fields
   const payload = {
@@ -95,16 +99,17 @@ const validationSchema = Yup.object({
     .required('Email is required'),
   phone: Yup.string().required('Phone is required'),
 });
-const StepNavigation = ({ currentStep, goToStep }) => {
+
+const StepNavigation = ({ currentStep, goToStep, formikProps }) => {
   const steps = [
     { name: 'Etapa 0', image: Image1 },
     { name: 'Etapa 1', image: Image2 },
     { name: 'Etapa 2', image: Image3 },
   ];
-
+  const formName = formikProps.values.role === 'investor' ? 'Investor Role' : 'Projectist';
   return (
     <div style={{ marginTop: '4em', textAlign: 'center'}}>
-    <h1> Formulários</h1>
+    <h1>{formName}</h1>
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',  marginTop: '4em' }}>
       
       {steps.map((step, index) => (
@@ -130,41 +135,48 @@ function FormContainer() {
   const initialValues = {
     name: '',
     surname: '',
-    role: '',
+    role: '', // Default to an empty string to represent no selection
     email: '',
     phone: '',
   };
 
-  
-
-  const renderStep = (step, formikProps) => {
-    switch (step) {
+  const renderStep = (stepIndex, formikProps) => {
+    switch (stepIndex) {
       case 0:
-        return <Etapa0 nextStep={() => setStep(step + 1)} formikProps={formikProps} />;
+        return <Etapa0 formikProps={formikProps} />;
       case 1:
-        return <Etapa1 nextStep={() => setStep(step + 1)} prevStep={() => setStep(step - 1)} formikProps={formikProps} />;
+        return <Etapa1 formikProps={formikProps} />;
       case 2:
-        return <Etapa2 prevStep={() => setStep(step - 1)} formikProps={formikProps} />;
+        return <Etapa2 formikProps={formikProps} />;
       default:
-        return <div>Form Completed</div>;
+        return null;
     }
-  }
-  const goToStep = (step) => {
-    setStep(step);
   };
+
   return (
     <Formik
       initialValues={initialValues}
+      onSubmit={handleSubmit}
       validationSchema={validationSchema}
-      onSubmit={handleSubmit} 
     >
-      {(formikProps) => (
-        <Form>
-          <StepNavigation currentStep={step} goToStep={goToStep} />
-          {renderStep(step, formikProps)}
-        </Form>
+      {formikProps => (
+        <>
+          <H1>
+            {formikProps.values.role === 'investor' 
+              ? 'Investidor' // Assuming you want to display "Investidor" for investors
+              : formikProps.values.role === 'parceiros' 
+              ? 'Parceiros' 
+              : formikProps.values.role === 'none' 
+              ? 'FORMULARIOS' // Display this when "Nenhum dos dois" is selected
+              : 'FORMULARIOS'}
+          </H1>
+          <Form>
+            {renderStep(step, formikProps)}
+          </Form>
+        </>
       )}
     </Formik>
   );
-}
+};
+
 export default FormContainer;

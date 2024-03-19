@@ -118,7 +118,7 @@ const StyledInput = styled(Field)`
 `;
 function Etapa0({ nextStep }) {
   const { values, setFieldValue } = useFormikContext(); // Access Formik context
-  const [selectedRole, setSelectedRole] = useState(values.role || '');
+  const [selectedRole, setSelectedRole] = useState(values.role || 'none');
   
   const handleRoleSelect = (role) => {
     setSelectedRole(role);
@@ -137,16 +137,21 @@ function Etapa0({ nextStep }) {
         </div>
         <div>
         <RoleButton
-          onClick={() => handleRoleSelect('projectist')}
-          isSelected={selectedRole === 'projectist'}
-        >
-          Parceiro Eco
-        </RoleButton>
+        onClick={() => handleRoleSelect('parceiros')} // Change 'projectist' to 'parceiros' if needed
+        isSelected={selectedRole === 'parceiros'}
+      >
+        Parceiro Eco
+      </RoleButton>
         <RoleButton
           onClick={() => handleRoleSelect('investor')}
           isSelected={selectedRole === 'investor'}
         >
           Investidor
+        </RoleButton>
+        <RoleButton
+        onClick={() => handleRoleSelect('none')}
+            isSelected={selectedRole === 'none'}>
+          Nenhum dos dois
         </RoleButton>
       </div>
         <Button type="button" onClick={nextStep}>PRÓXIMA ETAPA</Button>
