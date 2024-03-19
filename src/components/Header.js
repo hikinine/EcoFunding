@@ -5,17 +5,18 @@ import { FaBars } from "react-icons/fa";
 import Logo from "../assets/LOGOTIPO.webp";
 
 const StyledHeader = styled.header`
-  background-color: transparent;
+  
   width: 100%;
-  padding: 2vw; // Use viewport width for responsive padding
   display: flex;
+  
   align-items: center;
   justify-content: space-between;
   position: relative; // Ensure proper stacking
   
+  
   .nav_logo {
     text-align: left; // Default to left alignment
-    width: 25vw; // Adjust based on content
+    width: 25vw; 
     @media (max-width: 768px){
       text-align: center; // Center the content on smaller screens
       width: 100%; // Full width to accommodate smaller screens
@@ -64,7 +65,7 @@ const NavManu = styled.ul`
     color: black;
     display: block;
     padding: 0.5em; // Use em for padding
-    margin-right: 2em; // Adjust margin
+    
 
     &:hover{
       background-color: #2ebc15;
@@ -97,7 +98,8 @@ const Header = () => {
   };
 
   return (
-    <>
+    
+    <div style={{ padding: '20px' }}>
       <StyledHeader>
         <div className="nav_logo">
           <Link to={"/"}>
@@ -113,7 +115,9 @@ const Header = () => {
         </NavManu>
         <FaBars className="menuToggleBtn" onClick={handleToggleOpen} />
       </StyledHeader>
-    </>
+    </div>
+
+    
   );
 };
 

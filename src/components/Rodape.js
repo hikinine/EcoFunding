@@ -35,6 +35,9 @@ const StyledHeader = styled.header`
   font-size: 16px;
   @media (max-width: 991px) {
     padding: 0 20px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
   }
 `;
 
@@ -136,8 +139,8 @@ const NewsletterSection = styled.section`
     font-family: Lexend Tera, sans-serif;
     font-weight: 200;
   }
-  @media (max-width: 991px) {
-    display: none ;
+  @media (max-width: 1191px) {
+    display: none;
   }
 `;
 
@@ -148,6 +151,9 @@ const NewsletterForm = styled.form`
   margin-top: 30px;
   padding-left: 13px;
   font-weight: 400;
+  @media (max-width: 991px) {
+    display: none;
+  }
 `;
 
 const NewsletterInput = styled.input`
@@ -157,6 +163,11 @@ const NewsletterInput = styled.input`
   color: #fff;
   &::placeholder {
     color: #828282;
+  }
+
+
+  @media (max-width: 991px) {
+    display: none;
   }
 `;
 

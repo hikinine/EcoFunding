@@ -34,6 +34,9 @@ const StyledContainer = styled.div`
   justify-content: center;
   height: 600px;
   font-family: 'Dm Sans', sans-serif;
+  @media (max-width: 1268px) {
+  flex-direction: collumn;
+  }
 form {
   display: flex;
   flex-direction: column;

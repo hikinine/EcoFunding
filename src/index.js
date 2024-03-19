@@ -20,7 +20,7 @@ root.render(
     redirect_uri: window.location.origin
     }}>
   <Router>
-    <Header  />
+  <Header  />
     <App />
   
     </Router>
