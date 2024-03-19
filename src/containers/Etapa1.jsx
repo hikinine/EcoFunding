@@ -10,7 +10,7 @@ const StyledContainer = styled.div`
   align-items: center;
   align-content: center;
   justify-content: center;
-  height: auto;
+  height: 600px;
   margin-bottom: 6rem;
   font-family: 'Dm Sans', sans-serif;
   form {

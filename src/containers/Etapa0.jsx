@@ -69,7 +69,7 @@ div {
 }
 `;
 const Button = styled.button`
-  width: 200px;
+  width: 150px;
   height: 30px;
   margin: 10px;
   background-color: transparent;
@@ -136,7 +136,7 @@ function Etapa0({ nextStep }) {
           Investidor
         </RoleButton>
       </div>
-        <Button type="button" onClick={nextStep}>Next</Button>
+        <Button type="button" onClick={nextStep}>Seguir</Button>
       </StyledContainer>
     </CollumnModel>
   );
