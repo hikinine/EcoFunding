@@ -70,13 +70,13 @@ const NavManu = styled.ul`
     padding: 0.5em; // Use em for padding
     
 
-    &:hover{
-     
-      
-      box-shadow: 0px 3px 0px #2ebc15;
-    }
+   
   }
-
+.nav-menu-list{
+  &:hover{
+     box-shadow: 0px 1.5px 0px #2ebc15;
+   }
+}
   .nav-menu-list1 {
     border: 1px solid white;
     background-color: #2ebc15;

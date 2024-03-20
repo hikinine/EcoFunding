@@ -234,7 +234,7 @@ text-transform: uppercase;
 font-family: 'Lexend Tera';
 font-weight: 700;
 width: 100%;
-
+color: #242a32;
 min-width: 30vw;
 
 text-align: start;
