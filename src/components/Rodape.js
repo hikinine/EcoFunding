@@ -83,7 +83,7 @@ const Logo = styled.img`
 const SocialMediaIcons = styled.div`
   display: flex;
   margin-top: 42.5px; /* Adjusted for mobile */
-  justify-content: center;
+  justify-content: START;
   gap: 50px; /* Adjusted for mobile */
   @media (max-width: 991px) {
     flex-wrap: wrap;
@@ -97,11 +97,19 @@ const IconImg = styled.img`
 const Navbar = styled.div`
   display: flex;
   flex-direction: column;
-  color: #fff;
+  color: #c8c8c8c8;
+  padding: 50px; /* Adjusted for mobile */
   font-size: 6.5px; /* Adjusted for mobile */
   @media (max-width: 991px) {
     margin-right: 5rem; /* Adjusted for mobile */
     margin-left: 5rem; /* Adjusted for mobile */
+  }
+  @media (min-width: 992px) {
+    font-size: 12px; /* Adjusted for mobile */
+    div {
+      margin-top: 20px; /* Adjusted for mobile */
+      cursor: pointer;
+    }
   }
 `;
 
@@ -117,6 +125,7 @@ const NewsletterForm = styled.form`
   justify-content: space-between;
   margin-top: 15px; /* Adjusted for mobile */
   padding-left: 6.5px; /* Adjusted for mobile */
+  border: 1px solid #2ebc15;
 `;
 
 const NewsletterInput = styled.input`
@@ -179,10 +188,10 @@ function Rodape() {
           </Navbar>
           <Navbar>
             <div style={{ fontFamily: 'Lexend Tera', fontWeight: 500, fontSize: '8px', color: 'rgba(255, 255, 255, 1)' }}>SERVIÇOS</div>
-            <div>EcoFunding</div>
-            <div>Sustentabilidade</div>
-            <div>Inovação</div>
-            <div>Comunidade</div>
+            <div>CVM</div>
+            <div>SEMIL</div>
+            <div>ESG</div>
+            
           </Navbar>
           <Collumn>
             <NewsletterSection>

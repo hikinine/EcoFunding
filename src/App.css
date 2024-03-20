@@ -1,6 +1,6 @@
-body {
+body,html {
     background-color: aqua;
-    
+    overflow-x: hidden;
 }
 @font-face {
     font-family: "Lexend Tera";   /*Can be any text*/
