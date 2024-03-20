@@ -71,7 +71,7 @@ const Paragraph = styled.p`
 const RoleButton = styled.button`
   margin: 15px;
   padding: 15px 0; /* Increased padding */
-  width: 300px; /* Increased width */
+  width: 350px; /* Increased width */
   background-color: ${(props) => (props.isSelected ? '#242a32' : 'transparent')};
   color: ${(props) => (props.isSelected ? 'white' : '#242a32')};
   border: 1.5px solid #242a32; /* Slightly thicker border */

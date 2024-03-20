@@ -147,6 +147,11 @@ const ColumnFlex = styled.div`
 const ButtonContainer = styled.div`
   width: 100%; // Ensures the container spans the full width
   text-align: right; // Aligns the button to the right
+
+  @media (max-width: 991px){
+    text-align: center; // Adjusts the alignment for mobile
+    margin-bottom: 2rem; // Adds margin to the bottom for spacing
+  }
   
 `;
 // Animation Variants
