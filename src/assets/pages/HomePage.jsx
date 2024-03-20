@@ -7,10 +7,15 @@ import FAQ from 'components/FAQ';
 import Blog from 'components/Blog';
 import Rodape from 'components/Rodape';
 import HomeCarousel from 'components/Home';
-
+import styled from 'styled-components';
 import { MarkerProvider } from 'components/earth/MarkerContext';
 import FormContainer from '../../containers/FormContainer';
 
+const RodapeWrapper = styled.div`
+@media (max-width: 768px) {
+    display: none;
+}
+`;
 
 const HomePage = () => {
     return (
@@ -22,7 +27,9 @@ const HomePage = () => {
         <ESG />
         <FormContainer />
         <FAQ />
+        <RodapeWrapper>
         <Rodape />
+        </RodapeWrapper>
         
         </div>
     )

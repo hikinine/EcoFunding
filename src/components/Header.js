@@ -39,7 +39,7 @@ const StyledHeader = styled.header`
   }
 
   @media screen and (max-width: 768px) {
-    padding: 20px 5vw; // Adjust padding and use viewport width for responsiveness
+    
     flex-direction: column;
     align-items: center;
   }
@@ -89,7 +89,12 @@ const Img = styled.img`
     max-width: 100%; // Ensure logo is responsive
     height: auto; // Maintain aspect ratio
 `;
-
+const Div = styled.div`
+    padding: 20px;  
+   @media (max-width: 768px){
+      padding: 0px;
+    }
+`;
 const Header = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
@@ -99,7 +104,7 @@ const Header = () => {
 
   return (
     
-    <div style={{ padding: '20px' }}>
+    <Div>
       <StyledHeader>
         <div className="nav_logo">
           <Link to={"/"}>
@@ -115,7 +120,7 @@ const Header = () => {
         </NavManu>
         <FaBars className="menuToggleBtn" onClick={handleToggleOpen} />
       </StyledHeader>
-    </div>
+    </Div>
 
     
   );

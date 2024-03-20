@@ -112,6 +112,10 @@ const Button = styled.button`
     background-color: #2ebc15;
     color: white;
   }
+  @media (max-width: 768px) {
+    margin-left: 0px;
+    width: 50vw; /* Adjust margin for mobile */
+  }
 `;
 
 function Etapa0({ nextStep }) {

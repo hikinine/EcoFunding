@@ -5,6 +5,7 @@ import Eco from "../assets/LOGOTIPOcopy.svg";
 import Image1 from "../assets/Image1.png";
 import Image2 from "../assets/Image2.png";
 import Image3 from "../assets/Image3.png";
+
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
     width: typeof window !== "undefined" ? window.innerWidth : 0,
@@ -18,23 +19,26 @@ function useWindowSize() {
     }
 
     window.addEventListener('resize', handleResize);
-    // Call at mount to ensure we have the initial size
     handleResize();
 
-    // Cleanup on unmount
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return windowSize;
 }
 
+const Collumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  `;
 const StyledHeader = styled.header`
   background-color: #242a32;
-  padding: 74px 80px;
-  
-  font-size: 16px;
+  padding: 37px 40px; /* Adjusted for mobile */
+  font-size: 8px; /* Adjusted for mobile */
   @media (max-width: 991px) {
-    padding: 0 20px;
     flex-direction: column;
     display: flex;
     align-items: center;
@@ -43,22 +47,17 @@ const StyledHeader = styled.header`
 
 const MainContent = styled.main`
   display: flex;
-  gap: 20px;
+  gap: 10px; /* Adjusted for mobile */
   @media (max-width: 991px) {
     flex-direction: column;
     align-items: stretch;
-    gap: 0px;
   }
 `;
-const Collumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
+
 const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
-  width: 20%;
+  width: 50%; /* Adjusted for mobile */
   @media (max-width: 991px) {
     width: 100%;
   }
@@ -67,20 +66,15 @@ const Sidebar = styled.aside`
 const ContentWrapper = styled.section`
   display: flex;
   flex-direction: row;
-  width: 80%;
-  margin-left: 20px;
+  width: 50%; /* Adjusted for mobile */
   @media (max-width: 991px) {
     width: 100%;
+    margin-left: 0; /* Adjusted for mobile */
   }
 `;
 
 const Logo = styled.img`
-  aspect-ratio: 7.14;
-  object-fit: cover;
-  width: 100%;
-  align-self: center;
-  color: white;
-  fill: white;
+  max-width: 50%; /* Adjusted for mobile */
   @media (max-width: 991px) {
     max-width: 100%;
   }
@@ -88,42 +82,26 @@ const Logo = styled.img`
 
 const SocialMediaIcons = styled.div`
   display: flex;
-  margin-top: 85px;
+  margin-top: 42.5px; /* Adjusted for mobile */
   justify-content: center;
-  gap: 100px;
+  gap: 50px; /* Adjusted for mobile */
   @media (max-width: 991px) {
     flex-wrap: wrap;
-    margin-top: 40px;
   }
 `;
 
 const IconImg = styled.img`
-  aspect-ratio: 1;
-  object-fit: cover;
-  width: 27px;
+  width: 13.5px; /* Adjusted for mobile */
 `;
 
 const Navbar = styled.div`
   display: flex;
   flex-direction: column;
-  
   color: #fff;
-  font-size: 13px;
-  margin-right: 10rem;
-  margin-left: 10rem;
-  & > div {
-    color: #828282;
-    margin-top: 49px;
-    font-family: DM Sans, sans-serif;
-    &:first-child {
-      margin-top: 0;
-      font-weight: 500;
-      font-size: 15px;
-      color: rgba(255, 255, 255, 1);
-    }
-    @media (max-width: 991px) {
-      margin-top: 40px;
-    }
+  font-size: 6.5px; /* Adjusted for mobile */
+  @media (max-width: 991px) {
+    margin-right: 5rem; /* Adjusted for mobile */
+    margin-left: 5rem; /* Adjusted for mobile */
   }
 `;
 
@@ -131,29 +109,14 @@ const NewsletterSection = styled.section`
   display: flex;
   flex-direction: column;
   color: #2ebc15;
-  font-size: 16px;
-  margin-top: 55px;
-  
-
-  & > div:first-child {
-    font-family: Lexend Tera, sans-serif;
-    font-weight: 200;
-  }
-  @media (max-width: 1191px) {
-    display: none;
-  }
+  font-size: 8px; /* Adjusted for mobile */
 `;
 
 const NewsletterForm = styled.form`
-  border: 1px solid rgba(46, 188, 21, 1);
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
-  padding-left: 13px;
-  font-weight: 400;
-  @media (max-width: 991px) {
-    display: none;
-  }
+  margin-top: 15px; /* Adjusted for mobile */
+  padding-left: 6.5px; /* Adjusted for mobile */
 `;
 
 const NewsletterInput = styled.input`
@@ -164,11 +127,6 @@ const NewsletterInput = styled.input`
   &::placeholder {
     color: #828282;
   }
-
-
-  @media (max-width: 991px) {
-    display: none;
-  }
 `;
 
 const SubmitButton = styled.button`
@@ -176,22 +134,29 @@ const SubmitButton = styled.button`
   border: none;
   color: #fff;
   height: 100%;
-  padding: 20px 15px;
+  padding: 10px 7.5px; /* Adjusted for mobile */
   cursor: pointer;
 `;
 
 const ContentText = styled.p`
   color: #465363;
-  font-size: 13px;
+  font-size: 6.5px; /* Adjusted for mobile */
   line-height: 1.6;
-  margin-top: 200px;
-  @media (max-width: 991px) {
-    display: none ;
-  }
+  margin-top: 100px; /* Adjusted for mobile */
 `;
 
 function Rodape() {
   const width = useWindowSize();
+  const breakpoint = 991;
+
+  // Check if the window width is less than or equal to the breakpoint.
+  // If true, return null to render nothing for mobile widths.
+  if (width <= breakpoint) {
+    return null;
+  }
+  if (width > breakpoint) {
+    return null;
+  }
   return (
     <StyledHeader>
       <MainContent>
@@ -202,52 +167,41 @@ function Rodape() {
             <IconImg src={Image2} alt="Icon 2" />
             <IconImg src={Image3} alt="Icon 3" />
             
-          </SocialMediaIcons>
+            </SocialMediaIcons>
         </Sidebar>
         <ContentWrapper>
           <Navbar>
-            <span style={{ fontFamily: 'Lexend Tera' }}>EMPRESA</span>
+            <div style={{ fontFamily: 'Lexend Tera', fontWeight: 500, fontSize: '8px', color: 'rgba(255, 255, 255, 1)' }}>EMPRESA</div>
             <div>Início</div>
             <div>Investir</div>
             <div>Seja um parceiro Eco</div>
             <div>Contato</div>
           </Navbar>
           <Navbar>
-          <span style={{ fontFamily: 'Lexend Tera' }}>EMPRESA</span>
-            <div>Início</div>
-            <div>Investir</div>
-            <div>Seja um parceiro Eco</div>
-            <div>Contato</div>
+            <div style={{ fontFamily: 'Lexend Tera', fontWeight: 500, fontSize: '8px', color: 'rgba(255, 255, 255, 1)' }}>SERVIÇOS</div>
+            <div>EcoFunding</div>
+            <div>Sustentabilidade</div>
+            <div>Inovação</div>
+            <div>Comunidade</div>
           </Navbar>
           <Collumn>
-        <NewsletterSection>
-            <div>
-              SE INSCREVA NA NOSSA{" "}
-              <span style={{ fontWeight: 600, color: "rgba(46,188,21,1)" }}>
-                NEWSLETTER
-              </span>
-            </div>
-            <NewsletterForm>
-              <NewsletterInput
-                type="email"
-                placeholder="Digite seu e-mail"
-                aria-label="Digite seu e-mail"
-              />
-              <SubmitButton>Enviar</SubmitButton>
-            </NewsletterForm>
-          </NewsletterSection>
-
-          
+            <NewsletterSection>
+              <div>SE INSCREVA NA NOSSA <span style={{ fontWeight: 600, color: "rgba(46,188,21,1)" }}>NEWSLETTER</span></div>
+              <NewsletterForm>
+                <NewsletterInput type="email" placeholder="Digite seu e-mail" aria-label="Digite seu e-mail" />
+                <SubmitButton>Enviar</SubmitButton>
+              </NewsletterForm>
+            </NewsletterSection>
           </Collumn>
         </ContentWrapper>
       </MainContent>
       <ContentText>
-          "Acreditamos que o futuro do nosso planeta está diretamente ligado a uma economia mais sustentável, onde a tecnologia desempenha um papel crucial no processo como um todo. Buscamos simplificar e democratizar o acesso a soluções sustentáveis, capacitando tanto pessoas quanto empresas a contribuírem ativamente para a preservação do nosso futuro e do meio ambiente.
-
-Temos como compromisso principal, desenvolver soluções ambientais inovadoras que permitem diversos tipos de empresas a compensarem suas emissões de carbono de maneira descomplicada e segura. Estamos empenhados em facilitar e promover a adoção de práticas mais conscientes, promovendo assim um movimento efetivo em prol da sustentabilidade global.
-
-Somos a ECOFUNDING, uma eco/fintech que nasceu pela inconformidade dos sócios em acreditarem que o futuro não está tão distante como a maioria das pessoas acreditam e que nós não herdamos a Terra dos nossos antepassados, simplesmente pegamos emprestada de nossos filhos."
-          </ContentText>
+        "Acreditamos que o futuro do nosso planeta está diretamente ligado a uma economia mais sustentável, onde a tecnologia desempenha um papel crucial no processo como um todo. Buscamos simplificar e democratizar o acesso a soluções sustentáveis, capacitando tanto pessoas quanto empresas a contribuírem ativamente para a preservação do nosso futuro e do meio ambiente.
+        
+        Temos como compromisso principal, desenvolver soluções ambientais inovadoras que permitem diversas tipos de empresas a compensarem suas emissões de carbono de maneira descomplicada e segura. Estamos empenhados em facilitar e promover a adoção de práticas mais conscientes, promovendo assim um movimento efetivo em prol da sustentabilidade global.
+        
+        Somos a ECOFUNDING, uma eco/fintech que nasceu pela inconformidade dos sócios em acreditarem que o futuro não está tão distante como a maioria das pessoas acreditam e que nós não herdamos a Terra dos nossos antepassados, simplesmente pegamos emprestada de nossos filhos."
+      </ContentText>
     </StyledHeader>
   );
 }

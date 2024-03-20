@@ -184,7 +184,7 @@ const TextRectangle = styled.div`
   min-height: 200px; /* Example minimum height */
 `;
 const TextRectangle2 = styled.div`
-  color: white;
+  
   padding: 20px;
   flex-direction: column;
   width: 100%;
@@ -199,13 +199,13 @@ const TextRectangle2 = styled.div`
   color: #c8c8c8c8;
   @media (max-width: ${breakpoints.tablet}) {
     min-width: 400px;
-    
+    margin-right: 0px;
   }
   @media (max-width: 500px) {
     min-width: 100%; // Ensure it takes the full width
     text-align: center; // Center text for mobile
     padding: 10px; // Adjust padding for smaller screens
-    
+    margin-right: 0px;
   }
 `;
 
