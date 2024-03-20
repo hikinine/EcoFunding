@@ -22,6 +22,7 @@ const CollumnModel = styled.div`
     font-size: 32px; // Adjust font size for mobile
     margin-left: 2rem; // Adjust margin for mobile
     text-align: center; // Center text on mobile
+    height: 110vh;
   }
 
 }
@@ -115,6 +116,7 @@ const Button = styled.button`
   @media (max-width: 768px) {
     margin-left: 0px;
     width: 50vw; /* Adjust margin for mobile */
+    margin-bottom: 100px; /* Adjust margin for mobile */
   }
 `;
 

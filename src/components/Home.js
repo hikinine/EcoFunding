@@ -67,8 +67,7 @@ const FrameText = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin-right: 2em;
-  margin-left: 2em;
+  
   width: 700px;
   @media (max-width: 768px) {
     width: 100%;
@@ -82,7 +81,7 @@ const FrameText = styled.div`
 const FrameImage = styled.div`
   position: relative;
   margin-left: 2em;
-  width: 700px;
+  width: 33vw;
   height: 500px;
   overflow: visible;
   align-items: center;
@@ -147,7 +146,7 @@ const ParallaxFolha = styled.img`
   height: auto;
   position: sticky;
   z-index: 1000;
-  top: 500px;
+  top: 800px;
   margin-left: -100px;
   transition: transform 0.35s ease-out;
   

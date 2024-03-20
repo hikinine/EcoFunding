@@ -19,7 +19,9 @@ const StyledHeader = styled.header`
     width: 25vw; 
     @media (max-width: 768px){
       text-align: center; // Center the content on smaller screens
-      width: 100%; // Full width to accommodate smaller screens
+      width: auto;
+      height: auto;
+      overflow: visible; // Hide overflow content
     }
   }
   
@@ -80,6 +82,7 @@ const NavManu = styled.ul`
   @media screen and (max-width: 768px) {
     flex-direction: column;
     width: 100%;
+    margin-bottom: 50px; /* Add margin bottom for spacing */
     margin-top: 1em; // Adjust top margin
     display: ${props => props.isToggleOpen ? "flex" : "none"}; // Use flex to align items vertically
   }
@@ -88,6 +91,9 @@ const NavManu = styled.ul`
 const Img = styled.img`
     max-width: 100%; // Ensure logo is responsive
     height: auto; // Maintain aspect ratio
+    @media (max-width: 768px){
+    
+    }
 `;
 const Div = styled.div`
     padding: 20px;  
@@ -108,7 +114,7 @@ const Header = () => {
       <StyledHeader>
         <div className="nav_logo">
           <Link to={"/"}>
-            <Img src={Logo} alt="ECOFUNDING" />
+            <Img src={Logo} alt="ECOFUNDING" onClick={handleToggleOpen} />
           </Link>
         </div>
 
@@ -118,7 +124,7 @@ const Header = () => {
           <li><Link to={"/til"} className="nav-menu-list">FAQ</Link></li>
           <li><Link to={"/diary"} className="nav-menu-list1">CONTATO</Link></li>
         </NavManu>
-        <FaBars className="menuToggleBtn" onClick={handleToggleOpen} />
+        <FaBars style={{ fill: 'black' }} className="menuToggleBtn" onClick={handleToggleOpen} />
       </StyledHeader>
     </Div>
 

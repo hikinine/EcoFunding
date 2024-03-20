@@ -76,7 +76,8 @@ const Button = styled.button`
   cursor: pointer;
   @media (max-width: 768px){
     
-    
+    width: 300px;
+    margin: 100px auto 0px auto;
     align-self: center;
   }
   &:hover {
