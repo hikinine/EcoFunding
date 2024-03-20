@@ -101,6 +101,15 @@ const validationSchema = Yup.object({
     )
     .required('Email is required'),
   phone: Yup.string().required('Phone is required'),
+  corporateEmail: Yup.string()
+    .email('Invalid email format')
+    .required('Corporate email is required'),
+  cpfCnpj: Yup.string()
+    .matches(/(^\d{11}$)|(^\d{14}$)/, 'Invalid CPF/CNPJ')
+    .required('CPF/CNPJ is required'),
+  phone: Yup.string()
+    .matches(/(^\d{10,11}$)/, 'Invalid phone number')
+    .required('Phone number is required'),
 });
 
 const StepNavigation = ({ currentStep, goToStep, formikProps }) => {
@@ -179,7 +188,9 @@ function FormContainer({ id }) {
               ? 'FORMULÁRIOS' // Display this when "Nenhum dos dois" is selected
               : 'FORMULÁRIOS'}
           </H1>
+          {({ errors, touched }) => (
           <StepNavigation style={{ marginBottom: '100px'}}currentStep={step} goToStep={goToStep} formikProps={formikProps} />
+          )}
           
           <Form>
             {renderStep(step, formikProps)}

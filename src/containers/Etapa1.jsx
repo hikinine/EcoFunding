@@ -96,10 +96,10 @@ const RowModel = styled.section`
 `;
 
 function Etapa1({ nextStep, prevStep, formikProps }) {
-  const { values } = useFormikContext();
+  
   const isInvestor = values.role === 'investor';
   const formikContext = useFormikContext();
-  
+  const { values, errors, touched } = useFormikContext();
   const { isValid, dirty } = useFormikContext();
   
  
@@ -117,6 +117,7 @@ function Etapa1({ nextStep, prevStep, formikProps }) {
           <StyledInput name="corporateEmail" type="text" placeholder="Email-corporativo" />
           <StyledInput name="representantName" type="text" placeholder="Nome do representante" />
           <StyledInput name="cargo" type="text" placeholder="Cargo" />
+          <StyledInput name="cpfCnpj" type="text" placeholder="CPNJ" />
           <StyledInput name="empresa" type="text" placeholder="Nome da empresa" />
           <StyledInput name="segmento" type="text" placeholder="Segmento" />
           
