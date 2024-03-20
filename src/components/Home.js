@@ -47,8 +47,8 @@ const Wrapper = styled.section`
   margin-top: 2em;
   margin-bottom: 2em;
   width: 100vw;
-  height: 60vh;
-  gap: 8em;
+  height: auto;
+  gap: 10em;
   @media (max-width: 768px) {
     height: auto;
   }
@@ -66,8 +66,8 @@ const FrameText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  
+  align-items: start;
+  margin-top: -10em;
   width: 700px;
   @media (max-width: 768px) {
     width: 100%;
@@ -146,8 +146,9 @@ const ParallaxFolha = styled.img`
   height: auto;
   position: sticky;
   z-index: 1000;
-  top: 800px;
+  top: 500px;
   margin-left: -100px;
+  
   transition: transform 0.35s ease-out;
   
 
@@ -217,8 +218,8 @@ const Wrapper2 = styled.div`
   `;
 const Paragraph1 = styled.p`
   margin-bottom: 2em;
-  margin-top: 1em;
-  margin-left: 2em;
+  margin-top: 5px;
+  font-weight: 300;
   font-size: 22px;
   font-family: 'Lexend Tera';
   text-align: left;
@@ -231,11 +232,11 @@ const Paragraph1 = styled.p`
 const H11 = styled.h1`
 text-transform: uppercase;
 font-family: 'Lexend Tera';
-font-weight: 600;
+font-weight: 700;
 width: 100%;
 
 min-width: 30vw;
-margin-left: 6em;
+
 text-align: start;
 font-size: 24px;
 margin-right: 50px;
@@ -321,7 +322,7 @@ const slidesData = [
     src: HomeSection1,
     alt: 'An image description',
     title: 'Nascemos para conectar propósitos sustentáveis a realidades transformadoras',
-    paragraph: 'Somos a primeira plataforma corporate crowdfunding de investimentos sustentaveis do Brasil',
+    paragraph: 'Somos a primeira plataforma corporate crowdfunding de investimentos sustentáveis do Brasil.',
     button: 'Regulada pela CVM'
   },
   {
@@ -370,10 +371,10 @@ const HomeCarousel = () => {
         setSlideHeight(150); // Example: Increase height for smaller screens
         break;
       case windowWidth >= 668 && windowWidth < 1604:
-        setSlideHeight(70); // Hypothetical case: Medium screens
+        setSlideHeight(27); // Hypothetical case: Medium screens
         break;
       case windowWidth >= 1604:
-        setSlideHeight(27); // Reset to default for larger screens
+        setSlideHeight(20); // Reset to default for larger screens
         break;
       default:
         // Optionally handle any unexpected cases

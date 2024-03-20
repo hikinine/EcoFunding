@@ -174,8 +174,8 @@ function FormContainer() {
               : formikProps.values.role === 'parceiros' 
               ? 'Parceiros' 
               : formikProps.values.role === 'none' 
-              ? 'FORMULARIOS' // Display this when "Nenhum dos dois" is selected
-              : 'FORMULARIOS'}
+              ? 'FORMULÁRIOS' // Display this when "Nenhum dos dois" is selected
+              : 'FORMULÁRIOS'}
           </H1>
           <StepNavigation style={{ marginBottom: '100px'}}currentStep={step} goToStep={goToStep} formikProps={formikProps} />
           

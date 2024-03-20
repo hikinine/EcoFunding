@@ -6,26 +6,6 @@ import Image1 from "../assets/Image1.png";
 import Image2 from "../assets/Image2.png";
 import Image3 from "../assets/Image3.png";
 
-function useWindowSize() {
-  const [windowSize, setWindowSize] = useState({
-    width: typeof window !== "undefined" ? window.innerWidth : 0,
-  });
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowSize({
-        width: window.innerWidth,
-      });
-    }
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return windowSize;
-}
 
 const Collumn = styled.div`
   display: flex;
@@ -68,6 +48,7 @@ const ContentWrapper = styled.section`
   flex-direction: row;
   width: 50%; /* Adjusted for mobile */
   @media (max-width: 991px) {
+    flex-direction: column;
     width: 100%;
     margin-left: 0; /* Adjusted for mobile */
   }
@@ -155,17 +136,7 @@ const ContentText = styled.p`
 `;
 
 function Rodape() {
-  const width = useWindowSize();
-  const breakpoint = 991;
 
-  // Check if the window width is less than or equal to the breakpoint.
-  // If true, return null to render nothing for mobile widths.
-  if (width <= breakpoint) {
-    return null;
-  }
-  if (width > breakpoint) {
-    return null;
-  }
   return (
     <StyledHeader>
       <MainContent>
@@ -182,8 +153,7 @@ function Rodape() {
           <Navbar>
             <div style={{ fontFamily: 'Lexend Tera', fontWeight: 500, fontSize: '8px', color: 'rgba(255, 255, 255, 1)' }}>EMPRESA</div>
             <div>Início</div>
-            <div>Investir</div>
-            <div>Seja um parceiro Eco</div>
+            <div>Parcerias</div>
             <div>Contato</div>
           </Navbar>
           <Navbar>

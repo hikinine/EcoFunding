@@ -88,8 +88,7 @@ const Button = styled.button`
 
 const Header = styled.h1`
   font-size: 48px;
-  margin-bottom: 10px;
-  margin-left: 3rem;
+  margin: 10px 100px;
   color: #2ebc15;
   text-transform: uppercase;
   text-align: center;
@@ -103,7 +102,7 @@ const Header = styled.h1`
 `;
 
 const Paragraph = styled(motion.p)`
-  font-size: 22px;
+  font-size: 29px;
   margin: 0 100px;
   word-break: break-word;
   color: #c8c8c8c8;
@@ -119,11 +118,12 @@ const Paragraph = styled(motion.p)`
 const Image = styled.img`
   max-width: 500px;
   
-  margin-left: 1rem;
+  margin-left: 6rem;
   margin-top: 1rem;
   @media (max-width: 768px) {
     max-width: 150px;
-  }
+    margin-left: 0%;
+  } 
   @media (max-width: 1308px) {
     max-width: 300px;
   }
@@ -195,10 +195,10 @@ const OqueFazemos = () => {
               initial="hidden"
               animate={controls}
             >
-               Nossa I.A. de classificação de projetos ESG, através do smart contract.
+               Nossa I.A. de classificação de projetos ESG
             </Paragraph>
             <ButtonContainer>
-            <Link to="/SaibaMais" > <Button>Saiba Mais</Button> </Link>
+           
             </ButtonContainer>
           </ColumnFlex>
         </Content>

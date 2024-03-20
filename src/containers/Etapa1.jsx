@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Field, FormikContext } from 'formik';
 import { useFormikContext } from 'formik';
 import * as Yup from 'yup';
-
+import { FaArrowRightLong } from "react-icons/fa6";
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -64,8 +64,8 @@ const Button = styled.button`
   
   height: calc(5cap * 1.5); /* Increased height */
   padding:  0 150px;
-  margin-left: 250px;
-  margin-right: 250px;
+  margin-left: 150px;
+  margin-right: 150px;
   background-color: transparent;
   border: 1.5px solid #2ebc15; /* Slightly thicker border */
   color: #2ebc15;
@@ -103,7 +103,7 @@ function Etapa1({ nextStep, prevStep, formikProps }) {
 
   return (
     <StyledContainer>
-      <Button type="button" onClick={prevStep}>Voltar</Button>
+      <Button type="button" onClick={prevStep}>VOLTAR</Button>
     <form>
       <FormContent>
       {isInvestor ? (
@@ -142,7 +142,7 @@ function Etapa1({ nextStep, prevStep, formikProps }) {
     </form>
     
       
-      <Button type="button" onClick={nextStep} disabled={!(dirty)}>Enviar</Button>
+      <Button type="button" onClick={nextStep} disabled={!(dirty)}><FaArrowRightLong /></Button>
     </StyledContainer>
     
   );

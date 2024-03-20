@@ -8,6 +8,7 @@ const Section = styled.section`
   padding: 5rem 1rem; // Reduced and made responsive
   background-color: #3f4c5c;
   color: white;
+  
   box-sizing: border-box; // Ensures padding is included in the width calculation
 `;
 
@@ -50,8 +51,8 @@ const FAQItems = styled.div`
   width: 100%; // Ensure it doesn't exceed the container width
   display: flex;
   flex-direction: column;
-  border-top: 1px solid #2b2d42;
-  border-bottom: 1px solid #2b2d42;
+  
+
 
   @media (min-width: 640px) {
     padding: 0 1rem; // Adjust padding based on screen size
@@ -69,7 +70,8 @@ const FAQItems = styled.div`
 // FAQDetail with minor adjustments for responsiveness
 const FAQDetail = styled.details`
   width: 100%; // Ensure it fits within its parent container
-
+  margin-bottom: 1rem; // Adjust margin for better spacing
+  
   summary {
     padding: 0.5rem 0;
     outline: none;

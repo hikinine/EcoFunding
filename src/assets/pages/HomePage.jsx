@@ -16,6 +16,12 @@ const RodapeWrapper = styled.div`
     display: none;
 }
 `;
+const RodapeWrapperMobile = styled.div`
+display: none;
+@media (min-width: 768px) {
+    display: visible;
+}
+`;
 
 const HomePage = () => {
     return (
@@ -30,6 +36,9 @@ const HomePage = () => {
         <RodapeWrapper>
         <Rodape />
         </RodapeWrapper>
+        <RodapeWrapperMobile>
+            
+        </RodapeWrapperMobile>
         
         </div>
     )

@@ -62,9 +62,9 @@ div {
 }
 `;
 const Paragraph = styled.p`
-  font-size: 33px; /* Increased from 22px */
+  font-size: 30px; /* Increased from 22px */
   margin-top: 0px; /* Adjusted for visual consistency */
-  margin-bottom: 30px; /* Increased for better spacing */
+  margin-bottom: 20px; /* Increased for better spacing */
   font-family: 'Dm Sans', sans-serif !important;
 `;
 

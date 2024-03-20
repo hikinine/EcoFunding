@@ -31,18 +31,19 @@ const Div = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: -200px;
-  align-content: center;
-  justify-content: center;
+  
+  justify-content: start;
   height: 100%;
+  width: vw;
 
   h2 {
     font-size: 24px;
     margin-top: 4em;
     margin-left: 3rem;
-    width: 350px;
-    text-transform: uppercase;
     
-    font-weight: 500;
+    text-transform: uppercase;
+    text-align: start;
+    font-weight: 700;
     font-family: 'Lexend Tera', sans-serif !important;
   }
 `;
@@ -52,22 +53,22 @@ function Etapa2({ prevStep }) {
 
   return (
     <StyledContainer>
-      <Button type="button" onClick={prevStep}>Voltar</Button>
+      <Button type="button" onClick={prevStep}>VOLTAR</Button>
       <Form>
         <Div>
-          <h2>Seu formulário será enviado</h2>
-          <p>Nome : {formikContext.values.name}</p>
-          <p>Sobrenome: {formikContext.values.surname}</p>
-          <p>Tipo de formulário: {formikContext.values.role}</p>
-          <p>Email: {formikContext.values.email}</p>
-          <p>Telefone: {formikContext.values.phone}</p>
+          <h2>Confirme seus dados</h2>
+          <p><strong>Nome:</strong> {formikContext.values.name}</p>
+          <p><strong>Sobrenome:</strong> {formikContext.values.surname}</p>
+          <p><strong>Tipo de formulário:</strong> {formikContext.values.role}</p>
+          <p><strong>Email:</strong> {formikContext.values.email}</p>
+          <p><strong>Telefone:</strong> {formikContext.values.phone}</p>
 
          
         </Div>
         
       </Form>
         
-        <Button type="submit">Confirmar</Button> {/* Form submission Button */}
+        <Button type="submit">ENVIAR</Button> {/* Form submission Button */}
     </StyledContainer>
   );
 }

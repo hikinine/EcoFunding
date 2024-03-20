@@ -15,8 +15,9 @@ const StyledHeader = styled.header`
   
   
   .nav_logo {
+    margin-left: 40px; // Adjust margin for spacing
     text-align: left; // Default to left alignment
-    width: 25vw; 
+    width: 20vw; 
     @media (max-width: 768px){
       text-align: center; // Center the content on smaller screens
       width: auto;
@@ -51,18 +52,18 @@ const NavManu = styled.ul`
   display: flex;
   align-items: center;
   color: black;
-
+  margin-right: 40px; // Adjust margin for spacing
   li {
     margin-right: 1em; // Use em for spacing between items
 
     &:hover {
       cursor: pointer;
       border-radius: 4px;
+      under
     }
   }
 
   .nav-menu-list, .nav-menu-list1 {
-    text-decoration: none;
     color: black;
     display: block;
     padding: 0.5em; // Use em for padding
@@ -71,11 +72,19 @@ const NavManu = styled.ul`
     &:hover{
       background-color: #2ebc15;
       color: white;
+      text-decoration: underline;
     }
   }
 
   .nav-menu-list1 {
-    border: 1px solid #2ebc15;
+    border: 1px solid white;
+    background-color: #2ebc15;
+    color: white;
+    &:hover{
+      background-color: transparent;
+      color: black;
+      border: 1px solid black;
+      }
   }
 
   @media screen and (max-width: 768px) {
