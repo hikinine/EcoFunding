@@ -364,10 +364,20 @@ const HomeCarousel = () => {
   };
   const updateDimensions = () => {
     const windowWidth = window.innerWidth;
-    if (windowWidth < 668) {
-      setSlideHeight(150); // Example: Increase height for smaller screens
-    } else {
-      setSlideHeight(27); // Reset to default for larger screens
+  
+    switch (true) {
+      case windowWidth < 668:
+        setSlideHeight(150); // Example: Increase height for smaller screens
+        break;
+      case windowWidth >= 668 && windowWidth < 1324:
+        setSlideHeight(70); // Hypothetical case: Medium screens
+        break;
+      case windowWidth >= 1324:
+        setSlideHeight(27); // Reset to default for larger screens
+        break;
+      default:
+        // Optionally handle any unexpected cases
+        console.log("Unhandled window width: ", windowWidth);
     }
   };
 
