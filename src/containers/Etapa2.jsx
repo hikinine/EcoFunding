@@ -34,12 +34,12 @@ const Div = styled.div`
   
   justify-content: start;
   height: 100%;
-  width: vw;
+  width: 25vw;
 
   h2 {
     font-size: 24px;
     margin-top: 4em;
-    margin-left: 3rem;
+    
     
     text-transform: uppercase;
     text-align: start;

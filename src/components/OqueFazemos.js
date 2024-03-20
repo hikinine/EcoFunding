@@ -161,7 +161,7 @@ const slideInFromLeft = {
 };
 
 // Component
-const OqueFazemos = () => {
+const OqueFazemos = ({ id }) => {
   const [showContent, setShowContent] = useState(true);
   const controls = useAnimation();
   const { ref, inView } = useInView({ threshold: 0.1 });
@@ -181,7 +181,7 @@ const OqueFazemos = () => {
   }, [inView, controls]);
   
   return (
-    <Container>
+    <Container id={id}>
       
       <Image src={EcoAlgo} />
       

@@ -87,9 +87,11 @@ const Navbar = styled.div`
   }
   @media (min-width: 992px) {
     font-size: 12px; /* Adjusted for mobile */
-    div {
+    a {
       margin-top: 20px; /* Adjusted for mobile */
       cursor: pointer;
+      color: #c8c8c8;
+      text-decoration: none;
     }
   }
 `;
@@ -134,8 +136,21 @@ const ContentText = styled.p`
   line-height: 1.6;
   margin-top: 100px; /* Adjusted for mobile */
 `;
+const scrollToSection = (sectionId) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    console.error(`Element with ID ${sectionId} not found`);
+  }
+};
 
 function Rodape() {
+  const handleScroll = (event, sectionId) => {
+    event.preventDefault(); // Prevent default action of opening a new tab or navigating away
+    document.querySelectorAll('[id]').forEach((el) => console.log(el.id));
+    scrollToSection(sectionId);
+  };
 
   return (
     <StyledHeader>
@@ -143,24 +158,24 @@ function Rodape() {
         <Sidebar>
           <Logo src={Eco} alt="Logo" />
           <SocialMediaIcons>
-            <IconImg src={Image1} alt="Icon 1" />
-            <IconImg src={Image2} alt="Icon 2" />
-            <IconImg src={Image3} alt="Icon 3" />
+            <a href="mailto:contato@ecofunding.com.br"><IconImg src={Image1} alt="Icon 1" /></a>
+            <a href="https://www.instagram.com/ecofundinginvest/"><IconImg src={Image2} alt="Icon 2" href=""/></a>
+            <a href="https://www.linkedin.com/company/ecofunding/about/"><IconImg src={Image3} alt="Icon 3" href=""/></a>
             
             </SocialMediaIcons>
         </Sidebar>
         <ContentWrapper>
           <Navbar>
             <div style={{ fontFamily: 'Lexend Tera', fontWeight: 500, fontSize: '8px', color: 'rgba(255, 255, 255, 1)' }}>EMPRESA</div>
-            <div>Início</div>
-            <div>Parcerias</div>
-            <div>Contato</div>
+            <a onClick={(e) => handleScroll(e, 'sobre')}>Início</a>
+            <a onClick={(e) => handleScroll(e, 'parceria')}>Parcerias</a>
+            <a >Contato</a>
           </Navbar>
           <Navbar>
             <div style={{ fontFamily: 'Lexend Tera', fontWeight: 500, fontSize: '8px', color: 'rgba(255, 255, 255, 1)' }}>SERVIÇOS</div>
-            <div>CVM</div>
-            <div>SEMIL</div>
-            <div>ESG</div>
+            <a href="https://www.gov.br/cvm/pt-br">CVM</a>
+            <a href="https://semil.sp.gov.br/">SEMIL</a>
+            <a href="https://ecofunding.com.br">ESG</a>
             
           </Navbar>
           <Collumn>

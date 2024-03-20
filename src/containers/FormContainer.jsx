@@ -131,7 +131,7 @@ const StepNavigation = ({ currentStep, goToStep, formikProps }) => {
   );
 };
 
-function FormContainer() {
+function FormContainer({ id }) {
   const [step, setStep] = useState(0);
   const nextStep = () => setStep((currentStep) => Math.min(currentStep + 1, 2)); // Assuming 3 steps (0, 1, 2)
   const prevStep = () => setStep((currentStep) => Math.max(currentStep - 1, 0));
@@ -160,14 +160,15 @@ function FormContainer() {
   };
 
   return (
-    <Formik
+    <Formik 
+      
       initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
       {formikProps => (
         <>
-          <H1>
+          <H1 id={id}>
           
             {formikProps.values.role === 'investor' 
               ? 'Investidor' // Assuming you want to display "Investidor" for investors

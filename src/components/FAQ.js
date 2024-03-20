@@ -87,9 +87,9 @@ const FAQDetail = styled.details`
     padding: 0 0.5rem 0.5rem; // Adjust padding for the content
   }
 `;
-const FAQ = () => {
+const FAQ = ({ id }) => {
   return (
-    <Section>
+    <Section id={id}>
       <Container className="container">
         <FAQTitle>FAQ </FAQTitle>
         <FAQItems className="flex flex-col divide-y divide-gray-700">

@@ -64,15 +64,16 @@ const NavManu = styled.ul`
   }
 
   .nav-menu-list, .nav-menu-list1 {
+    text-decoration: none;
     color: black;
     display: block;
     padding: 0.5em; // Use em for padding
     
 
     &:hover{
-      background-color: #2ebc15;
-      color: white;
-      text-decoration: underline;
+     
+      
+      box-shadow: 0px 3px 0px #2ebc15;
     }
   }
 
@@ -126,6 +127,7 @@ const Header = () => {
 
   const handleScroll = (event, sectionId) => {
     event.preventDefault(); // Prevent default action of opening a new tab or navigating away
+    document.querySelectorAll('[id]').forEach((el) => console.log(el.id));
     scrollToSection(sectionId);
   };
 
