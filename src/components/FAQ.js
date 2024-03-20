@@ -4,7 +4,7 @@ import styled from "styled-components";
 // Styled section
 const Section = styled.section`
   width: 100%;
-  min-height: 100%;
+  min-height: 80%;
   padding: 5rem 1rem; // Reduced and made responsive
   background-color: #3f4c5c;
   color: white;
@@ -35,14 +35,15 @@ const Paragraph = styled.p`
 
 // FAQTitle with responsive font size
 const FAQTitle = styled.h2`
-  margin-bottom: 2rem; // Adjusted margin
-  text-align: center;
-  font-size: 2rem; // Made font size responsive
-  font-weight: bold;
+  margin-bottom: 4rem; // Adjusted margin
+  text-align: start;
+  
+  font-size: 2em; // Made font size responsive
+  font-weight: 600;
   line-height: 1.2; // Adjusted line-height for better readability
-
+  text-transform: uppercase;
   @media (min-width: 640px) {
-    font-size: 2.5rem; // Increase font size on larger screens
+    font-size: 2.25rem; // Increase font size on larger screens
   }
 `;
 
@@ -70,7 +71,7 @@ const FAQItems = styled.div`
 // FAQDetail with minor adjustments for responsiveness
 const FAQDetail = styled.details`
   width: 100%; // Ensure it fits within its parent container
-  margin-bottom: 1rem; // Adjust margin for better spacing
+  margin-bottom: 0.75em; // Adjust margin for better spacing
   
   summary {
     padding: 0.5rem 0;
@@ -91,7 +92,7 @@ const FAQ = ({ id }) => {
   return (
     <Section id={id}>
       <Container className="container">
-        <FAQTitle>FAQ </FAQTitle>
+        <FAQTitle>Perguntas frequentes </FAQTitle>
         <FAQItems className="flex flex-col divide-y divide-gray-700">
           <FAQDetail>
             <summary>Como sei que meu investimento ajuda o meio ambiente?</summary>

@@ -13,6 +13,7 @@ import styled from 'styled-components';
 
 const H1 = styled.h1`
 text-align: center;
+font-weight: 600;
 font-size: 2em;
 margin-top: 2em;
 margin-bottom: 2em;

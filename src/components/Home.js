@@ -192,7 +192,7 @@ const Wrapper2 = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-top: 100px;
+        margin-top: 50px;
   
         .carousel__dot {
           width: 8px;
@@ -329,7 +329,7 @@ const slidesData = [
     key: 'slide2',
     src: HomeSection3,
     alt: 'Seja um investidor eco-sustentável',
-    title: `Torne-se um investidor eco-sustentável`,
+    title: `Torne-se um investidor EcoSustentável`,
     paragraph: 'Transforme seu débito em crédito ambiental.',
     button: 'CADASTRE-SE'
     
@@ -338,7 +338,7 @@ const slidesData = [
     key: 'slide2',
     src: HomeSection2,
     alt: 'Another image description',
-    title: `Torne-se um parceiro eCO-sustentável`,
+    title: `Torne-se um parceiro Ecosustentável`,
     paragraph: 'Analisamos a viabilidade de seu projeto.',
     button: 'CADASTRE-SE'
   },

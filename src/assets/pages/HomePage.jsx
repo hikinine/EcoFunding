@@ -30,14 +30,14 @@ const HomePage = () => {
         <HomeCarousel />
         <OqueFazemos id="sobre"/>
         <SelosSection />
-        <ESG />
+        <ESG id="esg"/>
         <FormContainer id="parceria"/>
         <FAQ id="faq"/>
         <RodapeWrapper>
         <Rodape />
         </RodapeWrapper>
         <RodapeWrapperMobile>
-            
+
         </RodapeWrapperMobile>
         
         </div>

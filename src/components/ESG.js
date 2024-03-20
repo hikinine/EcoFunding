@@ -141,7 +141,7 @@ const H1 = styled(motion.h1)`
   margin-top: 1em;
   font-family: "Lexend Tera", sans-serif;
   font-size: 2em;
-  font-weight: 300;
+  font-weight: 600;
 `;
 const animationOpacity = {
   hidden: { opacity: 0 },
@@ -258,7 +258,7 @@ width: 90vw;
 }
 `;
 
-const ESG = () => {
+const ESG = ({ id }) => {
   const images = [
     { 
       src: image1, 
@@ -344,7 +344,7 @@ const ESG = () => {
 
   return (
    
-    <Container as={motion.div} inView={{ opacity: 0.4 }}>
+    <Container as={motion.div} inView={{ opacity: 0.4 }} id={id}>
       <CollumnModel>
       <H1 ref={ref}
           variants={animationOpacity}

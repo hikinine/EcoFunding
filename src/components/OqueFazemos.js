@@ -42,7 +42,7 @@ const Container = styled.div`
   background-size: cover;
   width: 100%;
   max-width: 100%;
-  height: 80vh;
+  height: 60vh;
   @media (max-width: 768px) {
     flex-direction: column;
     height: auto;
@@ -87,12 +87,12 @@ const Button = styled.button`
 `;
 
 const Header = styled.h1`
-  font-size: 48px;
+  font-size: 52px;
   margin: 10px 100px;
   color: #2ebc15;
   text-transform: uppercase;
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
   font-family: 'Lexend Tera', sans-serif !important;
   @media (max-width: 768px) {
     font-size: 32px; // Adjust font size for mobile
@@ -102,8 +102,9 @@ const Header = styled.h1`
 `;
 
 const Paragraph = styled(motion.p)`
-  font-size: 29px;
+  font-size: 30px;
   margin: 0 100px;
+  margin-right: 105px;
   word-break: break-word;
   color: #c8c8c8c8;
   font-weight: 300;
@@ -118,7 +119,7 @@ const Paragraph = styled(motion.p)`
 const Image = styled.img`
   max-width: 500px;
   
-  margin-left: 6rem;
+  
   margin-top: 1rem;
   @media (max-width: 768px) {
     max-width: 150px;

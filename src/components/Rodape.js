@@ -175,7 +175,7 @@ function Rodape() {
             <div style={{ fontFamily: 'Lexend Tera', fontWeight: 500, fontSize: '8px', color: 'rgba(255, 255, 255, 1)' }}>SERVIÇOS</div>
             <a href="https://www.gov.br/cvm/pt-br">CVM</a>
             <a href="https://semil.sp.gov.br/">SEMIL</a>
-            <a href="https://ecofunding.com.br">ESG</a>
+            <a onClick={(e) => handleScroll(e, 'esg')}>ESG</a>
             
           </Navbar>
           <Collumn>
