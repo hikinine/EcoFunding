@@ -8,7 +8,7 @@ const Section = styled.section`
   padding: 5rem 1rem; // Reduced and made responsive
   background-color: #3f4c5c;
   color: white;
-  
+  text-align: center;
   box-sizing: border-box; // Ensures padding is included in the width calculation
 `;
 
