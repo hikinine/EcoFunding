@@ -13,6 +13,9 @@ const StyledContainer = styled.div`
   height: auto;
   margin-bottom: 6rem;
   font-family: 'Dm Sans', sans-serif;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
   form {
   display: flex;
   flex-direction: column; // This ensures the form's direct children are laid out in a column

@@ -11,6 +11,9 @@ const StyledContainer = styled.div`
   height: calc(100% + 300px);
   margin-bottom: 6rem;
   margin-top: 10rem;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 const Button = styled.button`
   
@@ -28,6 +31,28 @@ const Button = styled.button`
     background-color: #2ebc15;
     color: white;
   }
+  
+`;
+const ButtonBack = styled.button`
+  
+  height: calc(5cap * 1.5); /* Increased height */
+  padding:  0 100px;
+  margin-left: 250px;
+  margin-right: 250px;
+  background-color: transparent;
+  border: 1.5px solid #2ebc15; /* Slightly thicker border */
+  color: #2ebc15;
+  font-family: 'Lexend Tera', sans-serif;
+  font-size: 1.125em; /* Increased font size */
+  cursor: pointer;
+  &:hover {
+    background-color: #2ebc15;
+    color: white;
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
+  
 `;
 const Div = styled.div`
   display: flex;
@@ -37,7 +62,9 @@ const Div = styled.div`
   justify-content: start;
   height: 100%;
   width: 25vw;
-
+  @media (max-width: 768px) {
+    width: 100%;
+  }
   h2 {
     font-size: 24px;
     margin-top: 4em;
@@ -55,7 +82,7 @@ function Etapa2({ prevStep }) {
 
   return (
     <StyledContainer>
-      <Button type="button" onClick={prevStep}>VOLTAR</Button>
+      <ButtonBack type="button" onClick={prevStep}>VOLTAR</ButtonBack>
       <Form>
         <Div>
         <h2>Confirme seus dados</h2>
