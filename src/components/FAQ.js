@@ -20,7 +20,7 @@ const Container = styled.div`
   max-width: 1300px; // Maximum width to match other elements
   width: 100%; // Ensure it takes up available space
   margin: auto;
-  padding: 2rem 1rem; // Made padding responsive
+  
 
   @media (min-width: 768px) {
     padding: 4rem 2rem; // Adjust padding for larger screens

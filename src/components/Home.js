@@ -70,6 +70,13 @@ const FrameText = styled.div`
   margin-right: 2em;
   margin-left: 2em;
   width: 700px;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 2em;
+    
+
+  }
 `;
 
 const FrameImage = styled.div`
@@ -79,6 +86,16 @@ const FrameImage = styled.div`
   height: 500px;
   overflow: visible;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 2em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+  }
 `;
 
 
@@ -88,10 +105,9 @@ const ResponsiveImage = styled.img`
   border-top-left-radius: 90px;
   @media (max-width: 768px) {
     width: 80%; // Scales the image to 80% of its container's width on small devices
+    margin-top: 12em;
   }
-  @media (min-width: 769px) and (max-width: 1024px) {
-    width: 90%; // Scales the image to 90% of its container's width on medium devices
-  }
+  
   @media (min-width: 1025px) {
     width: 95%; // Scales the image to 95% of its container's width on large devices
   }
@@ -209,7 +225,7 @@ const Paragraph1 = styled.p`
   text-align: left;
   
   @media (max-width: 768px) {
-    font-size: 10px;
+    font-size: 8px;
   
   }
 `;
@@ -225,7 +241,7 @@ text-align: start;
 font-size: 24px;
 margin-right: 50px;
 @media (max-width: 768px) {
-    font-size: 16px;
+    font-size: 12px;
   
   }
 
@@ -241,6 +257,13 @@ const Button1 = styled.button`
   font-weight:550;
   font-size: 18px;
   text-transform: uppercase;
+
+  @media (max-width: 768px) {
+    font-size: 8px;
+    
+
+  }
+
   
   &:hover {
     color: ${props => props.buttonText === 'Regulada pela CVM' ? '#242a32' : 'white'}; // New text color on hover

@@ -45,7 +45,7 @@ const Container = styled.div`
   height: 80vh;
   @media (max-width: 768px) {
     flex-direction: column;
-    
+    height: auto;
   }
 
   
@@ -75,8 +75,8 @@ const Button = styled.button`
   align-self: flex-end;
   cursor: pointer;
   @media (max-width: 768px){
-    padding: auto;
-    width: 100%;
+    
+    
     align-self: center;
   }
   &:hover {
