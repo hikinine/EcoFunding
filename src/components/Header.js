@@ -20,7 +20,7 @@ const StyledHeader = styled.header`
     @media (max-width: 768px){
       text-align: center; // Center the content on smaller screens
       width: auto;
-      height: auto;
+      height: 120vh;
       overflow: visible; // Hide overflow content
     }
   }
@@ -40,8 +40,7 @@ const StyledHeader = styled.header`
     }
   }
 
-  @media screen and (max-width: 768px) {
-    
+  @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
   }
@@ -98,9 +97,17 @@ const Img = styled.img`
 const Div = styled.div`
     padding: 20px;  
    @media (max-width: 768px){
-      padding: 0px;
+   padding: 0px;
     }
-`;
+`;const scrollToSection = (sectionId) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    console.error(`Element with ID ${sectionId} not found`);
+  }
+};
+
 const Header = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
@@ -108,27 +115,30 @@ const Header = () => {
     setIsToggleOpen(!isToggleOpen);
   };
 
+  const handleScroll = (event, sectionId) => {
+    event.preventDefault(); // Prevent default action of opening a new tab or navigating away
+    scrollToSection(sectionId);
+  };
+
   return (
-    
     <Div>
       <StyledHeader>
         <div className="nav_logo">
-          <Link to={"/"}>
-            <Img src={Logo} alt="ECOFUNDING" onClick={handleToggleOpen} />
-          </Link>
+          <a href="/" onClick={handleToggleOpen}>
+            <Img src={Logo} alt="ECOFUNDING" />
+          </a>
         </div>
 
         <NavManu isToggleOpen={isToggleOpen}>
-          <li><Link to={"/about"} className="nav-menu-list">SOBRE</Link></li>
-          <li><Link to={"/projects"} className="nav-menu-list">PARCERIA</Link></li>
-          <li><Link to={"/til"} className="nav-menu-list">FAQ</Link></li>
-          <li><Link to={"/diary"} className="nav-menu-list1">CONTATO</Link></li>
+          {/* Correctly use <a> elements with href="#" and prevent default behavior */}
+          <li><a href="#sobre" className="nav-menu-list" onClick={(e) => handleScroll(e, 'sobre')}>SOBRE</a></li>
+          <li><a href="#parceria" className="nav-menu-list" onClick={(e) => handleScroll(e, 'parceria')}>PARCERIA</a></li>
+          <li><a href="#faq" className="nav-menu-list" onClick={(e) => handleScroll(e, 'faq')}>FAQ</a></li>
+          <li><a href="#contato" className="nav-menu-list1" onClick={(e) => handleScroll(e, 'contato')}>CONTATO</a></li>
         </NavManu>
         <FaBars style={{ fill: 'black' }} className="menuToggleBtn" onClick={handleToggleOpen} />
       </StyledHeader>
     </Div>
-
-    
   );
 };
 

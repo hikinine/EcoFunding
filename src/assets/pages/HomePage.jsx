@@ -22,11 +22,11 @@ const HomePage = () => {
         <div>
         
         <HomeCarousel />
-        <OqueFazemos />
+        <OqueFazemos id="sobre"/>
         <SelosSection />
         <ESG />
-        <FormContainer />
-        <FAQ />
+        <FormContainer id="parceria"/>
+        <FAQ id="faq"/>
         <RodapeWrapper>
         <Rodape />
         </RodapeWrapper>
