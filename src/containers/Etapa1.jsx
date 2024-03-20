@@ -103,7 +103,7 @@ function Etapa1({ nextStep, prevStep, formikProps }) {
 
   return (
     <StyledContainer>
-      <Button type="button" onClick={prevStep}>VOLTAR</Button>
+      
     <form>
       <FormContent>
       {isInvestor ? (
@@ -111,11 +111,11 @@ function Etapa1({ nextStep, prevStep, formikProps }) {
           
           
           
-          <StyledInput name="email" type="text" placeholder="Email-corporativo" />
-          <StyledInput name="Nome do representante" type="text" placeholder="Nome do representante" />
-          <StyledInput name="Cargo" type="text" placeholder="Cargo" />
-          <StyledInput name="Nome da empresa" type="text" placeholder="Nome da empresa" />
-          <StyledInput name="Segmento" type="text" placeholder="Segmento" />
+          <StyledInput name="corporateEmail" type="text" placeholder="Email-corporativo" />
+          <StyledInput name="representantName" type="text" placeholder="Nome do representante" />
+          <StyledInput name="cargo" type="text" placeholder="Cargo" />
+          <StyledInput name="empresa" type="text" placeholder="Nome da empresa" />
+          <StyledInput name="segmento" type="text" placeholder="Segmento" />
           
       
         </div>
@@ -123,14 +123,14 @@ function Etapa1({ nextStep, prevStep, formikProps }) {
         <div>
           
           
-          <StyledInput name="CPF/CNPJ" type="text" placeholder="CPF/CPNJ" />
-          <StyledInput name="Empresa" type="text" placeholder="Empresa" />
-          <StyledInput name="Segmento" type="text" placeholder="Segmento" />
-          <StyledInput name="Nome do representante da empresa" type="text" placeholder="Nome do representante" />
-          <StyledInput name="Cargo" type="text" placeholder="Cargo" />
-          <StyledInput name="Cidade" type="text" placeholder="Cidade" />
-          <StyledInput name="Estado" type="text" placeholder="Estado" />
-          <StyledInput name="NomeDoProjeto" type="text" placeholder="Nome do projeto" />
+          <StyledInput name="cpfCnpj" type="text" placeholder="CPF/CPNJ" />
+          <StyledInput name="empresa" type="text" placeholder="Empresa" />
+          <StyledInput name="segmento" type="text" placeholder="Segmento" />
+          <StyledInput name="representantName2" type="text" placeholder="Nome do representante" />
+          <StyledInput name="cargo" type="text" placeholder="Cargo" />
+          <StyledInput name="cidade" type="text" placeholder="Cidade" />
+          <StyledInput name="estado" type="text" placeholder="Estado" />
+          <StyledInput name="nomeDoProjeto" type="text" placeholder="Nome do projeto" />
           
           
         </div>

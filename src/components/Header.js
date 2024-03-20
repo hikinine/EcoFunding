@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaBars } from "react-icons/fa";
 import Logo from "../assets/LOGOTIPO.webp";
@@ -21,8 +20,9 @@ const StyledHeader = styled.header`
     @media (max-width: 768px){
       text-align: center; // Center the content on smaller screens
       width: auto;
-      height: 120vh;
+      height: 100px;
       overflow: visible; // Hide overflow content
+      margin-left: 0; // Reset margin
     }
   }
   
@@ -32,7 +32,7 @@ const StyledHeader = styled.header`
     font-size: 1.5em; // Use em for scalability
     position: absolute;
     right: 20px;
-    top: 15px;
+    top: 40px;
     cursor: pointer;
     z-index: 2; // Ensure it's above other content
 
@@ -59,7 +59,8 @@ const NavManu = styled.ul`
     &:hover {
       cursor: pointer;
       border-radius: 4px;
-      under
+      underline: none;
+      
     }
   }
 
@@ -73,6 +74,7 @@ const NavManu = styled.ul`
    
   }
 .nav-menu-list{
+     box-shadow: 0px 1.5px 0px #2ebc15;
   &:hover{
      box-shadow: 0px 1.5px 0px #2ebc15;
    }

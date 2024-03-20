@@ -368,7 +368,7 @@ const HomeCarousel = () => {
   
     switch (true) {
       case windowWidth < 668:
-        setSlideHeight(150); // Example: Increase height for smaller screens
+        setSlideHeight(110); // Example: Increase height for smaller screens
         break;
       case windowWidth >= 668 && windowWidth < 1604:
         setSlideHeight(27); // Hypothetical case: Medium screens

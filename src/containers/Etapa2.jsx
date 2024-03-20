@@ -8,7 +8,9 @@ const StyledContainer = styled.div`
   align-items: center;
   align-content: center;
   justify-content: center;
-  height: 500px;
+  height: calc(100% + 300px);
+  margin-bottom: 6rem;
+  margin-top: 10rem;
 `;
 const Button = styled.button`
   
@@ -56,12 +58,36 @@ function Etapa2({ prevStep }) {
       <Button type="button" onClick={prevStep}>VOLTAR</Button>
       <Form>
         <Div>
-          <h2>Confirme seus dados</h2>
+        <h2>Confirme seus dados</h2>
           <p><strong>Nome:</strong> {formikContext.values.name}</p>
           <p><strong>Sobrenome:</strong> {formikContext.values.surname}</p>
           <p><strong>Tipo de formulário:</strong> {formikContext.values.role}</p>
-          <p><strong>Email:</strong> {formikContext.values.email}</p>
           <p><strong>Telefone:</strong> {formikContext.values.phone}</p>
+          {formikContext.values.role === 'investor' &&(
+
+          <>
+            <p><strong>Email Corporativo:</strong> {formikContext.values.corporateEmail}</p>
+            <p><strong>Nome do representante:</strong> {formikContext.values.representantName}</p>
+            <p><strong>Cargo:</strong> {formikContext.values.cargo}</p>
+            <p><strong>Nome da empresa:</strong> {formikContext.values.empresa}</p>
+            <p><strong>Segmento:</strong> {formikContext.values.segmento}</p>
+          </>
+          )}
+          
+          {formikContext.values.role === 'parceiros' && (
+           
+           <>
+            <p><strong>CPF/CNPJ:</strong> {formikContext.values.cpfCnpj}</p>
+            <p><strong>Nome da Empresa:</strong> {formikContext.values.empresa}</p>
+            <p><strong>Segmento:</strong> {formikContext.values.segmento}</p>
+            <p><strong>Nome do Representante:</strong> {formikContext.values.representantName2}</p>
+            <p><strong>Cargo:</strong> {formikContext.values.cargo}</p>
+            <p><strong>Cidade:</strong> {formikContext.values.cidade}</p>
+            <p><strong>Estado:</strong> {formikContext.values.estado}</p>
+            <p><strong>Nome do Projeto:</strong> {formikContext.values.nomeDoProjeto}</p>
+          </>
+          
+          )}
 
          
         </Div>
