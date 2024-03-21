@@ -5,6 +5,7 @@ import { useFormikContext } from 'formik';
 import * as Yup from 'yup';
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Step, useStep } from './StepContext';
+import InputMask from 'react-input-mask';
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -112,29 +113,46 @@ function Etapa1( goToStep, validateStep, formValues, setFormValues ) {
     estado: '',
     nomeDoProjeto: ''
   });
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({ ...prevState, [name]: value }));
+ 
+  const validateCPFOrCNPJ = (value) => {
+    if (!value) return false;
+    const cpfCnpjClean = value.replace(/\D/g, '');
+    // Basic length check, consider implementing detailed validation algorithms
+    return cpfCnpjClean.length === 11 || cpfCnpjClean.length === 14;
   };
-  
+
+  // Implement validation logic
   const validate = () => {
     const newErrors = {};
-    if (!formValues.name) newErrors.name = 'Nome é obrigatório';
-    // Add other validations as needed
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    // Assuming `formData` represents your local state for form inputs
+    if (!validateCPFOrCNPJ(formData.cpfCnpj)) {
+      newErrors.cpfCnpj = 'CPF/CNPJ inválido';
+    }
+    // Add more validation checks as needed
+    return newErrors;
   };
 
-
-  const handleSubmit = () => {
-    if (validate()) {
-      goToStep(1); // Proceed to next step if valid
-    }
-    else {
-      alert('Preencha todos os campos')
+  const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  if (name === "cpfCnpj") {
+    // Allow only digits, dashes, slashes, and dots for CPF/CNPJ input
+    const cleanedValue = value.replace(/[^\d\-/.]/g, '');
+    setFormData(prevState => ({ ...prevState, [name]: cleanedValue }));
+  } else {
+    setFormData(prevState => ({ ...prevState, [name]: value }));
+  }
+};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = validate();
+    if (Object.keys(errors).length === 0) {
+      // If no errors, proceed to the next step
+      goToStep(2); // Assuming you want to go to the next step, adjust as needed
+    } else {
+      // Handle showing errors, for example:
+      alert("Please correct the errors.");
     }
   };
-
   return (
     <StyledContainer>
       <form onSubmit={(e) => e.preventDefault()}>
@@ -155,8 +173,9 @@ function Etapa1( goToStep, validateStep, formValues, setFormValues ) {
         {role === 'parceiros' && (
             <div>
               <StyledInput
+                as={InputMask} // Use the InputMask component for this field
+                mask={formData.cpfCnpj.length <= 14 ? "999.999.999-99" : "99.999.999/9999-99"}
                 name="cpfCnpj"
-                type="text"
                 placeholder="CPF/CNPJ"
                 value={formData.cpfCnpj}
                 onChange={handleInputChange}
