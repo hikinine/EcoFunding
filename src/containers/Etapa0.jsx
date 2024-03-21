@@ -1,7 +1,7 @@
 import React, { useState, useContext} from 'react';
 import styled from 'styled-components';
 import { useField,Field, useFormikContext } from 'formik';
-import { useStep } from './StepContext';
+import { useStep,  } from './StepContext';
 
 const CollumnModel = styled.div`
   display: flex;
@@ -73,8 +73,8 @@ const RoleButton = styled.button`
   margin: 15px;
   padding: 15px 0; /* Increased padding */
   width: 350px; /* Increased width */
-  background-color: ${(props) => (props.isSelected ? '#242a32' : 'transparent')};
-  color: ${(props) => (props.isSelected ? 'white' : '#242a32')};
+  background-color: ${props => props.isSelected ? '#242a32' : 'transparent'};
+color: ${props => props.isSelected ? 'white' : '#242a32'};
   border: 1.5px solid #242a32; /* Slightly thicker border */
   cursor: pointer;
   text-transform: uppercase;
@@ -86,7 +86,7 @@ const RoleButton = styled.button`
   }
 `;
 
-const StyledInput = styled(Field)`
+const Input = styled.input`
   width: 300px; /* Increased width */
   height: 45px; /* Increased height */
   margin: 15px; /* Adjusted margin for spacing */
@@ -121,49 +121,105 @@ const Button = styled.button`
   }
 `;
 
-function Etapa0({ formikProps, goToStep }) {
-  const { values, setFieldValue } = useFormikContext(); // Access Formik context
-  const [selectedRole, setSelectedRole] = useState(values.role || 'none');
-  const [field, meta] = useField('name');
-  const { isValid, dirty } = formikProps
-  const { step } = useStep();
-  console.log("Current Step:", step); // Debug current step
+function Etapa0({ goToStep, formValues, setFormValues }) {
+  const [errors, setErrors] = useState({});
+  
+
+  const { setRole } = useStep(); // Assuming useStep hook provides access to setRole
+  const [selectedRole, setSelectedRole, newRole] = useState('');
   const handleRoleSelect = (role) => {
-    setSelectedRole(role);
-    setFieldValue('role', role);
+    setSelectedRole(role); // Correctly updating the local state
+    setRole(role); // Correctly updating the role in context
+    console.log('Selected role:', role);
+    setFormValues(prevState => ({ ...prevState, role: role })); // Correctly updating formValues with the selected role
+};
+const formatPhoneNumber = (value) => {
+  // Remove all non-digits and limit to 11 digits
+  let phoneNumber = value.replace(/\D/g, '').substring(0, 11);
+  // Apply formatting
+  if (phoneNumber.length > 2) {
+    if (phoneNumber.length <= 10) {
+      // Format for 10 digits (XX) XXXX-XXXX
+      phoneNumber = phoneNumber.replace(/^(\d{2})(\d{4})(\d+)/, '($1) $2 - $3');
+    } else {
+      // Format for 11 digits (XX) XXXXX-XXXX
+      phoneNumber = phoneNumber.replace(/^(\d{2})(\d{5})(\d+)/, '($1) $2 - $3');
+    }
+  }
+  return phoneNumber;
+};
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  if (name === "phone") {
+    const formattedPhoneNumber = formatPhoneNumber(value);
+    setFormValues(prevState => ({ ...prevState, [name]: formattedPhoneNumber }));
+  } else {
+    setFormValues(prevState => ({ ...prevState, [name]: value }));
+  }
+};
+
+  const validate = () => {
+    const newErrors = {};
+    if (!formValues.name) newErrors.name = 'Nome é obrigatório';
+    // Add other validations as needed
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = () => {
+    if (validate()) {
+      goToStep(1); // Proceed to next step if valid
+    }
+    else {
+      alert('Preencha todos os campos')
+    }
   };
 
   return (
-    
-      
-      <StyledContainer>
-        <CollumnModel>
+    <StyledContainer>
+      <CollumnModel>
         <Paragraph> Preencha os dados abaixo</Paragraph>
-        
-        <StyledInput {...field} name="name" type="text" placeholder="Nome" />
-        <StyledInput name="surname" type="text" placeholder="Sobrenome" />
-        <StyledInput name="phone" type="text" placeholder="Telefone" />
-        
-        
+        <Input
+          name="name"
+          type="text"
+          placeholder="Nome"
+          value={formValues.name}
+          onChange={handleInputChange}
+        />
+        <Input
+          name="surnaime"
+          type="text"
+          placeholder="Sobrenome"
+          value={formValues.surnaime}
+          onChange={handleInputChange}
+        />
+        <Input
+           type="tel"
+           id="phone"
+           name="phone"
+           placeholder='Telefone (XX) XXXXX-XXXX'
+           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+           required
+           value={formValues.phone}
+           onChange={handleInputChange}
+        />
+        {/* Similar input elements for 'surname' and 'phone' */}
         <RoleButton
-        onClick={() => handleRoleSelect('parceiros')} // Change 'projectist' to 'parceiros' if needed
-        isSelected={selectedRole === 'parceiros'}
-      >
-        Parceiro
-      </RoleButton>
+          onClick={() => handleRoleSelect('parceiros')}
+          isSelected={formValues.role === 'parceiros'}
+        >
+          Parceiro
+        </RoleButton>
         <RoleButton
           onClick={() => handleRoleSelect('investor')}
-          isSelected={selectedRole === 'investor'}
+          isSelected={formValues.role === 'investor'}
         >
           Investidor
         </RoleButton>
-        
-      
-        
-        </CollumnModel>
-        <Button type="button" onClick={() => goToStep(1)}>PRÓXIMA ETAPA</Button>
-      </StyledContainer>
-    
+      </CollumnModel>
+      <Button type="button" onClick={handleSubmit}>PRÓXIMA ETAPA</Button>
+    </StyledContainer>
   );
 }
+
 export default Etapa0;

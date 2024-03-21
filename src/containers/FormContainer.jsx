@@ -11,6 +11,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { StepProvider } from './StepContext';
 
+
 const H1 = styled.h1`
 text-align: center;
 font-size: 2em;
@@ -18,96 +19,7 @@ margin-top: 2em;
 margin-bottom: 2em;
 text-transform: uppercase;
 `;
-const handleSubmit = async (values) => {
-  // Initialize payload with common fields
-  const payload = {
-    form: {
-      id: "eCOfunding LP",
-      name: "eCOfunding LP"
-    },
-    fields: {
-      // Common fields here
-      name_ecofunding: {
-        value: values.name || '',
-      },
-      email_ecofunding: {
-        value: values.email || '',
-      },
-      BITRIXWEBHOOK: {
-        value: "EcofundingInvestidor",
-      },
-    }
-  };
 
-  // Dynamically add fields based on the role
-  if (values.role === 'investor') {
-    payload.fields = {
-      ...payload.fields,
-      // Investor-specific fields
-      nome_representante_ecofunding: {
-        value: values.nomeRepresentante || '',
-      },
-      cargo_ecofunding: {
-        value: values.cargo || '',
-      },
-      nome_empresa_ecofunding: {
-        value: values.nomeEmpresa || '',
-      },
-      segmento_ecofunding: {
-        value: values.segmento || '',
-      },
-    };
-  } else if (values.role === 'partner') {
-    payload.fields = {
-      ...payload.fields,
-      // Partner-specific fields
-      cpf_cnpj_ecofunding: {
-        value: values.cpfCnpj || '',
-      },
-      empresa_ecofunding: {
-        value: values.empresa || '',
-      },
-      cidade_ecofunding: {
-        value: values.cidade || '',
-      },
-      estado_ecofunding: {
-        value: values.estado || '',
-      },
-      nome_projeto_ecofunding: {
-        value: values.nomeDoProjeto || '',
-      },
-    };
-  }
-
-  try {
-    const response = await axios.post("https://solarium-api.newsun.energy/v1/integracao-bitrix/webhook", payload);
-    console.log(response.data);
-    // Handle success response
-  } catch (error) {
-    console.error(error);
-    // Handle error response
-  }
-};
-const validationSchema = Yup.object({
-  name: Yup.string().required('Name is required'),
-  surname: Yup.string().required('Surname is required'),
-  role: Yup.string().required('Role is required'),
-  
-  phone: Yup.string().required('Phone is required'),
-});
-
-const stepValidationSchemas = [
-  Yup.object().shape({
-    name: Yup.string().required('Name is required'),
-    surname: Yup.string().required('Surname is required'),
-    // Add other fields for step 0
-  }),
-  Yup.object().shape({
-    email: Yup.string().email('Invalid email').required('Email is required'),
-    phone: Yup.string().required('Phone is required'),
-    // Add other fields for step 1
-  }),
-];
 const StepNavigation = ({ currentStep, goToStep, formikProps }) => {
   const steps = [
     { name: 'Etapa 0', image: Image1 },
@@ -140,7 +52,7 @@ const StepNavigation = ({ currentStep, goToStep, formikProps }) => {
 
 function FormContainer({ id }) {
    const [step, setStep] = useState(0);
-   const initialValues = {
+   const [formValues, setFormValues] = useState({
      name: '',
      surname: '',
      role: '',
@@ -156,35 +68,101 @@ function FormContainer({ id }) {
      cidade: '',
      estado: '',
      nomeDoProjeto: ''
-   };
+   });
 
-   const goToStep = (newStep) => {
-    setStep(newStep);
+   const [formErrors, setFormErrors] = useState({});
+   const validatePhone = (phone) => {
+    // This regex allows optional spaces after the opening parenthesis and the area code, and an optional dash between the number sets
+    // It matches: (XX)XXXXX-XXXX, (XX) XXXXX-XXXX, (XX)XXXXX - XXXX, and variations thereof
+    const regex = /^\(\d{2}\)\s?\d{5}\s?-\s?\d{4}$/;
+    return regex.test(phone);
+  };
+  const validateCPFOrCNPJ = (value) => {
+    if (!value) {
+      return false; // Immediately return false if value is falsy (undefined, null, empty string, etc.)
+    }
+  
+    const cpfCnpjClean = value.replace(/\D/g, ''); // Strips non-digit characters
+    if (cpfCnpjClean.length === 11) {
+      // Format as CPF and validate
+      return /^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(value);
+    } else if (cpfCnpjClean.length === 14) {
+      // Format as CNPJ and validate
+      return /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/.test(value);
+    }
+    return false; // Invalid length
+  };
+  
+  // Update your validateStep function
+  const validateStep = () => {
+    let errors = {};
+  
+    // Validation for step 0
+    if (step === 0) {
+      if (!formValues.name) errors.name = 'Preencha o nome';
+      if (!formValues.surnaime) errors.surnaime = 'Preencha o sobrenome';
+      if (!formValues.phone || !validatePhone(formValues.phone)) {
+        alert('O telefone deve estar no formato (XX) XXXXX-XXXX e completo');
+        errors.phone = 'Invalid phone format';
+      }
+      if (!formValues.role) errors.role = 'Selecione um tipo de formulário';
+    }
+  
+    // Validation for step 1
+    if (step === 1) {
+      if (formValues.role === 'investor' && !formValues.corporateEmail) errors.corporateEmail = "Preencha o email corporativo";
+      if (!formValues.role === 'parceiros' && !formValues.representantName) errors.representantName = "Preencha o nome do representante";
+      if (!formValues.role === 'parceiros' && !formValues.empresa) errors.empresa = "Preencha o nome da empresa";
+      if (!formValues.role === 'parceiros' && !formValues.cargo) errors.cargo = "Preencha o cargo";
+      if (!formValues.role === 'parceiros' && !validateCPFOrCNPJ(formValues.cpfCnpj)) {
+        alert('O CPF/CNPJ deve estar no formato correto');
+        errors.cpfCnpj = 'Invalid CPF/CNPJ format';
+      }
+    }
+  
+    // Display errors
+    Object.values(errors).forEach(error => alert(error));
+  
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+  
+
+  const goToStep = (newStep) => {
+    if (validateStep()) {
+      setStep(newStep);
+    }
   };
 
+  const handleSubmit = async () => {
+    if (validateStep()) {
+      // Your existing submit logic
+    }
+  };
 
- 
-   return (
+  // Determine H1 text based on role
+  const getH1Text = () => {
+    switch (formValues.role) {
+      case 'investor':
+        return 'Investidor';
+      case 'parceiros':
+        return 'Parceiro Eco';
+      default:
+        return 'Formulários';
+    }
+  };
+
+  return (
     <StepProvider>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        validationSchema={stepValidationSchemas[step]}
-      >
-        {formikProps => (
-          <>
-            <H1 id={id}>
-              {formikProps.values.role === 'investor' ? 'Investidor' : 'FORMULÁRIOS'}
-            </H1>
-            <StepNavigation currentStep={step} goToStep={goToStep} />
-            <Form>
-              {step === 0 && <Etapa0 goToStep={goToStep} formikProps={formikProps} />}
-              {step === 1 && <Etapa1 goToStep={goToStep} />}
-              {step === 2 && <Etapa2 goToStep={goToStep} />}
-            </Form>
-          </>
-        )}
-      </Formik>
+      <>
+        <H1 id={id}>{getH1Text()}</H1>
+        {/* Render steps based on current step */}
+        <StepNavigation currentStep={step} goToStep={goToStep} />
+        {step === 0 && <Etapa0 goToStep={goToStep} formValues={formValues} setFormValues={setFormValues} />}
+        {step === 1 && <Etapa1 goToStep={goToStep} formValues={formValues} setFormValues={setFormValues} />}
+        {step === 2 && <Etapa2 goToStep={goToStep} formValues={formValues} setFormValues={setFormValues} />}
+        {/* Add form submission button or logic */}
+      </>
     </StepProvider>
   );
 }
