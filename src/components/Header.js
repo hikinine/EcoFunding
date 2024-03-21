@@ -59,7 +59,7 @@ const NavManu = styled.ul`
     &:hover {
       cursor: pointer;
       border-radius: 4px;
-      underline: none;
+      
       
     }
   }
@@ -74,7 +74,7 @@ const NavManu = styled.ul`
    
   }
 .nav-menu-list{
-     box-shadow: 0px 1.5px 0px #2ebc15;
+     
   &:hover{
      box-shadow: 0px 1.5px 0px #2ebc15;
    }

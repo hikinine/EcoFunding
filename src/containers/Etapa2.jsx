@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Form, useFormikContext } from 'formik';
-
+import { useStep } from './StepContext';
 const StyledContainer = styled.div`
   display: flex;
   width: 100%;
@@ -76,13 +76,13 @@ const Div = styled.div`
     font-family: 'Lexend Tera', sans-serif !important;
   }
 `;
-function Etapa2({ prevStep }) {
-  // Use Formik context
+function Etapa2({ goToStep }) {
+  
   const formikContext = useFormikContext();
 
   return (
     <StyledContainer>
-      <ButtonBack type="button" onClick={prevStep}>VOLTAR</ButtonBack>
+      <ButtonBack type="button" onClick={() => goToStep(1)}>VOLTAR</ButtonBack>
       <Form>
         <Div>
         <h2>Confirme seus dados</h2>

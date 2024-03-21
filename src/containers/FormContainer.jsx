@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Formik, Form, FormikContext } from 'formik';
+import { Formik, Form } from 'formik';
 import Etapa0 from './Etapa0';
 import Etapa1 from './Etapa1';
 import Etapa2 from './Etapa2';
@@ -8,12 +8,11 @@ import Image2 from '../assets/2.svg';
 import Image3 from '../assets/3.svg';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { Center } from '@react-three/drei';
 import styled from 'styled-components';
+import { StepProvider } from './StepContext';
 
 const H1 = styled.h1`
 text-align: center;
-font-weight: 600;
 font-size: 2em;
 margin-top: 2em;
 margin-bottom: 2em;
@@ -93,25 +92,22 @@ const validationSchema = Yup.object({
   name: Yup.string().required('Name is required'),
   surname: Yup.string().required('Surname is required'),
   role: Yup.string().required('Role is required'),
-  email: Yup.string()
-    .email('Invalid email address')
-    .notOneOf(
-      [/.*@gmail\.com$/, /.*@hotmail\.com$/, /.*@yahoo\.com$/, /.*@outlook\.com$/],
-      'Email must not be from Gmail, Hotmail, Yahoo, or Outlook'
-    )
-    .required('Email is required'),
+  
   phone: Yup.string().required('Phone is required'),
-  corporateEmail: Yup.string()
-    .email('Invalid email format')
-    .required('Corporate email is required'),
-  cpfCnpj: Yup.string()
-    .matches(/(^\d{11}$)|(^\d{14}$)/, 'Invalid CPF/CNPJ')
-    .required('CPF/CNPJ is required'),
-  phone: Yup.string()
-    .matches(/(^\d{10,11}$)/, 'Invalid phone number')
-    .required('Phone number is required'),
 });
 
+const stepValidationSchemas = [
+  Yup.object().shape({
+    name: Yup.string().required('Name is required'),
+    surname: Yup.string().required('Surname is required'),
+    // Add other fields for step 0
+  }),
+  Yup.object().shape({
+    email: Yup.string().email('Invalid email').required('Email is required'),
+    phone: Yup.string().required('Phone is required'),
+    // Add other fields for step 1
+  }),
+];
 const StepNavigation = ({ currentStep, goToStep, formikProps }) => {
   const steps = [
     { name: 'Etapa 0', image: Image1 },
@@ -141,64 +137,56 @@ const StepNavigation = ({ currentStep, goToStep, formikProps }) => {
   );
 };
 
+
 function FormContainer({ id }) {
-  const [step, setStep] = useState(0);
-  const nextStep = () => setStep((currentStep) => Math.min(currentStep + 1, 2)); // Assuming 3 steps (0, 1, 2)
-  const prevStep = () => setStep((currentStep) => Math.max(currentStep - 1, 0));
-  const goToStep = (stepIndex) => {
-    setStep(stepIndex);
-  };
-  const initialValues = {
-    name: '',
-    surname: '',
-    role: '', // Default to an empty string to represent no selection
-    email: '',
-    phone: '',
+   const [step, setStep] = useState(0);
+   const initialValues = {
+     name: '',
+     surname: '',
+     role: '',
+     email: '',
+     phone: '',
+     corporateEmail: '',
+     representantName: '',
+     cargo: '',
+     cpfCnpj: '',
+     empresa: '',
+     segmento: '',
+     representantName2: '',
+     cidade: '',
+     estado: '',
+     nomeDoProjeto: ''
+   };
+
+   const goToStep = (newStep) => {
+    setStep(newStep);
   };
 
-  const renderStep = (stepIndex, formikProps) => {
-    switch (stepIndex) {
-      case 0:
-        return <Etapa0 nextStep={nextStep} formikProps={formikProps} />;
-      case 1:
-        return <Etapa1 nextStep={nextStep} prevStep={prevStep} formikProps={formikProps} />;
-      case 2:
-        return <Etapa2 nextStep={nextStep} prevStep={prevStep} formikProps={formikProps} />;
-      default:
-        return null;
-    }
-  };
 
-  return (
-    <Formik 
-      
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={validationSchema}
-    >
-      {formikProps => (
-        <>
-          <H1 id={id}>
-          
-            {formikProps.values.role === 'investor' 
-              ? 'Investidor' // Assuming you want to display "Investidor" for investors
-              : formikProps.values.role === 'parceiros' 
-              ? 'Parceiros' 
-              : formikProps.values.role === 'none' 
-              ? 'FORMULÁRIOS' // Display this when "Nenhum dos dois" is selected
-              : 'FORMULÁRIOS'}
-          </H1>
-          {({ errors, touched }) => (
-          <StepNavigation style={{ marginBottom: '100px'}}currentStep={step} goToStep={goToStep} formikProps={formikProps} />
-          )}
-          
-          <Form>
-            {renderStep(step, formikProps)}
-          </Form>
-        </>
-      )}
-    </Formik>
+ 
+   return (
+    <StepProvider>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={stepValidationSchemas[step]}
+      >
+        {formikProps => (
+          <>
+            <H1 id={id}>
+              {formikProps.values.role === 'investor' ? 'Investidor' : 'FORMULÁRIOS'}
+            </H1>
+            <StepNavigation currentStep={step} goToStep={goToStep} />
+            <Form>
+              {step === 0 && <Etapa0 goToStep={goToStep} formikProps={formikProps} />}
+              {step === 1 && <Etapa1 goToStep={goToStep} />}
+              {step === 2 && <Etapa2 goToStep={goToStep} />}
+            </Form>
+          </>
+        )}
+      </Formik>
+    </StepProvider>
   );
-};
+}
 
 export default FormContainer;

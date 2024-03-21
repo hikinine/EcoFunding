@@ -1,6 +1,7 @@
-import React, { useState} from 'react';
+import React, { useState, useContext} from 'react';
 import styled from 'styled-components';
-import { Field, useFormikContext } from 'formik';
+import { useField,Field, useFormikContext } from 'formik';
+import { useStep } from './StepContext';
 
 const CollumnModel = styled.div`
   display: flex;
@@ -120,21 +121,18 @@ const Button = styled.button`
   }
 `;
 
-function Etapa0({ nextStep }) {
+function Etapa0({ formikProps, goToStep }) {
   const { values, setFieldValue } = useFormikContext(); // Access Formik context
   const [selectedRole, setSelectedRole] = useState(values.role || 'none');
-  
+  const [field, meta] = useField('name');
+  const { isValid, dirty } = formikProps
+  const { step } = useStep();
+  console.log("Current Step:", step); // Debug current step
   const handleRoleSelect = (role) => {
     setSelectedRole(role);
     setFieldValue('role', role);
   };
-  const goToNextStep = () => {
-    if (values.role === 'investor' || values.role === 'parceiros') {
-      nextStep();
-    } else {
-      alert('Please select either "Investidor" or "Parceiro" to proceed.');
-    }
-  };
+
   return (
     
       
@@ -142,7 +140,7 @@ function Etapa0({ nextStep }) {
         <CollumnModel>
         <Paragraph> Preencha os dados abaixo</Paragraph>
         
-        <StyledInput name="name" type="text" placeholder="Nome" />
+        <StyledInput {...field} name="name" type="text" placeholder="Nome" />
         <StyledInput name="surname" type="text" placeholder="Sobrenome" />
         <StyledInput name="phone" type="text" placeholder="Telefone" />
         
@@ -163,7 +161,7 @@ function Etapa0({ nextStep }) {
       
         
         </CollumnModel>
-        <Button type="button" onClick={goToNextStep}>PRÓXIMA ETAPA</Button>
+        <Button type="button" onClick={() => goToStep(1)}>PRÓXIMA ETAPA</Button>
       </StyledContainer>
     
   );

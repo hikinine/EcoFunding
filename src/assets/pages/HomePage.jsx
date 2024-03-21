@@ -16,12 +16,6 @@ const RodapeWrapper = styled.div`
     display: none;
 }
 `;
-const RodapeWrapperMobile = styled.div`
-display: none;
-@media (min-width: 768px) {
-    display: visible;
-}
-`;
 
 const HomePage = () => {
     return (
@@ -30,15 +24,14 @@ const HomePage = () => {
         <HomeCarousel />
         <OqueFazemos id="sobre"/>
         <SelosSection />
-        <ESG id="esg"/>
+        <ESG />
+        
         <FormContainer id="parceria"/>
+        
         <FAQ id="faq"/>
         <RodapeWrapper>
         <Rodape />
         </RodapeWrapper>
-        <RodapeWrapperMobile>
-
-        </RodapeWrapperMobile>
         
         </div>
     )

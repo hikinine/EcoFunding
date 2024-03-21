@@ -4,6 +4,7 @@ import { Field, FormikContext } from 'formik';
 import { useFormikContext } from 'formik';
 import * as Yup from 'yup';
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useStep } from './StepContext';
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -95,60 +96,45 @@ const RowModel = styled.section`
   width: 100%;
 `;
 
-function Etapa1({ nextStep, prevStep, formikProps }) {
-  
+function Etapa1({ goToStep, formikProps }) {
+  const { values, dirty } = useFormikContext(); // Correctly use useFormikContext
+  const { nextStep, step } = useStep();
+  // Check if values is defined before proceeding
+  if (!values) {
+    return <div>Loading...</div>; // Or any other fallback UI
+  }
+
   const isInvestor = values.role === 'investor';
-  const formikContext = useFormikContext();
-  const { values, errors, touched } = useFormikContext();
-  const { isValid, dirty } = useFormikContext();
-  
- 
 
   return (
     <StyledContainer>
-      
-    <form>
-      <FormContent>
-      {isInvestor ? (
-        <div>
-          
-          
-          
-          <StyledInput name="corporateEmail" type="text" placeholder="Email-corporativo" />
-          <StyledInput name="representantName" type="text" placeholder="Nome do representante" />
-          <StyledInput name="cargo" type="text" placeholder="Cargo" />
-          <StyledInput name="cpfCnpj" type="text" placeholder="CPNJ" />
-          <StyledInput name="empresa" type="text" placeholder="Nome da empresa" />
-          <StyledInput name="segmento" type="text" placeholder="Segmento" />
-          
-      
-        </div>
-      ) : (
-        <div>
-          
-          
-          <StyledInput name="cpfCnpj" type="text" placeholder="CPF/CPNJ" />
-          <StyledInput name="empresa" type="text" placeholder="Empresa" />
-          <StyledInput name="segmento" type="text" placeholder="Segmento" />
-          <StyledInput name="representantName2" type="text" placeholder="Nome do representante" />
-          <StyledInput name="cargo" type="text" placeholder="Cargo" />
-          <StyledInput name="cidade" type="text" placeholder="Cidade" />
-          <StyledInput name="estado" type="text" placeholder="Estado" />
-          <StyledInput name="nomeDoProjeto" type="text" placeholder="Nome do projeto" />
-          
-          
-        </div>
-      )}
-      </FormContent>
-      
-     
-      
-    </form>
-    
-      
-      <Button type="button" onClick={nextStep} disabled={!(dirty)}><FaArrowRightLong /></Button>
+      <form>
+        <FormContent>
+          {isInvestor ? (
+            <div>
+              <StyledInput name="corporateEmail" type="text" placeholder="Email-corporativo" />
+              <StyledInput name="representantName" type="text" placeholder="Nome do representante" />
+              <StyledInput name="cargo" type="text" placeholder="Cargo" />
+              <StyledInput name="cpfCnpj" type="text" placeholder="CPNJ" />
+              <StyledInput name="empresa" type="text" placeholder="Nome da empresa" />
+              <StyledInput name="segmento" type="text" placeholder="Segmento" />
+            </div>
+          ) : (
+            <div>
+              <StyledInput name="cpfCnpj" type="text" placeholder="CPF/CPNJ" />
+              <StyledInput name="empresa" type="text" placeholder="Empresa" />
+              <StyledInput name="segmento" type="text" placeholder="Segmento" />
+              <StyledInput name="representantName2" type="text" placeholder="Nome do representante" />
+              <StyledInput name="cargo" type="text" placeholder="Cargo" />
+              <StyledInput name="cidade" type="text" placeholder="Cidade" />
+              <StyledInput name="estado" type="text" placeholder="Estado" />
+              <StyledInput name="nomeDoProjeto" type="text" placeholder="Nome do projeto" />
+            </div>
+          )}
+        </FormContent>
+      </form>
+      <Button type="button" onClick={() => goToStep(2)} disabled={!dirty}><FaArrowRightLong /></Button>
     </StyledContainer>
-    
   );
 }
 
