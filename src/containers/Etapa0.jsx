@@ -78,9 +78,9 @@ const FirstStep = ({ nextStep, updateFormData }) => {
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
-      <StyledInput type="text" placeholder="First name" {...register("firstName", { required: true, maxLength: 80 })} />
+      <StyledInput type="text" placeholder="Nome" {...register("firstName", { required: true, maxLength: 80 })} />
       
-      <StyledInput type="text" placeholder="Last name" {...register("lastName", { required: true, maxLength: 100 })} />
+      <StyledInput type="text" placeholder="Sobrenome" {...register("lastName", { required: true, maxLength: 100 })} />
       <MobileInput value={mobileNumber} onChange={handleMobileInputChange} />
       <StyledLabel>
         Parceiro <StyledInput type="radio" value="Parceiro" {...register("role", { required: true })} />
