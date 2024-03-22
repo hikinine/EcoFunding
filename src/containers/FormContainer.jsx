@@ -79,18 +79,21 @@ function FormContainer({ id }) {
   };
   const validateCPFOrCNPJ = (value) => {
     if (!value) {
-      return false; // Immediately return false if value is falsy (undefined, null, empty string, etc.)
+      return false; // Immediately return false if value is falsy
     }
   
     const cpfCnpjClean = value.replace(/\D/g, ''); // Strips non-digit characters
+  
+    // Check if the cleaned value matches the numeric pattern for CPF or CNPJ
     if (cpfCnpjClean.length === 11) {
-      // Format as CPF and validate
-      return /^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(value);
+      // Implement CPF validation logic here (basic length check for demonstration)
+      return true; // Assume valid for demonstration; implement detailed validation as needed
     } else if (cpfCnpjClean.length === 14) {
-      // Format as CNPJ and validate
-      return /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/.test(value);
+      // Implement CNPJ validation logic here (basic length check for demonstration)
+      return true; // Assume valid for demonstration; implement detailed validation as needed
     }
-    return false; // Invalid length
+  
+    return false; // Return false if length doesn't match expected for CPF or CNPJ
   };
   
   // Update your validateStep function

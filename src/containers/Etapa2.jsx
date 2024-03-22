@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useStep } from './StepContext';
-
+import axios from 'axios';
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -41,6 +41,17 @@ const InfoDiv = styled.div`
 `;
 
 function Etapa2({ goToStep, formValues }) {
+  const handleSubmit = async () => {
+    // Validate your form data here before sending
+    try {
+        await axios.post('http://localhost:3001/submit-form', formValues);
+        alert('Form data submitted successfully');
+        // Here, you can also handle navigation or state reset as needed
+    } catch (error) {
+        console.error('Error submitting form data:', error);
+        alert('Failed to submit form data');
+    }
+};
   return (
     <StyledContainer>
       <ButtonBack onClick={() => goToStep(1)}>VOLTAR</ButtonBack>
@@ -71,7 +82,7 @@ function Etapa2({ goToStep, formValues }) {
           <InfoDiv><strong>Nome do Projeto:</strong> {formValues.nomeDoProjeto}</InfoDiv>
         </>
       )}
-      <Button onClick={() => { /* Logic to submit or proceed */ }}>ENVIAR</Button>
+      <Button onClick={handleSubmit}>ENVIAR</Button>
     </StyledContainer>
   );
 }
