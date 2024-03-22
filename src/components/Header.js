@@ -19,8 +19,9 @@ const StyledHeader = styled.header`
     width: 20vw; 
     @media (max-width: 768px){
       text-align: center; // Center the content on smaller screens
-      width: auto;
+      width:  50vw;
       height: 100px;
+      margin-top: 20px;
       overflow: visible; // Hide overflow content
       margin-left: 0; // Reset margin
     }
@@ -32,7 +33,7 @@ const StyledHeader = styled.header`
     font-size: 1.5em; // Use em for scalability
     position: absolute;
     right: 20px;
-    top: 40px;
+    top: 20px;
     cursor: pointer;
     z-index: 2; // Ensure it's above other content
 

@@ -29,9 +29,9 @@ const HomePage = () => {
         <FormContainer id="parceria"/>
         
         <FAQ id="faq"/>
-        <RodapeWrapper>
+        
         <Rodape />
-        </RodapeWrapper>
+        
         
         </div>
     )

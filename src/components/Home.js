@@ -60,6 +60,12 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   background-color: white;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    
+    margin: 0 20px;
+  }
 `;
 
 const FrameText = styled.div`
@@ -90,7 +96,7 @@ const FrameImage = styled.div`
   @media (max-width: 768px) {
     width: 100%;
     margin-left: 0;
-    margin-top: 2em;
+    margin-top: -10em;
     flex-direction: column;
     justify-content: center;
     align-items: center;

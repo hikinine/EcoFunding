@@ -96,6 +96,7 @@ const ImageDisplay = styled.img`
 
   @media (max-width: ${breakpoints.tablet}) {
     max-width: 400px;
+    margin-bottom: 1em; // Adjust or remove to ensure it's centered
   }
   @media (max-width: ${breakpoints.mobile}) {
     max-width: 200px;
@@ -142,6 +143,10 @@ const H1 = styled(motion.h1)`
   font-family: "Lexend Tera", sans-serif;
   font-size: 2em;
   font-weight: 600;
+  @media (max-width: ${breakpoints.tablet}) {
+    margin: 0 10px;
+    text-align: center;
+  }
 `;
 const animationOpacity = {
   hidden: { opacity: 0 },
@@ -161,6 +166,7 @@ const ButtonDiv = styled.div`
   
   @media (max-width: ${breakpoints.tablet}) {
     width: 100%; /* Adjust if necessary */
+    margin-bottom: 1em; /* Adjust if necessary */
   }
 `;
 const CollumnModel = styled.div`

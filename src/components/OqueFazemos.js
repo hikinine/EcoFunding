@@ -46,6 +46,7 @@ const Container = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     height: auto;
+    align-items: start;
   }
 
   
@@ -96,7 +97,7 @@ const Header = styled.h1`
   font-family: 'Lexend Tera', sans-serif !important;
   @media (max-width: 768px) {
     font-size: 32px; // Adjust font size for mobile
-    margin-left: 2rem; // Adjust margin for mobile
+    margin: 0 10px;
     text-align: center; // Center text on mobile
   }
 `;
@@ -112,7 +113,7 @@ const Paragraph = styled(motion.p)`
   text-align: end;
   @media (max-width: 768px) {
     font-size: 18px; // Adjust font size for mobile
-    margin-left: 2rem; // Adjust margin for mobile
+    margin: 0 10px;
     text-align: center; // Center text on mobile
   }
 `;
@@ -123,7 +124,7 @@ const Image = styled.img`
   margin-top: 1rem;
   @media (max-width: 768px) {
     max-width: 150px;
-    margin-left: 0%;
+    
   } 
   @media (max-width: 1308px) {
     max-width: 300px;

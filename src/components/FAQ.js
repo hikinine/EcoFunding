@@ -37,13 +37,15 @@ const Paragraph = styled.p`
 const FAQTitle = styled.h2`
   margin-bottom: 4rem; // Adjusted margin
   text-align: start;
-  
+  text-align: center; // Center text on larger screens
   font-size: 2em; // Made font size responsive
   font-weight: 600;
   line-height: 1.2; // Adjusted line-height for better readability
   text-transform: uppercase;
   @media (min-width: 640px) {
     font-size: 2.25rem; // Increase font size on larger screens
+    text-align: center; // Center text on larger screens
+    
   }
 `;
 
