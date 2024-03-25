@@ -1,14 +1,10 @@
 
-import React from 'react';
 import { Route, Routes } from 'react-router-dom'; // Import Routes instead of Switch
-import './App.css'
+import './App.css';
 import HomePage from './assets/pages/HomePage';
-import Login from './components/Login'
-import Page1 from 'assets/pages/Page1';
-import Page2 from 'assets/pages/Page2';
-import Page3 from 'assets/pages/Page3';
-import Page4 from 'assets/pages/Page4';
-import Page5 from 'assets/pages/Page5';
+import Page1 from './assets/pages/Page1';
+import Page2 from './assets/pages/Page2';
+import Login from './components/Login';
 import { MarkerProvider } from './components/earth/MarkerContext';
 
 import { createGlobalStyle } from 'styled-components';
