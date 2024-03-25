@@ -1,15 +1,11 @@
-import React from 'react';
-import OqueFazemos from 'components/OqueFazemos';
-import SelosSection from 'components/Selos';
-import ESG from 'components/ESG';
-import Parceiros from 'components/Parceiros';
-import FAQ from 'components/FAQ';
-import Blog from 'components/Blog';
-import Rodape from 'components/Rodape';
-import HomeCarousel from 'components/Home';
 import styled from 'styled-components';
-import { MarkerProvider } from 'components/earth/MarkerContext';
 import FormContainer from '../../containers/FormContainer';
+import ESG from './components/ESG';
+import FAQ from './components/FAQ';
+import HomeCarousel from './components/Home';
+import OqueFazemos from './components/OqueFazemos';
+import Rodape from './components/Rodape';
+import SelosSection from './components/Selos';
 
 const RodapeWrapper = styled.div`
 @media (max-width: 768px) {
